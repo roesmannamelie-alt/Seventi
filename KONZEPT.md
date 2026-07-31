@@ -62,6 +62,16 @@ Alles andere auf der Seite beschreibt entweder die Mechanik aus dem Briefing ode
 
 ---
 
+## 2c. Gestaltungsregeln für alle weiteren Abschnitte
+
+- **Keine Rahmen und Ränder um Karten.** Abgrenzung entsteht über Flächen, Radien und Abstand, nicht über Konturen. Trennlinien innerhalb einer Karte sind erlaubt.
+- **Kicker sind dezente Pills mit Icon**, in derselben Form wie der Hero-Eyebrow. Keine Striche, keine Versalien.
+- **Bilder immer als gekennzeichnete Platzhalter.** Jede Bildfläche trägt sichtbar den Hinweis „Bildplatzhalter" mit Zweck, damit beim Austausch nichts übersehen wird.
+- **Bewegung folgt dem Scrollen.** Abschnitt 2 füllt seine Fortschrittslinien versetzt von links nach rechts, während man scrollt. Bei `prefers-reduced-motion` sind sie sofort vollständig.
+- **Hervorgehobene Kästen bleiben schmal und mittig**, nicht über die volle Breite gezogen.
+
+---
+
 ## 3. Die Abschnitte im Einzelnen
 
 ### 1 — Vertrauensleiste
