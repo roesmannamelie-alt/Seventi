@@ -1125,11 +1125,281 @@
         transition-duration: .01ms !important;
       }
     }
+
+    /* ===================================================
+       Abschnitt 2 · So läuft es ab
+       =================================================== */
+
+    .steps {
+      padding: clamp(84px, 8.5vw, 130px) 20px clamp(80px, 8vw, 120px);
+      background: #fafcf7;
+      border-top: 1px solid var(--line);
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: minmax(0, 1.32fr) minmax(0, .68fr);
+      align-items: end;
+      gap: clamp(28px, 4vw, 64px);
+    }
+
+    .section-lead {
+      max-width: 390px;
+      margin: 0 0 7px;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    .section-label {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      margin-bottom: 18px;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+    }
+
+    .section-label::before {
+      content: "";
+      width: 26px;
+      height: 2px;
+      border-radius: 2px;
+      background: var(--brand-strong);
+    }
+
+    .steps h2 {
+      max-width: 780px;
+      margin: 0;
+      font-size: clamp(32px, 3.3vw, 48px);
+      font-weight: 600;
+      line-height: 1.08;
+      letter-spacing: -.05em;
+      text-wrap: balance;
+    }
+
+    .steps h2 em {
+      color: var(--brand-dark);
+      font-family: "Fraunces", serif;
+      font-style: normal;
+      font-weight: 500;
+      letter-spacing: -.035em;
+    }
+
+    .step-grid {
+      margin-top: clamp(48px, 5vw, 76px);
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: clamp(24px, 2.6vw, 40px);
+    }
+
+    .step {
+      padding-top: 0;
+      border-top: 2px solid var(--line);
+    }
+
+    .step-one { border-top-color: var(--brand-strong); }
+
+    .step-index {
+      width: 34px;
+      height: 34px;
+      margin-top: -18px;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      display: grid;
+      place-content: center;
+      background: var(--white);
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .02em;
+    }
+
+    .step-one .step-index {
+      border-color: transparent;
+      background: var(--brand);
+      color: var(--brand-dark);
+    }
+
+    .step-time {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      margin: 22px 0 14px;
+      padding: 6px 11px 6px 9px;
+      border-radius: 99px;
+      background: var(--brand-soft);
+      color: var(--brand-dark);
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .step-time svg {
+      width: 14px;
+      height: 14px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.9;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .step h3 {
+      margin: 0 0 10px;
+      font-size: clamp(19px, 1.5vw, 22px);
+      font-weight: 600;
+      line-height: 1.25;
+      letter-spacing: -.03em;
+    }
+
+    .step p {
+      max-width: 380px;
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    /* Der häufigste Absprunggrund, direkt beantwortet */
+    .fallback {
+      margin-top: clamp(38px, 4vw, 56px);
+      padding: clamp(22px, 2.2vw, 30px);
+      border-radius: var(--radius-lg);
+      background: var(--brand-soft);
+      display: grid;
+      grid-template-columns: 38px minmax(0, 1fr);
+      align-items: start;
+      gap: 18px;
+    }
+
+    .fallback-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 11px;
+      display: grid;
+      place-content: center;
+      background: var(--white);
+      color: var(--brand-dark);
+    }
+
+    .fallback-icon svg {
+      width: 19px;
+      height: 19px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.9;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .fallback strong {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 16px;
+      font-weight: 600;
+      letter-spacing: -.02em;
+    }
+
+    .fallback p {
+      max-width: 680px;
+      margin: 0;
+      color: #4d5c3d;
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    /* Einblenden beim Scrollen, nur mit aktivem JavaScript */
+    .js .reveal {
+      opacity: 0;
+      transform: translate3d(0, 22px, 0);
+    }
+
+    .js .reveal.is-in {
+      opacity: 1;
+      transform: none;
+      transition:
+        opacity .72s cubic-bezier(.16, 1, .3, 1),
+        transform .72s cubic-bezier(.16, 1, .3, 1);
+    }
+
+    .js .step-grid .step:nth-child(2).is-in { transition-delay: .09s; }
+    .js .step-grid .step:nth-child(3).is-in { transition-delay: .18s; }
+
+    @media (max-width: 980px) {
+      .section-head {
+        grid-template-columns: 1fr;
+        align-items: start;
+        gap: 18px;
+      }
+
+      .section-lead { max-width: 560px; }
+
+      .step-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+      .step p { max-width: 560px; }
+    }
+
+    @media (max-width: 760px) {
+      .steps {
+        padding: 64px 20px 68px;
+      }
+
+      .section-label {
+        margin-bottom: 14px;
+        font-size: 10px;
+      }
+
+      .steps h2 {
+        font-size: clamp(27px, 7.6vw, 32px);
+        line-height: 1.12;
+        letter-spacing: -.04em;
+      }
+
+      .step-grid {
+        margin-top: 40px;
+        gap: 26px;
+      }
+
+      .step-time {
+        margin: 18px 0 11px;
+        font-size: 10.5px;
+      }
+
+      .step h3 { font-size: 18px; }
+
+      .step p { font-size: 13.5px; line-height: 1.65; }
+
+      .fallback {
+        margin-top: 30px;
+        padding: 20px;
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+
+      .fallback strong { font-size: 15px; }
+
+      .fallback p { font-size: 13.5px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .js .reveal {
+        opacity: 1;
+        transform: none;
+      }
+    }
   </style>
+  <script>document.documentElement.classList.add("js");</script>
 </head>
 
 <body>
-  <main class="hero">
+  <main>
+  <section class="hero">
     <div class="shell">
       <div class="hero-grid">
       <section class="intro">
@@ -1302,8 +1572,83 @@
       </section>
       </div>
     </div>
+  </section>
+
+  <section class="steps" aria-labelledby="ablauf-titel">
+    <div class="shell">
+      <div class="section-head reveal">
+        <div>
+          <div class="section-label">So läuft es ab</div>
+          <h2 id="ablauf-titel">Drei Schritte. <em>Der erste dauert drei Minuten.</em></h2>
+        </div>
+        <p class="section-lead">Du gibst dein Briefing einmal ein. Danach kommen die Angebote zu dir – ohne dass du jemandem hinterhertelefonieren musst.</p>
+      </div>
+
+      <div class="step-grid">
+        <article class="step step-one reveal">
+          <span class="step-index">01</span>
+          <span class="step-time">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v5.2l3.2 2"/></svg>
+            3 Minuten
+          </span>
+          <h3>Event beschreiben</h3>
+          <p>Datum, Personenzahl, Region, Budget und was du brauchst. Miia fragt nach, wenn etwas fehlt. Deinen Firmennamen sehen nur Anbieter, denen du antwortest.</p>
+        </article>
+
+        <article class="step reveal">
+          <span class="step-index">02</span>
+          <span class="step-time">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v5.2l3.2 2"/></svg>
+            Meist innerhalb von 48 Stunden
+          </span>
+          <h3>Angebote erhalten</h3>
+          <p>Passende Locations und Caterer bewerben sich mit einem konkreten Angebot. Du bekommst eine E-Mail, sobald das erste da ist. Nachfassen musst du bei niemandem.</p>
+        </article>
+
+        <article class="step reveal">
+          <span class="step-index">03</span>
+          <span class="step-time">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v5.2l3.2 2"/></svg>
+            Wann es dir passt
+          </span>
+          <h3>Vergleichen und buchen</h3>
+          <p>Alle Angebote in derselben Struktur: Preis total, Preis pro Person, was inklusive ist, bis wann die Option gilt. Du buchst direkt oder lehnst ab.</p>
+        </article>
+      </div>
+
+      <aside class="fallback reveal">
+        <span class="fallback-icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="12" r="8.5"/>
+            <path d="M9.9 9.6a2.2 2.2 0 1 1 2.7 2.5c-.5.2-.8.6-.8 1.1v.4M12 16.5h.01"/>
+          </svg>
+        </span>
+        <div>
+          <strong>Und wenn nichts Passendes kommt?</strong>
+          <p>Dann schlägt Miia dir Anbieter vor, die du gezielt anschreiben kannst. Kommt trotzdem kein Angebot, kostet dich das nichts ausser den drei Minuten.</p>
+        </div>
+      </aside>
+    </div>
+  </section>
   </main>
+
   <script>
+    const revealTargets = document.querySelectorAll(".reveal");
+
+    if ("IntersectionObserver" in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("is-in");
+          observer.unobserve(entry.target);
+        });
+      }, { threshold: .18, rootMargin: "0px 0px -60px 0px" });
+
+      revealTargets.forEach((el) => observer.observe(el));
+    } else {
+      revealTargets.forEach((el) => el.classList.add("is-in"));
+    }
+
     document.querySelectorAll(".cta").forEach((cta) => {
       let touchTimer;
 

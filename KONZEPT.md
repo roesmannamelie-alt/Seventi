@@ -25,7 +25,7 @@ Daraus folgen vier Regeln, die für jeden Abschnitt gelten:
 |---|---|---|
 | 0 | Hero *(steht)* | Was ist das und was bringt es mir? |
 | 1 | Vertrauensleiste | Nutzt das schon jemand wie ich? |
-| 2 | So läuft es ab | Was passiert nach dem Klick, und wie lange dauert das? |
+| 2 | So läuft es ab *(gebaut)* | Was passiert nach dem Klick, und wie lange dauert das? |
 | 3 | Vergleich zum heutigen Vorgehen | Warum nicht einfach wie bisher? |
 | 4 | Der Angebotsvergleich | Was bekomme ich am Ende in die Hand? |
 | 5 | Für welche Anlässe | Ist mein Event überhaupt gemeint? |
