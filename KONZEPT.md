@@ -26,17 +26,39 @@ Daraus folgen vier Regeln, die für jeden Abschnitt gelten:
 | 0 | Hero *(steht)* | Was ist das und was bringt es mir? |
 | 1 | Vertrauensleiste | Nutzt das schon jemand wie ich? |
 | 2 | So läuft es ab *(gebaut)* | Was passiert nach dem Klick, und wie lange dauert das? |
-| 3 | Vergleich zum heutigen Vorgehen | Warum nicht einfach wie bisher? |
+| 3 | Vergleich zum heutigen Vorgehen *(gebaut)* | Warum nicht einfach wie bisher? |
 | 4 | Der Angebotsvergleich | Was bekomme ich am Ende in die Hand? |
-| 5 | Für welche Anlässe | Ist mein Event überhaupt gemeint? |
+| 5 | Für welche Anlässe *(gebaut)* | Ist mein Event überhaupt gemeint? |
 | 6 | Anbieter und Regionen | Gibt es bei mir genug Auswahl? |
 | 7 | Ein Ablauf im Detail | Funktioniert das in echt? |
 | 8 | Was es kostet | Wo ist der Haken? |
 | 9 | Häufige Fragen | Alles, was sonst zum Absprung führt |
-| 10 | Abschluss-CTA | Letzter Einstieg |
-| 11 | Footer | Pflichtangaben, Ausgang für Anbieter |
+| 10 | Abschluss-CTA *(gebaut)* | Letzter Einstieg |
+| 11 | Footer *(gebaut)* | Pflichtangaben, Ausgang für Anbieter |
 
 Elf Abschnitte klingen viel, sind aber überwiegend kurz. Die Seite soll sich schnell scrollen lassen, nicht lang lesen.
+
+---
+
+## 2b. Stand und Arbeitsregel
+
+**Gebaut:** Hero, 2 (So läuft es ab), 3 (Der Unterschied), 5 (Für welche Anlässe), 10 (Abschluss), 11 (Footer).
+
+**Bewusst offen:** 1 (Vertrauensleiste), 4 (Angebotsvergleich), 6 (Anbieter und Regionen), 7 (Ablauf im Detail), 8 (Was es kostet), 9 (Häufige Fragen). Diese Abschnitte bestehen fast vollständig aus Angaben, die nur Seventi kennt: Anbieterzahlen, Reaktionszeiten, Preismodell, Kundenreferenzen, Feldstruktur der Angebotsansicht. Wir bauen sie, sobald die Werte da sind.
+
+**Regel für alles Weitere:** Auf die Seite kommt nur, was wir wirklich wissen. Geschätzte Zahlen, angenommene Produktfunktionen und erfundene Referenzen bleiben draussen. Wo eine Angabe fehlt, das Layout sie aber braucht, steht ein sichtbar gekennzeichneter Platzhalter statt einer plausiblen Erfindung.
+
+### Angaben, die aktuell auf der Seite stehen und bestätigt werden müssen
+
+| Wo | Aussage | Status |
+|---|---|---|
+| Hero und Abschluss | „Start in ca. 3 Minuten" | unsere Schätzung, wie lange das Briefing dauert |
+| Hero und Abschluss | „Unverbindlich und kostenlos" | Preismodell für Planerinnen ist uns nicht bestätigt |
+| Abschnitt 2, Schritt 1 | „3 Minuten" | wie oben |
+| Abschnitt 2, Schritt 2 | Zeit bis zum ersten Angebot | als offener Platzhalter gekennzeichnet |
+| Abschnitt 2, Kasten | Miia schlägt Anbieter zum Anschreiben vor | steht so im Briefing, Ablauf im Detail unklar |
+
+Alles andere auf der Seite beschreibt entweder die Mechanik aus dem Briefing oder den heutigen Arbeitsalltag der Zielgruppe.
 
 ---
 
@@ -73,18 +95,18 @@ Darunter drei Zahlen in einer Zeile:
 > Drei Schritte. Der erste dauert drei Minuten.
 
 **Schritt 1 · Event beschreiben — 3 Minuten**
-Datum, Personenzahl, Region, Budget und was du brauchst. Miia fragt nach, wenn etwas fehlt. Dein Firmenname bleibt sichtbar nur für Anbieter, denen du antwortest.
+Datum, Personenzahl, Region, Budget und was du brauchst. Miia fragt nach, wenn etwas fehlt. Ein Briefing, egal wie viele Anbieter du danach vergleichst.
 
-**Schritt 2 · Angebote erhalten — meist innerhalb von 48 Stunden**
-Passende Locations und Caterer bewerben sich mit einem konkreten Angebot. Du bekommst eine E-Mail, sobald das erste da ist. Kein Nachfassen nötig.
+**Schritt 2 · Angebote erhalten — Zeitangabe folgt**
+Passende Locations und Caterer bewerben sich mit einem konkreten Angebot. Nachfassen musst du bei niemandem. Die Zeitspanne steht als offener Platzhalter, bis Seventi den realen Wert liefert.
 
 **Schritt 3 · Vergleichen und buchen — wann es dir passt**
 Alle Angebote in derselben Struktur: Preis total, Preis pro Person, was inklusive ist, bis wann die Option gilt. Du buchst direkt oder lehnst ab.
 
 **Direkt darunter, klein, aber nicht versteckt:**
 
-> **Und wenn nichts Passendes kommt?**
-> Dann schlägt Miia dir Anbieter vor, die du gezielt anschreiben kannst. Kommt trotzdem kein Angebot, kostet dich das nichts außer den drei Minuten.
+> **Und wenn sich niemand meldet?**
+> Dann schlägt Miia dir passende Anbieter vor, die du direkt aus deinem Briefing heraus anschreiben kannst. Du fängst nicht wieder bei null an.
 
 Dieser Kasten ist der Grund, warum der Abschnitt an zweiter Stelle steht. Genau diese Frage bricht die Anmeldung sonst ab.
 
@@ -106,15 +128,13 @@ Dieser Kasten ist der Grund, warum der Abschnitt an zweiter Stelle steht. Genau 
 - Locations googeln und einzeln anschreiben
 - Jede Antwort in einem anderen Format, manche gar nicht
 - Nachfassen bei denen, die nicht antworten
-- Preise selbst vergleichbar machen, meist in Excel
-- Zwei bis drei Wochen bis zur Entscheidungsgrundlage
+- Die Angebote selbst vergleichbar machen, meist in Excel
 
 *Mit Seventi*
 - Ein Briefing, einmal ausgefüllt
 - Anbieter melden sich von sich aus
 - Alle Angebote in derselben Struktur
-- Vergleich fertig, ohne eigene Tabelle
-- Meist wenige Tage bis zur Entscheidungsgrundlage
+- Der Vergleich steht, ohne dass du eine Tabelle baust
 
 **Gestaltung:** Keine rote Spalte mit Kreuzen. Linke Spalte in Graugrün und ohne Icons, rechte Spalte in Markenfarbe mit Häkchen. Der Unterschied entsteht durch Ruhe, nicht durch Dramatik.
 

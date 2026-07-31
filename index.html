@@ -1171,7 +1171,7 @@
       background: var(--brand-strong);
     }
 
-    .steps h2 {
+    .section-head h2 {
       max-width: 780px;
       margin: 0;
       font-size: clamp(32px, 3.3vw, 48px);
@@ -1181,7 +1181,7 @@
       text-wrap: balance;
     }
 
-    .steps h2 em {
+    .section-head h2 em {
       color: var(--brand-dark);
       font-family: "Fraunces", serif;
       font-style: normal;
@@ -1355,7 +1355,7 @@
         font-size: 10px;
       }
 
-      .steps h2 {
+      .section-head h2 {
         font-size: clamp(27px, 7.6vw, 32px);
         line-height: 1.12;
         letter-spacing: -.04em;
@@ -1392,6 +1392,359 @@
         opacity: 1;
         transform: none;
       }
+    }
+
+    /* Werte, die noch von Seventi kommen, sind als offen gekennzeichnet */
+    .step-time.is-pending {
+      border: 1px dashed #c4d2b2;
+      background: transparent;
+      color: #7c8574;
+      font-weight: 600;
+    }
+
+    .pending-note {
+      margin: 20px 0 0;
+      color: #8a9382;
+      font-size: 11.5px;
+      line-height: 1.6;
+    }
+
+    /* ===================================================
+       Abschnitt 3 · Der Unterschied zum heutigen Vorgehen
+       =================================================== */
+
+    .compare {
+      padding: clamp(84px, 8.5vw, 130px) 20px clamp(80px, 8vw, 120px);
+      background: var(--canvas);
+    }
+
+    .compare-grid {
+      margin-top: clamp(44px, 4.6vw, 68px);
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: clamp(16px, 1.6vw, 22px);
+    }
+
+    .compare-col {
+      padding: clamp(24px, 2.4vw, 34px);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-xl);
+      background: #fbfcf9;
+    }
+
+    .compare-col.is-seventi {
+      border-color: rgba(184, 232, 0, .45);
+      background: var(--brand-soft);
+    }
+
+    .compare-head {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding-bottom: 18px;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .is-seventi .compare-head { color: var(--brand-dark); }
+
+    .compare-col ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .compare-col li {
+      display: grid;
+      grid-template-columns: 22px minmax(0, 1fr);
+      align-items: start;
+      gap: 12px;
+      padding: 15px 0;
+      border-top: 1px solid var(--line);
+      font-size: 14.5px;
+      line-height: 1.55;
+      color: var(--muted);
+    }
+
+    .is-seventi li {
+      border-top-color: rgba(184, 232, 0, .35);
+      color: var(--ink);
+      font-weight: 500;
+    }
+
+    .compare-col li span {
+      width: 22px;
+      height: 22px;
+      margin-top: 0;
+      border-radius: 50%;
+      display: grid;
+      place-content: center;
+      background: #eef1ea;
+      color: #97a08d;
+    }
+
+    .is-seventi li span {
+      background: var(--brand);
+      color: var(--brand-dark);
+    }
+
+    .compare-col li svg {
+      width: 13px;
+      height: 13px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2.4;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    /* ===================================================
+       Abschnitt 5 · Für welche Anlässe
+       =================================================== */
+
+    .occasions {
+      padding: clamp(84px, 8.5vw, 130px) 20px clamp(80px, 8vw, 120px);
+      background: #fafcf7;
+      border-top: 1px solid var(--line);
+    }
+
+    .occasion-grid {
+      margin-top: clamp(44px, 4.6vw, 68px);
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: clamp(12px, 1.2vw, 16px);
+    }
+
+    .occasion {
+      min-height: 84px;
+      padding: 22px 24px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      background: var(--white);
+      color: var(--ink);
+      font-size: clamp(16px, 1.3vw, 18px);
+      font-weight: 600;
+      letter-spacing: -.02em;
+      line-height: 1.3;
+      transition: border-color .22s ease, transform .22s ease;
+    }
+
+    .occasion:hover {
+      border-color: var(--brand-strong);
+      transform: translateY(-2px);
+    }
+
+    .occasion i {
+      width: 8px;
+      height: 8px;
+      flex: 0 0 8px;
+      border-radius: 50%;
+      background: var(--brand);
+    }
+
+    .occasion-note {
+      margin: clamp(26px, 2.6vw, 34px) 0 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .occasion-note strong {
+      color: var(--ink);
+      font-weight: 600;
+    }
+
+    /* ===================================================
+       Abschnitt 10 · Abschluss und Abschnitt 11 · Footer
+       =================================================== */
+
+    .closing {
+      padding: clamp(88px, 9vw, 140px) 20px clamp(88px, 9vw, 140px);
+      color: var(--white);
+      background:
+        radial-gradient(760px 420px at 74% 20%, rgba(214, 255, 32, .14), transparent 70%),
+        #101d00;
+      text-align: center;
+    }
+
+    .closing h2 {
+      max-width: 780px;
+      margin: 0 auto;
+      font-size: clamp(32px, 3.5vw, 52px);
+      font-weight: 600;
+      line-height: 1.06;
+      letter-spacing: -.05em;
+      text-wrap: balance;
+    }
+
+    .closing h2 em {
+      color: var(--brand);
+      font-family: "Fraunces", serif;
+      font-style: normal;
+      font-weight: 500;
+      letter-spacing: -.035em;
+    }
+
+    .closing .actions {
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 34px;
+    }
+
+    .closing .time { text-align: center; }
+
+    .closing .time strong {
+      display: inline;
+      margin: 0 5px 0 0;
+    }
+
+    .closing .cta {
+      background: var(--brand);
+      border-color: var(--brand);
+      color: var(--ink);
+      font-weight: 700;
+    }
+
+    .closing .cta-inject { color: var(--brand-dark); }
+
+    .closing .cta:is(:hover, :focus-visible, :active, .is-open) {
+      background: var(--brand-strong);
+      border-color: var(--brand-strong);
+    }
+
+    .closing .time { color: #a9b79a; }
+
+    .closing .time strong { color: var(--white); }
+
+    .site-footer {
+      padding: 34px 20px 40px;
+      background: #101d00;
+      border-top: 1px solid rgba(214, 255, 32, .16);
+      color: #a9b79a;
+      font-size: 12px;
+    }
+
+    .footer-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px 34px;
+      flex-wrap: wrap;
+    }
+
+    .footer-mark {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      color: var(--white);
+      font-family: "Fraunces", serif;
+      font-size: 17px;
+      font-weight: 500;
+      letter-spacing: -.02em;
+    }
+
+    .footer-mark i {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--brand);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 22px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a:hover { color: var(--white); }
+
+    .footer-provider {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 15px;
+      border: 1px solid rgba(214, 255, 32, .3);
+      border-radius: 999px;
+      color: var(--brand);
+      font-weight: 600;
+    }
+
+    .footer-provider:hover { border-color: var(--brand); }
+
+    .footer-provider svg {
+      width: 14px;
+      height: 14px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    @media (max-width: 980px) {
+      .compare-grid { grid-template-columns: 1fr; }
+
+      .occasion-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 620px) {
+      .occasion-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 760px) {
+      .compare,
+      .occasions {
+        padding: 64px 20px 68px;
+      }
+
+      .compare-grid,
+      .occasion-grid {
+        margin-top: 34px;
+      }
+
+      .compare-col { padding: 20px; }
+
+      .compare-col li { padding: 13px 0; font-size: 13.5px; }
+
+      .occasion {
+        min-height: 0;
+        padding: 18px 20px;
+        font-size: 16px;
+      }
+
+      .occasion-note { font-size: 13.5px; }
+
+      .pending-note { font-size: 11px; }
+
+      .closing { padding: 64px 20px 68px; }
+
+      .closing h2 {
+        font-size: clamp(27px, 7.6vw, 32px);
+        line-height: 1.12;
+        letter-spacing: -.04em;
+      }
+
+      .closing .actions {
+        align-items: center;
+        margin-top: 28px;
+      }
+
+      .site-footer { padding: 28px 20px 34px; }
+
+      .footer-row {
+        justify-content: flex-start;
+        gap: 22px;
+      }
+
+      .footer-links { gap: 16px; font-size: 11.5px; }
     }
   </style>
   <script>document.documentElement.classList.add("js");</script>
@@ -1592,17 +1945,17 @@
             3 Minuten
           </span>
           <h3>Event beschreiben</h3>
-          <p>Datum, Personenzahl, Region, Budget und was du brauchst. Miia fragt nach, wenn etwas fehlt. Deinen Firmennamen sehen nur Anbieter, denen du antwortest.</p>
+          <p>Datum, Personenzahl, Region, Budget und was du brauchst. Miia fragt nach, wenn etwas fehlt. Ein Briefing, egal wie viele Anbieter du danach vergleichst.</p>
         </article>
 
         <article class="step reveal">
           <span class="step-index">02</span>
-          <span class="step-time">
+          <span class="step-time is-pending">
             <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v5.2l3.2 2"/></svg>
-            Meist innerhalb von 48 Stunden
+            Zeitangabe folgt
           </span>
           <h3>Angebote erhalten</h3>
-          <p>Passende Locations und Caterer bewerben sich mit einem konkreten Angebot. Du bekommst eine E-Mail, sobald das erste da ist. Nachfassen musst du bei niemandem.</p>
+          <p>Passende Locations und Caterer bewerben sich mit einem konkreten Angebot. Nachfassen musst du bei niemandem.</p>
         </article>
 
         <article class="step reveal">
@@ -1624,13 +1977,134 @@
           </svg>
         </span>
         <div>
-          <strong>Und wenn nichts Passendes kommt?</strong>
-          <p>Dann schlägt Miia dir Anbieter vor, die du gezielt anschreiben kannst. Kommt trotzdem kein Angebot, kostet dich das nichts ausser den drei Minuten.</p>
+          <strong>Und wenn sich niemand meldet?</strong>
+          <p>Dann schlägt Miia dir passende Anbieter vor, die du direkt aus deinem Briefing heraus anschreiben kannst. Du fängst nicht wieder bei null an.</p>
         </div>
       </aside>
+
+      <p class="pending-note reveal">Die Zeitangabe im zweiten Schritt tragen wir ein, sobald die realen Werte von Seventi vorliegen.</p>
     </div>
   </section>
+
+  <section class="compare" aria-labelledby="unterschied-titel">
+    <div class="shell">
+      <div class="section-head reveal">
+        <div>
+          <div class="section-label">Der Unterschied</div>
+          <h2 id="unterschied-titel">Elf E-Mails, drei Rückrufe, <em>und am Ende ein Excel.</em></h2>
+        </div>
+        <p class="section-lead">Nicht weil du unorganisiert wärst, sondern weil heute jede Anfrage einzeln läuft. Genau diesen Teil übernimmt Seventi.</p>
+      </div>
+
+      <div class="compare-grid">
+        <div class="compare-col reveal">
+          <div class="compare-head">Wie es heute läuft</div>
+          <ul>
+            <li>
+              <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 12h12"/></svg></span>
+              Locations recherchieren und einzeln anschreiben
+            </li>
+            <li>
+              <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 12h12"/></svg></span>
+              Jede Antwort kommt in einem anderen Format, manche gar nicht
+            </li>
+            <li>
+              <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 12h12"/></svg></span>
+              Nachfassen bei allen, die sich nicht melden
+            </li>
+            <li>
+              <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 12h12"/></svg></span>
+              Die Angebote selbst vergleichbar machen, meist in Excel
+            </li>
+          </ul>
+        </div>
+
+        <div class="compare-col is-seventi reveal">
+          <div class="compare-head">Mit Seventi</div>
+          <ul>
+            <li>
+              <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l4 4L19 6"/></svg></span>
+              Ein Briefing, einmal ausgefüllt
+            </li>
+            <li>
+              <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l4 4L19 6"/></svg></span>
+              Passende Anbieter melden sich von sich aus
+            </li>
+            <li>
+              <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l4 4L19 6"/></svg></span>
+              Alle Angebote kommen in derselben Struktur
+            </li>
+            <li>
+              <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l4 4L19 6"/></svg></span>
+              Der Vergleich steht, ohne dass du eine Tabelle baust
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="occasions" aria-labelledby="anlaesse-titel">
+    <div class="shell">
+      <div class="section-head reveal">
+        <div>
+          <div class="section-label">Für welche Anlässe</div>
+          <h2 id="anlaesse-titel">Für die Anlässe, die <em>im Firmenkalender stehen.</em></h2>
+        </div>
+        <p class="section-lead">Seventi ist für Firmenevents gebaut. Nicht für private Feiern, nicht zum Stöbern.</p>
+      </div>
+
+      <div class="occasion-grid">
+        <div class="occasion reveal"><i></i>Sommerfest</div>
+        <div class="occasion reveal"><i></i>Weihnachtsessen</div>
+        <div class="occasion reveal"><i></i>Team-Offsite</div>
+        <div class="occasion reveal"><i></i>Kundenanlass</div>
+        <div class="occasion reveal"><i></i>Generalversammlung und Konferenz</div>
+        <div class="occasion reveal"><i></i>Firmenjubiläum</div>
+      </div>
+
+      <p class="occasion-note reveal"><strong>Nicht dabei?</strong> Beschreib es Miia trotzdem. Das Briefing ist frei formulierbar, die Anlässe oben sind nur die häufigsten.</p>
+    </div>
+  </section>
+
+  <section class="closing" aria-labelledby="abschluss-titel">
+    <div class="shell">
+      <h2 id="abschluss-titel" class="reveal">Ein Briefing. <em>Dann melden sich die Anbieter.</em></h2>
+
+      <div class="actions reveal">
+        <a class="cta" href="https://www.seventi.com/">
+          <span class="cta-word">Event</span>
+          <span class="cta-inject" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <path d="M12 2v20M4.93 4.93l14.14 14.14M2 12h20M19.07 4.93 4.93 19.07"/>
+            </svg>
+          </span>
+          <span class="cta-word">planen</span>
+        </a>
+        <div class="time"><strong>Start in ca. 3 Minuten</strong>Unverbindlich und kostenlos</div>
+      </div>
+    </div>
+  </section>
+
   </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-row">
+      <div class="footer-mark">seventi<i></i></div>
+
+      <nav class="footer-links" aria-label="Rechtliches">
+        <a href="#">Impressum</a>
+        <a href="#">Datenschutz</a>
+        <a href="#">Kontakt</a>
+      </nav>
+
+      <!-- Einziger Nebenausgang der Seite, Ziel folgt mit der Provider-Seite -->
+      <a class="footer-provider" href="#">
+        Sie sind Location oder Caterer?
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+  </footer>
 
   <script>
     const revealTargets = document.querySelectorAll(".reveal");
