@@ -1,12 +1,25 @@
 # Systra Studios × Seventi
 
-Animierter Hero-Entwurf für die Seventi Planner-Landingpage.
+Entwürfe für die Seventi Landingpages.
+
+## Dateien
+
+| Datei | Inhalt |
+|---|---|
+| `index.html` | Planner-Hero, aktueller Stand |
+| `KONZEPT.md` | Konzept der kompletten Planner-Seite: Abschnitte, Inhalte, offene Punkte |
+| `provider-hero-a.html` | Provider-Hero, Entwurf A · Anfragen statt Akquise |
+| `provider-hero-b.html` | Provider-Hero, Entwurf B · Die vier Fragen zuerst |
+| `provider-hero-c.html` | Provider-Hero, Entwurf C · Der Anfragen-Eingang |
+| `entwuerfe.html` | Übersicht mit Links auf alle Entwürfe |
+
+Alle Zahlen, Firmenangaben und Bilder in den Entwürfen sind Platzhalter.
 
 ## Enthalten
 
-- responsive Desktop- und Mobile-Ansicht
+- responsive Desktop- (1440 px) und Mobile-Ansicht (390 px)
 - animiertes Miia-Briefing mit Matching-Ergebnissen
-- Hintergrundbild lokal eingebunden
+- gemeinsames Design-System für Planner- und Provider-Seite
 - Manrope und Fraunces über Google Fonts
 - keine Build-Tools oder Abhängigkeiten erforderlich
 
