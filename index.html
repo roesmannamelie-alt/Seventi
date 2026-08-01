@@ -2489,8 +2489,8 @@
 
     if (canvas && !calmMotion.matches && window.matchMedia("(hover: hover)").matches) {
       const pills = [...canvas.querySelectorAll(".occasion")];
-      const reichweite = 330;
-      const staerke = pills.map((_, index) => 24 + (index % 3) * 6);
+      const reichweite = 110;
+      const staerke = pills.map((_, index) => 26 + (index % 3) * 5);
 
       let ruhend = true;
 
@@ -2509,28 +2509,35 @@
 
         pills.forEach((pill, index) => {
           // offsetLeft ignoriert die eigene Verschiebung, sonst schaukelt sich das auf
-          const mitteX = pill.offsetLeft + pill.offsetWidth / 2;
-          const mitteY = pill.offsetTop + pill.offsetHeight / 2;
-          const dx = mitteX - zeigerX;
-          const dy = mitteY - zeigerY;
+          const links = pill.offsetLeft;
+          const oben = pill.offsetTop;
+          const rechts = links + pill.offsetWidth;
+          const unten = oben + pill.offsetHeight;
 
-          // wer direkt auf der Pill steht, soll sie auch anklicken können
-          const drauf = Math.abs(dx) < pill.offsetWidth / 2 + 4 &&
-                        Math.abs(dy) < pill.offsetHeight / 2 + 4;
+          // Abstand zum Rand der Pill, nicht zu ihrer Mitte
+          const randX = Math.max(links - zeigerX, 0, zeigerX - rechts);
+          const randY = Math.max(oben - zeigerY, 0, zeigerY - unten);
+          const abstand = Math.hypot(randX, randY);
 
-          const abstand = Math.hypot(dx, dy);
-
-          if (drauf || abstand > reichweite || abstand === 0) {
+          // im Feld liegt der Zeiger auf der Pill, die bleibt dann anklickbar
+          if (abstand === 0 || abstand > reichweite) {
             pill.style.setProperty("--mx", "0px");
             pill.style.setProperty("--my", "0px");
             return;
           }
 
-          const naehe = 1 - abstand / reichweite;
-          const schub = naehe * naehe * staerke[index];
+          const mitteX = links + pill.offsetWidth / 2;
+          const mitteY = oben + pill.offsetHeight / 2;
+          const richtungX = mitteX - zeigerX;
+          const richtungY = mitteY - zeigerY;
+          const laenge = Math.hypot(richtungX, richtungY) || 1;
 
-          pill.style.setProperty("--mx", (dx / abstand * schub).toFixed(1) + "px");
-          pill.style.setProperty("--my", (dy / abstand * schub).toFixed(1) + "px");
+          // steile Kurve: bis kurz vor die Pill passiert fast nichts
+          const naehe = 1 - abstand / reichweite;
+          const schub = naehe * naehe * naehe * staerke[index];
+
+          pill.style.setProperty("--mx", (richtungX / laenge * schub).toFixed(1) + "px");
+          pill.style.setProperty("--my", (richtungY / laenge * schub).toFixed(1) + "px");
         });
       });
 
