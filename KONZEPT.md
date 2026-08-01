@@ -67,7 +67,8 @@ Alles andere auf der Seite beschreibt entweder die Mechanik aus dem Briefing ode
 - **Keine Rahmen und Ränder um Karten.** Abgrenzung entsteht über Flächen, Radien und Abstand, nicht über Konturen. Trennlinien innerhalb einer Karte sind erlaubt.
 - **Kicker sind dezente Pills mit Icon**, in derselben Form wie der Hero-Eyebrow. Keine Striche, keine Versalien.
 - **Bildflächen ohne Bild werden gekennzeichnet.** Solange kein Bild vorliegt, trägt die Fläche sichtbar den Hinweis „Bildplatzhalter" mit Zweck. Eingesetzt sind aktuell zwei Bilder von Seventi: ein Firmenanlass für Abschnitt 5, eine Eventlocation für die Provider-Seite.
-- **Bewegung folgt dem Scrollen.** Abschnitt 2 füllt seine Fortschrittslinien versetzt von links nach rechts, während man scrollt. Bei `prefers-reduced-motion` sind sie sofort vollständig.
+- **Bewegung folgt dem Scrollen.** Abschnitt 2 hat eine durchgehende Linie über alle drei Schritte, die sich beim Scrollen füllt; die Schrittnummern schalten mit und zeigen beim Hover ein passendes Icon. Abschnitt 3 zeigt zuerst nur die heutige Karte, beim Weiterscrollen schiebt sich die Seventi-Karte darüber. Bei `prefers-reduced-motion` steht alles sofort im Endzustand.
+- **Anlass-Pills** liegen im Glaslook mit weisser Schrift auf dem Bild, weichen der Maus leicht aus und zeigen beim Hover den typischen Bedarf.
 - **Hervorgehobene Kästen bleiben schmal und mittig**, nicht über die volle Breite gezogen.
 
 ---
@@ -346,11 +347,14 @@ Die drei ersten Hero-Entwürfe entstanden vor dem Provider-Briefing. Drei Punkte
 
 ### Aufbau von `provider.html`
 
+0. **Gewählt: Richtung A** — Versprechen links, die Anfrage als Produktobjekt rechts. Die Karte füllt sich Feld für Feld, damit sichtbar wird, was vor dem ersten Blick schon feststeht.
 1. **Hero** — Kernargument „Die Arbeit kommt zu dir. Schon gefiltert." Rechts eine Beispielanfrage, die zeigt, was vor dem ersten Blick schon feststeht: Datum, Personenzahl, Region, Budget, Kategorien. Darunter die Suche als einzige Hauptaktion.
-2. **Warum mitmachen** — drei Blöcke à vier Punkte: Bessere Anfragen, Kein Risiko, Kein Aufwand. Der Einwand dahinter ist immer derselbe: noch ein Portal, noch ein Abo, noch ein Postfach.
-3. **Was es kostet** — CHF 0 fürs Gelistetsein, 10 % nur bei Zahlung über Seventi, jederzeit wieder raus. Vollständig hingeschrieben statt im Kleingedruckten.
-4. **Abschluss** — dieselbe Suche noch einmal, dunkler Block.
-5. **Footer** — Rechtliches und der Quereinstieg zur Planner-Seite.
+2. **So läuft es ab** — drei Schritte mit derselben Fortschrittslinie wie auf der Planner-Seite: einrichten, Anfragen per E-Mail, antworten oder ablehnen.
+3. **Warum mitmachen** — drei Blöcke à vier Punkte: Bessere Anfragen, Kein Risiko, Kein Aufwand. Der Einwand dahinter ist immer derselbe: noch ein Portal, noch ein Abo, noch ein Postfach.
+4. **Was es kostet** — CHF 0 fürs Gelistetsein, 10 % nur bei Zahlung über Seventi, jederzeit wieder raus. Vollständig hingeschrieben statt im Kleingedruckten.
+5. **Häufige Fragen** — sechs Einwände, nur mit belegbaren Antworten.
+6. **Abschluss** — dieselbe Suche noch einmal, dunkler Block.
+7. **Footer** — Rechtliches und der Quereinstieg zur Planner-Seite.
 
 ### Offene Punkte
 
