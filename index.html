@@ -1567,20 +1567,44 @@
       pointer-events: none;
     }
 
-    .drift-links {
-      top: 16%;
-      left: clamp(10px, 2.5vw, 46px);
-      width: clamp(190px, 17vw, 260px);
-      height: clamp(250px, 23vw, 350px);
+    .drift-l1 {
+      top: 5%;
+      left: clamp(8px, 1.6vw, 34px);
+      width: clamp(160px, 14.5vw, 215px);
+      height: clamp(210px, 19vw, 280px);
       background-image: url("./seventi-tafel.webp");
     }
 
-    .drift-rechts {
-      top: 42%;
-      right: clamp(10px, 2.5vw, 46px);
-      width: clamp(170px, 15vw, 230px);
-      height: clamp(230px, 21vw, 310px);
+    .drift-l2 {
+      top: 46%;
+      left: clamp(24px, 4.2vw, 78px);
+      width: clamp(150px, 13vw, 195px);
+      height: clamp(200px, 17vw, 250px);
+      background-image: url("./seventi-anlass.webp");
+    }
+
+    .drift-l3 {
+      top: 82%;
+      left: clamp(8px, 1.2vw, 26px);
+      width: clamp(120px, 10vw, 150px);
+      height: clamp(150px, 13vw, 190px);
+      background-image: url("./seventi-event.webp");
+    }
+
+    .drift-r1 {
+      top: 12%;
+      right: clamp(22px, 4vw, 74px);
+      width: clamp(140px, 12.5vw, 185px);
+      height: clamp(185px, 16vw, 235px);
       background-image: url("./seventi-empfang.webp");
+    }
+
+    .drift-r2 {
+      top: 55%;
+      right: clamp(8px, 1.6vw, 32px);
+      width: clamp(165px, 14.5vw, 220px);
+      height: clamp(215px, 19vw, 275px);
+      background-image: url("./seventi-location.webp");
     }
 
     /* Kopf dieses Abschnitts steht mittig */
@@ -2351,8 +2375,11 @@
   </section>
 
   <section class="compare" id="unterschied" aria-labelledby="unterschied-titel">
-    <div class="drift drift-links" data-drift="0.09" role="img" aria-label="Gedeckte Tafel an einem Schweizer See"></div>
-    <div class="drift drift-rechts" data-drift="0.17" role="img" aria-label="Firmenempfang in einer Kunsthalle"></div>
+    <div class="drift drift-l1" data-drift="0.07" role="img" aria-label="Gedeckte Tafel an einem Schweizer See"></div>
+    <div class="drift drift-l2" data-drift="0.15" role="img" aria-label="Firmenanlass in einem begrünten Innenhof"></div>
+    <div class="drift drift-l3" data-drift="0.11" role="img" aria-label="Sommerabend auf einer Eventterrasse"></div>
+    <div class="drift drift-r1" data-drift="0.19" role="img" aria-label="Firmenempfang in einer Kunsthalle"></div>
+    <div class="drift drift-r2" data-drift="0.09" role="img" aria-label="Seminarraum mit Blick auf den See"></div>
 
     <div class="shell">
       <div class="section-head reveal">
