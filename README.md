@@ -6,7 +6,7 @@ Entwürfe für die Seventi Landingpages.
 
 | Datei | Inhalt |
 |---|---|
-| `index.html` | Planner-Seite: Hero, Abschnitte 2, 3, 5, Abschluss und Footer |
+| `index.html` | Planner-Seite: Hero, Vertrauensleiste, Abschnitte 2, 3, 5, Abschluss und Footer |
 | `KONZEPT.md` | Konzept der kompletten Planner-Seite: Abschnitte, Inhalte, offene Punkte |
 | `anbieter/index.html` | Provider-Seite: Suche, Argumente, Kosten, Fragen, Abschluss |
 | `provider.html` | Weiterleitung auf `anbieter/` |

@@ -44,9 +44,9 @@ Elf Abschnitte klingen viel, sind aber überwiegend kurz. Die Seite soll sich sc
 
 ## 2b. Stand und Arbeitsregel
 
-**Gebaut:** Hero, 2 (So läuft es ab), 3 (Der Unterschied), 5 (Für welche Anlässe), 10 (Abschluss), 11 (Footer).
+**Gebaut:** Hero, 1 (Vertrauensleiste, Plätze noch leer), 2 (So läuft es ab), 3 (Der Unterschied), 5 (Für welche Anlässe), 10 (Abschluss), 11 (Footer).
 
-**Bewusst offen:** 1 (Vertrauensleiste), 4 (Angebotsvergleich), 6 (Anbieter und Regionen), 7 (Ablauf im Detail), 8 (Was es kostet), 9 (Häufige Fragen). Diese Abschnitte bestehen fast vollständig aus Angaben, die nur Seventi kennt: Anbieterzahlen, Reaktionszeiten, Preismodell, Kundenreferenzen, Feldstruktur der Angebotsansicht. Wir bauen sie, sobald die Werte da sind.
+**Bewusst offen:** 4 (Angebotsvergleich), 6 (Anbieter und Regionen), 7 (Ablauf im Detail), 8 (Was es kostet), 9 (Häufige Fragen). Diese Abschnitte bestehen fast vollständig aus Angaben, die nur Seventi kennt: Anbieterzahlen, Reaktionszeiten, Preismodell, Kundenreferenzen, Feldstruktur der Angebotsansicht. Wir bauen sie, sobald die Werte da sind.
 
 **Regel für alles Weitere:** Auf die Seite kommt nur, was wir wirklich wissen. Geschätzte Zahlen, angenommene Produktfunktionen und erfundene Referenzen bleiben draussen. Wo eine Angabe fehlt, das Layout sie aber braucht, steht ein sichtbar gekennzeichneter Platzhalter statt einer plausiblen Erfindung.
 
@@ -59,6 +59,8 @@ Elf Abschnitte klingen viel, sind aber überwiegend kurz. Die Seite soll sich sc
 | Abschnitt 2, Schritt 1 | „3 Minuten" | wie oben |
 | Abschnitt 2, Schritt 2 | „Innerhalb einer Woche" | von uns gesetzt, muss Cody bestätigen |
 | Abschnitt 2, Kasten | Miia schlägt Anbieter zum Anschreiben vor | steht so im Briefing, Ablauf im Detail unklar |
+| Abschnitt 1 | „Bereits im Einsatz bei Teams in Zürich, Zug und Luzern" | von uns gesetzt, braucht mindestens eine buchende Firma |
+| Abschluss | „Aktuell für Firmenevents in Zürich, Zug und Luzern" | Regionen aus dem Provider-Briefing, für die Planner-Seite nicht bestätigt |
 
 Alles andere auf der Seite beschreibt entweder die Mechanik aus dem Briefing oder den heutigen Arbeitsalltag der Zielgruppe.
 
@@ -105,9 +107,11 @@ Darunter drei Zahlen in einer Zeile:
 - **4** Angebote pro Anfrage im Durchschnitt
 - **32 Stunden** bis zum ersten Angebot
 
-**Gestaltung:** helle Fläche, Logos einfarbig in Graugrün, Zahlen in Fraunces. Höhe ca. 140 px Desktop.
+**Gestaltung:** weisse Fläche direkt unter dem Hero, mittig, ohne Headline. Fünf Logoplätze als ruhige graugrüne Felder, darunter die drei Zahlen in Fraunces, Zahl über Wort. Auf dem Handy Logos dreispaltig.
 
-**Wenn Cody keine Logos freigeben kann:** Zahlenzeile allein, dafür größer. Nie Platzhalter-Logos stehen lassen, lieber weniger als erfunden.
+**Stand:** gebaut, aber bewusst leer. Cody schreibt im Briefing „keine Platzhalter-Logos" und meint damit erfundene Marken. Deshalb stehen dort erkennbar leere Felder mit dem Wort „Logo" und statt der Zahlen ein graues Feld. Was fehlt, sieht man auch als Fehlendes. Ein Info-Icon in der Zeile erklärt den Stand.
+
+**So darf es nicht live gehen.** Vor dem Livegang gilt: entweder echte Logos mit Freigabe der Firmen und echte Zahlen, oder der Abschnitt fällt weg. Wenn nur die Logos fehlen, bleibt die Zahlenzeile allein und wird grösser.
 
 ---
 
