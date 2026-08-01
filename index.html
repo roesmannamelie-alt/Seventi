@@ -35,8 +35,6 @@
 
     * { box-sizing: border-box; }
 
-    html { scroll-behavior: smooth; }
-
     body {
       margin: 0;
       color: var(--ink);
@@ -1195,16 +1193,19 @@
       border-top: 1px solid var(--line);
     }
 
+    /* Kicker, Headline und Subline stehen mittig uebereinander */
     .section-head {
       display: grid;
-      grid-template-columns: minmax(0, 1.32fr) minmax(0, .68fr);
-      align-items: end;
-      gap: clamp(28px, 4vw, 64px);
+      justify-items: center;
+      gap: 16px;
+      text-align: center;
     }
 
+    .section-head > div { max-width: 860px; }
+
     .section-lead {
-      max-width: 390px;
-      margin: 0 0 7px;
+      max-width: 520px;
+      margin: 0;
       color: var(--muted);
       font-size: 15px;
       line-height: 1.7;
@@ -1369,52 +1370,53 @@
     }
 
     /* Der häufigste Absprunggrund, direkt beantwortet */
+    /* Randnotiz, kein eigener Abschnitt: weisser Container, ruhige Typo */
     .fallback {
-      max-width: 680px;
-      margin: clamp(44px, 4.4vw, 64px) auto 0;
-      padding: clamp(26px, 2.4vw, 34px);
-      border-radius: var(--radius-xl);
-      background: var(--brand-soft);
+      max-width: 620px;
+      margin: clamp(38px, 3.8vw, 54px) auto 0;
+      padding: 18px 22px;
+      border-radius: var(--radius-lg);
+      background: var(--white);
       display: grid;
-      justify-items: center;
-      gap: 15px;
-      text-align: center;
+      grid-template-columns: 26px minmax(0, 1fr);
+      align-items: start;
+      gap: 13px;
     }
 
     .fallback-icon {
-      width: 38px;
-      height: 38px;
-      border-radius: 11px;
+      width: 26px;
+      height: 26px;
+      margin-top: 1px;
+      border-radius: 50%;
       display: grid;
       place-content: center;
-      background: var(--white);
+      background: var(--brand-soft);
       color: var(--brand-dark);
     }
 
     .fallback-icon svg {
-      width: 19px;
-      height: 19px;
+      width: 14px;
+      height: 14px;
       fill: none;
       stroke: currentColor;
-      stroke-width: 1.9;
+      stroke-width: 2;
       stroke-linecap: round;
       stroke-linejoin: round;
     }
 
     .fallback strong {
       display: block;
-      margin-bottom: 6px;
-      font-size: 16px;
-      font-weight: 600;
-      letter-spacing: -.02em;
+      margin-bottom: 3px;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: -.01em;
     }
 
     .fallback p {
-      max-width: 520px;
       margin: 0;
-      color: #4d5c3d;
-      font-size: 14px;
-      line-height: 1.7;
+      color: var(--muted);
+      font-size: 12.5px;
+      line-height: 1.65;
     }
 
     /* Einblenden beim Scrollen, nur mit aktivem JavaScript */
@@ -1449,13 +1451,7 @@
     @media (max-width: 980px) {
       .compare-stack { width: 100%; }
 
-      .compare .section-lead { max-width: 520px; }
-
-      .section-head {
-        grid-template-columns: 1fr;
-        align-items: start;
-        gap: 18px;
-      }
+      .section-head { gap: 14px; }
 
       .section-lead { max-width: 560px; }
 
@@ -1521,14 +1517,14 @@
       .step p { font-size: 13.5px; line-height: 1.65; }
 
       .fallback {
-        margin-top: 32px;
-        padding: 24px 20px;
-        gap: 13px;
+        margin-top: 30px;
+        padding: 16px 17px;
+        gap: 11px;
       }
 
-      .fallback strong { font-size: 15px; }
+      .fallback strong { font-size: 12.5px; }
 
-      .fallback p { font-size: 13.5px; }
+      .fallback p { font-size: 12px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -1557,7 +1553,7 @@
     .drift {
       position: absolute;
       z-index: 0;
-      border-radius: var(--radius-xl);
+      border-radius: 14px;
       background-color: #e7ece0;
       background-position: center;
       background-size: cover;
@@ -1576,10 +1572,10 @@
 
     /* gross */
     .drift-l1 {
-      top: 8%;
+      top: 9%;
       left: clamp(30px, 5.5vw, 100px);
-      width: clamp(170px, 16vw, 245px);
-      height: clamp(230px, 21.5vw, 330px);
+      width: clamp(132px, 12.2vw, 186px);
+      height: clamp(178px, 16.4vw, 250px);
       background-image: url("./seventi-tafel.webp");
     }
 
@@ -1587,8 +1583,8 @@
     .drift-l2 {
       top: 52%;
       left: clamp(52px, 9vw, 165px);
-      width: clamp(95px, 8vw, 120px);
-      height: clamp(120px, 10vw, 150px);
+      width: clamp(74px, 6.1vw, 92px);
+      height: clamp(93px, 7.6vw, 115px);
       background-image: url("./seventi-anlass.webp");
     }
 
@@ -1596,8 +1592,8 @@
     .drift-l3 {
       top: 76%;
       left: clamp(24px, 4vw, 74px);
-      width: clamp(130px, 11.5vw, 170px);
-      height: clamp(160px, 14vw, 205px);
+      width: clamp(101px, 8.8vw, 130px);
+      height: clamp(124px, 10.7vw, 157px);
       background-image: url("./seventi-event.webp");
     }
 
@@ -1605,29 +1601,21 @@
     .drift-r1 {
       top: 14%;
       right: clamp(46px, 8vw, 150px);
-      width: clamp(100px, 8.5vw, 130px);
-      height: clamp(125px, 10.5vw, 160px);
+      width: clamp(78px, 6.5vw, 99px);
+      height: clamp(97px, 8vw, 122px);
       background-image: url("./seventi-empfang.webp");
     }
 
     /* gross */
     .drift-r2 {
-      top: 48%;
+      top: 47%;
       right: clamp(28px, 5vw, 92px);
-      width: clamp(185px, 17vw, 260px);
-      height: clamp(240px, 22.5vw, 345px);
+      width: clamp(144px, 13vw, 198px);
+      height: clamp(186px, 17.2vw, 262px);
       background-image: url("./seventi-location.webp");
     }
 
-    /* Kopf dieses Abschnitts steht mittig */
-    .compare .section-head {
-      grid-template-columns: 1fr;
-      justify-items: center;
-      text-align: center;
-      gap: 16px;
-    }
-
-    .compare .section-lead { max-width: 460px; margin: 0; }
+    .compare .section-lead { max-width: 460px; }
 
     .switch-row {
       display: flex;
@@ -2146,6 +2134,13 @@
 
       .footer-links { gap: 16px; font-size: 11.5px; }
     }
+
+    /* ---------- Lenis: sanftes Scrollen ---------- */
+    html.lenis, html.lenis body { height: auto; }
+    .lenis.lenis-smooth { scroll-behavior: auto !important; }
+    .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+    .lenis.lenis-stopped { overflow: hidden; }
+    .lenis.lenis-smooth iframe { pointer-events: none; }
   </style>
   <script>document.documentElement.classList.add("js");</script>
 </head>
@@ -2484,7 +2479,6 @@
         <div class="occasion occasion-5"><i></i>Generalversammlung und Konferenz<b><em>Typischer Bedarf</em>Saal, Technik, Verpflegung</b></div>
         <div class="occasion occasion-6"><i></i>Kundenanlass<b><em>Typischer Bedarf</em>Location, Catering, Fotografie</b></div>
       </div>
-      </div>
 
       <p class="occasion-note reveal"><strong>Nicht dabei?</strong> Beschreib es Miia trotzdem. Das Briefing ist frei formulierbar, die Anlässe oben sind nur die häufigsten.</p>
     </div>
@@ -2541,6 +2535,8 @@
     </div>
   </footer>
 
+  <script src="./lenis.min.js"></script>
+
   <script>
     const revealTargets = document.querySelectorAll(".reveal, .drift");
 
@@ -2576,6 +2572,26 @@
     const steps = document.querySelectorAll(".step");
     const calmMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
+    // Lenis glaettet das Scrollen. Bewusst kurz gehalten, damit die Seite
+    // nicht nachschwingt und die scrollgesteuerten Effekte synchron bleiben.
+    let lenis = null;
+
+    if (typeof Lenis === "function" && !calmMotion.matches) {
+      lenis = new Lenis({
+        duration: .85,
+        easing: (t) => 1 - Math.pow(1 - t, 3),
+        wheelMultiplier: 1,
+        touchMultiplier: 1.6,
+      });
+
+      const takt = (zeit) => {
+        lenis.raf(zeit);
+        window.requestAnimationFrame(takt);
+      };
+
+      window.requestAnimationFrame(takt);
+    }
+
     function clamp(value) {
       return Math.min(1, Math.max(0, value));
     }
@@ -2597,8 +2613,10 @@
       if (!stepGrid) return;
 
       const box = stepGrid.getBoundingClientRect();
-      const runway = Math.max(box.height * .72, 140);
-      const progress = clamp((window.innerHeight * .74 - box.top) / runway);
+      // die Bahn ist bewusst laenger als der Block selbst, damit die Linie
+      // dem Scrollen folgt statt in einem Zug durchzulaufen
+      const runway = Math.max(window.innerHeight * .78, box.height * 1.6);
+      const progress = clamp((window.innerHeight * .88 - box.top) / runway);
 
       stepGrid.style.setProperty("--fill", (progress * 100).toFixed(1) + "%");
       steps.forEach((step, index) => {
@@ -2649,13 +2667,15 @@
     if (canvas && !calmMotion.matches && window.matchMedia("(hover: hover)").matches) {
       const pills = [...canvas.querySelectorAll(".occasion")].map((el, index) => ({
         el,
-        staerke: 20 + (index % 3) * 4,
+        staerke: 14 + (index % 3) * 3,
         zielX: 0, zielY: 0,
         istX: 0, istY: 0,
       }));
 
-      const reichweite = 150;
-      const daempfung = .09;
+      const reichweite = 165;
+      const naehe = 34;
+      const daempfung = .07;
+      const glatt = (x) => x * x * (3 - 2 * x);
       let laeuft = false;
 
       const schritt = () => {
@@ -2721,9 +2741,13 @@
           const richtungY = mitteY - zeigerY;
           const laenge = Math.hypot(richtungX, richtungY) || 1;
 
-          // sanfte S-Kurve: kein harter Einsatz an der Reichweitengrenze
-          const t = 1 - abstand / reichweite;
-          const schub = t * t * (3 - 2 * t) * pill.staerke;
+          // Der Schub steigt aus der Ferne an, erreicht kurz vor der Pill sein
+          // Maximum und faellt direkt am Rand wieder auf null. Dadurch gibt es
+          // weder an der Reichweitengrenze noch am Pillenrand einen Sprung.
+          const anteil = abstand < naehe
+            ? glatt(abstand / naehe)
+            : glatt(1 - (abstand - naehe) / (reichweite - naehe));
+          const schub = anteil * pill.staerke;
 
           pill.zielX = richtungX / laenge * schub;
           pill.zielY = richtungY / laenge * schub;

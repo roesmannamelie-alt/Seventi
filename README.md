@@ -14,6 +14,7 @@ Entwürfe für die Seventi Landingpages.
 | `provider-hero-b.html` | Frühere Hero-Richtung B (vor dem Provider-Briefing) |
 | `provider-hero-c.html` | Frühere Hero-Richtung C (vor dem Provider-Briefing) |
 | `entwuerfe.html` | Übersicht mit Links auf alle Entwürfe |
+| `lenis.min.js` | Lenis 1.1.20, mitgeliefert statt über ein CDN geladen |
 
 Zahlen und Firmenangaben in den Entwürfen sind Platzhalter. Die Bilder stammen von Seventi.
 
@@ -23,7 +24,8 @@ Zahlen und Firmenangaben in den Entwürfen sind Platzhalter. Die Bilder stammen 
 - animiertes Miia-Briefing mit Matching-Ergebnissen
 - gemeinsames Design-System für Planner- und Provider-Seite
 - Manrope und Fraunces über Google Fonts
-- keine Build-Tools oder Abhängigkeiten erforderlich
+- sanftes Scrollen über Lenis, mitgeliefert und ohne externe Anfrage
+- keine Build-Tools erforderlich
 
 ## Lokal ansehen
 
