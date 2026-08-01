@@ -70,6 +70,7 @@ Alles andere auf der Seite beschreibt entweder die Mechanik aus dem Briefing ode
 - **Bewegung folgt dem Scrollen.** Abschnitt 2 hat eine durchgehende Linie über alle drei Schritte, die sich beim Scrollen füllt; die Schrittnummern schalten mit und zeigen beim Hover ein passendes Icon. Abschnitt 3 zeigt zuerst nur die heutige Karte, beim Weiterscrollen schiebt sich die Seventi-Karte darüber. Bei `prefers-reduced-motion` steht alles sofort im Endzustand.
 - **Anlass-Pills** liegen im Glaslook mit weisser Schrift auf dem Bild, weichen der Maus leicht aus und zeigen beim Hover den typischen Bedarf.
 - **Hervorgehobene Kästen bleiben schmal und mittig**, nicht über die volle Breite gezogen.
+- **Ein FAQ enthält nur Fragen, die kein anderer Abschnitt schon beantwortet.** Wiederholung macht die Seite lang, ohne einen Einwand zusätzlich auszuräumen. Fehlt uns die Antwort noch, steht die Frage im Konzept und nicht auf der Seite.
 
 ---
 
@@ -352,14 +353,21 @@ Die drei ersten Hero-Entwürfe entstanden vor dem Provider-Briefing. Drei Punkte
 2. **So läuft es ab** — drei Schritte mit derselben Fortschrittslinie wie auf der Planner-Seite: einrichten, Anfragen per E-Mail, antworten oder ablehnen.
 3. **Warum mitmachen** — drei Blöcke à vier Punkte: Bessere Anfragen, Kein Risiko, Kein Aufwand. Der Einwand dahinter ist immer derselbe: noch ein Portal, noch ein Abo, noch ein Postfach.
 4. **Was es kostet** — CHF 0 fürs Gelistetsein, 10 % nur bei Zahlung über Seventi, jederzeit wieder raus. Vollständig hingeschrieben statt im Kleingedruckten.
-5. **Häufige Fragen** — sechs Einwände, nur mit belegbaren Antworten.
+5. **Häufige Fragen** — bewusst nur zwei: die Herkunft der öffentlich erstellten Profile und was bei einem Auftrag passiert. Alles andere beantworten die Argumentblöcke schon, und das Briefing will, dass die Seite sich leicht anfühlt statt lang zu erklären. Ein sichtbarer Hinweis unter dem Abschnitt hält fest, dass weitere Fragen ergänzt werden, sobald klar ist, welche Anbieter tatsächlich stellen.
 6. **Abschluss** — dieselbe Suche noch einmal, dunkler Block.
 7. **Footer** — Rechtliches und der Quereinstieg zur Planner-Seite.
+
+### Zum FAQ
+
+Ein FAQ steht in keinem der beiden Briefings. Das Provider-Briefing überlässt den Aufbau ausdrücklich uns („you are free to use your experience and expertise on what you feel is best"), gibt aber eine Richtung vor, die dagegen spricht: Die Antworten auf Kosten, Aufwand und Ausstieg sollen sich in der Seite *anfühlen*, nicht bloss behauptet werden. Ein langes FAQ ist das Gegenteil davon.
+
+Auf der Planner-Seite liegt der Fall anders. Dort fängt Abschnitt 9 Fragen auf, die aus der Rolle der Planerin kommen und sonst nirgends stehen: ob ihr Firmenname für alle sichtbar ist, was passiert, wenn Datum und Personenzahl noch nicht feststehen, und ob sie den Angebotsvergleich als PDF für die interne Freigabe exportieren kann. Das sind echte Absprunggründe, keine Wiederholung — gebaut wird der Abschnitt, sobald Cody die Antworten liefert.
 
 ### Offene Punkte
 
 - Das Briefing kündigt **vier Argumentblöcke** an und führt drei aus (Bessere Anfragen, Kein Risiko, Kein Aufwand). Wir haben drei gebaut. Falls ein vierter gemeint war, fehlt er.
 - Die Suche ist eine Vorschau ohne Datenbank. Tippt man „Beispiel", erscheint der Trefferfall, alles andere zeigt den Normalfall. Ein Hinweis darauf steht sichtbar unter dem Feld.
+- „Jederzeit pausieren" stand in allen drei früheren Entwürfen und ist entfernt. Das Briefing nennt nur „no exclusivity, no minimum, no lock-in" und das Entfernen des Eintrags — eine Pausier-Funktion ist nicht bestätigt.
 - Die drei alten Hero-Entwürfe liegen weiterhin im Repository. Sie sind inhaltlich korrigiert, aber ohne den Such-Mechanismus. Sobald `provider.html` steht, können sie weg.
 
 ---
