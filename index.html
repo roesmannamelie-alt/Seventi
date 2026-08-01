@@ -1734,7 +1734,7 @@
       white-space: nowrap;
       /* --mx und --my kommen aus der Mausbewegung, gegenläufig */
       transform: translate3d(var(--mx, 0px), var(--my, 0px), 0);
-      transition: transform .34s cubic-bezier(.22, 1, .36, 1), background-color .25s ease;
+      transition: background-color .25s ease, color .25s ease;
     }
 
     .occasion:hover {
@@ -1822,9 +1822,26 @@
       text-align: center;
     }
 
+    .closing-grid {
+      display: grid;
+      grid-template-columns: minmax(0, .78fr) minmax(0, 1.22fr);
+      align-items: center;
+      gap: clamp(32px, 5vw, 76px);
+      text-align: left;
+    }
+
+    .closing-portrait {
+      aspect-ratio: 1;
+      border-radius: var(--radius-xl);
+      background-color: #2a3a1c;
+      background-image: url("./seventi-planerin.webp");
+      background-position: center;
+      background-size: cover;
+    }
+
     .closing h2 {
-      max-width: 780px;
-      margin: 0 auto;
+      max-width: 620px;
+      margin: 0;
       font-size: clamp(32px, 3.5vw, 52px);
       font-weight: 600;
       line-height: 1.06;
@@ -1841,14 +1858,13 @@
     }
 
     .closing .actions {
-      flex-direction: column;
       align-items: center;
-      justify-content: center;
-      gap: 15px;
-      margin-top: 34px;
+      justify-content: flex-start;
+      gap: 18px;
+      margin-top: 30px;
     }
 
-    .closing .time { text-align: center; }
+    .closing .time { text-align: left; }
 
     .closing .time strong {
       display: inline;
@@ -2015,10 +2031,25 @@
         letter-spacing: -.04em;
       }
 
-      .closing .actions {
-        align-items: center;
-        margin-top: 28px;
+      .closing-grid {
+        grid-template-columns: 1fr;
+        gap: 26px;
+        text-align: center;
       }
+
+      .closing-portrait { aspect-ratio: 4 / 3; border-radius: var(--radius-lg); }
+
+      .closing h2 { margin: 0 auto; }
+
+      .closing .actions {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        margin-top: 26px;
+      }
+
+      .closing .time { text-align: center; }
 
       .site-footer { padding: 28px 20px 34px; }
 
@@ -2370,7 +2401,10 @@
 
   <div class="closing-bed">
   <section class="closing" aria-labelledby="abschluss-titel">
-    <div class="shell">
+    <div class="shell closing-grid">
+      <div class="closing-portrait reveal" role="img" aria-label="Eventplanerin unterwegs mit dem Handy"></div>
+
+      <div class="closing-body">
       <h2 id="abschluss-titel" class="reveal">Ein Briefing. <em>Dann melden sich die Anbieter.</em></h2>
 
       <div class="actions reveal">
@@ -2385,6 +2419,7 @@
           <span class="cta-word">planen</span>
         </a>
         <div class="time"><strong>Start in ca. 3 Minuten</strong>Unverbindlich und kostenlos</div>
+      </div>
       </div>
     </div>
   </section>
@@ -2484,35 +2519,65 @@
       });
     });
 
-    // Anlass-Pills: jede weicht einzeln aus, je näher der Zeiger, desto stärker
+    // Anlass-Pills: jede weicht einzeln aus, weich nachgeführt statt sprunghaft
     const canvas = document.querySelector(".occasion-canvas");
 
     if (canvas && !calmMotion.matches && window.matchMedia("(hover: hover)").matches) {
-      const pills = [...canvas.querySelectorAll(".occasion")];
-      const reichweite = 110;
-      const staerke = pills.map((_, index) => 26 + (index % 3) * 5);
+      const pills = [...canvas.querySelectorAll(".occasion")].map((el, index) => ({
+        el,
+        staerke: 20 + (index % 3) * 4,
+        zielX: 0, zielY: 0,
+        istX: 0, istY: 0,
+      }));
 
-      let ruhend = true;
+      const reichweite = 150;
+      const daempfung = .09;
+      let laeuft = false;
 
-      const loesen = () => {
+      const schritt = () => {
+        let bewegt = false;
+
         pills.forEach((pill) => {
-          pill.style.setProperty("--mx", "0px");
-          pill.style.setProperty("--my", "0px");
+          pill.istX += (pill.zielX - pill.istX) * daempfung;
+          pill.istY += (pill.zielY - pill.istY) * daempfung;
+
+          if (Math.abs(pill.zielX - pill.istX) > .05 || Math.abs(pill.zielY - pill.istY) > .05) {
+            bewegt = true;
+          } else {
+            pill.istX = pill.zielX;
+            pill.istY = pill.zielY;
+          }
+
+          pill.el.style.setProperty("--mx", pill.istX.toFixed(2) + "px");
+          pill.el.style.setProperty("--my", pill.istY.toFixed(2) + "px");
         });
+
+        laeuft = bewegt;
+        if (bewegt) window.requestAnimationFrame(schritt);
       };
 
-      canvas.addEventListener("pointermove", (event) => {
-        const flaeche = canvas.getBoundingClientRect();
-        const zeigerX = event.clientX - flaeche.left;
-        const zeigerY = event.clientY - flaeche.top;
-        ruhend = false;
+      const anstossen = () => {
+        if (laeuft) return;
+        laeuft = true;
+        window.requestAnimationFrame(schritt);
+      };
 
-        pills.forEach((pill, index) => {
+      let letzteX = null;
+      let letzteY = null;
+
+      const zieleRechnen = () => {
+        if (letzteX === null) return;
+
+        const flaeche = canvas.getBoundingClientRect();
+        const zeigerX = letzteX - flaeche.left;
+        const zeigerY = letzteY - flaeche.top;
+
+        pills.forEach((pill) => {
           // offsetLeft ignoriert die eigene Verschiebung, sonst schaukelt sich das auf
-          const links = pill.offsetLeft;
-          const oben = pill.offsetTop;
-          const rechts = links + pill.offsetWidth;
-          const unten = oben + pill.offsetHeight;
+          const links = pill.el.offsetLeft;
+          const oben = pill.el.offsetTop;
+          const rechts = links + pill.el.offsetWidth;
+          const unten = oben + pill.el.offsetHeight;
 
           // Abstand zum Rand der Pill, nicht zu ihrer Mitte
           const randX = Math.max(links - zeigerX, 0, zeigerX - rechts);
@@ -2521,36 +2586,46 @@
 
           // im Feld liegt der Zeiger auf der Pill, die bleibt dann anklickbar
           if (abstand === 0 || abstand > reichweite) {
-            pill.style.setProperty("--mx", "0px");
-            pill.style.setProperty("--my", "0px");
+            pill.zielX = 0;
+            pill.zielY = 0;
             return;
           }
 
-          const mitteX = links + pill.offsetWidth / 2;
-          const mitteY = oben + pill.offsetHeight / 2;
+          const mitteX = links + pill.el.offsetWidth / 2;
+          const mitteY = oben + pill.el.offsetHeight / 2;
           const richtungX = mitteX - zeigerX;
           const richtungY = mitteY - zeigerY;
           const laenge = Math.hypot(richtungX, richtungY) || 1;
 
-          // steile Kurve: bis kurz vor die Pill passiert fast nichts
-          const naehe = 1 - abstand / reichweite;
-          const schub = naehe * naehe * naehe * staerke[index];
+          // sanfte S-Kurve: kein harter Einsatz an der Reichweitengrenze
+          const t = 1 - abstand / reichweite;
+          const schub = t * t * (3 - 2 * t) * pill.staerke;
 
-          pill.style.setProperty("--mx", (richtungX / laenge * schub).toFixed(1) + "px");
-          pill.style.setProperty("--my", (richtungY / laenge * schub).toFixed(1) + "px");
+          pill.zielX = richtungX / laenge * schub;
+          pill.zielY = richtungY / laenge * schub;
         });
+
+        anstossen();
+      };
+
+      canvas.addEventListener("pointermove", (event) => {
+        letzteX = event.clientX;
+        letzteY = event.clientY;
+        zieleRechnen();
       });
 
       canvas.addEventListener("pointerleave", () => {
-        ruhend = true;
-        loesen();
+        letzteX = null;
+        letzteY = null;
+        pills.forEach((pill) => {
+          pill.zielX = 0;
+          pill.zielY = 0;
+        });
+        anstossen();
       });
 
-      window.addEventListener("scroll", () => {
-        if (ruhend) return;
-        ruhend = true;
-        loesen();
-      }, { passive: true });
+      // beim Scrollen wandert die Fläche unter dem Zeiger weg, also neu rechnen
+      window.addEventListener("scroll", zieleRechnen, { passive: true });
     }
 
     document.querySelectorAll(".cta").forEach((cta) => {

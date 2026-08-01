@@ -66,7 +66,9 @@ Alles andere auf der Seite beschreibt entweder die Mechanik aus dem Briefing ode
 
 - **Keine Rahmen und Ränder um Karten.** Abgrenzung entsteht über Flächen, Radien und Abstand, nicht über Konturen. Trennlinien innerhalb einer Karte sind erlaubt.
 - **Kicker sind dezente Pills mit Icon**, in derselben Form wie der Hero-Eyebrow. Keine Striche, keine Versalien.
-- **Bildflächen ohne Bild werden gekennzeichnet.** Solange kein Bild vorliegt, trägt die Fläche sichtbar den Hinweis „Bildplatzhalter" mit Zweck. Eingesetzt sind aktuell zwei Bilder von Seventi: ein Firmenanlass für Abschnitt 5, eine Eventlocation für die Provider-Seite.
+- **Bildflächen ohne Bild werden gekennzeichnet.** Solange kein Bild vorliegt, trägt die Fläche sichtbar den Hinweis „Bildplatzhalter" mit Zweck. Kein Motiv kommt auf derselben Seite zweimal vor. Eingesetzt:
+  - Planner: Apéro im Hero, Firmenanlass unter den Anlass-Pills, Porträt der Planerin im Abschluss
+  - Anbieter: Seminarraum im Hero, Innenhof, Tafel am See und Empfang in den drei Kapiteln von „Warum mitmachen"
 - **Bewegung folgt dem Scrollen.** Abschnitt 2 hat eine durchgehende Linie über alle drei Schritte, die sich beim Scrollen füllt; die Schrittnummern schalten mit und zeigen beim Hover ein passendes Icon. Abschnitt 3 wird über einen Tab umgeschaltet: „Heute" und „Mit Seventi" tauschen dieselbe Karte per Überblendung, der Abschnittskopf steht mittig. Bei `prefers-reduced-motion` steht alles sofort im Endzustand.
 - **Anlass-Pills** liegen im Glaslook mit weisser Schrift auf dem Bild und zeigen beim Hover den typischen Bedarf. Jede reagiert einzeln auf den Zeiger, gemessen wird der Abstand zu ihrem Rand: ab etwa 110 px passiert nichts, dicht davor weicht sie deutlich aus. Die Pill unter dem Zeiger bleibt stehen, damit sie anklickbar bleibt.
 - **Hervorgehobene Kästen bleiben schmal und mittig**, nicht über die volle Breite gezogen.
