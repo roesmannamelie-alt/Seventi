@@ -13,7 +13,7 @@ Entwürfe für die Seventi Landingpages.
 | `provider-hero-c.html` | Provider-Hero, Entwurf C · Der Anfragen-Eingang |
 | `entwuerfe.html` | Übersicht mit Links auf alle Entwürfe |
 
-Alle Zahlen, Firmenangaben und Bilder in den Entwürfen sind Platzhalter.
+Zahlen und Firmenangaben in den Entwürfen sind Platzhalter. Die Bilder stammen von Seventi.
 
 ## Enthalten
 

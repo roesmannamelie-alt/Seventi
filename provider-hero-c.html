@@ -320,9 +320,9 @@
     }
 
     .chips span {
-      padding: 6px 10px;
+      padding: 6px 11px;
       border-radius: 99px;
-      border: 1px solid var(--line);
+      background: #f1f4ef;
       color: var(--muted);
       font-size: 10px;
       font-weight: 600;
@@ -330,7 +330,6 @@
     }
 
     .chips span:first-child {
-      border-color: transparent;
       background: var(--ink);
       color: var(--white);
     }
@@ -339,29 +338,24 @@
 
     .row {
       padding: 13px;
-      border: 1px solid var(--line);
       border-radius: var(--radius-md);
       display: grid;
       grid-template-columns: 42px minmax(0, 1fr) auto;
       align-items: center;
       column-gap: 12px;
-      background: var(--white);
+      background: #f6f8f3;
     }
 
-    .row.is-active {
-      border-color: rgba(184, 232, 0, .55);
-      background: #fbfff2;
-    }
+    .row.is-active { background: var(--brand-soft); }
 
     .avatar {
       width: 42px;
       height: 42px;
       grid-row: 1 / span 2;
       border-radius: 10px;
-      border: 1px dashed #cfd9c4;
       display: grid;
       place-content: center;
-      background: repeating-linear-gradient(135deg, #f2f5ee 0 8px, #fafbf7 8px 16px);
+      background: #e7ece0;
       color: #9aa38f;
     }
 
@@ -435,9 +429,9 @@
     .btn-ghost {
       min-height: 36px;
       padding: 0 14px;
-      border: 1px solid var(--line);
+      border: 0;
       border-radius: 999px;
-      background: transparent;
+      background: rgba(22, 40, 0, .07);
       color: var(--muted);
       font-size: 11.5px;
       font-weight: 600;
@@ -674,7 +668,7 @@
             <p class="inbox-foot">Drei weitere offene Anfragen in deiner Region</p>
           </div>
 
-          <p class="inbox-caption">Beispielansicht mit Platzhalter-Daten · Bilder werden später ergänzt</p>
+          <p class="inbox-caption">Beispielansicht mit Platzhalter-Daten</p>
         </section>
       </div>
     </div>

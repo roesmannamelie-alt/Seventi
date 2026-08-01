@@ -1533,37 +1533,17 @@
 
     .occasion-canvas {
       position: relative;
-      min-height: 420px;
+      min-height: 460px;
       margin-top: clamp(44px, 4.6vw, 68px);
       padding: 24px;
       overflow: hidden;
       border-radius: var(--radius-xl);
-      background: repeating-linear-gradient(135deg, #eef2e8 0 14px, #f6f8f3 14px 28px);
-    }
-
-    .canvas-note {
-      position: absolute;
-      top: 20px;
-      left: 22px;
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      padding: 6px 11px;
-      border-radius: 99px;
-      background: rgba(255, 255, 255, .8);
-      color: #7c8574;
-      font-size: 10px;
-      font-weight: 700;
-    }
-
-    .canvas-note svg {
-      width: 13px;
-      height: 13px;
-      fill: none;
-      stroke: currentColor;
-      stroke-width: 1.8;
-      stroke-linecap: round;
-      stroke-linejoin: round;
+      background-color: #e7ece0;
+      background-image:
+        linear-gradient(180deg, rgba(16, 29, 0, .28) 0%, rgba(16, 29, 0, .12) 45%, rgba(16, 29, 0, .3) 100%),
+        url("./seventi-apero.webp");
+      background-position: center;
+      background-size: cover;
     }
 
     .occasion {
@@ -1751,7 +1731,7 @@
     @media (max-width: 980px) {
       .compare-grid { grid-template-columns: 1fr; }
 
-      .occasion-canvas { min-height: 400px; }
+      .occasion-canvas { min-height: 420px; }
 
       .occasion { font-size: 15px; padding: 12px 17px; }
 
@@ -1767,11 +1747,18 @@
     @media (max-width: 720px) {
       .occasion-canvas {
         min-height: 0;
-        padding: 56px 16px 18px;
+        padding: 190px 14px 18px;
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
+        align-content: flex-end;
         gap: 9px;
+        background-image:
+          linear-gradient(180deg, rgba(16, 29, 0, .22) 0%, rgba(16, 29, 0, .55) 46%, rgba(16, 29, 0, .78) 62%, rgba(16, 29, 0, .82) 100%),
+          url("./seventi-apero.webp");
+        background-position: center top;
+        background-size: 150% auto;
+        background-repeat: no-repeat;
       }
 
       .occasion {
@@ -2142,12 +2129,7 @@
         <p class="section-lead">Seventi ist für Firmenevents gebaut. Nicht für private Feiern, nicht zum Stöbern.</p>
       </div>
 
-      <div class="occasion-canvas reveal">
-        <span class="canvas-note">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10" r="1.6"/><path d="m4 17 5-4 4 3 3-2 4 3"/></svg>
-          Bildplatzhalter · Firmenevent
-        </span>
-
+      <div class="occasion-canvas reveal" role="img" aria-label="Firmenanlass in einer Zürcher Eventlocation">
         <div class="occasion occasion-1"><i></i>Sommerfest</div>
         <div class="occasion occasion-2"><i></i>Firmenjubiläum</div>
         <div class="occasion occasion-3"><i></i>Weihnachtsessen</div>

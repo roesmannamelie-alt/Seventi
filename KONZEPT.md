@@ -66,7 +66,7 @@ Alles andere auf der Seite beschreibt entweder die Mechanik aus dem Briefing ode
 
 - **Keine Rahmen und Ränder um Karten.** Abgrenzung entsteht über Flächen, Radien und Abstand, nicht über Konturen. Trennlinien innerhalb einer Karte sind erlaubt.
 - **Kicker sind dezente Pills mit Icon**, in derselben Form wie der Hero-Eyebrow. Keine Striche, keine Versalien.
-- **Bilder immer als gekennzeichnete Platzhalter.** Jede Bildfläche trägt sichtbar den Hinweis „Bildplatzhalter" mit Zweck, damit beim Austausch nichts übersehen wird.
+- **Bildflächen ohne Bild werden gekennzeichnet.** Solange kein Bild vorliegt, trägt die Fläche sichtbar den Hinweis „Bildplatzhalter" mit Zweck. Eingesetzt sind aktuell zwei Bilder von Seventi: ein Firmenanlass für Abschnitt 5, eine Eventlocation für die Provider-Seite.
 - **Bewegung folgt dem Scrollen.** Abschnitt 2 füllt seine Fortschrittslinien versetzt von links nach rechts, während man scrollt. Bei `prefers-reduced-motion` sind sie sofort vollständig.
 - **Hervorgehobene Kästen bleiben schmal und mittig**, nicht über die volle Breite gezogen.
 
