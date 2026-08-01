@@ -910,63 +910,171 @@
       line-height: 1.6;
     }
 
-    /* ---------- Drei Argumentblöcke ---------- */
-    .clusters {
-      margin-top: clamp(44px, 4.6vw, 68px);
+    /* ---------- Scroll-Story: Kapitel wandern durch, Leiste links bleibt ---------- */
+    .story {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: clamp(14px, 1.4vw, 20px);
+      grid-template-columns: minmax(260px, .62fr) minmax(0, 1.38fr);
+      align-items: start;
+      gap: clamp(40px, 6vw, 96px);
+      margin-top: clamp(48px, 5vw, 76px);
     }
 
-    .cluster {
-      padding: clamp(24px, 2.2vw, 32px);
+    .story-aside {
+      position: sticky;
+      top: 90px;
+      padding-bottom: 40px;
+    }
+
+    .story-kicker {
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    .story-side-title {
+      max-width: 340px;
+      margin: 16px 0 0;
+      font-size: clamp(26px, 2.3vw, 34px);
+      font-weight: 600;
+      line-height: 1.12;
+      letter-spacing: -.04em;
+    }
+
+    .story-nav {
+      --story-fill: 8%;
+      position: relative;
+      display: grid;
+      gap: 6px;
+      margin-top: 36px;
+      padding-left: 26px;
+    }
+
+    .story-nav::before,
+    .story-nav::after {
+      content: "";
+      position: absolute;
+      top: 12px;
+      left: 4px;
+      width: 2px;
+      border-radius: 2px;
+    }
+
+    .story-nav::before { bottom: 12px; background: var(--line); }
+
+    .story-nav::after {
+      height: var(--story-fill);
+      background: var(--brand-strong);
+      transition: height .5s cubic-bezier(.22, 1, .36, 1);
+    }
+
+    .story-nav button {
+      position: relative;
+      padding: 9px 0;
+      border: 0;
+      background: transparent;
+      color: #9aa294;
+      font-size: 14px;
+      font-weight: 600;
+      text-align: left;
+      cursor: pointer;
+      transition: color .3s ease;
+    }
+
+    .story-nav button::before {
+      content: "";
+      position: absolute;
+      top: 15px;
+      left: -26px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #dce2d6;
+      transition: background .3s ease, transform .3s ease;
+    }
+
+    .story-nav button[aria-current="true"] { color: var(--ink); font-weight: 700; }
+
+    .story-nav button[aria-current="true"]::before {
+      background: var(--brand-strong);
+      transform: scale(1.4);
+    }
+
+    .story-nav button:focus-visible {
+      outline: 3px solid rgba(184, 232, 0, .5);
+      outline-offset: 3px;
+      border-radius: 6px;
+    }
+
+    .story-shot {
+      height: 190px;
+      margin-top: 34px;
+      border-radius: var(--radius-lg);
+      background-color: #e7ece0;
+      background-image: url("../seventi-apero.webp");
+      background-position: center;
+      background-size: cover;
+    }
+
+    .chapters { display: grid; gap: 18px; }
+
+    .chapter {
+      padding: clamp(26px, 3vw, 40px);
       border-radius: var(--radius-xl);
-      background: #f4f7f0;
+      background: #f2f5ed;
+      opacity: .5;
+      transform: scale(.98);
+      transition:
+        opacity .55s cubic-bezier(.22, 1, .36, 1),
+        transform .55s cubic-bezier(.22, 1, .36, 1);
     }
 
-    .cluster:nth-child(2) { background: var(--brand-soft); }
+    .chapter:nth-child(2) { background: var(--brand-soft); }
 
-    .cluster-title {
-      display: inline-flex;
+    .chapter.is-active { opacity: 1; transform: none; }
+
+    .chapter-top {
+      display: flex;
       align-items: center;
-      gap: 8px;
-      margin-bottom: 18px;
+      justify-content: space-between;
+      gap: 20px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid rgba(22, 40, 0, .09);
+    }
+
+    .chapter-top h3 {
+      margin: 0;
       padding: 7px 13px;
-      border-radius: 99px;
-      background: var(--white);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, .8);
       color: var(--brand-dark);
       font-size: 11px;
       font-weight: 700;
+      letter-spacing: 0;
     }
 
-    .cluster ul {
-      margin: 0;
-      padding: 0;
-      list-style: none;
-    }
-
-    .cluster li {
-      display: grid;
-      grid-template-columns: 22px minmax(0, 1fr);
-      align-items: start;
-      gap: 12px;
-      padding: 14px 0;
-      border-top: 1px solid rgba(22, 40, 0, .07);
-      color: var(--muted);
-      font-size: 13.5px;
-      line-height: 1.6;
-    }
-
-    .cluster li strong {
-      display: block;
-      color: var(--ink);
-      font-size: 14px;
+    .chapter-index {
+      color: #93a08b;
+      font-size: 11.5px;
       font-weight: 600;
+      font-variant-numeric: tabular-nums;
     }
 
-    .cluster li > span:first-child {
-      width: 22px;
-      height: 22px;
+    .benefit {
+      display: grid;
+      grid-template-columns: 30px minmax(0, 1fr);
+      align-items: start;
+      gap: 14px;
+      padding: clamp(17px, 2vw, 24px) 0;
+      border-bottom: 1px solid rgba(22, 40, 0, .09);
+    }
+
+    .benefit:last-child { border-bottom: 0; padding-bottom: 0; }
+
+    .benefit-icon {
+      width: 30px;
+      height: 30px;
       border-radius: 50%;
       display: grid;
       place-content: center;
@@ -974,14 +1082,29 @@
       color: var(--brand-dark);
     }
 
-    .cluster li svg {
-      width: 13px;
-      height: 13px;
+    .benefit-icon svg {
+      width: 15px;
+      height: 15px;
       fill: none;
       stroke: currentColor;
-      stroke-width: 2.4;
+      stroke-width: 1.9;
       stroke-linecap: round;
       stroke-linejoin: round;
+    }
+
+    .benefit h4 {
+      margin: 4px 0 5px;
+      font-size: clamp(16px, 1.3vw, 19px);
+      font-weight: 600;
+      letter-spacing: -.025em;
+      line-height: 1.3;
+    }
+
+    .benefit p {
+      margin: 0;
+      color: var(--muted);
+      font-size: clamp(14px, 1.1vw, 15.5px);
+      line-height: 1.6;
     }
 
     /* ---------- Kosten, offen hingeschrieben ---------- */
@@ -1164,10 +1287,8 @@
         transform .72s cubic-bezier(.16, 1, .3, 1);
     }
 
-    .js .clusters .cluster:nth-child(2).is-in,
     .js .pricing .price:nth-child(2).is-in { transition-delay: .09s; }
 
-    .js .clusters .cluster:nth-child(3).is-in,
     .js .pricing .price:nth-child(3).is-in { transition-delay: .18s; }
 
     @media (max-width: 1180px) {
@@ -1178,7 +1299,39 @@
 
       .visual { min-height: 480px; }
 
-      .clusters, .pricing { grid-template-columns: 1fr; }
+      .pricing { grid-template-columns: 1fr; }
+
+      /* unter 1180 px steht die Leiste oben statt seitlich */
+      .story { grid-template-columns: 1fr; gap: 30px; }
+
+      .story-aside { position: static; padding: 0; }
+
+      .story-side-title { max-width: 620px; }
+
+      .story-nav {
+        grid-template-columns: repeat(3, 1fr);
+        margin-top: 26px;
+        padding-left: 0;
+      }
+
+      .story-nav::before,
+      .story-nav::after,
+      .story-nav button::before { display: none; }
+
+      .story-nav button {
+        padding: 11px 8px;
+        border-radius: 10px;
+        background: #f2f5ed;
+        font-size: 12.5px;
+        text-align: center;
+      }
+
+      .story-nav button[aria-current="true"] { background: var(--brand-soft); color: var(--brand-dark); }
+
+      .story-shot { height: 160px; margin-top: 22px; }
+
+      /* ohne Sticky ergibt das Abdunkeln keinen Sinn mehr */
+      .chapter { opacity: 1; transform: none; }
 
       .faq-grid { grid-template-columns: 1fr; gap: 30px; }
 
@@ -1283,7 +1436,19 @@
 
       .section-label svg { width: 14px; height: 14px; }
 
-      .clusters, .pricing { margin-top: 32px; gap: 10px; }
+      .pricing { margin-top: 32px; gap: 10px; }
+
+      .story { margin-top: 32px; }
+
+      .chapters { gap: 12px; }
+
+      .chapter { padding: 20px; border-radius: var(--radius-lg); }
+
+      .benefit { grid-template-columns: 26px minmax(0, 1fr); gap: 11px; }
+
+      .benefit-icon { width: 26px; height: 26px; }
+
+      .benefit-icon svg { width: 13px; height: 13px; }
 
       .step-grid { margin-top: 36px; }
 
@@ -1301,9 +1466,7 @@
 
       .faq-note { font-size: 11px; }
 
-      .cluster, .price { padding: 20px; border-radius: var(--radius-lg); }
-
-      .cluster li { font-size: 13px; padding: 12px 0; }
+      .price { padding: 20px; border-radius: var(--radius-lg); }
 
       .closing { padding: 60px 20px 64px; }
 
@@ -1322,6 +1485,8 @@
 
     @media (prefers-reduced-motion: reduce) {
       .js .reveal { opacity: 1; transform: none; }
+
+      .chapter { opacity: 1; transform: none; }
 
       *, *::before, *::after {
         animation: none !important;
@@ -1462,72 +1627,128 @@
           <p class="section-lead">Der Unterschied zu Verzeichnis, Kontaktformular und Google: Was bei dir ankommt, passt bereits zu Termin, Kapazität und Preisrahmen.</p>
         </div>
 
-        <div class="clusters">
-          <article class="cluster reveal">
-            <span class="cluster-title">Bessere Anfragen</span>
-            <ul>
-              <li>
-                <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l4 4L19 6"/></svg></span>
-                <span><strong>Nur, was du erfüllen kannst</strong>Gefiltert nach Kategorie, Region, Datum und Kapazität, bevor dich etwas erreicht.</span>
-              </li>
-              <li>
-                <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l4 4L19 6"/></svg></span>
-                <span><strong>Budget steht drin</strong>Du kalkulierst gegen eine bekannte Zahl, statt zu raten und zu hoffen.</span>
-              </li>
-              <li>
-                <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l4 4L19 6"/></svg></span>
-                <span><strong>Der Anlass ist beschlossen</strong>Wer ein Briefing abschickt, führt das Event durch und vergleicht nicht nur Preise.</span>
-              </li>
-              <li>
-                <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l4 4L19 6"/></svg></span>
-                <span><strong>Weniger Hin und Her</strong>Was du sonst per Mail erfragst, steht schon in der Anfrage.</span>
-              </li>
-            </ul>
-          </article>
+        <div class="story">
+          <aside class="story-aside reveal">
+            <div class="story-kicker">Was sich konkret ändert</div>
+            <p class="story-side-title">Vom passenden Lead bis zum eigenen Abschluss.</p>
 
-          <article class="cluster reveal">
-            <span class="cluster-title">Kein Risiko</span>
-            <ul>
-              <li>
-                <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l4 4L19 6"/></svg></span>
-                <span><strong>Gelistet sein kostet nichts</strong>Auch Anfragen zu erhalten und Angebote zu senden kostet nichts.</span>
-              </li>
-              <li>
-                <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l4 4L19 6"/></svg></span>
-                <span><strong>Der Kunde bleibt deiner</strong>Nach dem Match steht Seventi nicht zwischen dir und ihm.</span>
-              </li>
-              <li>
-                <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l4 4L19 6"/></svg></span>
-                <span><strong>10 % nur bei Zahlung über Seventi</strong>Ob die Zahlung über uns läuft, entscheidest du. Sonst fällt keine Kommission an.</span>
-              </li>
-              <li>
-                <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l4 4L19 6"/></svg></span>
-                <span><strong>Keine Exklusivität, kein Minimum</strong>Keine Bindung, und den Eintrag kannst du jederzeit entfernen lassen.</span>
-              </li>
-            </ul>
-          </article>
+            <nav class="story-nav" aria-label="Vorteilsbereiche">
+              <button type="button" aria-current="true" data-story-ziel="0">Bessere Anfragen</button>
+              <button type="button" aria-current="false" data-story-ziel="1">Kein Risiko</button>
+              <button type="button" aria-current="false" data-story-ziel="2">Kein Aufwand</button>
+            </nav>
 
-          <article class="cluster reveal">
-            <span class="cluster-title">Kein Aufwand</span>
-            <ul>
-              <li>
-                <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l4 4L19 6"/></svg></span>
-                <span><strong>Rund zehn Minuten einrichten</strong>Danach gibt es nichts zu pflegen.</span>
-              </li>
-              <li>
-                <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l4 4L19 6"/></svg></span>
-                <span><strong>Anfragen kommen per E-Mail</strong>Im Dashboard verwaltest du Anfragen, Termine und offene Aufgaben, wenn du magst.</span>
-              </li>
-              <li>
-                <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l4 4L19 6"/></svg></span>
-                <span><strong>Du wählst aus</strong>Keine Antwortpflicht. Absagen kosten weder Bewertung noch Sichtbarkeit.</span>
-              </li>
-              <li>
-                <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l4 4L19 6"/></svg></span>
-                <span><strong>Das Profil gehört dir</strong>Fotos, Leistungen, Kapazität und Preisrahmen bestimmst du.</span>
-              </li>
-            </ul>
-          </article>
+            <div class="story-shot" role="img" aria-label="Firmenanlass in einer Zürcher Eventlocation"></div>
+          </aside>
+
+          <div class="chapters">
+
+            <article class="chapter is-active" data-story-kapitel="0">
+              <div class="chapter-top">
+                <h3>Bessere Anfragen</h3>
+                <span class="chapter-index">01 / 03</span>
+              </div>
+              <div class="benefit">
+                <span class="benefit-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M7 12h10M10 18h4"/></svg></span>
+                <div>
+                  <h4>Nur, was du erfüllen kannst</h4>
+                  <p>Gefiltert nach Kategorie, Region, Datum und Kapazität, bevor dich etwas erreicht.</p>
+                </div>
+              </div>
+              <div class="benefit">
+                <span class="benefit-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M14.5 9.5H11a1.8 1.8 0 0 0 0 3.6h2a1.8 1.8 0 0 1 0 3.6H9.5M12 8v9"/></svg></span>
+                <div>
+                  <h4>Budget steht drin</h4>
+                  <p>Du kalkulierst gegen eine bekannte Zahl, statt zu raten und zu hoffen.</p>
+                </div>
+              </div>
+              <div class="benefit">
+                <span class="benefit-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l4 4L19 6"/></svg></span>
+                <div>
+                  <h4>Der Anlass ist beschlossen</h4>
+                  <p>Wer ein Briefing abschickt, führt das Event durch und vergleicht nicht nur Preise.</p>
+                </div>
+              </div>
+              <div class="benefit">
+                <span class="benefit-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 15a3 3 0 0 1-3 3H8l-4 3V6a3 3 0 0 1 3-3h10a3 3 0 0 1 3 3Z"/></svg></span>
+                <div>
+                  <h4>Weniger Hin und Her</h4>
+                  <p>Was du sonst per Mail erfragst, steht schon in der Anfrage.</p>
+                </div>
+              </div>
+            </article>
+
+            <article class="chapter" data-story-kapitel="1">
+              <div class="chapter-top">
+                <h3>Kein Risiko</h3>
+                <span class="chapter-index">02 / 03</span>
+              </div>
+              <div class="benefit">
+                <span class="benefit-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h7l9 9-7 7-9-9Z"/><circle cx="8.5" cy="8.5" r="1.4"/></svg></span>
+                <div>
+                  <h4>Gelistet sein kostet nichts</h4>
+                  <p>Auch Anfragen zu erhalten und Angebote zu senden kostet nichts.</p>
+                </div>
+              </div>
+              <div class="benefit">
+                <span class="benefit-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8.5" r="3.2"/><path d="M3.5 19a5.5 5.5 0 0 1 11 0M16 6.2a3.2 3.2 0 0 1 0 6M17.5 19a5.6 5.6 0 0 0-2-4.2"/></svg></span>
+                <div>
+                  <h4>Der Kunde bleibt deiner</h4>
+                  <p>Nach dem Match steht Seventi nicht zwischen dir und ihm.</p>
+                </div>
+              </div>
+              <div class="benefit">
+                <span class="benefit-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6"/><circle cx="7.5" cy="7.5" r="2.2"/><circle cx="16.5" cy="16.5" r="2.2"/></svg></span>
+                <div>
+                  <h4>10 % nur bei Zahlung über Seventi</h4>
+                  <p>Ob die Zahlung über uns läuft, entscheidest du. Sonst fällt keine Kommission an.</p>
+                </div>
+              </div>
+              <div class="benefit">
+                <span class="benefit-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4.5" y="10.5" width="15" height="9.5" rx="2"/><path d="M8.5 10.5V8a3.5 3.5 0 0 1 7 0"/></svg></span>
+                <div>
+                  <h4>Keine Exklusivität, kein Minimum</h4>
+                  <p>Keine Bindung, und den Eintrag kannst du jederzeit entfernen lassen.</p>
+                </div>
+              </div>
+            </article>
+
+            <article class="chapter" data-story-kapitel="2">
+              <div class="chapter-top">
+                <h3>Kein Aufwand</h3>
+                <span class="chapter-index">03 / 03</span>
+              </div>
+              <div class="benefit">
+                <span class="benefit-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v5.2l3.2 2"/></svg></span>
+                <div>
+                  <h4>Rund zehn Minuten einrichten</h4>
+                  <p>Danach gibt es nichts zu pflegen.</p>
+                </div>
+              </div>
+              <div class="benefit">
+                <span class="benefit-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16v12H4z"/><path d="m4 7 8 6 8-6"/></svg></span>
+                <div>
+                  <h4>Anfragen kommen per E-Mail</h4>
+                  <p>Im Dashboard verwaltest du Anfragen, Termine und offene Aufgaben, wenn du magst.</p>
+                </div>
+              </div>
+              <div class="benefit">
+                <span class="benefit-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h9M4 17h9M17 4l3 3-3 3M17 14l3 3-3 3"/></svg></span>
+                <div>
+                  <h4>Du wählst aus</h4>
+                  <p>Keine Antwortpflicht. Absagen kosten weder Bewertung noch Sichtbarkeit.</p>
+                </div>
+              </div>
+              <div class="benefit">
+                <span class="benefit-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="14" rx="2.5"/><circle cx="9" cy="10" r="1.7"/><path d="m4.5 17 4.5-3.5 3.5 2.7 3-2.2 4 3"/></svg></span>
+                <div>
+                  <h4>Das Profil gehört dir</h4>
+                  <p>Fotos, Leistungen, Kapazität und Preisrahmen bestimmst du.</p>
+                </div>
+              </div>
+            </article>
+
+          </div>
         </div>
       </div>
     </section>
@@ -1765,6 +1986,49 @@
         window.addEventListener("scroll", onScroll, { passive: true });
         window.addEventListener("resize", onScroll);
       }
+    }
+
+    // Scroll-Story: aktives Kapitel hervorheben, Leiste links mitführen
+    const kapitel = [...document.querySelectorAll("[data-story-kapitel]")];
+    const storyNav = document.querySelector(".story-nav");
+
+    if (kapitel.length && storyNav) {
+      const knoepfe = [...storyNav.querySelectorAll("button")];
+      // alle Sichtbarkeiten merken, nicht nur die zuletzt geänderten
+      const sichtbar = new Map(kapitel.map((el) => [el, 0]));
+
+      const setzeAktiv = (index) => {
+        kapitel.forEach((el, i) => el.classList.toggle("is-active", i === index));
+        knoepfe.forEach((knopf, i) => knopf.setAttribute("aria-current", String(i === index)));
+        const anteil = kapitel.length > 1 ? index / (kapitel.length - 1) : 1;
+        storyNav.style.setProperty("--story-fill", (8 + anteil * 92).toFixed(1) + "%");
+      };
+
+      const beobachter = new IntersectionObserver((eintraege) => {
+        eintraege.forEach((eintrag) => {
+          sichtbar.set(eintrag.target, eintrag.isIntersecting ? eintrag.intersectionRatio : 0);
+        });
+
+        let bestes = null;
+        let hoechste = 0;
+
+        sichtbar.forEach((anteil, el) => {
+          if (anteil > hoechste) {
+            hoechste = anteil;
+            bestes = el;
+          }
+        });
+
+        if (bestes) setzeAktiv(kapitel.indexOf(bestes));
+      }, { rootMargin: "-20% 0px -30% 0px", threshold: [0, .2, .4, .6, .8, 1] });
+
+      kapitel.forEach((el) => beobachter.observe(el));
+
+      knoepfe.forEach((knopf) => {
+        knopf.addEventListener("click", () => {
+          kapitel[Number(knopf.dataset.storyZiel)].scrollIntoView({ behavior: "smooth", block: "center" });
+        });
+      });
     }
 
     const revealTargets = document.querySelectorAll(".reveal");
