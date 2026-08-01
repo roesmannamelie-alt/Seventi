@@ -547,6 +547,21 @@
       96%, 100% { opacity: 0; transform: translate3d(0, 5px, 0); }
     }
 
+    .req-yes { animation: offerPulse var(--cycle) ease-in-out infinite; }
+
+    @keyframes offerPulse {
+      0%, 55%, 70%, 100% { transform: scale(1); background: var(--ink); color: var(--white); }
+      60%, 65% { transform: scale(.96); background: var(--brand); color: var(--brand-dark); }
+    }
+
+    /* der Bildausschnitt wandert langsam, damit die Flaeche nicht steht */
+    .visual { animation: visualDrift 32s ease-in-out infinite alternate; }
+
+    @keyframes visualDrift {
+      from { background-position: 46% center; }
+      to { background-position: 54% center; }
+    }
+
     @media (prefers-reduced-motion: reduce) {
       .req-head, .req-card h2, .req-sub, .req-rows div, .req-foot, .req-hint {
         opacity: 1;
@@ -851,7 +866,7 @@
       font-weight: 600;
     }
 
-    .cluster li span {
+    .cluster li > span:first-child {
       width: 22px;
       height: 22px;
       border-radius: 50%;
@@ -1471,14 +1486,29 @@
         </div>
 
         <p class="faq-note reveal">Arbeitsstand: Hier ergänzen wir weitere Fragen, sobald klar ist, welche Anbieter tatsächlich stellen. Was der Abschnitt „Warum mitmachen" schon beantwortet, wiederholen wir hier bewusst nicht.</p>
-
-          <p class="finder-hint">Gefunden: übernehmen oder entfernen lassen. Nicht gefunden: Profil anlegen, rund zehn Minuten.</p>
-          <p class="demo-hint">Vorschau: Die Suche ist noch nicht an die Datenbank angebunden.</p>
-        </form>
-
-        <div class="result" id="result-end" role="status" aria-live="polite" hidden></div>
       </div>
     </section>
+
+    <div class="closing-bed">
+      <section class="closing" aria-labelledby="abschluss-titel">
+        <div class="shell">
+          <h2 id="abschluss-titel">Sieh zuerst nach, <em>ob es dich schon gibt.</em></h2>
+
+          <form class="finder" id="finder-end" autocomplete="off">
+            <label class="finder-label" for="finder-end-input">Ist dein Betrieb schon auf Seventi?</label>
+
+            <div class="finder-field">
+              <input id="finder-end-input" type="text" name="betrieb" placeholder="Name deines Betriebs" autocomplete="organization" />
+              <button class="finder-submit" type="submit">Nachsehen</button>
+            </div>
+
+            <p class="finder-hint">Gefunden: übernehmen oder entfernen lassen. Nicht gefunden: Profil anlegen, rund zehn Minuten.</p>
+            <p class="demo-hint">Vorschau: Die Suche ist noch nicht an die Datenbank angebunden.</p>
+          </form>
+
+          <div class="result" id="result-end" role="status" aria-live="polite" hidden></div>
+        </div>
+      </section>
     </div>
   </main>
 
