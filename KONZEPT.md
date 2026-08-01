@@ -67,7 +67,7 @@ Alles andere auf der Seite beschreibt entweder die Mechanik aus dem Briefing ode
 - **Keine Rahmen und Ränder um Karten.** Abgrenzung entsteht über Flächen, Radien und Abstand, nicht über Konturen. Trennlinien innerhalb einer Karte sind erlaubt.
 - **Kicker sind dezente Pills mit Icon**, in derselben Form wie der Hero-Eyebrow. Keine Striche, keine Versalien.
 - **Bildflächen ohne Bild werden gekennzeichnet.** Solange kein Bild vorliegt, trägt die Fläche sichtbar den Hinweis „Bildplatzhalter" mit Zweck. Eingesetzt sind aktuell zwei Bilder von Seventi: ein Firmenanlass für Abschnitt 5, eine Eventlocation für die Provider-Seite.
-- **Bewegung folgt dem Scrollen.** Abschnitt 2 hat eine durchgehende Linie über alle drei Schritte, die sich beim Scrollen füllt; die Schrittnummern schalten mit und zeigen beim Hover ein passendes Icon. Abschnitt 3 zeigt zuerst nur die heutige Karte, beim Weiterscrollen schiebt sich die Seventi-Karte darüber. Bei `prefers-reduced-motion` steht alles sofort im Endzustand.
+- **Bewegung folgt dem Scrollen.** Abschnitt 2 hat eine durchgehende Linie über alle drei Schritte, die sich beim Scrollen füllt; die Schrittnummern schalten mit und zeigen beim Hover ein passendes Icon. Abschnitt 3 wird über einen Tab umgeschaltet: „Heute" und „Mit Seventi" tauschen dieselbe Karte per Überblendung, der Abschnittskopf steht mittig. Bei `prefers-reduced-motion` steht alles sofort im Endzustand.
 - **Anlass-Pills** liegen im Glaslook mit weisser Schrift auf dem Bild, weichen der Maus leicht aus und zeigen beim Hover den typischen Bedarf.
 - **Hervorgehobene Kästen bleiben schmal und mittig**, nicht über die volle Breite gezogen.
 - **Ein FAQ enthält nur Fragen, die kein anderer Abschnitt schon beantwortet.** Wiederholung macht die Seite lang, ohne einen Einwand zusätzlich auszuräumen. Fehlt uns die Antwort noch, steht die Frage im Konzept und nicht auf der Seite.
@@ -148,7 +148,7 @@ Dieser Kasten ist der Grund, warum der Abschnitt an zweiter Stelle steht. Genau 
 - Alle Angebote in derselben Struktur
 - Der Vergleich steht, ohne dass du eine Tabelle baust
 
-**Gestaltung:** Keine rote Spalte mit Kreuzen. Linke Spalte in Graugrün und ohne Icons, rechte Spalte in Markenfarbe mit Häkchen. Der Unterschied entsteht durch Ruhe, nicht durch Dramatik.
+**Gestaltung:** Keine rote Spalte mit Kreuzen und keine zwei Spalten nebeneinander, sondern eine schmale, hohe Karte, die per Tab zwischen „Heute" und „Mit Seventi" wechselt. Die heutige Seite trägt stumpfe Striche, die Seventi-Seite je ein eigenes Icon pro Punkt. Der Unterschied entsteht durch Ruhe, nicht durch Dramatik.
 
 ---
 
