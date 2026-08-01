@@ -1734,7 +1734,7 @@
       white-space: nowrap;
       /* --mx und --my kommen aus der Mausbewegung, gegenläufig */
       transform: translate3d(var(--mx, 0px), var(--my, 0px), 0);
-      transition: transform .5s cubic-bezier(.22, 1, .36, 1), background-color .25s ease, border-color .25s ease;
+      transition: transform .34s cubic-bezier(.22, 1, .36, 1), background-color .25s ease;
     }
 
     .occasion:hover {
@@ -2484,30 +2484,66 @@
       });
     });
 
-    // Anlass-Pills weichen der Maus leicht aus
+    // Anlass-Pills: jede weicht einzeln aus, je näher der Zeiger, desto stärker
     const canvas = document.querySelector(".occasion-canvas");
 
     if (canvas && !calmMotion.matches && window.matchMedia("(hover: hover)").matches) {
       const pills = [...canvas.querySelectorAll(".occasion")];
-      const pull = pills.map((_, index) => 14 + (index % 3) * 7);
+      const reichweite = 330;
+      const staerke = pills.map((_, index) => 24 + (index % 3) * 6);
 
-      canvas.addEventListener("pointermove", (event) => {
-        const box = canvas.getBoundingClientRect();
-        const x = (event.clientX - box.left) / box.width - .5;
-        const y = (event.clientY - box.top) / box.height - .5;
+      let ruhend = true;
 
-        pills.forEach((pill, index) => {
-          pill.style.setProperty("--mx", (-x * pull[index]).toFixed(1) + "px");
-          pill.style.setProperty("--my", (-y * pull[index]).toFixed(1) + "px");
-        });
-      });
-
-      canvas.addEventListener("pointerleave", () => {
+      const loesen = () => {
         pills.forEach((pill) => {
           pill.style.setProperty("--mx", "0px");
           pill.style.setProperty("--my", "0px");
         });
+      };
+
+      canvas.addEventListener("pointermove", (event) => {
+        const flaeche = canvas.getBoundingClientRect();
+        const zeigerX = event.clientX - flaeche.left;
+        const zeigerY = event.clientY - flaeche.top;
+        ruhend = false;
+
+        pills.forEach((pill, index) => {
+          // offsetLeft ignoriert die eigene Verschiebung, sonst schaukelt sich das auf
+          const mitteX = pill.offsetLeft + pill.offsetWidth / 2;
+          const mitteY = pill.offsetTop + pill.offsetHeight / 2;
+          const dx = mitteX - zeigerX;
+          const dy = mitteY - zeigerY;
+
+          // wer direkt auf der Pill steht, soll sie auch anklicken können
+          const drauf = Math.abs(dx) < pill.offsetWidth / 2 + 4 &&
+                        Math.abs(dy) < pill.offsetHeight / 2 + 4;
+
+          const abstand = Math.hypot(dx, dy);
+
+          if (drauf || abstand > reichweite || abstand === 0) {
+            pill.style.setProperty("--mx", "0px");
+            pill.style.setProperty("--my", "0px");
+            return;
+          }
+
+          const naehe = 1 - abstand / reichweite;
+          const schub = naehe * naehe * staerke[index];
+
+          pill.style.setProperty("--mx", (dx / abstand * schub).toFixed(1) + "px");
+          pill.style.setProperty("--my", (dy / abstand * schub).toFixed(1) + "px");
+        });
       });
+
+      canvas.addEventListener("pointerleave", () => {
+        ruhend = true;
+        loesen();
+      });
+
+      window.addEventListener("scroll", () => {
+        if (ruhend) return;
+        ruhend = true;
+        loesen();
+      }, { passive: true });
     }
 
     document.querySelectorAll(".cta").forEach((cta) => {
