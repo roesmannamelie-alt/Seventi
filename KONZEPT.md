@@ -66,15 +66,15 @@ Alles andere auf der Seite beschreibt entweder die Mechanik aus dem Briefing ode
 
 - **Keine Rahmen und Ränder um Karten.** Abgrenzung entsteht über Flächen, Radien und Abstand, nicht über Konturen. Trennlinien innerhalb einer Karte sind erlaubt.
 - **Kicker sind dezente Pills mit Icon**, in derselben Form wie der Hero-Eyebrow. Keine Striche, keine Versalien.
-- **Bildflächen ohne Bild werden gekennzeichnet.** Solange kein Bild vorliegt, trägt die Fläche sichtbar den Hinweis „Bildplatzhalter" mit Zweck. Kein Motiv kommt auf derselben Seite zweimal vor. Eingesetzt:
-  - Planner: Apéro im Hero, Firmenanlass unter den Anlass-Pills, fünf Bilder als Parallaxe in Abschnitt 3, Porträt der Planerin im Abschluss
-  - Anbieter: Tafel am See im Hero, Innenhof, Seminarraum und Empfang in den drei Kapiteln von „Warum mitmachen", Apéro im Fragen-Abschnitt
+- **Kein Motiv kommt zweimal vor**, auch nicht über beide Seiten hinweg. Dreizehn Bilder auf dreizehn Plätzen:
+  - Planner: Firmenevent im Hero, Abendtafel, Innenhof, Catering, Empfang und Seminarraum als Parallaxe in Abschnitt 3, Apéro unter den Anlass-Pills, Porträt der Planerin im Abschluss
+  - Anbieter: Tafel am See im Hero, Assistentin, Team vor dem Bürogebäude und die Ruhe im Trubel in den drei Kapiteln von „Warum mitmachen", ankommende Gäste im Fragen-Abschnitt
 - **Bewegung folgt dem Scrollen.** Abschnitt 2 hat eine durchgehende Linie über alle drei Schritte, die sich beim Scrollen füllt; die Bahn ist bewusst etwa vier Bildschirmviertel lang, damit die Linie dem Scrollen folgt statt in einem Zug durchzulaufen. Die Schrittnummern schalten mit und zeigen beim Hover ein passendes Icon. Abschnitt 3 wird über einen Tab umgeschaltet: „Heute" und „Mit Seventi" tauschen dieselbe Karte per Überblendung. Links und rechts davon laufen fünf Bilder als lockere Collage mit, jedes in eigenem Tempo zwischen Faktor 0,07 und 0,19. Bei `prefers-reduced-motion` steht alles sofort im Endzustand.
 
 - **Abschnittsköpfe stehen mittig.** Kicker, Headline und Subline sitzen zentriert übereinander, auf beiden Seiten in derselben Form.
 
-- **Das Scrollen selbst läuft über Lenis**, bewusst kurz eingestellt (0,85 s, easeOutCubic). Die Seite soll weich laufen, nicht nachschwingen. Bei `prefers-reduced-motion` bleibt das native Scrollen. Die Bibliothek liegt als `lenis.min.js` im Repository, damit die Seiten ohne CDN auskommen.
-- **Anlass-Pills** liegen im Glaslook mit weisser Schrift auf dem Bild und zeigen beim Hover den typischen Bedarf. Jede reagiert einzeln auf den Zeiger, gemessen wird der Abstand zu ihrem Rand: ab etwa 165 px setzt der Schub ein, erreicht rund 34 px vor der Pill sein Maximum von 14 bis 20 px und fällt direkt am Rand wieder auf null. Dadurch gibt es weder an der Reichweitengrenze noch am Pillenrand einen Sprung, und die Pill unter dem Zeiger bleibt anklickbar.
+- **Das Scrollen selbst läuft über Lenis**, gedämpft statt zeitgesteuert (`lerp: 0.16`). Die Seite folgt dem Rad direkt und läuft trotzdem weich. Bei `prefers-reduced-motion` bleibt das native Scrollen. Die Bibliothek liegt als `lenis.min.js` im Repository, damit die Seiten ohne CDN auskommen.
+- **Anlass-Pills** liegen im Glaslook mit weisser Schrift auf dem Bild und zeigen beim Hover den typischen Bedarf. Sie erscheinen nacheinander, sobald die Fläche im Bild ist, 110 ms Abstand. Sie weichen dem Zeiger nicht mehr aus: die Bewegung lenkte vom Inhalt ab und liess sich nicht ruhig genug einstellen.
 - **Hervorgehobene Kästen bleiben schmal und mittig**, nicht über die volle Breite gezogen.
 - **Elemente erscheinen gestaffelt.** Geschwister innerhalb eines Blocks blenden nacheinander ein, 85 ms Abstand, statt gleichzeitig aufzuploppen.
 - **Der Abschluss trägt feines Korn statt eines Fotos**, damit die dunkle Fläche lebt, ohne mit dem Text zu konkurrieren. Das Korn bleibt pixelscharf, deckt aber nur ein Viertel der Fläche bei 5,5 % Deckkraft ab: sichtbar als Textur, nicht als Rauschen.

@@ -1169,7 +1169,8 @@
       .lead,
       .actions,
       .benefit,
-      .product {
+      .product,
+      .js .occasion {
         opacity: 1;
         transform: none;
         filter: none;
@@ -1190,7 +1191,6 @@
     .steps {
       padding: clamp(84px, 8.5vw, 130px) 20px clamp(80px, 8vw, 120px);
       background: #fafcf7;
-      border-top: 1px solid var(--line);
     }
 
     /* Kicker, Headline und Subline stehen mittig uebereinander */
@@ -1460,6 +1460,25 @@
         gap: 30px;
       }
 
+      /* untereinander braucht die Linie eine senkrechte Fassung */
+      .step-track {
+        top: 16px;
+        bottom: 18px;
+        right: auto;
+        left: 16px;
+        width: 2px;
+        height: auto;
+      }
+
+      .step-track i {
+        width: 100%;
+        height: var(--fill, 0%);
+      }
+
+      .step { padding-left: 50px; }
+
+      .step-index { position: absolute; top: 0; left: 0; }
+
       .step p { max-width: 560px; }
     }
 
@@ -1487,25 +1506,6 @@
         margin-top: 40px;
         gap: 26px;
       }
-
-      /* senkrechte Linie, die die Schritte untereinander verbindet */
-      .step-track {
-        top: 16px;
-        bottom: 18px;
-        right: auto;
-        left: 16px;
-        width: 2px;
-        height: auto;
-      }
-
-      .step-track i {
-        width: 100%;
-        height: var(--fill, 0%);
-      }
-
-      .step { padding-left: 50px; }
-
-      .step-index { position: absolute; top: 0; left: 0; }
 
       .step-time {
         margin: 18px 0 11px;
@@ -1576,7 +1576,7 @@
       left: clamp(30px, 5.5vw, 100px);
       width: clamp(132px, 12.2vw, 186px);
       height: clamp(178px, 16.4vw, 250px);
-      background-image: url("./seventi-tafel.webp");
+      background-image: url("./seventi-dinner.webp");
     }
 
     /* klein */
@@ -1594,7 +1594,7 @@
       left: clamp(24px, 4vw, 74px);
       width: clamp(101px, 8.8vw, 130px);
       height: clamp(124px, 10.7vw, 157px);
-      background-image: url("./seventi-event.webp");
+      background-image: url("./seventi-catering.webp");
     }
 
     /* klein */
@@ -1763,7 +1763,6 @@
     .occasions {
       padding: clamp(84px, 8.5vw, 130px) 20px clamp(80px, 8vw, 120px);
       background: #fafcf7;
-      border-top: 1px solid var(--line);
     }
 
     .occasion-canvas {
@@ -1796,9 +1795,23 @@
       font-weight: 600;
       letter-spacing: -.01em;
       white-space: nowrap;
-      /* --mx und --my kommen aus der Mausbewegung, gegenläufig */
-      transform: translate3d(var(--mx, 0px), var(--my, 0px), 0);
       transition: background-color .25s ease, color .25s ease;
+    }
+
+    /* Auftritt: eine nach der anderen, leicht von unten */
+    .js .occasion {
+      opacity: 0;
+      transform: translate3d(0, 14px, 0);
+    }
+
+    .js .occasion.is-in {
+      opacity: 1;
+      transform: none;
+      transition:
+        opacity .6s cubic-bezier(.16, 1, .3, 1) var(--verzug, 0s),
+        transform .6s cubic-bezier(.16, 1, .3, 1) var(--verzug, 0s),
+        background-color .25s ease,
+        color .25s ease;
     }
 
     .occasion:hover {
@@ -1888,15 +1901,16 @@
 
     .closing-grid {
       display: grid;
-      grid-template-columns: minmax(0, .78fr) minmax(0, 1.22fr);
+      grid-template-columns: minmax(0, .58fr) minmax(0, 1.42fr);
       align-items: center;
       gap: clamp(32px, 5vw, 76px);
       text-align: left;
     }
 
     .closing-portrait {
-      aspect-ratio: 1;
-      border-radius: var(--radius-xl);
+      aspect-ratio: 4 / 5;
+      align-self: center;
+      border-radius: var(--radius-lg);
       background-color: #2a3a1c;
       background-image: url("./seventi-planerin.webp");
       background-position: center;
@@ -1921,11 +1935,19 @@
       letter-spacing: -.035em;
     }
 
+    .closing-sub {
+      max-width: 520px;
+      margin: 18px 0 0;
+      color: #a9b79a;
+      font-size: 15px;
+      line-height: 1.65;
+    }
+
     .closing .actions {
       align-items: center;
       justify-content: flex-start;
       gap: 18px;
-      margin-top: 30px;
+      margin-top: 28px;
     }
 
     .closing .time { text-align: left; }
@@ -2107,7 +2129,7 @@
         text-align: center;
       }
 
-      .closing-portrait { aspect-ratio: 4 / 3; border-radius: var(--radius-lg); }
+      .closing-portrait { aspect-ratio: 1; border-radius: var(--radius-lg); }
 
       .closing h2 { margin: 0 auto; }
 
@@ -2391,9 +2413,9 @@
   </section>
 
   <section class="compare" id="unterschied" aria-labelledby="unterschied-titel">
-    <div class="drift drift-l1" data-drift="0.07" role="img" aria-label="Gedeckte Tafel an einem Schweizer See"></div>
+    <div class="drift drift-l1" data-drift="0.07" role="img" aria-label="Abendtafel im Kerzenlicht"></div>
     <div class="drift drift-l2" data-drift="0.15" role="img" aria-label="Firmenanlass in einem begrünten Innenhof"></div>
-    <div class="drift drift-l3" data-drift="0.11" role="img" aria-label="Sommerabend auf einer Eventterrasse"></div>
+    <div class="drift drift-l3" data-drift="0.11" role="img" aria-label="Catering-Team richtet die Teller an"></div>
     <div class="drift drift-r1" data-drift="0.19" role="img" aria-label="Firmenempfang in einer Kunsthalle"></div>
     <div class="drift drift-r2" data-drift="0.09" role="img" aria-label="Seminarraum mit Blick auf den See"></div>
 
@@ -2492,6 +2514,8 @@
       <div class="closing-body">
       <h2 id="abschluss-titel" class="reveal">Ein Briefing. <em>Dann melden sich die Anbieter.</em></h2>
 
+      <p class="closing-sub reveal">Sommerfest, Offsite, Kundenanlass oder Generalversammlung. Aktuell für Firmenevents in Zürich, Zug und Luzern.</p>
+
       <div class="actions reveal">
         <a class="cta" href="https://www.seventi.com/">
           <span class="cta-word">Event</span>
@@ -2572,14 +2596,13 @@
     const steps = document.querySelectorAll(".step");
     const calmMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
-    // Lenis glaettet das Scrollen. Bewusst kurz gehalten, damit die Seite
-    // nicht nachschwingt und die scrollgesteuerten Effekte synchron bleiben.
+    // Lenis glaettet das Scrollen. Gedaempft statt zeitgesteuert, damit die
+    // Seite dem Rad direkt folgt und trotzdem weich laeuft.
     let lenis = null;
 
     if (typeof Lenis === "function" && !calmMotion.matches) {
       lenis = new Lenis({
-        duration: .85,
-        easing: (t) => 1 - Math.pow(1 - t, 3),
+        lerp: .16,
         wheelMultiplier: 1,
         touchMultiplier: 1.6,
       });
@@ -2661,119 +2684,29 @@
       });
     });
 
-    // Anlass-Pills: jede weicht einzeln aus, weich nachgeführt statt sprunghaft
+    // Anlass-Pills erscheinen nacheinander, sobald die Flaeche im Bild ist
     const canvas = document.querySelector(".occasion-canvas");
 
-    if (canvas && !calmMotion.matches && window.matchMedia("(hover: hover)").matches) {
-      const pills = [...canvas.querySelectorAll(".occasion")].map((el, index) => ({
-        el,
-        staerke: 14 + (index % 3) * 3,
-        zielX: 0, zielY: 0,
-        istX: 0, istY: 0,
-      }));
+    if (canvas) {
+      const pills = [...canvas.querySelectorAll(".occasion")];
 
-      const reichweite = 165;
-      const naehe = 34;
-      const daempfung = .07;
-      const glatt = (x) => x * x * (3 - 2 * x);
-      let laeuft = false;
-
-      const schritt = () => {
-        let bewegt = false;
-
-        pills.forEach((pill) => {
-          pill.istX += (pill.zielX - pill.istX) * daempfung;
-          pill.istY += (pill.zielY - pill.istY) * daempfung;
-
-          if (Math.abs(pill.zielX - pill.istX) > .05 || Math.abs(pill.zielY - pill.istY) > .05) {
-            bewegt = true;
-          } else {
-            pill.istX = pill.zielX;
-            pill.istY = pill.zielY;
-          }
-
-          pill.el.style.setProperty("--mx", pill.istX.toFixed(2) + "px");
-          pill.el.style.setProperty("--my", pill.istY.toFixed(2) + "px");
-        });
-
-        laeuft = bewegt;
-        if (bewegt) window.requestAnimationFrame(schritt);
-      };
-
-      const anstossen = () => {
-        if (laeuft) return;
-        laeuft = true;
-        window.requestAnimationFrame(schritt);
-      };
-
-      let letzteX = null;
-      let letzteY = null;
-
-      const zieleRechnen = () => {
-        if (letzteX === null) return;
-
-        const flaeche = canvas.getBoundingClientRect();
-        const zeigerX = letzteX - flaeche.left;
-        const zeigerY = letzteY - flaeche.top;
-
-        pills.forEach((pill) => {
-          // offsetLeft ignoriert die eigene Verschiebung, sonst schaukelt sich das auf
-          const links = pill.el.offsetLeft;
-          const oben = pill.el.offsetTop;
-          const rechts = links + pill.el.offsetWidth;
-          const unten = oben + pill.el.offsetHeight;
-
-          // Abstand zum Rand der Pill, nicht zu ihrer Mitte
-          const randX = Math.max(links - zeigerX, 0, zeigerX - rechts);
-          const randY = Math.max(oben - zeigerY, 0, zeigerY - unten);
-          const abstand = Math.hypot(randX, randY);
-
-          // im Feld liegt der Zeiger auf der Pill, die bleibt dann anklickbar
-          if (abstand === 0 || abstand > reichweite) {
-            pill.zielX = 0;
-            pill.zielY = 0;
-            return;
-          }
-
-          const mitteX = links + pill.el.offsetWidth / 2;
-          const mitteY = oben + pill.el.offsetHeight / 2;
-          const richtungX = mitteX - zeigerX;
-          const richtungY = mitteY - zeigerY;
-          const laenge = Math.hypot(richtungX, richtungY) || 1;
-
-          // Der Schub steigt aus der Ferne an, erreicht kurz vor der Pill sein
-          // Maximum und faellt direkt am Rand wieder auf null. Dadurch gibt es
-          // weder an der Reichweitengrenze noch am Pillenrand einen Sprung.
-          const anteil = abstand < naehe
-            ? glatt(abstand / naehe)
-            : glatt(1 - (abstand - naehe) / (reichweite - naehe));
-          const schub = anteil * pill.staerke;
-
-          pill.zielX = richtungX / laenge * schub;
-          pill.zielY = richtungY / laenge * schub;
-        });
-
-        anstossen();
-      };
-
-      canvas.addEventListener("pointermove", (event) => {
-        letzteX = event.clientX;
-        letzteY = event.clientY;
-        zieleRechnen();
+      pills.forEach((pill, index) => {
+        pill.style.setProperty("--verzug", (index * .11).toFixed(2) + "s");
       });
 
-      canvas.addEventListener("pointerleave", () => {
-        letzteX = null;
-        letzteY = null;
-        pills.forEach((pill) => {
-          pill.zielX = 0;
-          pill.zielY = 0;
-        });
-        anstossen();
-      });
+      if (calmMotion.matches || !("IntersectionObserver" in window)) {
+        pills.forEach((pill) => pill.classList.add("is-in"));
+      } else {
+        const beobachter = new IntersectionObserver((eintraege) => {
+          eintraege.forEach((eintrag) => {
+            if (!eintrag.isIntersecting) return;
+            pills.forEach((pill) => pill.classList.add("is-in"));
+            beobachter.disconnect();
+          });
+        }, { threshold: .3 });
 
-      // beim Scrollen wandert die Fläche unter dem Zeiger weg, also neu rechnen
-      window.addEventListener("scroll", zieleRechnen, { passive: true });
+        beobachter.observe(canvas);
+      }
     }
 
     document.querySelectorAll(".cta").forEach((cta) => {

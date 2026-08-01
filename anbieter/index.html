@@ -418,43 +418,46 @@
       to { opacity: 1; transform: none; }
     }
 
-    /* ---------- Hero-Visual: das Foto traegt, die Anfrage liegt darauf ---------- */
+    /* ---------- Hero-Visual: die Anfrage liegt mittig im Foto ---------- */
     .visual {
       position: relative;
       min-height: clamp(560px, 46vw, 760px);
-      padding: clamp(20px, 1.8vw, 28px);
+      padding: clamp(20px, 1.8vw, 30px);
       overflow: hidden;
       border-radius: var(--radius-xl);
-      display: flex;
-      align-items: flex-end;
+      display: grid;
+      place-items: center;
       background-color: #e7ece0;
       background-image:
-        linear-gradient(180deg, rgba(16, 29, 0, .06) 42%, rgba(16, 29, 0, .58)),
+        linear-gradient(180deg, rgba(16, 29, 0, .3), rgba(16, 29, 0, .12) 45%, rgba(16, 29, 0, .42)),
         url("../seventi-tafel.webp");
-      background-position: center 88%;
+      background-position: center 64%;
       background-size: cover;
     }
 
-    /* schmale Glasleiste unten, damit das Bild oben frei bleibt */
-    .req {
-      position: relative;
-      width: 100%;
-      padding: clamp(16px, 1.4vw, 22px);
-      border-radius: var(--radius-lg);
-      background: rgba(255, 255, 255, .12);
-      -webkit-backdrop-filter: blur(16px) saturate(1.3);
-      backdrop-filter: blur(16px) saturate(1.3);
-      color: var(--white);
+    /* Glasrand: eine milchige Fassung, in der die weisse Karte sitzt */
+    .req-frame {
+      width: min(100%, 430px);
+      padding: 9px;
+      border-radius: 26px;
+      background: rgba(255, 255, 255, .2);
+      -webkit-backdrop-filter: blur(14px) saturate(1.25);
+      backdrop-filter: blur(14px) saturate(1.25);
     }
 
-    .req-line {
+    .req {
+      padding: clamp(18px, 1.5vw, 22px);
+      border-radius: 18px;
+      background: var(--white);
+    }
+
+    .req-top {
       display: flex;
       align-items: center;
+      justify-content: space-between;
       gap: 12px;
-      margin-bottom: 13px;
+      margin-bottom: 15px;
     }
-
-    .req-line .req-note { margin-left: auto; }
 
     .badge {
       display: inline-flex;
@@ -476,61 +479,78 @@
     }
 
     .req-note {
-      color: rgba(255, 255, 255, .74);
+      color: var(--muted);
       font-size: 10px;
       font-weight: 600;
     }
 
     .req h2 {
-      margin: 0;
-      font-size: clamp(18px, 1.45vw, 22px);
+      margin: 0 0 2px;
+      font-size: clamp(20px, 1.6vw, 24px);
       font-weight: 600;
       letter-spacing: -.035em;
     }
 
-    .req-chips {
+    .req-sub {
       margin: 0;
-      padding: 0;
-      list-style: none;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 7px;
-    }
-
-    .req-chips li {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      padding: 6px 11px;
-      border-radius: 99px;
-      background: rgba(255, 255, 255, .17);
+      color: var(--muted);
       font-size: 11.5px;
       font-weight: 600;
     }
 
-    .req-chips svg {
-      width: 14px;
-      height: 14px;
-      flex: 0 0 14px;
+    .req-titel { margin-bottom: 9px; }
+
+    /* die gefilterten Angaben, eine nach der anderen */
+    .req-facts {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .req-facts li {
+      display: grid;
+      grid-template-columns: 28px minmax(0, 1fr);
+      align-items: center;
+      gap: 11px;
+      padding: 11px 0;
+      border-bottom: 1px solid var(--line);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: -.01em;
+    }
+
+    .req-facts li:last-child { border-bottom: 0; }
+
+    .req-facts span {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: grid;
+      place-content: center;
+      background: var(--brand-soft);
+      color: var(--brand-dark);
+    }
+
+    .req-facts svg {
+      width: 15px;
+      height: 15px;
       fill: none;
       stroke: currentColor;
       stroke-width: 1.9;
       stroke-linecap: round;
       stroke-linejoin: round;
-      opacity: .8;
     }
 
     .req-act {
-      display: flex;
-      align-items: center;
-      flex-wrap: wrap;
+      display: grid;
+      grid-template-columns: 1fr auto;
       gap: 9px;
-      margin-top: 13px;
+      margin-top: 16px;
     }
 
     .req-act button {
-      min-height: 38px;
-      padding: 0 16px;
+      min-height: 42px;
+      padding: 0 17px;
       border: 0;
       border-radius: 999px;
       font-size: 12px;
@@ -538,56 +558,71 @@
       cursor: pointer;
     }
 
-    .req-yes { background: var(--brand); color: var(--brand-dark); }
+    .req-yes { background: var(--ink); color: var(--white); }
 
-    .req-no { background: rgba(255, 255, 255, .18); color: var(--white); }
+    .req-no { background: #f1f4ef; color: var(--muted); }
 
     .req-hint {
-      margin: 0;
-      color: rgba(255, 255, 255, .72);
+      margin: 12px 0 0;
+      color: var(--muted);
+      font-size: 10px;
+      text-align: center;
+    }
+
+    .visual-caption {
+      position: absolute;
+      right: 22px;
+      bottom: 20px;
+      left: 22px;
+      color: rgba(255, 255, 255, .82);
       font-size: 10.5px;
       font-weight: 600;
+      text-align: center;
     }
 
     /* ---------- Die Anfrage baut sich Stueck fuer Stueck auf ---------- */
-    .req { --cycle: 15s; }
+    .req-frame { --cycle: 15s; }
 
-    .req-line,
-    .req-chips li,
-    .req-act {
+    .req-top,
+    .req-titel,
+    .req-facts li,
+    .req-act,
+    .req-hint {
       animation: teilEin var(--cycle) cubic-bezier(.22, 1, .36, 1) infinite both;
     }
 
-    .req-chips li:nth-child(1) { animation-delay: .5s; }
-    .req-chips li:nth-child(2) { animation-delay: .85s; }
-    .req-chips li:nth-child(3) { animation-delay: 1.2s; }
-    .req-chips li:nth-child(4) { animation-delay: 1.55s; }
-    .req-chips li:nth-child(5) { animation-delay: 1.9s; }
-    .req-act { animation-delay: 2.5s; }
+    .req-titel { animation-delay: .4s; }
+    .req-facts li:nth-child(1) { animation-delay: .85s; }
+    .req-facts li:nth-child(2) { animation-delay: 1.15s; }
+    .req-facts li:nth-child(3) { animation-delay: 1.45s; }
+    .req-facts li:nth-child(4) { animation-delay: 1.75s; }
+    .req-facts li:nth-child(5) { animation-delay: 2.05s; }
+    .req-act { animation-delay: 2.6s; }
+    .req-hint { animation-delay: 2.9s; }
 
     @keyframes teilEin {
-      0% { opacity: 0; transform: translate3d(0, 11px, 0); }
+      0% { opacity: 0; transform: translate3d(0, 10px, 0); }
       5%, 88% { opacity: 1; transform: none; }
-      95%, 100% { opacity: 0; transform: translate3d(0, 6px, 0); }
+      95%, 100% { opacity: 0; transform: translate3d(0, 5px, 0); }
     }
 
     .req-yes { animation: offerPulse var(--cycle) ease-in-out infinite; }
 
     @keyframes offerPulse {
-      0%, 58%, 72%, 100% { transform: scale(1); background: var(--brand); }
-      63%, 68% { transform: scale(.955); background: var(--white); }
+      0%, 58%, 72%, 100% { transform: scale(1); background: var(--ink); color: var(--white); }
+      63%, 68% { transform: scale(.96); background: var(--brand); color: var(--brand-dark); }
     }
 
     /* der Bildausschnitt wandert langsam, damit die Flaeche nicht steht */
     .visual { animation: visualDrift 38s ease-in-out infinite alternate; }
 
     @keyframes visualDrift {
-      from { background-position: 47% 88%; }
-      to { background-position: 53% 88%; }
+      from { background-position: 47% 64%; }
+      to { background-position: 53% 64%; }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .req-line, .req-chips li, .req-act {
+      .req-top, .req-titel, .req-facts li, .req-act, .req-hint {
         opacity: 1;
         transform: none;
       }
@@ -874,7 +909,7 @@
       margin-top: 30px;
       border-radius: var(--radius-lg);
       background-color: #e7ece0;
-      background-image: url("../seventi-apero.webp");
+      background-image: url("../seventi-ankunft.webp");
       background-position: center;
       background-size: cover;
     }
@@ -1011,11 +1046,11 @@
       background-size: cover;
     }
 
-    .shot-anlass { background-image: url("../seventi-anlass.webp"); }
+    .shot-assistenz { background-image: url("../seventi-assistenz.webp"); }
 
-    .shot-location { background-image: url("../seventi-location.webp"); }
+    .shot-team { background-image: url("../seventi-team.webp"); }
 
-    .shot-empfang { background-image: url("../seventi-empfang.webp"); }
+    .shot-ruhe { background-image: url("../seventi-ruhe.webp"); }
 
     .chapter-top {
       display: flex;
@@ -1339,9 +1374,12 @@
 
       .story-side-title { max-width: 620px; }
 
+      /* ohne Sticky wird aus der Leiste eine Reihe schmaler Schalter */
       .story-nav {
-        grid-template-columns: repeat(3, 1fr);
-        margin-top: 26px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 24px;
         padding-left: 0;
       }
 
@@ -1350,8 +1388,8 @@
       .story-nav button::before { display: none; }
 
       .story-nav button {
-        padding: 11px 8px;
-        border-radius: 10px;
+        padding: 9px 15px;
+        border-radius: 999px;
         background: #f2f5ed;
         font-size: 12.5px;
         text-align: center;
@@ -1363,11 +1401,11 @@
 
       .chapter-body { order: 2; padding: 0; }
 
-      .chapter-shot { order: 1; min-height: 210px; }
+      .chapter-shot { order: 1; min-height: clamp(240px, 33vw, 330px); }
 
       .ablauf-box { padding: 26px 20px 30px; border-radius: 22px; }
 
-      .faq-shot { height: 180px; margin-top: 24px; }
+      .faq-shot { height: clamp(200px, 28vw, 290px); margin-top: 24px; }
 
       .chapters { transform: none; }
 
@@ -1445,27 +1483,44 @@
       .result-actions .btn-primary,
       .result-actions .btn-ghost { flex: 1; }
 
-      /* enger Ausschnitt von unten, damit die Tafel ueber der Leiste bleibt */
+      /* das Foto behaelt Luft ueber und unter der Karte */
       .visual {
-        min-height: clamp(470px, 134vw, 560px);
-        padding: 14px;
+        min-height: clamp(540px, 148vw, 640px);
+        padding: 16px;
         border-radius: var(--radius-lg);
-        background-size: auto 155%;
-        background-position: 50% 100%;
+        background-size: auto 132%;
+        background-position: 50% 74%;
         animation: none;
       }
 
-      .req { padding: 15px; }
+      .req-frame { width: 100%; padding: 7px; }
 
-      .req-line { flex-wrap: wrap; gap: 9px; }
+      .req { padding: 15px; border-radius: 15px; }
 
-      .req-line h2 { flex: 1 0 100%; order: 3; font-size: 17px; }
+      .req-top { margin-bottom: 12px; }
 
-      .req-chips li { padding: 6px 10px; font-size: 11.5px; }
+      .req h2 { font-size: 19px; }
 
-      .req-act button { flex: 1; }
+      .req-sub { font-size: 11px; }
 
-      .req-hint { flex: 1 0 100%; }
+      .req-facts li {
+        grid-template-columns: 24px minmax(0, 1fr);
+        gap: 10px;
+        padding: 9px 0;
+        font-size: 12px;
+      }
+
+      .req-facts span { width: 24px; height: 24px; }
+
+      .req-facts svg { width: 13px; height: 13px; }
+
+      .req-act { margin-top: 13px; }
+
+      .req-act button { min-height: 40px; }
+
+      .req-hint { margin-top: 10px; font-size: 9.5px; }
+
+      .visual-caption { right: 16px; bottom: 12px; left: 16px; font-size: 10px; }
 
       .section { padding: 60px 20px 64px; }
 
@@ -1605,27 +1660,36 @@
           </div>
 
           <section class="visual" aria-label="Beispiel einer Anfrage">
-            <article class="req">
-              <div class="req-line">
-                <span class="badge"><i></i>Anfrage</span>
-                <h2>Sommerfest, Industrieunternehmen</h2>
-                <span class="req-note">Beispiel mit Platzhalter-Daten</span>
-              </div>
+            <div class="req-frame">
+              <article class="req">
+                <div class="req-top">
+                  <span class="badge"><i></i>Neue Anfrage</span>
+                  <span class="req-note">Kommt per E-Mail</span>
+                </div>
 
-              <ul class="req-chips">
-                <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16v14H4zM4 10h16M8.5 3v4M15.5 3v4"/></svg>Freitag, 12. September</li>
-                <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8.5" r="3.2"/><path d="M3.5 19a5.5 5.5 0 0 1 11 0M16 6.2a3.2 3.2 0 0 1 0 6M17.5 19a5.6 5.6 0 0 0-2-4.2"/></svg>120 Personen</li>
-                <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-6.1 7-11a7 7 0 1 0-14 0c0 4.9 7 11 7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg>Zürich</li>
-                <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M14.5 9.5H11a1.8 1.8 0 0 0 0 3.6h2a1.8 1.8 0 0 1 0 3.6H9.5M12 8v9"/></svg>CHF 16'000 – 20'000</li>
-                <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M7 12h10M10 18h4"/></svg>Location, Catering, Technik</li>
-              </ul>
+                <div class="req-titel">
+                  <h2>Sommerfest</h2>
+                  <p class="req-sub">Industrieunternehmen, Assistenz der Geschäftsleitung</p>
+                </div>
 
-              <div class="req-act">
-                <button class="req-yes" type="button">Angebot senden</button>
-                <button class="req-no" type="button">Passt nicht</button>
-                <p class="req-hint">Absagen brauchen keine Begründung</p>
-              </div>
-            </article>
+                <ul class="req-facts">
+                  <li><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16v14H4zM4 10h16M8.5 3v4M15.5 3v4"/></svg></span>Freitag, 12. September</li>
+                  <li><span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8.5" r="3.2"/><path d="M3.5 19a5.5 5.5 0 0 1 11 0M16 6.2a3.2 3.2 0 0 1 0 6M17.5 19a5.6 5.6 0 0 0-2-4.2"/></svg></span>120 Personen</li>
+                  <li><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-6.1 7-11a7 7 0 1 0-14 0c0 4.9 7 11 7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg></span>Zürich</li>
+                  <li><span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M14.5 9.5H11a1.8 1.8 0 0 0 0 3.6h2a1.8 1.8 0 0 1 0 3.6H9.5M12 8v9"/></svg></span>CHF 16'000 – 20'000</li>
+                  <li><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M7 12h10M10 18h4"/></svg></span>Location, Catering, Technik</li>
+                </ul>
+
+                <div class="req-act">
+                  <button class="req-yes" type="button">Angebot senden</button>
+                  <button class="req-no" type="button">Passt nicht</button>
+                </div>
+
+                <p class="req-hint">Absagen brauchen keine Begründung und wirken sich nicht auf dein Profil aus.</p>
+              </article>
+            </div>
+
+            <p class="visual-caption">Beispielanfrage mit Platzhalter-Daten</p>
           </section>
         </div>
       </div>
@@ -1735,7 +1799,7 @@
                   </div>
               </div>
 
-              <div class="chapter-shot shot-anlass" role="img" aria-label="Firmenanlass in einem begrünten Innenhof">
+              <div class="chapter-shot shot-assistenz" role="img" aria-label="Assistentin mit Handy und Notebook">
                 <span class="chapter-index" aria-hidden="true">01 / 03</span>
               </div>
             </article>
@@ -1775,7 +1839,7 @@
                   </div>
               </div>
 
-              <div class="chapter-shot shot-location" role="img" aria-label="Seminarraum mit Seeblick in einer Schweizer Eventlocation">
+              <div class="chapter-shot shot-team" role="img" aria-label="Team eines Unternehmens vor dem Bürogebäude">
                 <span class="chapter-index" aria-hidden="true">02 / 03</span>
               </div>
             </article>
@@ -1815,7 +1879,7 @@
                   </div>
               </div>
 
-              <div class="chapter-shot shot-empfang" role="img" aria-label="Stehempfang in einer Kunsthalle">
+              <div class="chapter-shot shot-ruhe" role="img" aria-label="Frau steht ruhig, während andere vorbeieilen">
                 <span class="chapter-index" aria-hidden="true">03 / 03</span>
               </div>
             </article>
@@ -1868,7 +1932,7 @@
             Kurz beantwortet
           </div>
           <h2 id="fragen-titel">Noch ein Portal, noch ein Abo, <em>noch ein Postfach?</em></h2>
-          <div class="faq-shot" role="img" aria-label="Firmenanlass in einer Zürcher Eventlocation"></div>
+          <div class="faq-shot" role="img" aria-label="Gäste treffen zu einem Firmenanlass ein"></div>
         </div>
 
         <div class="faq reveal">
@@ -2030,14 +2094,13 @@
 
     const calmMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
-    // Lenis glaettet das Scrollen. Bewusst kurz gehalten, damit die Seite
-    // nicht nachschwingt und die scrollgesteuerten Effekte synchron bleiben.
+    // Lenis glaettet das Scrollen. Gedaempft statt zeitgesteuert, damit die
+    // Seite dem Rad direkt folgt und trotzdem weich laeuft.
     let lenis = null;
 
     if (typeof Lenis === "function" && !calmMotion.matches) {
       lenis = new Lenis({
-        duration: .85,
-        easing: (t) => 1 - Math.pow(1 - t, 3),
+        lerp: .16,
         wheelMultiplier: 1,
         touchMultiplier: 1.6,
       });
