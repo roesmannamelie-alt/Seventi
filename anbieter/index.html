@@ -926,9 +926,9 @@
     /* ---------- Scroll-Story: Kapitel wandern durch, Leiste links bleibt ---------- */
     .story {
       display: grid;
-      grid-template-columns: minmax(230px, .52fr) minmax(0, 1.48fr);
+      grid-template-columns: minmax(215px, .45fr) minmax(0, 1.55fr);
       align-items: start;
-      gap: clamp(36px, 4.5vw, 76px);
+      gap: clamp(28px, 3.4vw, 56px);
       margin-top: clamp(48px, 5vw, 76px);
     }
 
@@ -947,9 +947,9 @@
     }
 
     .story-side-title {
-      max-width: 340px;
+      max-width: 280px;
       margin: 16px 0 0;
-      font-size: clamp(26px, 2.3vw, 34px);
+      font-size: clamp(24px, 2vw, 30px);
       font-weight: 600;
       line-height: 1.12;
       letter-spacing: -.04em;
@@ -957,24 +957,26 @@
 
     .story-nav {
       --story-fill: 0px;
+      --story-top: 22px;
       position: relative;
       display: grid;
-      gap: 6px;
+      gap: 8px;
       margin-top: 36px;
-      padding-left: 26px;
+      padding-left: 34px;
     }
 
+    /* Punkt ist 14 px breit und beginnt bei 0, seine Achse liegt also bei 7 */
     .story-nav::before,
     .story-nav::after {
       content: "";
       position: absolute;
-      top: 12px;
-      left: 4px;
-      width: 2px;
-      border-radius: 2px;
+      top: var(--story-top);
+      left: 5px;
+      width: 4px;
+      border-radius: 3px;
     }
 
-    .story-nav::before { bottom: 12px; background: var(--line); }
+    .story-nav::before { bottom: var(--story-top); background: var(--line); }
 
     .story-nav::after {
       height: var(--story-fill);
@@ -983,11 +985,11 @@
 
     .story-nav button {
       position: relative;
-      padding: 9px 0;
+      padding: 11px 0;
       border: 0;
       background: transparent;
       color: #9aa294;
-      font-size: 14px;
+      font-size: 15px;
       font-weight: 600;
       text-align: left;
       cursor: pointer;
@@ -997,10 +999,11 @@
     .story-nav button::before {
       content: "";
       position: absolute;
-      top: 15px;
-      left: -26px;
-      width: 8px;
-      height: 8px;
+      top: 50%;
+      left: -34px;
+      width: 14px;
+      height: 14px;
+      margin-top: -7px;
       border-radius: 50%;
       background: #dce2d6;
       transition: background .3s ease, transform .3s ease;
@@ -1010,7 +1013,7 @@
 
     .story-nav button[aria-current="true"]::before {
       background: var(--brand-strong);
-      transform: scale(1.4);
+      transform: scale(1.28);
     }
 
     .story-nav button:focus-visible {
@@ -1026,7 +1029,7 @@
       border-radius: var(--radius-xl);
       background: var(--white);
       display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(240px, .68fr);
+      grid-template-columns: minmax(0, 1fr) minmax(285px, .82fr);
       align-items: stretch;
       gap: clamp(22px, 2.2vw, 34px);
       opacity: .5;
@@ -1038,10 +1041,12 @@
 
     .chapter:nth-child(2) { background: var(--brand-soft); }
 
+    .chapter:nth-child(2) .chapter-top h3 { background: var(--white); }
+
     .chapter-body { padding: clamp(6px, .8vw, 12px) 0 clamp(6px, .8vw, 12px) clamp(6px, .8vw, 12px); }
 
     .chapter-shot {
-      min-height: 340px;
+      min-height: 400px;
       border-radius: var(--radius-lg);
       background-color: #e7ece0;
       background-position: center;
@@ -1069,7 +1074,7 @@
       margin: 0;
       padding: 7px 13px;
       border-radius: 999px;
-      background: rgba(255, 255, 255, .8);
+      background: #eef3e4;
       color: var(--brand-dark);
       font-size: 11px;
       font-weight: 700;
@@ -1178,18 +1183,26 @@
     .closing-bed { background: #fafcf7; }
 
     .closing {
+      position: relative;
       padding: clamp(80px, 8vw, 124px) 20px;
       overflow: hidden;
       border-radius: 44px 44px 0 0;
       color: var(--white);
-      background-color: var(--dark);
-      background-image:
-        linear-gradient(rgba(16, 29, 0, .88), rgba(16, 29, 0, .93)),
-        url("../seventi-planerin.webp");
-      background-position: center;
-      background-size: cover;
+      background: var(--dark);
       text-align: center;
     }
+
+    /* feines Korn statt Foto, damit die Flaeche nicht tot wirkt */
+    .closing::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='k'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23k)'/%3E%3C/svg%3E");
+      opacity: .14;
+      pointer-events: none;
+    }
+
+    .closing .shell { position: relative; z-index: 1; }
 
     .closing h2 {
       max-width: 720px;
@@ -1845,9 +1858,7 @@
             Kurz beantwortet
           </div>
           <h2 id="fragen-titel">Noch ein Portal, noch ein Abo, <em>noch ein Postfach?</em></h2>
-          <p>Was weiter oben schon steht, wiederholen wir hier nicht. Bleiben vier Fragen.</p>
           <div class="faq-shot" role="img" aria-label="Firmenanlass in einer Zürcher Eventlocation"></div>
-          <p class="faq-note">Arbeitsstand: Weitere Fragen ergänzen wir, sobald klar ist, welche Anbieter tatsächlich stellen.</p>
         </div>
 
         <div class="faq reveal">
@@ -1893,7 +1904,6 @@
               <button class="finder-submit" type="submit">Nachsehen</button>
             </div>
 
-            <p class="finder-hint">Gefunden: übernehmen oder entfernen lassen. Nicht gefunden: Profil anlegen, rund zehn Minuten.</p>
           </form>
 
           <div class="result" id="result-end" role="status" aria-live="polite" hidden></div>
@@ -2046,10 +2056,13 @@
     if (kapitel.length && storyNav) {
       const knoepfe = [...storyNav.querySelectorAll("button")];
 
-      // Mittelpunkt eines Navigationspunktes, gemessen statt geschätzt
-      const punktMitte = (index) => knoepfe[index].offsetTop + 19;
+      // Punkt sitzt mittig im Knopf, die Achse ergibt sich also aus dessen Höhe
+      const punktMitte = (index) => knoepfe[index].offsetTop + knoepfe[index].offsetHeight / 2;
 
       const zeichnen = () => {
+        // Bahn beginnt exakt beim ersten Punkt, dann stimmt auch das Ende
+        storyNav.style.setProperty("--story-top", punktMitte(0).toFixed(1) + "px");
+
         const blickMitte = window.innerHeight / 2;
         const zentren = kapitel.map((el) => {
           const box = el.getBoundingClientRect();
@@ -2067,7 +2080,7 @@
         const unten = Math.floor(lage);
         const oben = Math.min(kapitel.length - 1, unten + 1);
         const anteil = lage - unten;
-        const hoehe = punktMitte(unten) + (punktMitte(oben) - punktMitte(unten)) * anteil - 12;
+        const hoehe = punktMitte(unten) + (punktMitte(oben) - punktMitte(unten)) * anteil - punktMitte(0);
 
         storyNav.style.setProperty("--story-fill", Math.max(0, hoehe).toFixed(1) + "px");
 
