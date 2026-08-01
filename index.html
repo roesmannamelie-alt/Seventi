@@ -55,8 +55,56 @@
       margin: 0 auto;
     }
 
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      height: 46px;
+    }
+
+    .mark {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      color: var(--ink);
+      font-family: "Fraunces", serif;
+      font-size: 19px;
+      font-weight: 500;
+      letter-spacing: -.02em;
+    }
+
+    .mark i {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--brand-strong);
+    }
+
+    .lang {
+      display: inline-flex;
+      align-items: center;
+      gap: 2px;
+      padding: 3px;
+      border-radius: 99px;
+      background: #f2f5ee;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .lang a {
+      padding: 5px 10px;
+      border-radius: 99px;
+      color: var(--muted);
+    }
+
+    .lang a[aria-current="true"] {
+      background: var(--white);
+      color: var(--ink);
+    }
+
     .hero-grid {
-      min-height: calc(100vh - 68px);
+      min-height: calc(100vh - 114px);
       margin-top: 0;
       display: grid;
       grid-template-columns: minmax(580px, 1.06fr) minmax(580px, .94fr);
@@ -819,8 +867,12 @@
 
     @media (max-width: 760px) {
       .hero {
-        padding: 68px 20px 40px;
+        padding: 18px 20px 40px;
       }
+
+      .topbar { height: 40px; }
+
+      .mark { font-size: 17px; }
 
       .intro {
         width: 100%;
@@ -1826,6 +1878,14 @@
   <main>
   <section class="hero">
     <div class="shell">
+      <header class="topbar">
+        <div class="mark">seventi<i></i></div>
+        <nav class="lang" aria-label="Sprache">
+          <a href="#" aria-current="true">DE</a>
+          <a href="#">EN</a>
+        </nav>
+      </header>
+
       <div class="hero-grid">
       <section class="intro">
         <div class="eyebrow">
@@ -2174,8 +2234,8 @@
         <a href="#">Kontakt</a>
       </nav>
 
-      <!-- Einziger Nebenausgang der Seite, Ziel folgt mit der Provider-Seite -->
-      <a class="footer-provider" href="#">
+      <!-- Einziger Nebenausgang der Seite -->
+      <a class="footer-provider" href="./provider.html">
         Sie sind Location oder Caterer?
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
       </a>

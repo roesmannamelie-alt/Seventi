@@ -321,19 +321,46 @@ Bis das da ist, arbeiten wir mit klar gekennzeichneten Platzhaltern. Kein Wert a
 
 ---
 
-## 7. Provider-Seite — drei Hero-Richtungen
+## 7. Provider-Seite
 
-Als Live-Entwürfe im Repository, Übersicht unter `entwuerfe.html`.
+Gebaut als `provider.html`, nach dem Provider-Briefing von Cody.
 
-Anbieter stellen andere Fragen als Planerinnen: *Was kostet mich das, wie viele Anfragen bekomme ich, kann ich ablehnen, wie viel Aufwand macht es.* Dazu kommt Skepsis aus schlechten Erfahrungen mit Provisionsmodellen. Alle drei Entwürfe beantworten diese vier Fragen im Hero, sie tun es nur unterschiedlich.
+### Was das Briefing geändert hat
 
-**A · Anfragen statt Akquise** — `provider-hero-a.html`
-Gleiche Komposition wie die Planner-Seite: Versprechen links, Produktobjekt rechts. Die vier Fragen stehen als Antwortliste unter dem Button, das Objekt ist eine einzelne Anfrage mit „Angebot senden" und „Passt nicht". Sicherste Variante, stärkster Zusammenhalt mit der Planner-Seite.
+Die drei ersten Hero-Entwürfe entstanden vor dem Provider-Briefing. Drei Punkte darin haben sie überholt:
 
-**B · Die vier Fragen zuerst** — `provider-hero-b.html`
-Zentriert, Fakten vor Versprechen. Vier Karten mit CHF 0, Anfragen pro Monat, 2 Minuten Aufwand, jederzeit ablehnen — als Erstes sichtbar. Die direkteste Variante gegen Provisions-Skepsis, aber die kühlste.
+1. **Die Hauptaktion ist nicht „anmelden", sondern eine Suche.** „Ist dein Betrieb schon auf Seventi?" ersetzt den Anmelde-Button. Sie löst alle drei Besuchertypen auf: bereits gelistet und per Mail eingeladen, unsicher ob gelistet, sicher nicht gelistet.
+2. **Der Nicht-Treffer ist der Hauptweg, kein Fehler.** Bei der aktuellen Datenbankgrösse findet die Suche meistens nichts. Das Ergebnis nimmt den getippten Namen direkt in das Anmeldeformular mit und liest sich als erwarteter nächster Schritt.
+3. **Beim Treffer steht offen da, woher das Profil kommt** — aus öffentlich zugänglichen Quellen — und daneben sichtbar „Eintrag entfernen". Der sichtbare Ausgang ist das, was das Angebot glaubwürdig macht, und zugleich unsere Datenschutzposition.
 
-**C · Der Anfragen-Eingang** — `provider-hero-c.html`
-Dunkel, Produktbeweis im Zentrum: offene Anfragen der Region als Liste, einsehbar ohne Anmeldung. Zeigt Volumen und Qualität, statt sie zu behaupten. Stärkstes Argument, aber nur tragfähig, wenn Seventi Anfragen tatsächlich vor der Anmeldung zeigt — das ist eine Produktfrage an Cody, keine Designfrage.
+### Was inhaltlich falsch war und korrigiert wurde
 
-Alle drei nutzen dieselben Tokens, Schriften und denselben Button wie die Planner-Seite. Zahlen, Firmenangaben und Bilder sind Platzhalter.
+| Wo | Alte Aussage | Richtig laut Briefing |
+|---|---|---|
+| Entwurf A, Headline | „Ohne Provision auf deinen Umsatz" | 10 % Kommission, wenn die Zahlung über Seventi läuft |
+| Entwurf A und B | „Profil und Anfragen kostenlos, keine Umsatzbeteiligung" | kostenlos gelistet und Anfragen erhalten, Kommission nur bei Zahlung über die Plattform |
+| Entwurf B | „14 Anfragen pro Monat" | keine Anbieter- oder Anfragezahlen nennen |
+| Entwurf B und C | „2 Minuten für ein Angebot" | rund zehn Minuten Einrichtung, danach nichts zu pflegen |
+| Entwurf C | „6 offen", „letzte 7 Tage", „drei weitere Anfragen" | keine Volumenangaben |
+| alle | „Locations und Caterer" | Locations, Catering, DJs, Technik und Fotografie |
+
+### Aufbau von `provider.html`
+
+1. **Hero** — Kernargument „Die Arbeit kommt zu dir. Schon gefiltert." Rechts eine Beispielanfrage, die zeigt, was vor dem ersten Blick schon feststeht: Datum, Personenzahl, Region, Budget, Kategorien. Darunter die Suche als einzige Hauptaktion.
+2. **Warum mitmachen** — drei Blöcke à vier Punkte: Bessere Anfragen, Kein Risiko, Kein Aufwand. Der Einwand dahinter ist immer derselbe: noch ein Portal, noch ein Abo, noch ein Postfach.
+3. **Was es kostet** — CHF 0 fürs Gelistetsein, 10 % nur bei Zahlung über Seventi, jederzeit wieder raus. Vollständig hingeschrieben statt im Kleingedruckten.
+4. **Abschluss** — dieselbe Suche noch einmal, dunkler Block.
+5. **Footer** — Rechtliches und der Quereinstieg zur Planner-Seite.
+
+### Offene Punkte
+
+- Das Briefing kündigt **vier Argumentblöcke** an und führt drei aus (Bessere Anfragen, Kein Risiko, Kein Aufwand). Wir haben drei gebaut. Falls ein vierter gemeint war, fehlt er.
+- Die Suche ist eine Vorschau ohne Datenbank. Tippt man „Beispiel", erscheint der Trefferfall, alles andere zeigt den Normalfall. Ein Hinweis darauf steht sichtbar unter dem Feld.
+- Die drei alten Hero-Entwürfe liegen weiterhin im Repository. Sie sind inhaltlich korrigiert, aber ohne den Such-Mechanismus. Sobald `provider.html` steht, können sie weg.
+
+---
+
+## 8. Beide Seiten verbinden
+
+- Der Footer der Planner-Seite führt zur Provider-Seite, der Footer der Provider-Seite zurück. Das bleibt der einzige Nebenausgang.
+- Beide Seiten haben oben rechts eine Sprachwahl DE/EN. Im Raum Zürich, Zug und Luzern arbeiten viele englischsprachige Angestellte in Unternehmen. Der Umschalter ist bisher nur die Oberfläche — die Übersetzungen kommen von Cody.
