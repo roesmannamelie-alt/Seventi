@@ -55,7 +55,7 @@ Elf Abschnitte klingen viel, sind aber überwiegend kurz. Die Seite soll sich sc
 | Hero und Abschluss | „Start in ca. 3 Minuten" | unsere Schätzung, wie lange das Briefing dauert |
 | Hero und Abschluss | „Unverbindlich und kostenlos" | Preismodell für Planerinnen ist uns nicht bestätigt |
 | Abschnitt 2, Schritt 1 | „3 Minuten" | wie oben |
-| Abschnitt 2, Schritt 2 | Zeit bis zum ersten Angebot | als offener Platzhalter gekennzeichnet |
+| Abschnitt 2, Schritt 2 | „Innerhalb einer Woche" | von uns gesetzt, muss Cody bestätigen |
 | Abschnitt 2, Kasten | Miia schlägt Anbieter zum Anschreiben vor | steht so im Briefing, Ablauf im Detail unklar |
 
 Alles andere auf der Seite beschreibt entweder die Mechanik aus dem Briefing oder den heutigen Arbeitsalltag der Zielgruppe.
@@ -116,8 +116,8 @@ Darunter drei Zahlen in einer Zeile:
 **Schritt 1 · Event beschreiben, 3 Minuten**
 Datum, Personenzahl, Region, Budget und was du brauchst. Miia fragt nach, wenn etwas fehlt. Ein Briefing, egal wie viele Anbieter du danach vergleichst.
 
-**Schritt 2 · Angebote erhalten, Zeitangabe folgt**
-Passende Locations und Caterer bewerben sich mit einem konkreten Angebot. Nachfassen musst du bei niemandem. Die Zeitspanne steht als offener Platzhalter, bis Seventi den realen Wert liefert.
+**Schritt 2 · Angebote erhalten, innerhalb einer Woche**
+Passende Locations und Caterer bewerben sich mit einem konkreten Angebot. Nachfassen musst du bei niemandem. Die Woche ist bewusst konservativ gewählt und muss von Cody bestätigt werden.
 
 **Schritt 3 · Vergleichen und buchen, wann es dir passt**
 Alle Angebote in derselben Struktur: Preis total, Preis pro Person, was inklusive ist, bis wann die Option gilt. Du buchst direkt oder lehnst ab.
