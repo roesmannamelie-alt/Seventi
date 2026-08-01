@@ -169,13 +169,69 @@
       background: var(--brand-soft);
     }
 
-    .finder-label {
-      display: block;
+    .finder-top {
+      display: flex;
+      align-items: center;
+      gap: 8px;
       margin-bottom: 12px;
+    }
+
+    .finder-label {
       font-size: 15px;
       font-weight: 700;
       letter-spacing: -.02em;
     }
+
+    .info {
+      position: relative;
+      width: 19px;
+      height: 19px;
+      flex: 0 0 19px;
+      border-radius: 50%;
+      display: grid;
+      place-content: center;
+      background: rgba(22, 40, 0, .1);
+      color: var(--brand-dark);
+      cursor: help;
+    }
+
+    .info svg {
+      width: 12px;
+      height: 12px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2.1;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .info b {
+      position: absolute;
+      bottom: calc(100% + 9px);
+      right: -8px;
+      z-index: 5;
+      width: max-content;
+      max-width: min(250px, 72vw);
+      padding: 11px 13px;
+      border-radius: 12px;
+      background: var(--white);
+      box-shadow: 0 18px 36px -18px rgba(22, 40, 0, .5);
+      color: var(--ink);
+      font-size: 11px;
+      font-weight: 500;
+      line-height: 1.55;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(4px);
+      transition: opacity .2s ease, transform .2s ease;
+    }
+
+    .info:hover b,
+    .info:focus-visible b { opacity: 1; transform: none; }
+
+    .info:focus-visible { outline: 2px solid var(--brand-strong); outline-offset: 2px; }
+
+    .closing .info { background: rgba(255, 255, 255, .16); color: var(--brand); }
 
     .finder-field {
       display: grid;
@@ -751,65 +807,107 @@
       line-height: 1.7;
     }
 
-    /* ---------- Häufige Fragen ---------- */
-    .faq {
-      width: min(820px, 100%);
-      margin: clamp(40px, 4.2vw, 60px) auto 0;
+    /* ---------- Häufige Fragen: Kopf links, Fragen rechts ---------- */
+    .faq-grid {
       display: grid;
-      gap: 8px;
+      grid-template-columns: minmax(0, .82fr) minmax(0, 1.18fr);
+      align-items: start;
+      gap: clamp(36px, 4vw, 72px);
     }
+
+    .faq-intro h2 {
+      max-width: 420px;
+      margin: 0;
+      font-size: clamp(32px, 3.3vw, 48px);
+      font-weight: 600;
+      line-height: 1.08;
+      letter-spacing: -.05em;
+    }
+
+    .faq-intro p {
+      max-width: 380px;
+      margin: 20px 0 0;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    .faq { display: grid; gap: 10px; }
 
     .faq details {
-      padding: 4px 22px;
+      padding: 0 22px;
       border-radius: var(--radius-lg);
       background: #f4f7f0;
+      transition: background-color .25s ease;
     }
 
+    .faq details[open] { background: #eef3e6; }
+
     .faq summary {
-      padding: 18px 0;
+      padding: 21px 0;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 16px;
+      gap: 20px;
       cursor: pointer;
       font-size: 15.5px;
       font-weight: 600;
       letter-spacing: -.02em;
+      line-height: 1.4;
       list-style: none;
     }
 
     .faq summary::-webkit-details-marker { display: none; }
 
-    .faq summary::after {
-      content: "";
-      width: 11px;
-      height: 11px;
-      flex: 0 0 11px;
-      border-right: 2px solid var(--brand-dark);
-      border-bottom: 2px solid var(--brand-dark);
-      transform: rotate(45deg) translate(-2px, -2px);
-      transition: transform .25s ease;
+    .faq summary:focus-visible {
+      outline: 3px solid rgba(184, 232, 0, .5);
+      outline-offset: -2px;
+      border-radius: var(--radius-lg);
     }
 
-    .faq details[open] summary::after {
-      transform: rotate(225deg) translate(-2px, -2px);
+    .faq-toggle {
+      position: relative;
+      width: 30px;
+      height: 30px;
+      flex: 0 0 30px;
+      border-radius: 50%;
+      background: var(--white);
+      transition: background-color .25s ease, transform .3s cubic-bezier(.34, 1.56, .64, 1);
+    }
+
+    .faq-toggle::before,
+    .faq-toggle::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      border-radius: 2px;
+      background: var(--brand-dark);
+      transform: translate(-50%, -50%);
+    }
+
+    .faq-toggle::before { width: 11px; height: 2px; }
+
+    .faq-toggle::after { width: 2px; height: 11px; }
+
+    .faq details[open] .faq-toggle {
+      background: var(--brand);
+      transform: rotate(45deg);
     }
 
     .faq p {
-      max-width: 640px;
-      margin: 0 0 20px;
+      max-width: 560px;
+      margin: 0 0 22px;
       color: var(--muted);
       font-size: 14px;
       line-height: 1.7;
     }
 
     .faq-note {
-      width: min(820px, 100%);
-      margin: 18px auto 0;
+      margin: 20px 0 0;
       color: #8a9382;
       font-size: 11.5px;
       line-height: 1.6;
-      text-align: center;
     }
 
     /* ---------- Drei Argumentblöcke ---------- */
@@ -1082,6 +1180,10 @@
 
       .clusters, .pricing { grid-template-columns: 1fr; }
 
+      .faq-grid { grid-template-columns: 1fr; gap: 30px; }
+
+      .faq-intro h2, .faq-intro p { max-width: 620px; }
+
       .step-grid { grid-template-columns: 1fr; gap: 30px; }
 
       .step-track {
@@ -1189,13 +1291,13 @@
 
       .step p { font-size: 13.5px; }
 
-      .faq { margin-top: 30px; }
+      .faq details { padding: 0 17px; }
 
-      .faq details { padding: 2px 18px; }
+      .faq summary { padding: 17px 0; gap: 14px; font-size: 14.5px; }
 
-      .faq summary { padding: 15px 0; font-size: 14.5px; }
+      .faq-toggle { width: 26px; height: 26px; flex: 0 0 26px; }
 
-      .faq p { font-size: 13.5px; }
+      .faq p { font-size: 13.5px; margin-bottom: 18px; }
 
       .faq-note { font-size: 11px; }
 
@@ -1253,18 +1355,23 @@
 
             <h1>Die Arbeit kommt zu dir. <em>Schon gefiltert.</em></h1>
 
-            <p class="lead">Eine Anfrage enthält Datum, Personenzahl, Region, Budget und Kategorie, bevor du sie überhaupt siehst. Du prüfst also nicht, ob sich ein Kontakt lohnt — du entscheidest nur, ob du antwortest.</p>
+            <p class="lead">Eine Anfrage enthält Datum, Personenzahl, Region, Budget und Kategorie, bevor du sie überhaupt siehst. Du prüfst also nicht, ob sich ein Kontakt lohnt. Du entscheidest nur, ob du antwortest.</p>
 
             <form class="finder" id="finder-hero" autocomplete="off">
-              <label class="finder-label" for="finder-hero-input">Ist dein Betrieb schon auf Seventi?</label>
+              <div class="finder-top">
+                <label class="finder-label" for="finder-hero-input">Ist dein Betrieb schon auf Seventi?</label>
+                <span class="info" tabindex="0" role="note" aria-label="Hinweis zur Vorschau">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5.5M12 7.6h.01"/></svg>
+                  <b>Vorschau: Die Suche ist noch nicht an die Datenbank angebunden. Tippe „Beispiel“, um den Trefferfall zu sehen, alles andere zeigt den Normalfall.</b>
+                </span>
+              </div>
 
               <div class="finder-field">
                 <input id="finder-hero-input" type="text" name="betrieb" placeholder="Name deines Betriebs" autocomplete="organization" />
                 <button class="finder-submit" type="submit">Nachsehen</button>
               </div>
 
-              <p class="finder-hint">Viele Betriebe in Zürich, Zug und Luzern haben wir aus öffentlich zugänglichen Quellen erfasst. Sieh nach, ob deiner dabei ist — beides führt weiter.</p>
-              <p class="demo-hint">Vorschau: Die Suche ist noch nicht an die Datenbank angebunden. Tippe „Beispiel“, um den Trefferfall zu sehen, alles andere zeigt den Normalfall.</p>
+              <p class="finder-hint">Viele Betriebe in Zürich, Zug und Luzern haben wir aus öffentlich zugänglichen Quellen erfasst. Sieh nach, ob deiner dabei ist. Beides führt weiter.</p>
             </form>
 
             <div class="result" id="result-hero" role="status" aria-live="polite" hidden></div>
@@ -1461,6 +1568,203 @@
     </section>
 
     <section class="section section-tint" aria-labelledby="fragen-titel">
+      <div class="shell faq-grid">
+        <div class="faq-intro reveal">
+          <div class="section-label">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M9.9 9.6a2.2 2.2 0 1 1 2.7 2.5c-.5.2-.8.6-.8 1.1v.4M12 16.5h.01"/></svg>
+            Kurz beantwortet
+          </div>
+          <h2 id="fragen-titel">Noch ein Portal, noch ein Abo, <em>noch ein Postfach?</em></h2>
+          <p>Was weiter oben schon steht, wiederholen wir hier nicht. Bleiben vier Fragen.</p>
+          <p class="faq-note">Arbeitsstand: Weitere Fragen ergänzen wir, sobald klar ist, welche Anbieter tatsächlich stellen.</p>
+        </div>
+
+        <div class="faq reveal">
+          <details open>
+            <summary>Ihr habt ein Profil über meinen Betrieb angelegt, woher kommen die Angaben?<span class="faq-toggle" aria-hidden="true"></span></summary>
+            <p>Aus öffentlich zugänglichen Informationen. Solange du es nicht bestätigt hast, gehört es niemandem. Du kannst es übernehmen und korrigieren oder vollständig entfernen lassen.</p>
+          </details>
+
+          <details>
+            <summary>Was passiert, wenn ein Auftrag zustande kommt?<span class="faq-toggle" aria-hidden="true"></span></summary>
+            <p>Du entscheidest pro Auftrag, ob die Zahlung über Seventi läuft. Tut sie es, behalten wir 10 %. Rechnest du direkt mit dem Kunden ab, fällt nichts an. Der Kunde bleibt in beiden Fällen deiner.</p>
+          </details>
+
+          <details>
+            <summary>Für welche Regionen kann ich mich eintragen?<span class="faq-toggle" aria-hidden="true"></span></summary>
+            <p>Aktuell Zürich, Zug und Luzern. Du wählst selbst aus, in welchen davon du Anfragen bekommen willst.</p>
+          </details>
+
+          <details>
+            <summary>Was gehört in ein Profil?<span class="faq-toggle" aria-hidden="true"></span></summary>
+            <p>Kategorie, Leistungen, Kapazität, Preisrahmen und Fotos. Alles davon bestimmst du, und alles lässt sich später ändern.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="ablauf-titel">
+      <div class="shell">
+        <div class="section-head reveal">
+          <div>
+            <div class="section-label">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="19" r="2.4"/><circle cx="18" cy="5" r="2.4"/><path d="M8.6 19H14a4 4 0 0 0 0-8h-4a4 4 0 0 1 0-8h5.4"/></svg>
+              So läuft es ab
+            </div>
+            <h2 id="ablauf-titel">Einmal einrichten. <em>Danach entscheidest du nur noch.</em></h2>
+          </div>
+          <p class="section-lead">Kein Postfach mehr, das du pflegen musst. Nach dem Profil passiert der Rest von selbst.</p>
+        </div>
+
+        <div class="step-grid">
+          <span class="step-track" aria-hidden="true"><i></i></span>
+
+          <article class="step">
+            <span class="step-index"><b>01</b><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h4l10-10a2.5 2.5 0 0 0-3.5-3.5L4.5 16.5V20Z"/><path d="M13.5 7.5 16.5 10.5"/></svg></span>
+            <span class="step-time"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v5.2l3.2 2"/></svg>Rund 10 Minuten</span>
+            <h3>Profil anlegen oder übernehmen</h3>
+            <p>Kategorie, Regionen, Kapazität, Preisrahmen und Fotos. Danach gibt es nichts zu pflegen.</p>
+          </article>
+
+          <article class="step">
+            <span class="step-index"><b>02</b><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16v12H4z"/><path d="m4 7 8 6 8-6"/></svg></span>
+            <span class="step-time"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v5.2l3.2 2"/></svg>Läuft von selbst</span>
+            <h3>Passende Anfragen kommen per E-Mail</h3>
+            <p>Gefiltert nach Kategorie, Region, Datum und Kapazität. Was nicht zu dir passt, erreicht dich gar nicht erst.</p>
+          </article>
+
+          <article class="step">
+            <span class="step-index"><b>03</b><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v16M5 8h14M7.5 8 5 14h5ZM16.5 8 14 14h5Z"/></svg></span>
+            <span class="step-time"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v5.2l3.2 2"/></svg>Wann es dir passt</span>
+            <h3>Antworten oder ablehnen</h3>
+            <p>Keine Antwortpflicht. Absagen kosten weder Bewertung noch Sichtbarkeit. Im Dashboard verwaltest du Anfragen und Termine, wenn du magst.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-tint" aria-labelledby="gruende-titel">
+      <div class="shell">
+        <div class="section-head reveal">
+          <div>
+            <div class="section-label">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M7 12h10M10 18h4"/></svg>
+              Warum mitmachen
+            </div>
+            <h2 id="gruende-titel">Kein Portal mehr, das <em>Arbeit macht statt bringt.</em></h2>
+          </div>
+          <p class="section-lead">Der Unterschied zu Verzeichnis, Kontaktformular und Google: Was bei dir ankommt, passt bereits zu Termin, Kapazität und Preisrahmen.</p>
+        </div>
+
+        <div class="clusters">
+          <article class="cluster reveal">
+            <span class="cluster-title">Bessere Anfragen</span>
+            <ul>
+              <li>
+                <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l4 4L19 6"/></svg></span>
+                <span><strong>Nur, was du erfüllen kannst</strong>Gefiltert nach Kategorie, Region, Datum und Kapazität, bevor dich etwas erreicht.</span>
+              </li>
+              <li>
+                <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l4 4L19 6"/></svg></span>
+                <span><strong>Budget steht drin</strong>Du kalkulierst gegen eine bekannte Zahl, statt zu raten und zu hoffen.</span>
+              </li>
+              <li>
+                <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l4 4L19 6"/></svg></span>
+                <span><strong>Der Anlass ist beschlossen</strong>Wer ein Briefing abschickt, führt das Event durch und vergleicht nicht nur Preise.</span>
+              </li>
+              <li>
+                <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l4 4L19 6"/></svg></span>
+                <span><strong>Weniger Hin und Her</strong>Was du sonst per Mail erfragst, steht schon in der Anfrage.</span>
+              </li>
+            </ul>
+          </article>
+
+          <article class="cluster reveal">
+            <span class="cluster-title">Kein Risiko</span>
+            <ul>
+              <li>
+                <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l4 4L19 6"/></svg></span>
+                <span><strong>Gelistet sein kostet nichts</strong>Auch Anfragen zu erhalten und Angebote zu senden kostet nichts.</span>
+              </li>
+              <li>
+                <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l4 4L19 6"/></svg></span>
+                <span><strong>Der Kunde bleibt deiner</strong>Nach dem Match steht Seventi nicht zwischen dir und ihm.</span>
+              </li>
+              <li>
+                <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l4 4L19 6"/></svg></span>
+                <span><strong>10 % nur bei Zahlung über Seventi</strong>Ob die Zahlung über uns läuft, entscheidest du. Sonst fällt keine Kommission an.</span>
+              </li>
+              <li>
+                <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l4 4L19 6"/></svg></span>
+                <span><strong>Keine Exklusivität, kein Minimum</strong>Keine Bindung, und den Eintrag kannst du jederzeit entfernen lassen.</span>
+              </li>
+            </ul>
+          </article>
+
+          <article class="cluster reveal">
+            <span class="cluster-title">Kein Aufwand</span>
+            <ul>
+              <li>
+                <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l4 4L19 6"/></svg></span>
+                <span><strong>Rund zehn Minuten einrichten</strong>Danach gibt es nichts zu pflegen.</span>
+              </li>
+              <li>
+                <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l4 4L19 6"/></svg></span>
+                <span><strong>Anfragen kommen per E-Mail</strong>Im Dashboard verwaltest du Anfragen, Termine und offene Aufgaben, wenn du magst.</span>
+              </li>
+              <li>
+                <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l4 4L19 6"/></svg></span>
+                <span><strong>Du wählst aus</strong>Keine Antwortpflicht. Absagen kosten weder Bewertung noch Sichtbarkeit.</span>
+              </li>
+              <li>
+                <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l4 4L19 6"/></svg></span>
+                <span><strong>Das Profil gehört dir</strong>Fotos, Leistungen, Kapazität und Preisrahmen bestimmst du.</span>
+              </li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="kosten-titel">
+      <div class="shell">
+        <div class="section-head reveal">
+          <div>
+            <div class="section-label">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M14.5 9.5H11a1.8 1.8 0 0 0 0 3.6h2a1.8 1.8 0 0 1 0 3.6H9.5M12 8v9"/></svg>
+              Was es kostet
+            </div>
+            <h2 id="kosten-titel">Kein Abo. <em>Und eine Kommission, die du umgehen kannst.</em></h2>
+          </div>
+          <p class="section-lead">Wir schreiben es lieber vollständig hin, als dass du es später im Kleingedruckten findest.</p>
+        </div>
+
+        <div class="pricing">
+          <article class="price reveal">
+            <span class="price-value">CHF 0</span>
+            <strong>Gelistet sein und Anfragen erhalten</strong>
+            <p>Profil anlegen, Anfragen bekommen, Angebote senden. Dafür zahlst du nichts, unabhängig davon, wie viele Aufträge daraus werden.</p>
+          </article>
+
+          <article class="price reveal">
+            <span class="price-value">10 %</span>
+            <strong>Nur bei Zahlung über Seventi</strong>
+            <p>Wickelst du die Zahlung über die Plattform ab, behalten wir 10 % ein. Rechnest du direkt mit dem Kunden ab, fällt nichts an. Die Entscheidung liegt bei dir, pro Auftrag.</p>
+          </article>
+
+          <article class="price reveal">
+            <span class="price-value">Jederzeit</span>
+            <strong>Wieder raus</strong>
+            <p>Keine Exklusivität, kein Mindestumsatz, keine Kündigungsfrist. Auch einen Eintrag, den wir aus öffentlichen Quellen erstellt haben, entfernen wir auf Zuruf.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-tint" aria-labelledby="fragen-titel">
       <div class="shell">
         <div class="section-head reveal">
           <div>
@@ -1475,7 +1779,7 @@
 
         <div class="faq reveal">
           <details>
-            <summary>Ihr habt ein Profil über meinen Betrieb angelegt — woher kommen die Angaben?</summary>
+            <summary>Ihr habt ein Profil über meinen Betrieb angelegt, woher kommen die Angaben?</summary>
             <p>Aus öffentlich zugänglichen Informationen. Solange du es nicht bestätigt hast, gehört es niemandem. Du kannst es übernehmen und korrigieren oder vollständig entfernen lassen.</p>
           </details>
 
@@ -1495,7 +1799,13 @@
           <h2 id="abschluss-titel">Sieh zuerst nach, <em>ob es dich schon gibt.</em></h2>
 
           <form class="finder" id="finder-end" autocomplete="off">
-            <label class="finder-label" for="finder-end-input">Ist dein Betrieb schon auf Seventi?</label>
+            <div class="finder-top">
+              <label class="finder-label" for="finder-end-input">Ist dein Betrieb schon auf Seventi?</label>
+              <span class="info" tabindex="0" role="note" aria-label="Hinweis zur Vorschau">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5.5M12 7.6h.01"/></svg>
+                <b>Vorschau: Die Suche ist noch nicht an die Datenbank angebunden. Tippe „Beispiel“, um den Trefferfall zu sehen, alles andere zeigt den Normalfall.</b>
+              </span>
+            </div>
 
             <div class="finder-field">
               <input id="finder-end-input" type="text" name="betrieb" placeholder="Name deines Betriebs" autocomplete="organization" />
@@ -1503,7 +1813,6 @@
             </div>
 
             <p class="finder-hint">Gefunden: übernehmen oder entfernen lassen. Nicht gefunden: Profil anlegen, rund zehn Minuten.</p>
-            <p class="demo-hint">Vorschau: Die Suche ist noch nicht an die Datenbank angebunden.</p>
           </form>
 
           <div class="result" id="result-end" role="status" aria-live="polite" hidden></div>
@@ -1541,7 +1850,7 @@
       return `
         <span class="result-tag">Noch nicht gelistet</span>
         <h3>„${name}" haben wir noch nicht.</h3>
-        <p>Das ist der Normalfall — wir bauen das Verzeichnis gerade auf. Leg dein Profil in rund zehn Minuten selbst an, danach gibt es nichts zu pflegen.</p>
+        <p>Das ist der Normalfall, wir bauen das Verzeichnis gerade auf. Leg dein Profil in rund zehn Minuten selbst an, danach gibt es nichts zu pflegen.</p>
         <div class="mini-form">
           <label>Betrieb
             <input type="text" value="${name}" />
@@ -1579,7 +1888,7 @@
       return `
         <span class="result-tag"><i></i>Eintrag gefunden</span>
         <h3>${name}</h3>
-        <p>Dieses Profil haben wir aus öffentlich zugänglichen Informationen erstellt, es ist noch von niemandem bestätigt. Du kannst es übernehmen und ergänzen — oder es entfernen lassen, dann verschwindet es vollständig.</p>
+        <p>Dieses Profil haben wir aus öffentlich zugänglichen Informationen erstellt, es ist noch von niemandem bestätigt. Du kannst es übernehmen und ergänzen oder es entfernen lassen. Dann verschwindet es vollständig.</p>
         <div class="result-actions">
           <button class="btn-primary" type="button">Profil übernehmen</button>
           <button class="btn-ghost" type="button">Eintrag entfernen</button>

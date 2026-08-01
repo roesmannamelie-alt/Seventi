@@ -70,13 +70,15 @@ Alles andere auf der Seite beschreibt entweder die Mechanik aus dem Briefing ode
 - **Bewegung folgt dem Scrollen.** Abschnitt 2 hat eine durchgehende Linie über alle drei Schritte, die sich beim Scrollen füllt; die Schrittnummern schalten mit und zeigen beim Hover ein passendes Icon. Abschnitt 3 wird über einen Tab umgeschaltet: „Heute" und „Mit Seventi" tauschen dieselbe Karte per Überblendung, der Abschnittskopf steht mittig. Bei `prefers-reduced-motion` steht alles sofort im Endzustand.
 - **Anlass-Pills** liegen im Glaslook mit weisser Schrift auf dem Bild, weichen der Maus leicht aus und zeigen beim Hover den typischen Bedarf.
 - **Hervorgehobene Kästen bleiben schmal und mittig**, nicht über die volle Breite gezogen.
+- **Keine Gedankenstriche im Fliesstext.** Wo einer stehen würde, tut es ein Komma, ein Doppelpunkt oder ein Punkt.
+- **Arbeitshinweise stehen hinter einem Info-Icon**, nicht als Dauertext unter dem Element. Sichtbar bleiben nur Hinweise, die auch in der fertigen Fassung stehen sollen.
 - **Ein FAQ enthält nur Fragen, die kein anderer Abschnitt schon beantwortet.** Wiederholung macht die Seite lang, ohne einen Einwand zusätzlich auszuräumen. Fehlt uns die Antwort noch, steht die Frage im Konzept und nicht auf der Seite.
 
 ---
 
 ## 3. Die Abschnitte im Einzelnen
 
-### 1 — Vertrauensleiste
+### 1 · Vertrauensleiste
 
 **Aufgabe:** Innerhalb der ersten Sekunde nach dem Hero zeigen, dass hier bereits Firmen buchen. Schmal, ruhig, kein eigener Abschnitt mit großer Headline.
 
@@ -84,7 +86,7 @@ Alles andere auf der Seite beschreibt entweder die Mechanik aus dem Briefing ode
 
 > Bereits im Einsatz bei Teams in Zürich, Zug und Luzern
 
-Fünf Logo-Plätze *(Platzhalter, echte Logos von Cody — Freigabe der Firmen nötig)*
+Fünf Logo-Plätze *(Platzhalter, echte Logos von Cody, Freigabe der Firmen nötig)*
 
 Darunter drei Zahlen in einer Zeile:
 
@@ -94,11 +96,11 @@ Darunter drei Zahlen in einer Zeile:
 
 **Gestaltung:** helle Fläche, Logos einfarbig in Graugrün, Zahlen in Fraunces. Höhe ca. 140 px Desktop.
 
-**Wenn Cody keine Logos freigeben kann:** Zahlenzeile allein, dafür größer. Nie Platzhalter-Logos stehen lassen — lieber weniger als erfunden.
+**Wenn Cody keine Logos freigeben kann:** Zahlenzeile allein, dafür größer. Nie Platzhalter-Logos stehen lassen, lieber weniger als erfunden.
 
 ---
 
-### 2 — So läuft es ab
+### 2 · So läuft es ab
 
 **Aufgabe:** Der wichtigste Abschnitt der Seite. Er nimmt die Unsicherheit, die bei Marktplätzen zum Absprung führt, und er tut es mit ehrlichen Zeitangaben.
 
@@ -106,13 +108,13 @@ Darunter drei Zahlen in einer Zeile:
 
 > Drei Schritte. Der erste dauert drei Minuten.
 
-**Schritt 1 · Event beschreiben — 3 Minuten**
+**Schritt 1 · Event beschreiben, 3 Minuten**
 Datum, Personenzahl, Region, Budget und was du brauchst. Miia fragt nach, wenn etwas fehlt. Ein Briefing, egal wie viele Anbieter du danach vergleichst.
 
-**Schritt 2 · Angebote erhalten — Zeitangabe folgt**
+**Schritt 2 · Angebote erhalten, Zeitangabe folgt**
 Passende Locations und Caterer bewerben sich mit einem konkreten Angebot. Nachfassen musst du bei niemandem. Die Zeitspanne steht als offener Platzhalter, bis Seventi den realen Wert liefert.
 
-**Schritt 3 · Vergleichen und buchen — wann es dir passt**
+**Schritt 3 · Vergleichen und buchen, wann es dir passt**
 Alle Angebote in derselben Struktur: Preis total, Preis pro Person, was inklusive ist, bis wann die Option gilt. Du buchst direkt oder lehnst ab.
 
 **Direkt darunter, klein, aber nicht versteckt:**
@@ -126,7 +128,7 @@ Dieser Kasten ist der Grund, warum der Abschnitt an zweiter Stelle steht. Genau 
 
 ---
 
-### 3 — Vergleich zum heutigen Vorgehen
+### 3 · Vergleich zum heutigen Vorgehen
 
 **Aufgabe:** Sie erkennt ihren Arbeitsalltag wieder. Das ist der Abschnitt, der emotional trägt, ohne emotional zu werden.
 
@@ -152,9 +154,9 @@ Dieser Kasten ist der Grund, warum der Abschnitt an zweiter Stelle steht. Genau 
 
 ---
 
-### 4 — Der Angebotsvergleich
+### 4 · Der Angebotsvergleich
 
-**Aufgabe:** Zeigen, was sie am Ende in der Hand hält. Das ist auch das, was sie ihrer Geschäftsleitung vorlegt — ein unterschätztes Kaufargument in dieser Rolle.
+**Aufgabe:** Zeigen, was sie am Ende in der Hand hält. Das ist auch das, was sie ihrer Geschäftsleitung vorlegt, ein unterschätztes Kaufargument in dieser Rolle.
 
 **Headline**
 
@@ -162,7 +164,7 @@ Dieser Kasten ist der Grund, warum der Abschnitt an zweiter Stelle steht. Genau 
 
 **Text**
 
-> Jeder Anbieter antwortet in derselben Struktur. Du siehst Preis pro Person, was inklusive ist und bis wann die Option gilt — und exportierst den Vergleich als PDF für die Freigabe.
+> Jeder Anbieter antwortet in derselben Struktur. Du siehst Preis pro Person, was inklusive ist und bis wann die Option gilt, und exportierst den Vergleich als PDF für die Freigabe.
 
 **Visual:** Vergleichsansicht mit drei Angeboten nebeneinander. Zeilen: Preis total, Preis pro Person, Räumlichkeit, Catering, Technik, ÖV-Anbindung, Storno, gültig bis. *(Bildplatzhalter, später echter Produkt-Screenshot oder nachgebaute Ansicht.)*
 
@@ -170,7 +172,7 @@ Dieser Kasten ist der Grund, warum der Abschnitt an zweiter Stelle steht. Genau 
 
 ---
 
-### 5 — Für welche Anlässe
+### 5 · Für welche Anlässe
 
 **Aufgabe:** Qualifizierung, kein Inspirationskatalog. Sie soll ihr Event wiedererkennen, nicht ein neues suchen. Das ist der Abschnitt, den die aktuelle Seite mit „Explore popular event ideas" falsch löst.
 
@@ -187,11 +189,11 @@ Dieser Kasten ist der Grund, warum der Abschnitt an zweiter Stelle steht. Genau 
 - Generalversammlung und Konferenz · 80–500 Personen
 - Firmenjubiläum · 100–400 Personen
 
-**Gestaltung:** Text-Kacheln mit dünner Linie, ohne Fotos, ohne Grill- und Disco-Icons. Wenn Bilder, dann Innenräume ohne Menschen. Die Größenangabe ist wichtiger als das Bild — sie beantwortet nebenbei „passt meine Personenzahl?".
+**Gestaltung:** Text-Kacheln mit dünner Linie, ohne Fotos, ohne Grill- und Disco-Icons. Wenn Bilder, dann Innenräume ohne Menschen. Die Größenangabe ist wichtiger als das Bild, sie beantwortet nebenbei „passt meine Personenzahl?".
 
 ---
 
-### 6 — Anbieter und Regionen
+### 6 · Anbieter und Regionen
 
 **Aufgabe:** Die zweite große Unsicherheitsfrage: Gibt es bei mir überhaupt genug Auswahl?
 
@@ -202,7 +204,7 @@ Dieser Kasten ist der Grund, warum der Abschnitt an zweiter Stelle steht. Genau 
 **Regionsliste mit Zahlen** *(Werte von Cody)*
 Zürich 142 · Zug 38 · Luzern 44 · Aargau 51 · St. Gallen 29 · Basel 63 · Bern 57 · Innerschweiz 26
 
-**Was „geprüft" heißt — drei Punkte:**
+**Was „geprüft" heißt, drei Punkte:**
 - Handelsregistereintrag und Firmensitz geprüft
 - Mindestens ein durchgeführtes Firmenevent nachgewiesen
 - Antwortzeit und Zusagequote werden gemessen und sind im Profil sichtbar
@@ -211,7 +213,7 @@ Zürich 142 · Zug 38 · Luzern 44 · Aargau 51 · St. Gallen 29 · Basel 63 · 
 
 ---
 
-### 7 — Ein Ablauf im Detail
+### 7 · Ein Ablauf im Detail
 
 **Aufgabe:** Beweis statt Behauptung. Ein einziges Beispiel, mit Uhrzeiten.
 
@@ -220,21 +222,21 @@ Zürich 142 · Zug 38 · Luzern 44 · Aargau 51 · St. Gallen 29 · Basel 63 · 
 > Sommerfest, 140 Personen, Zürich West.
 
 **Zeitachse**
-- **Dienstag, 14:20** — Briefing bei Miia, 4 Minuten
-- **Mittwoch, 09:10** — erstes Angebot
-- **Donnerstag** — fünf Angebote, alle vergleichbar
-- **Montag** — gebucht
+- **Dienstag, 14:20**, Briefing bei Miia, 4 Minuten
+- **Mittwoch, 09:10**, erstes Angebot
+- **Donnerstag**, fünf Angebote, alle vergleichbar
+- **Montag**, gebucht
 
-**Zitat** *(nur wenn echt — Cody muss ein freigegebenes Zitat liefern)*
+**Zitat** *(nur wenn echt, Cody muss ein freigegebenes Zitat liefern)*
 
 > „Am Donnerstag hatte ich fünf Angebote auf dem Tisch und musste keinem hinterhertelefonieren."
 > Assistenz der Geschäftsleitung, Industrieunternehmen mit 240 Mitarbeitenden
 
-**Wichtig:** Wenn kein freigegebenes Zitat kommt, bleibt die Zeitachse allein stehen. Keine erfundenen Testimonials und keine Stock-Avatare — bei dieser Zielgruppe fällt das sofort auf und kostet mehr, als es bringt.
+**Wichtig:** Wenn kein freigegebenes Zitat kommt, bleibt die Zeitachse allein stehen. Keine erfundenen Testimonials und keine Stock-Avatare, bei dieser Zielgruppe fällt das sofort auf und kostet mehr, als es bringt.
 
 ---
 
-### 8 — Was es kostet
+### 8 · Was es kostet
 
 **Aufgabe:** Den vermuteten Haken auflösen, bevor er im Kopf entsteht. Kurz, ein Kasten.
 
@@ -244,13 +246,13 @@ Zürich 142 · Zug 38 · Luzern 44 · Aargau 51 · St. Gallen 29 · Basel 63 · 
 
 **Text**
 
-> Anfragen, Angebote und Buchung sind für planende Unternehmen kostenlos. Seventi verdient auf der Anbieterseite. Ein Briefing ist keine Buchung — du kannst jedes Angebot ablehnen.
+> Anfragen, Angebote und Buchung sind für planende Unternehmen kostenlos. Seventi verdient auf der Anbieterseite. Ein Briefing ist keine Buchung, du kannst jedes Angebot ablehnen.
 
 *(Geschäftsmodell muss Cody bestätigen, bevor dieser Abschnitt live geht.)*
 
 ---
 
-### 9 — Häufige Fragen
+### 9 · Häufige Fragen
 
 **Aufgabe:** Alles auffangen, was sonst zum Absprung führt. Aufklappbar, sieben bis neun Fragen, Antworten in zwei bis drei Sätzen.
 
@@ -268,7 +270,7 @@ Frage 5, 7 und 8 kommen aus der konkreten Rolle: Sie darf oft nicht öffentlich 
 
 ---
 
-### 10 — Abschluss-CTA
+### 10 · Abschluss-CTA
 
 **Aufgabe:** Letzter Einstieg für alle, die bis unten gelesen haben. Wiederholt das Hero-Versprechen mit anderen Worten, ohne neuen Hype.
 
@@ -279,7 +281,7 @@ Frage 5, 7 und 8 kommen aus der konkreten Rolle: Sie darf oft nicht öffentlich 
 
 ---
 
-### 11 — Footer
+### 11 · Footer
 
 Minimal: Impressum, Datenschutz, Kontakt, Sprachwahl. Dazu der einzige Nebenausgang der Seite:
 
@@ -291,7 +293,7 @@ Minimal: Impressum, Datenschutz, Kontakt, Sprachwahl. Dazu der einzige Nebenausg
 
 Nach dem Hero kommt zuerst der Beweis, dass andere Firmen das nutzen (1), dann sofort der Ablauf mit Zeitangaben (2). Das ist bewusst früh: Wer nach dem Hero weiterscrollt, tut das mit der Frage „und dann?". Erst danach kommt der Vergleich zum bisherigen Vorgehen (3), der überzeugt nur jemanden, der die Mechanik schon verstanden hat.
 
-Die Abschnitte 4 bis 7 sind Beweismaterial in absteigender Wichtigkeit. Kosten (8) und FAQ (9) stehen bewusst spät — sie werden nur von denen gelesen, die kurz vor der Anmeldung noch einen Einwand haben.
+Die Abschnitte 4 bis 7 sind Beweismaterial in absteigender Wichtigkeit. Kosten (8) und FAQ (9) stehen bewusst spät, sie werden nur von denen gelesen, die kurz vor der Anmeldung noch einen Einwand haben.
 
 Sollte Material fehlen, sind 5, 6 und 7 die Abschnitte, die man ohne großen Schaden weglassen kann. 2 und 8 nicht.
 
@@ -315,9 +317,9 @@ Bis das da ist, arbeiten wir mit klar gekennzeichneten Platzhaltern. Kein Wert a
 
 ## 6. Offene Entscheidungen
 
-**Du oder Sie.** Der bestehende Hero duzt. Für eine Assistenz der Geschäftsleitung im Schweizer B2B-Umfeld ist „Sie" der sichere Standard, „du" wirkt moderner und passt zum KI-Assistenten. Das muss einheitlich entschieden werden, bevor wir die Abschnitte texten — die Umstellung später ist zwar mechanisch, aber sie betrifft jeden Satz. **Empfehlung: bei „du" bleiben**, weil das Produkt selbst über einen Assistenten läuft und die Seite sonst distanzierter wirkt als das Produkt dahinter.
+**Du oder Sie.** Der bestehende Hero duzt. Für eine Assistenz der Geschäftsleitung im Schweizer B2B-Umfeld ist „Sie" der sichere Standard, „du" wirkt moderner und passt zum KI-Assistenten. Das muss einheitlich entschieden werden, bevor wir die Abschnitte texten, die Umstellung später ist zwar mechanisch, aber sie betrifft jeden Satz. **Empfehlung: bei „du" bleiben**, weil das Produkt selbst über einen Assistenten läuft und die Seite sonst distanzierter wirkt als das Produkt dahinter.
 
-**Logo im Hero.** Die Planner-Seite hat aktuell oben links keine Wortmarke. Auf einer Landingpage aus einer Anzeige ist mindestens die Marke sinnvoll, damit erkennbar ist, wo man gelandet ist — ohne Menü. In den Provider-Entwürfen ist sie testweise gesetzt. Sollten wir für beide Seiten gleich lösen.
+**Logo im Hero.** Die Planner-Seite hat aktuell oben links keine Wortmarke. Auf einer Landingpage aus einer Anzeige ist mindestens die Marke sinnvoll, damit erkennbar ist, wo man gelandet ist, ohne Menü. In den Provider-Entwürfen ist sie testweise gesetzt. Sollten wir für beide Seiten gleich lösen.
 
 **Sprachversionen.** Cody liefert Übersetzungen. Layout muss längere französische Zeilen aushalten: Headline und Button auf mindestens +25 % Textlänge prüfen.
 
@@ -333,7 +335,7 @@ Die drei ersten Hero-Entwürfe entstanden vor dem Provider-Briefing. Drei Punkte
 
 1. **Die Hauptaktion ist nicht „anmelden", sondern eine Suche.** „Ist dein Betrieb schon auf Seventi?" ersetzt den Anmelde-Button. Sie löst alle drei Besuchertypen auf: bereits gelistet und per Mail eingeladen, unsicher ob gelistet, sicher nicht gelistet.
 2. **Der Nicht-Treffer ist der Hauptweg, kein Fehler.** Bei der aktuellen Datenbankgrösse findet die Suche meistens nichts. Das Ergebnis nimmt den getippten Namen direkt in das Anmeldeformular mit und liest sich als erwarteter nächster Schritt.
-3. **Beim Treffer steht offen da, woher das Profil kommt** — aus öffentlich zugänglichen Quellen — und daneben sichtbar „Eintrag entfernen". Der sichtbare Ausgang ist das, was das Angebot glaubwürdig macht, und zugleich unsere Datenschutzposition.
+3. **Beim Treffer steht offen da, woher das Profil kommt**, aus öffentlich zugänglichen Quellen, und daneben sichtbar „Eintrag entfernen". Der sichtbare Ausgang ist das, was das Angebot glaubwürdig macht, und zugleich unsere Datenschutzposition.
 
 ### Was inhaltlich falsch war und korrigiert wurde
 
@@ -348,26 +350,26 @@ Die drei ersten Hero-Entwürfe entstanden vor dem Provider-Briefing. Drei Punkte
 
 ### Aufbau von `provider.html`
 
-0. **Gewählt: Richtung A** — Versprechen links, die Anfrage als Produktobjekt rechts. Die Karte füllt sich Feld für Feld, damit sichtbar wird, was vor dem ersten Blick schon feststeht.
-1. **Hero** — Kernargument „Die Arbeit kommt zu dir. Schon gefiltert." Rechts eine Beispielanfrage, die zeigt, was vor dem ersten Blick schon feststeht: Datum, Personenzahl, Region, Budget, Kategorien. Darunter die Suche als einzige Hauptaktion.
-2. **So läuft es ab** — drei Schritte mit derselben Fortschrittslinie wie auf der Planner-Seite: einrichten, Anfragen per E-Mail, antworten oder ablehnen.
-3. **Warum mitmachen** — drei Blöcke à vier Punkte: Bessere Anfragen, Kein Risiko, Kein Aufwand. Der Einwand dahinter ist immer derselbe: noch ein Portal, noch ein Abo, noch ein Postfach.
-4. **Was es kostet** — CHF 0 fürs Gelistetsein, 10 % nur bei Zahlung über Seventi, jederzeit wieder raus. Vollständig hingeschrieben statt im Kleingedruckten.
-5. **Häufige Fragen** — bewusst nur zwei: die Herkunft der öffentlich erstellten Profile und was bei einem Auftrag passiert. Alles andere beantworten die Argumentblöcke schon, und das Briefing will, dass die Seite sich leicht anfühlt statt lang zu erklären. Ein sichtbarer Hinweis unter dem Abschnitt hält fest, dass weitere Fragen ergänzt werden, sobald klar ist, welche Anbieter tatsächlich stellen.
-6. **Abschluss** — dieselbe Suche noch einmal, dunkler Block.
-7. **Footer** — Rechtliches und der Quereinstieg zur Planner-Seite.
+0. **Gewählt: Richtung A**, Versprechen links, die Anfrage als Produktobjekt rechts. Die Karte füllt sich Feld für Feld, damit sichtbar wird, was vor dem ersten Blick schon feststeht.
+1. **Hero**, Kernargument „Die Arbeit kommt zu dir. Schon gefiltert." Rechts eine Beispielanfrage, die zeigt, was vor dem ersten Blick schon feststeht: Datum, Personenzahl, Region, Budget, Kategorien. Darunter die Suche als einzige Hauptaktion.
+2. **So läuft es ab**, drei Schritte mit derselben Fortschrittslinie wie auf der Planner-Seite: einrichten, Anfragen per E-Mail, antworten oder ablehnen.
+3. **Warum mitmachen**, drei Blöcke à vier Punkte: Bessere Anfragen, Kein Risiko, Kein Aufwand. Der Einwand dahinter ist immer derselbe: noch ein Portal, noch ein Abo, noch ein Postfach.
+4. **Was es kostet**, CHF 0 fürs Gelistetsein, 10 % nur bei Zahlung über Seventi, jederzeit wieder raus. Vollständig hingeschrieben statt im Kleingedruckten.
+5. **Häufige Fragen**, bewusst kurz: Herkunft der öffentlich erstellten Profile, Ablauf bei einem Auftrag, abgedeckte Regionen und Inhalt eines Profils. Alles andere beantworten die Argumentblöcke schon, und das Briefing will, dass die Seite sich leicht anfühlt statt lang zu erklären. Der Abschnitt steht zweispaltig: Kopf links, aufklappbare Fragen rechts. Ein Hinweis im Kopf hält fest, dass weitere Fragen ergänzt werden, sobald klar ist, welche Anbieter tatsächlich stellen.
+6. **Abschluss**, dieselbe Suche noch einmal, dunkler Block.
+7. **Footer**, Rechtliches und der Quereinstieg zur Planner-Seite.
 
 ### Zum FAQ
 
 Ein FAQ steht in keinem der beiden Briefings. Das Provider-Briefing überlässt den Aufbau ausdrücklich uns („you are free to use your experience and expertise on what you feel is best"), gibt aber eine Richtung vor, die dagegen spricht: Die Antworten auf Kosten, Aufwand und Ausstieg sollen sich in der Seite *anfühlen*, nicht bloss behauptet werden. Ein langes FAQ ist das Gegenteil davon.
 
-Auf der Planner-Seite liegt der Fall anders. Dort fängt Abschnitt 9 Fragen auf, die aus der Rolle der Planerin kommen und sonst nirgends stehen: ob ihr Firmenname für alle sichtbar ist, was passiert, wenn Datum und Personenzahl noch nicht feststehen, und ob sie den Angebotsvergleich als PDF für die interne Freigabe exportieren kann. Das sind echte Absprunggründe, keine Wiederholung — gebaut wird der Abschnitt, sobald Cody die Antworten liefert.
+Auf der Planner-Seite liegt der Fall anders. Dort fängt Abschnitt 9 Fragen auf, die aus der Rolle der Planerin kommen und sonst nirgends stehen: ob ihr Firmenname für alle sichtbar ist, was passiert, wenn Datum und Personenzahl noch nicht feststehen, und ob sie den Angebotsvergleich als PDF für die interne Freigabe exportieren kann. Das sind echte Absprunggründe, keine Wiederholung, gebaut wird der Abschnitt, sobald Cody die Antworten liefert.
 
 ### Offene Punkte
 
 - Das Briefing kündigt **vier Argumentblöcke** an und führt drei aus (Bessere Anfragen, Kein Risiko, Kein Aufwand). Wir haben drei gebaut. Falls ein vierter gemeint war, fehlt er.
 - Die Suche ist eine Vorschau ohne Datenbank. Tippt man „Beispiel", erscheint der Trefferfall, alles andere zeigt den Normalfall. Ein Hinweis darauf steht sichtbar unter dem Feld.
-- „Jederzeit pausieren" stand in allen drei früheren Entwürfen und ist entfernt. Das Briefing nennt nur „no exclusivity, no minimum, no lock-in" und das Entfernen des Eintrags — eine Pausier-Funktion ist nicht bestätigt.
+- „Jederzeit pausieren" stand in allen drei früheren Entwürfen und ist entfernt. Das Briefing nennt nur „no exclusivity, no minimum, no lock-in" und das Entfernen des Eintrags, eine Pausier-Funktion ist nicht bestätigt.
 - Die drei alten Hero-Entwürfe liegen weiterhin im Repository. Sie sind inhaltlich korrigiert, aber ohne den Such-Mechanismus. Sobald `provider.html` steht, können sie weg.
 
 ---
@@ -375,4 +377,4 @@ Auf der Planner-Seite liegt der Fall anders. Dort fängt Abschnitt 9 Fragen auf,
 ## 8. Beide Seiten verbinden
 
 - Der Footer der Planner-Seite führt zur Provider-Seite, der Footer der Provider-Seite zurück. Das bleibt der einzige Nebenausgang.
-- Beide Seiten haben oben rechts eine Sprachwahl DE/EN. Im Raum Zürich, Zug und Luzern arbeiten viele englischsprachige Angestellte in Unternehmen. Der Umschalter ist bisher nur die Oberfläche — die Übersetzungen kommen von Cody.
+- Beide Seiten haben oben rechts eine Sprachwahl DE/EN. Im Raum Zürich, Zug und Luzern arbeiten viele englischsprachige Angestellte in Unternehmen. Der Umschalter ist bisher nur die Oberfläche, die Übersetzungen kommen von Cody.
