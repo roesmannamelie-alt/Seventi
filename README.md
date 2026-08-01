@@ -10,9 +10,6 @@ Entwürfe für die Seventi Landingpages.
 | `KONZEPT.md` | Konzept der kompletten Planner-Seite: Abschnitte, Inhalte, offene Punkte |
 | `anbieter/index.html` | Provider-Seite: Suche, Argumente, Kosten, Fragen, Abschluss |
 | `provider.html` | Weiterleitung auf `anbieter/` |
-| `provider-hero-a.html` | Frühere Hero-Richtung A (vor dem Provider-Briefing) |
-| `provider-hero-b.html` | Frühere Hero-Richtung B (vor dem Provider-Briefing) |
-| `provider-hero-c.html` | Frühere Hero-Richtung C (vor dem Provider-Briefing) |
 | `entwuerfe.html` | Übersicht mit Links auf alle Entwürfe |
 | `lenis.min.js` | Lenis 1.1.20, mitgeliefert statt über ein CDN geladen |
 

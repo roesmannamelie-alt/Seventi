@@ -8,6 +8,8 @@ Arbeitsstand Systra Studios. Grundlage: Briefing Cody Holden, aktueller Hero-Ent
 
 Eine Assistentin der Geschäftsleitung oder HR-Managerin, 50–500 Mitarbeitende, Raum Zürich, kommt über eine deutschsprachige Google-Anzeige mit hoher Kaufabsicht. Sie hat einen Auftrag auf dem Tisch, kein Interesse an Inspiration und ungefähr fünf Sekunden Geduld.
 
+**Anrede: Sie, auf beiden Seiten.** Das Angebot ist B2B, auf der einen Seite eine Assistentin im Auftrag ihrer Firma, auf der anderen ein Betrieb. Die frühere Du-Fassung ist vollständig umgestellt.
+
 Die Seite hat eine Aufgabe: Klick auf „Event planen" und Konto anlegen.
 
 Daraus folgen vier Regeln, die für jeden Abschnitt gelten:
@@ -118,18 +120,18 @@ Darunter drei Zahlen in einer Zeile:
 > Drei Schritte. Der erste dauert drei Minuten.
 
 **Schritt 1 · Event beschreiben, 3 Minuten**
-Datum, Personenzahl, Region, Budget und was du brauchst. Miia fragt nach, wenn etwas fehlt. Ein Briefing, egal wie viele Anbieter du danach vergleichst.
+Datum, Personenzahl, Region, Budget und was Sie brauchen. Miia fragt nach, wenn etwas fehlt. Ein Briefing, egal wie viele Anbieter Sie danach vergleichen.
 
 **Schritt 2 · Angebote erhalten, innerhalb einer Woche**
-Passende Locations und Caterer bewerben sich mit einem konkreten Angebot. Nachfassen musst du bei niemandem. Die Woche ist bewusst konservativ gewählt und muss von Cody bestätigt werden.
+Passende Locations und Caterer bewerben sich mit einem konkreten Angebot. Nachfassen müssen Sie bei niemandem. Die Woche ist bewusst konservativ gewählt und muss von Cody bestätigt werden.
 
-**Schritt 3 · Vergleichen und buchen, wann es dir passt**
+**Schritt 3 · Vergleichen und buchen, wann es Ihnen passt**
 Alle Angebote in derselben Struktur: Preis total, Preis pro Person, was inklusive ist, bis wann die Option gilt. Du buchst direkt oder lehnst ab.
 
 **Direkt darunter, klein, aber nicht versteckt:**
 
 > **Und wenn sich niemand meldet?**
-> Dann schlägt Miia dir passende Anbieter vor, die du direkt aus deinem Briefing heraus anschreiben kannst. Du fängst nicht wieder bei null an.
+> Dann schlägt Miia Ihnen passende Anbieter vor, die Sie direkt aus Ihrem Briefing heraus anschreiben können. Sie fangen nicht wieder bei null an.
 
 Dieser Kasten ist der Grund, warum der Abschnitt an zweiter Stelle steht. Genau diese Frage bricht die Anmeldung sonst ab.
 
@@ -157,7 +159,7 @@ Dieser Kasten ist der Grund, warum der Abschnitt an zweiter Stelle steht. Genau 
 - Ein Briefing, einmal ausgefüllt
 - Anbieter melden sich von sich aus
 - Alle Angebote in derselben Struktur
-- Der Vergleich steht, ohne dass du eine Tabelle baust
+- Der Vergleich steht, ohne dass Sie eine Tabelle bauen
 
 **Gestaltung:** Keine rote Spalte mit Kreuzen und keine zwei Spalten nebeneinander, sondern eine schmale, hohe Karte, die per Tab zwischen „Heute" und „Mit Seventi" wechselt. Die heutige Seite trägt stumpfe Striche, die Seventi-Seite je ein eigenes Icon pro Punkt. Der Unterschied entsteht durch Ruhe, nicht durch Dramatik.
 
@@ -173,7 +175,7 @@ Dieser Kasten ist der Grund, warum der Abschnitt an zweiter Stelle steht. Genau 
 
 **Text**
 
-> Jeder Anbieter antwortet in derselben Struktur. Du siehst Preis pro Person, was inklusive ist und bis wann die Option gilt, und exportierst den Vergleich als PDF für die Freigabe.
+> Jeder Anbieter antwortet in derselben Struktur. Sie sehen Preis pro Person, was inklusive ist und bis wann die Option gilt, und exportieren den Vergleich als PDF für die Freigabe.
 
 **Visual:** Vergleichsansicht mit drei Angeboten nebeneinander. Zeilen: Preis total, Preis pro Person, Räumlichkeit, Catering, Technik, ÖV-Anbindung, Storno, gültig bis. *(Bildplatzhalter, später echter Produkt-Screenshot oder nachgebaute Ansicht.)*
 
@@ -208,7 +210,7 @@ Dieser Kasten ist der Grund, warum der Abschnitt an zweiter Stelle steht. Genau 
 
 **Headline**
 
-> Geprüfte Anbieter, dort wo dein Event stattfindet.
+> Geprüfte Anbieter, dort wo Ihr Event stattfindet.
 
 **Regionsliste mit Zahlen** *(Werte von Cody)*
 Zürich 142 · Zug 38 · Luzern 44 · Aargau 51 · St. Gallen 29 · Basel 63 · Bern 57 · Innerschweiz 26
@@ -251,11 +253,11 @@ Zürich 142 · Zug 38 · Luzern 44 · Aargau 51 · St. Gallen 29 · Basel 63 · 
 
 **Headline**
 
-> Für dich kostenlos.
+> Für Sie kostenlos.
 
 **Text**
 
-> Anfragen, Angebote und Buchung sind für planende Unternehmen kostenlos. Seventi verdient auf der Anbieterseite. Ein Briefing ist keine Buchung, du kannst jedes Angebot ablehnen.
+> Anfragen, Angebote und Buchung sind für planende Unternehmen kostenlos. Seventi verdient auf der Anbieterseite. Ein Briefing ist keine Buchung, Sie können jedes Angebot ablehnen.
 
 *(Geschäftsmodell muss Cody bestätigen, bevor dieser Abschnitt live geht.)*
 
@@ -326,7 +328,7 @@ Bis das da ist, arbeiten wir mit klar gekennzeichneten Platzhaltern. Kein Wert a
 
 ## 6. Offene Entscheidungen
 
-**Du oder Sie.** Der bestehende Hero duzt. Für eine Assistenz der Geschäftsleitung im Schweizer B2B-Umfeld ist „Sie" der sichere Standard, „du" wirkt moderner und passt zum KI-Assistenten. Das muss einheitlich entschieden werden, bevor wir die Abschnitte texten, die Umstellung später ist zwar mechanisch, aber sie betrifft jeden Satz. **Empfehlung: bei „du" bleiben**, weil das Produkt selbst über einen Assistenten läuft und die Seite sonst distanzierter wirkt als das Produkt dahinter.
+**Sie, entschieden.** Frühere Fassungen duzten. Da beide Seiten B2B sind, eine Assistenz der Geschäftsleitung im Auftrag ihrer Firma auf der einen, ein Betrieb auf der anderen, ist Sie der passende Ton. Beide Seiten sind vollständig umgestellt, inklusive Suchfeld, Platzhaltern, Ergebnistexten und den Querverweisen im Footer.
 
 **Logo im Hero.** Die Planner-Seite hat aktuell oben links keine Wortmarke. Auf einer Landingpage aus einer Anzeige ist mindestens die Marke sinnvoll, damit erkennbar ist, wo man gelandet ist, ohne Menü. In den Provider-Entwürfen ist sie testweise gesetzt. Sollten wir für beide Seiten gleich lösen.
 
@@ -342,7 +344,7 @@ Gebaut als eigene Unterseite unter `anbieter/`, nach dem Provider-Briefing von C
 
 Die drei ersten Hero-Entwürfe entstanden vor dem Provider-Briefing. Drei Punkte darin haben sie überholt:
 
-1. **Die Hauptaktion ist nicht „anmelden", sondern eine Suche.** „Ist dein Betrieb schon auf Seventi?" ersetzt den Anmelde-Button. Sie löst alle drei Besuchertypen auf: bereits gelistet und per Mail eingeladen, unsicher ob gelistet, sicher nicht gelistet.
+1. **Die Hauptaktion ist nicht „anmelden", sondern eine Suche.** „Ist Ihr Betrieb schon auf Seventi?" ersetzt den Anmelde-Button. Sie löst alle drei Besuchertypen auf: bereits gelistet und per Mail eingeladen, unsicher ob gelistet, sicher nicht gelistet.
 2. **Der Nicht-Treffer ist der Hauptweg, kein Fehler.** Bei der aktuellen Datenbankgrösse findet die Suche meistens nichts. Das Ergebnis nimmt den getippten Namen direkt in das Anmeldeformular mit und liest sich als erwarteter nächster Schritt.
 3. **Beim Treffer steht offen da, woher das Profil kommt**, aus öffentlich zugänglichen Quellen, und daneben sichtbar „Eintrag entfernen". Der sichtbare Ausgang ist das, was das Angebot glaubwürdig macht, und zugleich unsere Datenschutzposition.
 
@@ -350,7 +352,7 @@ Die drei ersten Hero-Entwürfe entstanden vor dem Provider-Briefing. Drei Punkte
 
 | Wo | Alte Aussage | Richtig laut Briefing |
 |---|---|---|
-| Entwurf A, Headline | „Ohne Provision auf deinen Umsatz" | 10 % Kommission, wenn die Zahlung über Seventi läuft |
+| Entwurf A, Headline | „Ohne Provision auf Ihren Umsatz" | 10 % Kommission, wenn die Zahlung über Seventi läuft |
 | Entwurf A und B | „Profil und Anfragen kostenlos, keine Umsatzbeteiligung" | kostenlos gelistet und Anfragen erhalten, Kommission nur bei Zahlung über die Plattform |
 | Entwurf B | „14 Anfragen pro Monat" | keine Anbieter- oder Anfragezahlen nennen |
 | Entwurf B und C | „2 Minuten für ein Angebot" | rund zehn Minuten Einrichtung, danach nichts zu pflegen |
@@ -360,7 +362,7 @@ Die drei ersten Hero-Entwürfe entstanden vor dem Provider-Briefing. Drei Punkte
 ### Aufbau der Anbieter-Seite
 
 0. **Gewählt: Richtung A**, Versprechen links, die Anfrage als Produktobjekt rechts. Die Karte füllt sich Feld für Feld, damit sichtbar wird, was vor dem ersten Blick schon feststeht.
-1. **Hero**, Kernargument „Die Arbeit kommt zu dir. Schon gefiltert." Rechts eine Beispielanfrage, die zeigt, was vor dem ersten Blick schon feststeht: Datum, Personenzahl, Region, Budget, Kategorien. Darunter die Suche als einzige Hauptaktion.
+1. **Hero**, Kernargument „Die Arbeit kommt zu Ihnen. Schon gefiltert." Rechts eine Beispielanfrage, die zeigt, was vor dem ersten Blick schon feststeht: Datum, Personenzahl, Region, Budget, Kategorien. Darunter die Suche als einzige Hauptaktion.
 2. **So läuft es ab**, drei Schritte mit derselben Fortschrittslinie wie auf der Planner-Seite: einrichten, Anfragen per E-Mail, antworten oder ablehnen.
 3. **Warum mitmachen** als Scroll-Story: links bleibt eine Leiste stehen, die zeigt, in welchem der drei Bereiche man gerade ist, rechts wandern die Kapitel durch. Das aktive Kapitel steht voll da, die anderen sind abgedunkelt. Die Punkte der Leiste sind anklickbar und springen zum Kapitel. Bessere Anfragen, Kein Risiko, Kein Aufwand, je vier Punkte mit eigenem Icon. Der Einwand dahinter ist immer derselbe: noch ein Portal, noch ein Abo, noch ein Postfach.
 4. **Was es kostet**, CHF 0 fürs Gelistetsein, 10 % nur bei Zahlung über Seventi, jederzeit wieder raus. Vollständig hingeschrieben statt im Kleingedruckten.
