@@ -641,10 +641,13 @@
       padding: clamp(76px, 8vw, 120px) 20px;
     }
 
-    .section-tint {
-      background: #fafcf7;
-      border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
+    .section-tint { background: #f6f8f4; }
+
+    /* "So läuft es ab" liegt in einem hellgrünen Container */
+    .ablauf-box {
+      padding: clamp(38px, 4vw, 62px) clamp(24px, 3vw, 52px) clamp(44px, 4.4vw, 66px);
+      border-radius: clamp(24px, 2.4vw, 36px);
+      background: #eef4e2;
     }
 
     .section-head {
@@ -903,6 +906,16 @@
       line-height: 1.7;
     }
 
+    .faq-shot {
+      height: clamp(190px, 17vw, 250px);
+      margin-top: 30px;
+      border-radius: var(--radius-lg);
+      background-color: #e7ece0;
+      background-image: url("../seventi-apero.webp");
+      background-position: center;
+      background-size: cover;
+    }
+
     .faq-note {
       margin: 20px 0 0;
       color: #8a9382;
@@ -913,9 +926,9 @@
     /* ---------- Scroll-Story: Kapitel wandern durch, Leiste links bleibt ---------- */
     .story {
       display: grid;
-      grid-template-columns: minmax(260px, .62fr) minmax(0, 1.38fr);
+      grid-template-columns: minmax(230px, .52fr) minmax(0, 1.48fr);
       align-items: start;
-      gap: clamp(40px, 6vw, 96px);
+      gap: clamp(36px, 4.5vw, 76px);
       margin-top: clamp(48px, 5vw, 76px);
     }
 
@@ -943,7 +956,7 @@
     }
 
     .story-nav {
-      --story-fill: 8%;
+      --story-fill: 0px;
       position: relative;
       display: grid;
       gap: 6px;
@@ -966,7 +979,6 @@
     .story-nav::after {
       height: var(--story-fill);
       background: var(--brand-strong);
-      transition: height .5s cubic-bezier(.22, 1, .36, 1);
     }
 
     .story-nav button {
@@ -1010,13 +1022,13 @@
     .chapters { display: grid; gap: 18px; }
 
     .chapter {
-      padding: clamp(22px, 2.2vw, 28px);
+      padding: clamp(24px, 2.4vw, 32px);
       border-radius: var(--radius-xl);
-      background: #f2f5ed;
+      background: var(--white);
       display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(190px, .52fr);
+      grid-template-columns: minmax(0, 1fr) minmax(240px, .68fr);
       align-items: stretch;
-      gap: clamp(20px, 2vw, 30px);
+      gap: clamp(22px, 2.2vw, 34px);
       opacity: .5;
       transform: scale(.98);
       transition:
@@ -1029,7 +1041,7 @@
     .chapter-body { padding: clamp(6px, .8vw, 12px) 0 clamp(6px, .8vw, 12px) clamp(6px, .8vw, 12px); }
 
     .chapter-shot {
-      min-height: 250px;
+      min-height: 340px;
       border-radius: var(--radius-lg);
       background-color: #e7ece0;
       background-position: center;
@@ -1076,7 +1088,7 @@
       grid-template-columns: 30px minmax(0, 1fr);
       align-items: start;
       gap: 14px;
-      padding: clamp(17px, 2vw, 24px) 0;
+      padding: clamp(18px, 2.2vw, 26px) 0;
       border-bottom: 1px solid rgba(22, 40, 0, .09);
     }
 
@@ -1104,7 +1116,7 @@
 
     .benefit h4 {
       margin: 4px 0 5px;
-      font-size: clamp(16px, 1.3vw, 19px);
+      font-size: clamp(16px, 1.35vw, 20px);
       font-weight: 600;
       letter-spacing: -.025em;
       line-height: 1.3;
@@ -1167,9 +1179,15 @@
 
     .closing {
       padding: clamp(80px, 8vw, 124px) 20px;
+      overflow: hidden;
       border-radius: 44px 44px 0 0;
       color: var(--white);
-      background: var(--dark);
+      background-color: var(--dark);
+      background-image:
+        linear-gradient(rgba(16, 29, 0, .88), rgba(16, 29, 0, .93)),
+        url("../seventi-planerin.webp");
+      background-position: center;
+      background-size: cover;
       text-align: center;
     }
 
@@ -1342,7 +1360,11 @@
 
       .chapter-body { order: 2; padding: 0; }
 
-      .chapter-shot { order: 1; min-height: 180px; }
+      .chapter-shot { order: 1; min-height: 210px; }
+
+      .ablauf-box { padding: 26px 20px 30px; border-radius: 22px; }
+
+      .faq-shot { height: 180px; margin-top: 24px; }
 
       /* ohne Sticky ergibt das Abdunkeln keinen Sinn mehr */
       .chapter { opacity: 1; transform: none; }
@@ -1590,6 +1612,7 @@
 
     <section class="section" aria-labelledby="ablauf-titel">
       <div class="shell">
+      <div class="ablauf-box">
         <div class="section-head reveal">
           <div>
             <div class="section-label">
@@ -1625,6 +1648,7 @@
             <p>Keine Antwortpflicht. Absagen kosten weder Bewertung noch Sichtbarkeit. Im Dashboard verwaltest du Anfragen und Termine, wenn du magst.</p>
           </article>
         </div>
+      </div>
       </div>
     </section>
 
@@ -1822,6 +1846,7 @@
           </div>
           <h2 id="fragen-titel">Noch ein Portal, noch ein Abo, <em>noch ein Postfach?</em></h2>
           <p>Was weiter oben schon steht, wiederholen wir hier nicht. Bleiben vier Fragen.</p>
+          <div class="faq-shot" role="img" aria-label="Firmenanlass in einer Zürcher Eventlocation"></div>
           <p class="faq-note">Arbeitsstand: Weitere Fragen ergänzen wir, sobald klar ist, welche Anbieter tatsächlich stellen.</p>
         </div>
 
@@ -1975,10 +2000,11 @@
       });
     });
 
+    const calmMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
     // Die Ablauflinie folgt dem Scrollen
     const stepGrid = document.querySelector(".step-grid");
     const steps = document.querySelectorAll(".step");
-    const calmMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
     if (stepGrid) {
       if (calmMotion.matches) {
@@ -2013,41 +2039,62 @@
       }
     }
 
-    // Scroll-Story: aktives Kapitel hervorheben, Leiste links mitführen
+    // Scroll-Story: die Linie läuft mit und endet immer genau auf einem Punkt
     const kapitel = [...document.querySelectorAll("[data-story-kapitel]")];
     const storyNav = document.querySelector(".story-nav");
 
     if (kapitel.length && storyNav) {
       const knoepfe = [...storyNav.querySelectorAll("button")];
-      // alle Sichtbarkeiten merken, nicht nur die zuletzt geänderten
-      const sichtbar = new Map(kapitel.map((el) => [el, 0]));
 
-      const setzeAktiv = (index) => {
-        kapitel.forEach((el, i) => el.classList.toggle("is-active", i === index));
-        knoepfe.forEach((knopf, i) => knopf.setAttribute("aria-current", String(i === index)));
-        const anteil = kapitel.length > 1 ? index / (kapitel.length - 1) : 1;
-        storyNav.style.setProperty("--story-fill", (8 + anteil * 92).toFixed(1) + "%");
+      // Mittelpunkt eines Navigationspunktes, gemessen statt geschätzt
+      const punktMitte = (index) => knoepfe[index].offsetTop + 19;
+
+      const zeichnen = () => {
+        const blickMitte = window.innerHeight / 2;
+        const zentren = kapitel.map((el) => {
+          const box = el.getBoundingClientRect();
+          return box.top + box.height / 2;
+        });
+
+        const erstes = zentren[0];
+        const letztes = zentren[zentren.length - 1];
+        const spanne = letztes - erstes;
+
+        // 0 bei Kapitel 1, 1 bei Kapitel 2, 2 bei Kapitel 3, dazwischen fliessend
+        let lage = spanne === 0 ? 0 : (blickMitte - erstes) / spanne * (kapitel.length - 1);
+        lage = Math.min(kapitel.length - 1, Math.max(0, lage));
+
+        const unten = Math.floor(lage);
+        const oben = Math.min(kapitel.length - 1, unten + 1);
+        const anteil = lage - unten;
+        const hoehe = punktMitte(unten) + (punktMitte(oben) - punktMitte(unten)) * anteil - 12;
+
+        storyNav.style.setProperty("--story-fill", Math.max(0, hoehe).toFixed(1) + "px");
+
+        const aktiv = Math.round(lage);
+        kapitel.forEach((el, i) => el.classList.toggle("is-active", i === aktiv));
+        knoepfe.forEach((knopf, i) => knopf.setAttribute("aria-current", String(i === aktiv)));
       };
 
-      const beobachter = new IntersectionObserver((eintraege) => {
-        eintraege.forEach((eintrag) => {
-          sichtbar.set(eintrag.target, eintrag.isIntersecting ? eintrag.intersectionRatio : 0);
-        });
+      if (calmMotion.matches) {
+        kapitel.forEach((el) => el.classList.add("is-active"));
+        storyNav.style.setProperty("--story-fill", "100%");
+      } else {
+        let angefordert = false;
 
-        let bestes = null;
-        let hoechste = 0;
+        const beiBewegung = () => {
+          if (angefordert) return;
+          angefordert = true;
+          window.requestAnimationFrame(() => {
+            zeichnen();
+            angefordert = false;
+          });
+        };
 
-        sichtbar.forEach((anteil, el) => {
-          if (anteil > hoechste) {
-            hoechste = anteil;
-            bestes = el;
-          }
-        });
-
-        if (bestes) setzeAktiv(kapitel.indexOf(bestes));
-      }, { rootMargin: "-20% 0px -30% 0px", threshold: [0, .2, .4, .6, .8, 1] });
-
-      kapitel.forEach((el) => beobachter.observe(el));
+        zeichnen();
+        window.addEventListener("scroll", beiBewegung, { passive: true });
+        window.addEventListener("resize", beiBewegung);
+      }
 
       knoepfe.forEach((knopf) => {
         knopf.addEventListener("click", () => {
