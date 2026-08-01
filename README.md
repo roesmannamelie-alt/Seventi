@@ -8,7 +8,8 @@ Entwürfe für die Seventi Landingpages.
 |---|---|
 | `index.html` | Planner-Seite: Hero, Abschnitte 2, 3, 5, Abschluss und Footer |
 | `KONZEPT.md` | Konzept der kompletten Planner-Seite: Abschnitte, Inhalte, offene Punkte |
-| `provider.html` | Provider-Seite: Suche, Argumente, Kosten, Abschluss |
+| `anbieter/index.html` | Provider-Seite: Suche, Argumente, Kosten, Fragen, Abschluss |
+| `provider.html` | Weiterleitung auf `anbieter/` |
 | `provider-hero-a.html` | Frühere Hero-Richtung A (vor dem Provider-Briefing) |
 | `provider-hero-b.html` | Frühere Hero-Richtung B (vor dem Provider-Briefing) |
 | `provider-hero-c.html` | Frühere Hero-Richtung C (vor dem Provider-Briefing) |

@@ -327,7 +327,7 @@ Bis das da ist, arbeiten wir mit klar gekennzeichneten Platzhaltern. Kein Wert a
 
 ## 7. Provider-Seite
 
-Gebaut als `provider.html`, nach dem Provider-Briefing von Cody.
+Gebaut als eigene Unterseite unter `anbieter/`, nach dem Provider-Briefing von Cody. Die alte Adresse `provider.html` leitet dorthin weiter.
 
 ### Was das Briefing geändert hat
 
@@ -348,7 +348,7 @@ Die drei ersten Hero-Entwürfe entstanden vor dem Provider-Briefing. Drei Punkte
 | Entwurf C | „6 offen", „letzte 7 Tage", „drei weitere Anfragen" | keine Volumenangaben |
 | alle | „Locations und Caterer" | Locations, Catering, DJs, Technik und Fotografie |
 
-### Aufbau von `provider.html`
+### Aufbau der Anbieter-Seite
 
 0. **Gewählt: Richtung A**, Versprechen links, die Anfrage als Produktobjekt rechts. Die Karte füllt sich Feld für Feld, damit sichtbar wird, was vor dem ersten Blick schon feststeht.
 1. **Hero**, Kernargument „Die Arbeit kommt zu dir. Schon gefiltert." Rechts eine Beispielanfrage, die zeigt, was vor dem ersten Blick schon feststeht: Datum, Personenzahl, Region, Budget, Kategorien. Darunter die Suche als einzige Hauptaktion.
@@ -370,7 +370,7 @@ Auf der Planner-Seite liegt der Fall anders. Dort fängt Abschnitt 9 Fragen auf,
 - Das Briefing kündigt **vier Argumentblöcke** an und führt drei aus (Bessere Anfragen, Kein Risiko, Kein Aufwand). Wir haben drei gebaut. Falls ein vierter gemeint war, fehlt er.
 - Die Suche ist eine Vorschau ohne Datenbank. Tippt man „Beispiel", erscheint der Trefferfall, alles andere zeigt den Normalfall. Ein Hinweis darauf steht sichtbar unter dem Feld.
 - „Jederzeit pausieren" stand in allen drei früheren Entwürfen und ist entfernt. Das Briefing nennt nur „no exclusivity, no minimum, no lock-in" und das Entfernen des Eintrags, eine Pausier-Funktion ist nicht bestätigt.
-- Die drei alten Hero-Entwürfe liegen weiterhin im Repository. Sie sind inhaltlich korrigiert, aber ohne den Such-Mechanismus. Sobald `provider.html` steht, können sie weg.
+- Die drei alten Hero-Entwürfe liegen weiterhin im Repository. Sie sind inhaltlich korrigiert, aber ohne den Such-Mechanismus. Sobald die Anbieter-Seite steht, können sie weg.
 
 ---
 
