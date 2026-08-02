@@ -78,8 +78,8 @@ Alles andere auf der Seite beschreibt entweder die Mechanik aus dem Briefing ode
 - **Keine Rahmen und Ränder um Karten.** Abgrenzung entsteht über Flächen, Radien und Abstand, nicht über Konturen. Trennlinien innerhalb einer Karte sind erlaubt.
 - **Kicker sind dezente Pills mit Icon**, in derselben Form wie der Hero-Eyebrow. Keine Striche, keine Versalien.
 - **Kein Motiv kommt zweimal vor**, auch nicht über beide Seiten hinweg. Dreizehn Bilder auf dreizehn Plätzen:
-  - Planner: Firmenevent im Hero, Abendtafel, Innenhof, Catering, Empfang und Seminarraum als Parallaxe in Abschnitt 3, Apéro unter den Anlass-Pills, Porträt der Planerin im Abschluss
-  - Anbieter: Tafel am See im Hero, Assistentin, Team vor dem Bürogebäude und die Ruhe im Trubel in den drei Kapiteln von „Warum mitmachen", ankommende Gäste im Fragen-Abschnitt, vier Beispielfotos im Profil
+  - Planner: Firmenevent im Hero, ankommende Gäste im Zahlenband, Abendtafel, Innenhof, Catering, Empfang und Seminarraum als Parallaxe in Abschnitt 3, Apéro unter den Anlass-Pills, Porträt der Planerin im Abschluss
+  - Anbieter: Tafel am See im Hero, Assistentin, Team vor dem Bürogebäude und die Ruhe im Trubel in den drei Kapiteln von „Warum mitmachen", Stehempfang an der Fensterfront im Fragen-Abschnitt, vier Beispielfotos im Profil
   - Die vier Profilfotos sind andere Aufnahmen derselben Orte, die auf der Planner-Seite als Parallaxe laufen. Bei 60 px Kachelgrösse fällt das nicht auf, aber es sind keine echten Fotos der „Seehalle". Sobald Cody Bilder eines echten Betriebs liefert, gehören sie dorthin.
 - **Bewegung folgt dem Scrollen.** Abschnitt 2 hat eine durchgehende Linie über alle drei Schritte, die sich beim Scrollen füllt; die Bahn ist bewusst etwa vier Bildschirmviertel lang, damit die Linie dem Scrollen folgt statt in einem Zug durchzulaufen. Die Schrittnummern schalten mit und zeigen beim Hover ein passendes Icon. Abschnitt 3 wird über einen Tab umgeschaltet: „Heute" und „Mit Seventi" tauschen dieselbe Karte per Überblendung. Links und rechts davon laufen fünf Bilder als lockere Collage mit, jedes in eigenem Tempo zwischen Faktor 0,07 und 0,19. Bei `prefers-reduced-motion` steht alles sofort im Endzustand.
 
@@ -100,7 +100,7 @@ Alles andere auf der Seite beschreibt entweder die Mechanik aus dem Briefing ode
 - **Keine Gedankenstriche im Fliesstext.** Wo einer stehen würde, tut es ein Komma, ein Doppelpunkt oder ein Punkt.
 - **Arbeitshinweise stehen hinter einem Info-Icon**, nicht als Dauertext unter dem Element. Sichtbar bleiben nur Hinweise, die auch in der fertigen Fassung stehen sollen. Bedienhinweise wie „seitlich scrollbar" gehören gar nicht auf die Seite: was man scrollen kann, muss man sehen, nicht lesen.
 
-- **Icons in Karten werden beim Hover nachgezeichnet.** Jede Kontur bekommt `pathLength="1"`, dadurch läuft sie unabhängig von ihrer echten Länge gleich schnell durch. Innerhalb eines Icons versetzt, innerhalb einer Karte von oben nach unten.
+- **Icons werden beim Hover nachgezeichnet.** Jede Kontur bekommt `pathLength="1"`, dadurch läuft sie unabhängig von ihrer echten Länge gleich schnell durch, innerhalb eines Icons leicht versetzt. Gezeichnet wird immer nur das Icon unter dem Zeiger, nicht die ganze Karte.
 - **Ein FAQ enthält nur Fragen, die kein anderer Abschnitt schon beantwortet.** Wiederholung macht die Seite lang, ohne einen Einwand zusätzlich auszuräumen. Fehlt uns die Antwort noch, steht die Frage im Konzept und nicht auf der Seite.
 
 ---
@@ -123,7 +123,9 @@ Darunter drei Zahlen in einer Zeile:
 - **4** Angebote pro Anfrage im Durchschnitt
 - **32 Stunden** bis zum ersten Angebot
 
-**Gestaltung:** weisse Fläche direkt unter dem Hero, mittig, ohne Headline. Fünf Logoplätze als ruhige graugrüne Felder, darunter die drei Zahlen in Fraunces, Zahl über Wort. Auf dem Handy Logos dreispaltig.
+**Gestaltung:** weisse Fläche direkt unter dem Hero, mittig, ohne Headline. Die fünf Wortmarken laufen als endlose Spur durch, zwei identische Bahnen hintereinander, links und rechts weich ausmaskiert. Beim Hover hält die Spur an.
+
+**Die Zahlen stehen jetzt in einem eigenen Band** hinter Abschnitt 2, damit sie nicht mit den Logos um dieselbe Aufmerksamkeit konkurrieren. Vollbreites Foto, dunkel überlagert, das Bild läuft beim Scrollen langsamer mit als die Seite. Die Werte zählen von null hoch, sobald das Band im Blick ist, 1,4 Sekunden mit weichem Auslauf und `tabular-nums`, damit nichts springt. Bei `prefers-reduced-motion` stehen sie sofort da und das Bild bleibt stehen.
 
 **Stand:** gebaut und mit Beispieldaten gefüllt, damit die Fläche in ihrer echten Wirkung zu beurteilen ist. Fünf erfundene Wortmarken, drei Beispielzahlen. Ein Info-Icon in der Zeile sagt das.
 
@@ -199,11 +201,11 @@ Dieser Kasten ist der Grund, warum der Abschnitt an zweiter Stelle steht. Genau 
 
 **Visual:** Vergleichsansicht mit drei Angeboten nebeneinander. Zeilen: Preis total, Preis pro Person, Räumlichkeit, Catering, Technik, ÖV-Anbindung, Storno, gültig bis. *(Bildplatzhalter, später echter Produkt-Screenshot oder nachgebaute Ansicht.)*
 
-**Gestaltung:** ein hellgrüner Container, darin drei weisse Karten nebeneinander. Jede Karte trägt Name, Region, Gesamtpreis in Fraunces, Preis pro Person und darunter sechs Zeilen mit eigenem Icon. Keine Tabelle, kein seitliches Scrollen: eine Tabelle zwingt auf dem Handy zum Wischen, Karten nicht.
+**Gestaltung:** ein hellgrüner Container um den gesamten Abschnitt, Kopf und Karten zusammen, damit er sich klar vom weissen Abschnitt darüber absetzt. Der Abschnitt danach ist dafür weiss. Darin drei weisse Karten nebeneinander. Jede Karte trägt Name, Region, Gesamtpreis in Fraunces, Preis pro Person und darunter sechs Zeilen mit eigenem Icon. Keine Tabelle, kein seitliches Scrollen: eine Tabelle zwingt auf dem Handy zum Wischen, Karten nicht.
 
 **Auftritt:** das erste Angebot steht zuerst mittig da, dann schieben sich die beiden anderen von rechts dazu, und das erste rutscht dabei nach links an seinen Platz. Auf dem Handy stehen die Karten untereinander und kommen nacheinander von unten. Beim Hover über eine Karte werden die Icons von oben nach unten nachgezeichnet.
 
-**Stand:** gebaut, mit drei Beispielangeboten. Namen, Preise und Fristen sind erfunden, der Hinweis dazu steht hinter dem Info-Icon im Kicker. Später ersetzt sie ein echter Produkt-Screenshot oder die nachgebaute Ansicht mit echten Feldern.
+**Stand:** gebaut, mit drei Beispielangeboten. Namen, Preise und Fristen sind erfunden, der Hinweis dazu steht hinter einem Info-Icon unter dem Container. Später ersetzt sie ein echter Produkt-Screenshot oder die nachgebaute Ansicht mit echten Feldern.
 
 ---
 
