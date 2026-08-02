@@ -1244,17 +1244,6 @@
       margin: clamp(40px, 4.4vw, 64px) auto 0;
     }
 
-    /* weicher Schein hinter der Karte, damit sie zu schweben scheint */
-    .buehne-schein {
-      position: absolute;
-      inset: -22px -14px 42px;
-      z-index: 0;
-      border-radius: 48px;
-      background: linear-gradient(90deg, rgba(184, 232, 0, .26), rgba(214, 255, 32, .1) 50%, rgba(184, 232, 0, .26));
-      filter: blur(52px);
-      pointer-events: none;
-    }
-
     .profile-card {
       position: relative;
       z-index: 1;
@@ -1391,21 +1380,20 @@
       background: var(--white);
     }
 
-    .dock-nr {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      margin-bottom: 9px;
+    .dock-icon {
+      width: 30px;
+      height: 30px;
+      margin-bottom: 12px;
+      border-radius: 50%;
+      display: grid;
+      place-content: center;
+      background: var(--brand);
       color: var(--brand-dark);
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: .09em;
-      text-transform: uppercase;
     }
 
-    .dock-nr svg {
-      width: 14px;
-      height: 14px;
+    .dock-icon svg {
+      width: 15px;
+      height: 15px;
       fill: none;
       stroke: currentColor;
       stroke-width: 1.9;
@@ -1908,8 +1896,6 @@
       .regions { gap: 8px; }
 
       .buehne { margin-top: 32px; }
-
-      .buehne-schein { inset: -12px -8px 26px; filter: blur(30px); }
 
       .profile-card { padding: 16px; border-radius: 20px; }
 
@@ -2451,8 +2437,6 @@
         </div>
 
         <div class="buehne reveal">
-          <div class="buehne-schein" aria-hidden="true"></div>
-
           <article class="profile-card">
             <div class="profile-top">
               <div class="profile-marke">
@@ -2481,22 +2465,22 @@
 
           <ul class="profile-dock">
           <li class="malt-halter">
-            <span class="dock-nr"><span class="malt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M7 12h10M10 18h4"/></svg></span>01 · Filter</span>
+            <span class="dock-icon malt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M7 12h10M10 18h4"/></svg></span>
             <strong>Kategorie und Leistungen</strong>
             <p>Danach wird gefiltert. Was Sie nicht anbieten, kommt bei Ihnen nicht an.</p>
           </li>
           <li class="malt-halter">
-            <span class="dock-nr"><span class="malt"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8.5" r="3.2"/><path d="M3.5 19a5.5 5.5 0 0 1 11 0M16 6.2a3.2 3.2 0 0 1 0 6M17.5 19a5.6 5.6 0 0 0-2-4.2"/></svg></span>02 · Passung</span>
+            <span class="dock-icon malt"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8.5" r="3.2"/><path d="M3.5 19a5.5 5.5 0 0 1 11 0M16 6.2a3.2 3.2 0 0 1 0 6M17.5 19a5.6 5.6 0 0 0-2-4.2"/></svg></span>
             <strong>Kapazität</strong>
             <p>Anfragen für 300 Personen erreichen keinen Raum für 80.</p>
           </li>
           <li class="malt-halter">
-            <span class="dock-nr"><span class="malt"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M14.5 9.5H11a1.8 1.8 0 0 0 0 3.6h2a1.8 1.8 0 0 1 0 3.6H9.5M12 8v9"/></svg></span>03 · Budget</span>
+            <span class="dock-icon malt"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M14.5 9.5H11a1.8 1.8 0 0 0 0 3.6h2a1.8 1.8 0 0 1 0 3.6H9.5M12 8v9"/></svg></span>
             <strong>Preisrahmen</strong>
             <p>Ein Rahmen, kein Preisblatt. Das Angebot rechnen Sie weiterhin selbst.</p>
           </li>
           <li class="malt-halter">
-            <span class="dock-nr"><span class="malt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 8.5h3l1.6-2.4h7.8L17.5 8.5h3v10h-17z"/><circle cx="12" cy="13" r="3.4"/></svg></span>04 · Fotos</span>
+            <span class="dock-icon malt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 8.5h3l1.6-2.4h7.8L17.5 8.5h3v10h-17z"/><circle cx="12" cy="13" r="3.4"/></svg></span>
             <strong>Ihre eigenen Bilder</strong>
             <p>Keine Stockfotos, keine Bilder von uns. Sie bestimmen, was zu sehen ist.</p>
           </li>
@@ -2579,6 +2563,21 @@
           <details>
             <summary>Für welche Regionen kann ich mich eintragen?<span class="faq-toggle" aria-hidden="true"></span></summary>
             <div class="faq-antwort"><p>Aktuell Zürich, Zug und Luzern. Sie wählen selbst aus, in welchen davon Sie Anfragen bekommen wollen.</p></div>
+          </details>
+
+          <details>
+            <summary>Wer stellt die Anfragen?<span class="faq-toggle" aria-hidden="true"></span></summary>
+            <div class="faq-antwort"><p>Unternehmen aus der Region, meist die Assistenz der Geschäftsleitung oder das Personalwesen, die einen Anlass für die eigene Firma planen. Private Feiern laufen nicht über Seventi.</p></div>
+          </details>
+
+          <details>
+            <summary>Wie viele Anfragen bekomme ich?<span class="faq-toggle" aria-hidden="true"></span></summary>
+            <div class="faq-antwort"><p>Das hängt von Kategorie, Region, Kapazität und Termin ab. Ein Durchschnittswert würde für Ihren Betrieb wenig aussagen, deshalb nennen wir keinen.</p></div>
+          </details>
+
+          <details>
+            <summary>Ich bin schon bei Google zu finden. Was bringt mir Seventi?<span class="faq-toggle" aria-hidden="true"></span></summary>
+            <div class="faq-antwort"><p>Über Google findet Sie, wer schon weiss, wonach er sucht, und schreibt Sie einzeln an. Über Seventi kommt die Anfrage fertig gefiltert bei Ihnen an, mit Datum, Personenzahl, Region und Budget. Sie prüfen nicht, Sie entscheiden.</p></div>
           </details>
 
         </div>
