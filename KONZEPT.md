@@ -356,7 +356,7 @@ Bis das da ist, arbeiten wir mit klar gekennzeichneten Platzhaltern. Kein Wert a
 
 ## 6. Offene Entscheidungen
 
-**Sie, entschieden.** Frühere Fassungen duzten. Da beide Seiten B2B sind, eine Assistenz der Geschäftsleitung im Auftrag ihrer Firma auf der einen, ein Betrieb auf der anderen, ist Sie der passende Ton. Beide Seiten sind vollständig umgestellt, inklusive Suchfeld, Platzhaltern, Ergebnistexten und den Querverweisen im Footer.
+**Anrede: Anbieter-Seite du, Planner-Seite offen.** Das Provider-Briefing schreibt sie vor: „Language: German, du form, Swiss conventions." Die Anbieter-Seite ist entsprechend durchgehend geduzt. Für die Planner-Seite steht in ihrem Briefing nur „Sprache: durchgehend Deutsch", keine Anrede. Dort steht aktuell Sie. Solange das so bleibt, spricht jede Seite in ihrer eigenen Form, auch in den Querverweisen im Footer. Das muss entschieden werden.
 
 **Logo im Hero.** Die Planner-Seite hat aktuell oben links keine Wortmarke. Auf einer Landingpage aus einer Anzeige ist mindestens die Marke sinnvoll, damit erkennbar ist, wo man gelandet ist, ohne Menü. In den Provider-Entwürfen ist sie testweise gesetzt. Sollten wir für beide Seiten gleich lösen.
 
@@ -406,12 +406,35 @@ Ein FAQ steht in keinem der beiden Briefings. Das Provider-Briefing überlässt 
 
 Auf der Planner-Seite liegt der Fall anders. Dort fängt Abschnitt 9 Fragen auf, die aus der Rolle der Planerin kommen und sonst nirgends stehen: ob ihr Firmenname für alle sichtbar ist, was passiert, wenn Datum und Personenzahl noch nicht feststehen, und ob sie den Angebotsvergleich als PDF für die interne Freigabe exportieren kann. Das sind echte Absprunggründe, keine Wiederholung, gebaut wird der Abschnitt, sobald Cody die Antworten liefert.
 
+### Abgleich mit dem Provider-Briefing
+
+Punkt für Punkt durchgegangen, Stand nach dem Umbau auf du.
+
+| Vorgabe | Stand |
+|---|---|
+| Ziel: Anteil der Betriebe, die ihr Profil übernehmen oder anlegen | Beide Wege enden im selben Formular, die Suche ist die einzige Hauptaktion |
+| Drei Besuchertypen auflösen | Die Suche fängt alle drei ab: gelistet, unsicher, nicht gelistet |
+| Suchfeld ersetzt den Anmelde-Button | umgesetzt, im Hero und im Abschluss |
+| Nicht-gefunden ist Normalfall, kein Fehler | „Das ist der Normalfall, wir bauen das Verzeichnis gerade auf" |
+| Der getippte Name wandert ins Anmeldeformular | umgesetzt, das Feld ist vorbelegt |
+| Bei Treffer: offen sagen, dass das Profil aus öffentlichen Quellen stammt | umgesetzt, im Ergebnis und im FAQ |
+| Bei Treffer: sichtbarer Weg zum Entfernen | umgesetzt, als gleichwertiger zweiter Knopf |
+| Kernargument „Die Arbeit kommt zu dir, schon gefiltert" | ist die H1 |
+| Bessere Anfragen, alle vier Punkte | alle vier im ersten Kapitel |
+| Kein Risiko, alle vier Punkte | alle vier im zweiten Kapitel |
+| Kein Aufwand, alle vier Punkte | alle vier im dritten Kapitel |
+| Einwand „noch ein Portal, noch ein Abo, noch ein Postfach" | steht als Headline über dem Abschnitt und im FAQ |
+| Keine Anbieterzahlen, Planerzahlen, Reaktionszeiten, Referenzen, Logos | auf der Anbieter-Seite nirgends. Die Frage nach der Zahl der Anfragen beantwortet die Seite bewusst ohne Durchschnittswert |
+| Deutsch, du-Form, Schweizer Konventionen | umgesetzt: du, kein ß, Beträge mit Hochkomma |
+
 ### Offene Punkte
 
-- Das Briefing kündigt **vier Argumentblöcke** an und führt drei aus (Bessere Anfragen, Kein Risiko, Kein Aufwand). Wir haben drei gebaut. Falls ein vierter gemeint war, fehlt er.
+- Der Satz „four clusters of argument" nennt anschliessend drei Überschriften. Wir lesen das als Kernargument plus drei Blöcke, gebaut sind entsprechend vier Ebenen. Falls Cody einen vierten Block gemeint hat, fehlt er.
 - Die Suche ist eine Vorschau ohne Datenbank. Tippt man „Beispiel", erscheint der Trefferfall, alles andere zeigt den Normalfall. Ein Hinweis darauf steht sichtbar unter dem Feld.
 - „Jederzeit pausieren" stand in allen drei früheren Entwürfen und ist entfernt. Das Briefing nennt nur „no exclusivity, no minimum, no lock-in" und das Entfernen des Eintrags, eine Pausier-Funktion ist nicht bestätigt.
 - Auf der Anbieter-Seite stehen bewusst **keine Zahlen**: keine Anbieterzahl, keine Anfragezahl, keine Reaktionszeit. Das Briefing verbietet das ausdrücklich, deshalb hat diese Seite auch keine Vertrauensleiste. Beispieldaten stehen nur im Hero und in der Profilvorschau, beide sind als Beispiel beschriftet.
+
+- **Das Verbot der Beweis-Elemente kollidiert mit der Planner-Seite.** Das Provider-Briefing schreibt: „If a layout needs a proof element, ask us, we'd rather remove the element than invent the number." Das Planner-Briefing verlangt parallel „keine Platzhalter-Logos, keine Stock-Avatare". Auf der Planner-Seite stehen aktuell fünf erfundene Wortmarken im Hero und drei erfundene Zahlen im Zahlenband, darunter eine Reaktionszeit. Beides ist als Beispiel gekennzeichnet und zum Tausch gebaut, entspricht aber nicht dem, was Cody geschrieben hat. Entweder liefert er echte Logos und Zahlen, oder beide Elemente fallen weg. Das ist die dringendste Frage an ihn.
 
 ---
 
