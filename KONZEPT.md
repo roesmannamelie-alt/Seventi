@@ -64,6 +64,7 @@ Elf Abschnitte klingen viel, sind aber überwiegend kurz. Die Seite soll sich sc
 | Abschnitt 1 | „Bereits im Einsatz bei Teams in Zürich, Zug und Luzern" | von uns gesetzt, braucht mindestens eine buchende Firma |
 | Abschluss | „Aktuell für Firmenevents in Zürich, Zug und Luzern" | Regionen aus dem Provider-Briefing, für die Planner-Seite nicht bestätigt |
 | Abschnitt 1 | fünf Wortmarken, 142 Anbieter, 4 Angebote, 32 Stunden | Beispieldaten, vollständig zu ersetzen |
+| Anbieter, Profil | „Verfügbarkeit" als Profilfeld | im Briefing nicht genannt, muss Cody bestätigen |
 | Abschnitt 4 | drei Beispielangebote samt Preisen und Fristen | Beispieldaten, ersetzen oder durch einen echten Produkt-Screenshot tauschen |
 | Abschnitt 8 | „Für Sie kostenlos", Kommission auf der Anbieterseite | Geschäftsmodell muss Cody bestätigen |
 | Anbieter, Profil | Beispielprofil „Seehalle" | Beispieldaten, ersetzen |
@@ -101,6 +102,8 @@ Alles andere auf der Seite beschreibt entweder die Mechanik aus dem Briefing ode
 - **Arbeitshinweise stehen hinter einer Marke „Hinweis"** mit Info-Icon, nicht als Dauertext unter dem Element. Ohne das Wort war nicht zu erkennen, dass sich hinter dem Kreis etwas verbirgt. Sichtbar bleiben nur Hinweise, die auch in der fertigen Fassung stehen sollen. Bedienhinweise wie „seitlich scrollbar" gehören gar nicht auf die Seite: was man scrollen kann, muss man sehen, nicht lesen.
 
 - **Icons werden beim Hover nachgezeichnet.** Jede Kontur bekommt `pathLength="1"`, dadurch läuft sie unabhängig von ihrer echten Länge gleich schnell durch, innerhalb eines Icons leicht versetzt. Gezeichnet wird immer nur das Icon unter dem Zeiger, nicht die ganze Karte.
+- **Auf der Anbieter-Seite ist das FAQ bewusst redundant.** Ablehnung, Eintragsentfernung und die Herkunft der öffentlichen Daten stehen dort *und* weiter oben im Fliesstext. Sie sind zu wichtig, um nur im Aufklapper zu stehen. Sonst gilt weiter:
+
 - **Ein FAQ enthält nur Fragen, die kein anderer Abschnitt schon beantwortet.** Wiederholung macht die Seite lang, ohne einen Einwand zusätzlich auszuräumen. Fehlt uns die Antwort noch, steht die Frage im Konzept und nicht auf der Seite.
 
 ---
@@ -390,10 +393,11 @@ Die drei ersten Hero-Entwürfe entstanden vor dem Provider-Briefing. Drei Punkte
 ### Aufbau der Anbieter-Seite
 
 0. **Gewählt: Richtung A**, Versprechen links, die Anfrage als Produktobjekt rechts. Die Karte füllt sich Feld für Feld, damit sichtbar wird, was vor dem ersten Blick schon feststeht.
-1. **Hero**, Kernargument „Die Arbeit kommt zu Ihnen. Schon gefiltert." Rechts eine Beispielanfrage, die zeigt, was vor dem ersten Blick schon feststeht: Datum, Personenzahl, Region, Budget, Kategorien. Darunter die Suche als einzige Hauptaktion.
+1. **Hero**, Kernargument „Die passenden Eventanfragen kommen zu dir. Schon gefiltert." Der Kicker nennt Zielgruppe und Regionen sofort, damit ein Caterer oder Fotograf in der ersten Sekunde weiss, dass die Seite ihm gilt.
+1b. **Beide Antworten führen weiter**, die zwei Suchergebnisse als gestaltete Zustände nebeneinander, ohne dass jemand tippen muss. Links der Treffer mit „Profil übernehmen", dem gleichwertig sichtbaren „Eintrag entfernen" und „Das ist nicht mein Unternehmen". Rechts der Normalfall mit dem bereits übernommenen Firmennamen im Feld. Das Briefing nennt den zweiten Fall den wahrscheinlicheren, deshalb steht er gleichberechtigt daneben und nicht als Fehlermeldung.
 2. **So läuft es ab**, drei Schritte mit derselben Fortschrittslinie wie auf der Planner-Seite: einrichten, Anfragen per E-Mail, antworten oder ablehnen.
-3. **Warum mitmachen** als Scroll-Story: links bleibt eine Leiste stehen, die zeigt, in welchem der drei Bereiche man gerade ist, rechts wandern die Kapitel durch. Das aktive Kapitel steht voll da, die anderen sind abgedunkelt. Die Punkte der Leiste sind anklickbar und springen zum Kapitel. Bessere Anfragen, Kein Risiko, Kein Aufwand, je vier Punkte mit eigenem Icon. Der Einwand dahinter ist immer derselbe: noch ein Portal, noch ein Abo, noch ein Postfach.
-4. **Für welche Betriebe**, fünf Kategorien als Karten mit eigenem Icon, darunter die drei Regionen als dunkle Pills. Beantwortet die erste Frage vor allen Kostenfragen: bin ich hier überhaupt richtig.
+3. **Warum mitmachen**, vier kompakte Blöcke nebeneinander: Passende Anfragen, Du entscheidest, Kein zusätzlicher Aufwand, Kein Risiko. Die frühere Scroll-Story mit drei grossen Kapiteln, klebender Leiste und Wischbedienung ist entfallen. Sie war inhaltlich richtig, wirkte aber nach viel System, und genau das ist der Einwand, den die Seite entkräften soll: noch ein Portal, noch ein Abo, noch ein Postfach. Eine Seite, die diesen Einwand ausräumen will, darf sich nicht selbst nach Aufwand anfühlen.
+4. **Für welche Betriebe**, eine schmale Leiste mit den fünf Kategorien als Pills. Die Regionen stehen bereits im Hero-Kicker, deshalb wiederholt der Abschnitt sie nicht.
 5. **Ihr Profil**, was ein Unternehmen von einem sieht. Kopf mittig, darunter das Beispielprofil als Bühne: Kopfzeile mit Marke und Region, drei Kennwerte als Kacheln, vier Beispielfotos. Unter der Bühne stehen die vier Punkte zu Kategorie, Kapazität, Preisrahmen und Fotos als Reihe, jeder mit eigenem Icon. Damit fällt die frühere FAQ-Frage „Was gehört in ein Profil?" weg, ein FAQ soll nichts wiederholen.
 6. **Was es kostet**, CHF 0 fürs Gelistetsein, 10 % nur bei Zahlung über Seventi, jederzeit wieder raus. Vollständig hingeschrieben statt im Kleingedruckten.
 7. **Häufige Fragen**, sechs Stück: Herkunft der öffentlich erstellten Profile, Ablauf bei einem Auftrag, abgedeckte Regionen, wer die Anfragen stellt, wie viele es sind und was Seventi gegenüber Google bringt. Auf die Frage nach der Zahl der Anfragen gibt es bewusst keinen Durchschnittswert, sondern die Begründung, warum einer wenig aussagen würde. Alles andere beantworten die Argumentblöcke schon, und das Briefing will, dass die Seite sich leicht anfühlt statt lang zu erklären. Der Abschnitt steht zweispaltig: Kopf links, aufklappbare Fragen rechts. Ein Hinweis im Kopf hält fest, dass weitere Fragen ergänzt werden, sobald klar ist, welche Anbieter tatsächlich stellen.
