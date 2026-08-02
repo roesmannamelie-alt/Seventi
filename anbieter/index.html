@@ -1223,68 +1223,43 @@
       stroke-linejoin: round;
     }
 
-    /* ---------- Profilvorschau ---------- */
-    .profile-wrap {
-      margin-top: clamp(44px, 4.6vw, 68px);
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(360px, .78fr);
-      align-items: center;
-      gap: clamp(32px, 4vw, 64px);
-    }
-
-    .profile-points {
-      margin: 0;
-      padding: 0;
-      list-style: none;
-    }
-
-    .profile-points li {
-      display: grid;
-      grid-template-columns: 28px minmax(0, 1fr);
+    /* ---------- Profilvorschau ----------
+       Kopf mittig, das Profil als Buehne darunter, die vier Punkte
+       als Reihe unter der Buehne statt daneben. */
+    .profil .section-head {
+      grid-template-columns: 1fr;
+      justify-items: center;
       align-items: start;
-      gap: 13px;
-      padding: 16px 0;
+      gap: 16px;
+      text-align: center;
     }
 
-    .profile-points li + li { border-top: 1px solid rgba(22, 40, 0, .09); }
+    .profil .section-head > div { max-width: 760px; }
 
-    .profile-points span {
-      width: 28px;
-      height: 28px;
-      border-radius: 50%;
-      display: grid;
-      place-content: center;
-      background: var(--brand);
-      color: var(--brand-dark);
+    .profil .section-lead { max-width: 540px; }
+
+    .buehne {
+      position: relative;
+      width: min(980px, 100%);
+      margin: clamp(40px, 4.4vw, 64px) auto 0;
     }
 
-    .profile-points svg {
-      width: 14px;
-      height: 14px;
-      fill: none;
-      stroke: currentColor;
-      stroke-width: 1.9;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-    }
-
-    .profile-points strong {
-      display: block;
-      font-size: 15px;
-      font-weight: 600;
-      letter-spacing: -.02em;
-    }
-
-    .profile-points p {
-      margin: 3px 0 0;
-      color: var(--muted);
-      font-size: 13.5px;
-      line-height: 1.6;
+    /* weicher Schein hinter der Karte, damit sie zu schweben scheint */
+    .buehne-schein {
+      position: absolute;
+      inset: -22px -14px 42px;
+      z-index: 0;
+      border-radius: 48px;
+      background: linear-gradient(90deg, rgba(184, 232, 0, .26), rgba(214, 255, 32, .1) 50%, rgba(184, 232, 0, .26));
+      filter: blur(52px);
+      pointer-events: none;
     }
 
     .profile-card {
-      padding: clamp(20px, 1.8vw, 26px);
-      border-radius: var(--radius-xl);
+      position: relative;
+      z-index: 1;
+      padding: clamp(22px, 2.4vw, 34px);
+      border-radius: clamp(24px, 2.2vw, 32px);
       background: var(--white);
     }
 
@@ -1292,62 +1267,102 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 12px;
-      margin-bottom: 14px;
+      gap: 14px;
+      padding-bottom: clamp(18px, 1.8vw, 24px);
+      margin-bottom: clamp(18px, 1.8vw, 24px);
+      border-bottom: 1px solid var(--line);
     }
 
-    .profile-top strong {
-      font-size: 18px;
+    .profile-marke {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+    }
+
+    .profile-avatar {
+      width: 42px;
+      height: 42px;
+      flex: 0 0 42px;
+      border-radius: 13px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--brand);
+      color: var(--brand-dark);
+      font-family: "Fraunces", serif;
+      font-size: 21px;
+      font-weight: 600;
+      line-height: 1;
+    }
+
+    .profile-marke strong {
+      display: block;
+      font-size: clamp(17px, 1.5vw, 20px);
       font-weight: 600;
       letter-spacing: -.03em;
     }
 
+    /* nur die Zeile unter dem Namen, sonst faengt die Regel den Avatar mit */
+    .profile-marke > div span {
+      display: block;
+      margin-top: 2px;
+      color: var(--muted);
+      font-size: 11.5px;
+      font-weight: 600;
+    }
+
     .profile-tag {
-      padding: 5px 10px;
+      padding: 6px 11px;
       border-radius: 99px;
       background: var(--brand-soft);
       color: var(--brand-dark);
       font-size: 10px;
       font-weight: 700;
+      white-space: nowrap;
     }
 
-    .profile-rows {
-      margin: 0;
+    .profile-specs {
       display: grid;
-      overflow: hidden;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: clamp(10px, 1vw, 14px);
+      margin-bottom: clamp(10px, 1vw, 14px);
+    }
+
+    .profile-specs div {
+      padding: 15px 16px;
       border-radius: var(--radius-md);
-      background: #f7faf3;
+      background: #f5f8f1;
     }
 
-    .profile-rows div {
-      display: grid;
-      grid-template-columns: 104px minmax(0, 1fr);
-      gap: 10px;
-      padding: 10px 13px;
-      font-size: 12.5px;
+    .profile-specs b {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--muted);
+      font-size: 10.5px;
+      font-weight: 700;
+      letter-spacing: .04em;
+      text-transform: uppercase;
     }
 
-    .profile-rows div + div { border-top: 1px solid var(--line); }
-
-    .profile-rows dt { margin: 0; color: var(--muted); font-weight: 600; }
-    .profile-rows dd { margin: 0; font-weight: 600; }
-
-    .profile-shots {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 8px;
-      margin-top: 12px;
+    .profile-specs span {
+      font-size: 13.5px;
+      font-weight: 600;
+      letter-spacing: -.01em;
     }
 
     .profile-shots {
+      margin: 0;
       padding: 0;
       list-style: none;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: clamp(10px, 1vw, 14px);
     }
 
     /* Beispielfotos, im Betrieb laedt der Anbieter seine eigenen hoch */
     .profile-shots li {
       aspect-ratio: 4 / 3;
-      border-radius: 9px;
+      border-radius: var(--radius-md);
       background-color: #eef2e8;
       background-position: center;
       background-size: cover;
@@ -1358,10 +1373,64 @@
     .shot-3 { background-image: url("../seventi-profil-3.webp"); }
     .shot-4 { background-image: url("../seventi-profil-4.webp"); }
 
-    .profile-caption {
-      margin: 12px 0 0;
+    /* die vier Punkte sitzen als Reihe unter der Buehne */
+    .profile-dock {
+      position: relative;
+      z-index: 1;
+      margin: clamp(16px, 1.6vw, 24px) 0 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: clamp(10px, 1vw, 16px);
+    }
+
+    .profile-dock li {
+      padding: clamp(16px, 1.5vw, 21px);
+      border-radius: var(--radius-lg);
+      background: var(--white);
+    }
+
+    .dock-nr {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      margin-bottom: 9px;
+      color: var(--brand-dark);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+    }
+
+    .dock-nr svg {
+      width: 14px;
+      height: 14px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.9;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .profile-dock strong {
+      display: block;
+      font-size: 14.5px;
+      font-weight: 600;
+      letter-spacing: -.02em;
+    }
+
+    .profile-dock p {
+      margin: 5px 0 0;
       color: var(--muted);
-      font-size: 10.5px;
+      font-size: 12.5px;
+      line-height: 1.55;
+    }
+
+    .profile-caption {
+      margin: 16px 0 0;
+      color: var(--muted);
+      font-size: 11px;
       font-weight: 600;
       text-align: center;
     }
@@ -1654,9 +1723,7 @@
 
       .kinds { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 
-      .profile-wrap { grid-template-columns: 1fr; gap: 30px; }
-
-      .profile-points { order: 2; }
+      .profile-dock { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 
       .ablauf-box { padding: 26px 20px 30px; border-radius: 22px; }
 
@@ -1840,11 +1907,23 @@
 
       .regions { gap: 8px; }
 
-      .profile-card { padding: 16px; }
+      .buehne { margin-top: 32px; }
 
-      .profile-rows div { grid-template-columns: 88px minmax(0, 1fr); font-size: 12px; }
+      .buehne-schein { inset: -12px -8px 26px; filter: blur(30px); }
+
+      .profile-card { padding: 16px; border-radius: 20px; }
+
+      .profile-top { flex-wrap: wrap; gap: 10px; }
+
+      .profile-specs { grid-template-columns: 1fr; gap: 8px; }
+
+      .profile-specs div { padding: 12px 14px; }
 
       .profile-shots { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+      .profile-dock { grid-template-columns: 1fr; gap: 8px; }
+
+      .profile-dock li { padding: 16px; }
 
       .visual-caption { right: 16px; bottom: 12px; left: 16px; font-size: 10px; }
 
@@ -2358,7 +2437,7 @@
       </div>
     </section>
 
-    <section class="section section-tint" aria-labelledby="profil-titel">
+    <section class="section section-tint profil" aria-labelledby="profil-titel">
       <div class="shell">
         <div class="section-head reveal">
           <div>
@@ -2371,62 +2450,59 @@
           <p class="section-lead">Einmal ausgefüllt, danach gibt es nichts zu pflegen. Ändern können Sie es jederzeit.</p>
         </div>
 
-        <div class="profile-wrap">
-          <ul class="profile-points reveal">
-            <li class="malt-halter">
-              <span class="malt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M7 12h10M10 18h4"/></svg></span>
-              <div>
-                <strong>Kategorie und Leistungen</strong>
-                <p>Danach wird gefiltert. Was Sie nicht anbieten, kommt bei Ihnen nicht an.</p>
+        <div class="buehne reveal">
+          <div class="buehne-schein" aria-hidden="true"></div>
+
+          <article class="profile-card">
+            <div class="profile-top">
+              <div class="profile-marke">
+                <span class="profile-avatar" aria-hidden="true">S</span>
+                <div>
+                  <strong>Seehalle</strong>
+                  <span>Region Zürich · Location</span>
+                </div>
               </div>
-            </li>
-            <li class="malt-halter">
-              <span class="malt"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8.5" r="3.2"/><path d="M3.5 19a5.5 5.5 0 0 1 11 0M16 6.2a3.2 3.2 0 0 1 0 6M17.5 19a5.6 5.6 0 0 0-2-4.2"/></svg></span>
-              <div>
-                <strong>Kapazität</strong>
-                <p>Anfragen für 300 Personen erreichen keinen Raum für 80.</p>
-              </div>
-            </li>
-            <li class="malt-halter">
-              <span class="malt"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M14.5 9.5H11a1.8 1.8 0 0 0 0 3.6h2a1.8 1.8 0 0 1 0 3.6H9.5M12 8v9"/></svg></span>
-              <div>
-                <strong>Preisrahmen</strong>
-                <p>Ein Rahmen, kein Preisblatt. Das Angebot rechnen Sie weiterhin selbst.</p>
-              </div>
-            </li>
-            <li class="malt-halter">
-              <span class="malt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 8.5h3l1.6-2.4h7.8L17.5 8.5h3v10h-17z"/><circle cx="12" cy="13" r="3.4"/></svg></span>
-              <div>
-                <strong>Fotos</strong>
-                <p>Ihre eigenen Bilder. Keine Stockfotos, keine Bilder von uns.</p>
-              </div>
-            </li>
+              <span class="profile-tag">Beispielprofil</span>
+            </div>
+
+            <div class="profile-specs">
+              <div><b>Kapazität</b><span>60 bis 220 Personen</span></div>
+              <div><b>Preisrahmen</b><span>CHF 120 bis 180 pro Person</span></div>
+              <div><b>Leistungen</b><span>Saal, Catering, Technik</span></div>
+            </div>
+
+            <ul class="profile-shots">
+              <li class="shot-1" role="img" aria-label="Gedeckte Tafel am See"></li>
+              <li class="shot-2" role="img" aria-label="Anlass im begrünten Innenhof"></li>
+              <li class="shot-3" role="img" aria-label="Seminarraum mit Seeblick"></li>
+              <li class="shot-4" role="img" aria-label="Stehempfang in heller Halle"></li>
+            </ul>
+          </article>
+
+          <ul class="profile-dock">
+          <li class="malt-halter">
+            <span class="dock-nr"><span class="malt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M7 12h10M10 18h4"/></svg></span>01 · Filter</span>
+            <strong>Kategorie und Leistungen</strong>
+            <p>Danach wird gefiltert. Was Sie nicht anbieten, kommt bei Ihnen nicht an.</p>
+          </li>
+          <li class="malt-halter">
+            <span class="dock-nr"><span class="malt"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8.5" r="3.2"/><path d="M3.5 19a5.5 5.5 0 0 1 11 0M16 6.2a3.2 3.2 0 0 1 0 6M17.5 19a5.6 5.6 0 0 0-2-4.2"/></svg></span>02 · Passung</span>
+            <strong>Kapazität</strong>
+            <p>Anfragen für 300 Personen erreichen keinen Raum für 80.</p>
+          </li>
+          <li class="malt-halter">
+            <span class="dock-nr"><span class="malt"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M14.5 9.5H11a1.8 1.8 0 0 0 0 3.6h2a1.8 1.8 0 0 1 0 3.6H9.5M12 8v9"/></svg></span>03 · Budget</span>
+            <strong>Preisrahmen</strong>
+            <p>Ein Rahmen, kein Preisblatt. Das Angebot rechnen Sie weiterhin selbst.</p>
+          </li>
+          <li class="malt-halter">
+            <span class="dock-nr"><span class="malt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 8.5h3l1.6-2.4h7.8L17.5 8.5h3v10h-17z"/><circle cx="12" cy="13" r="3.4"/></svg></span>04 · Fotos</span>
+            <strong>Ihre eigenen Bilder</strong>
+            <p>Keine Stockfotos, keine Bilder von uns. Sie bestimmen, was zu sehen ist.</p>
+          </li>
           </ul>
 
-          <div class="reveal">
-            <article class="profile-card">
-              <div class="profile-top">
-                <strong>Seehalle</strong>
-                <span class="profile-tag">Location</span>
-              </div>
-
-              <dl class="profile-rows">
-                <div><dt>Region</dt><dd>Zürich</dd></div>
-                <div><dt>Kapazität</dt><dd>60 bis 220 Personen</dd></div>
-                <div><dt>Preisrahmen</dt><dd>CHF 120 bis 180 pro Person</dd></div>
-                <div><dt>Leistungen</dt><dd>Saal, Catering, Technik</dd></div>
-              </dl>
-
-              <ul class="profile-shots">
-                <li class="shot-1" role="img" aria-label="Gedeckte Tafel am See"></li>
-                <li class="shot-2" role="img" aria-label="Anlass im begrünten Innenhof"></li>
-                <li class="shot-3" role="img" aria-label="Seminarraum mit Seeblick"></li>
-                <li class="shot-4" role="img" aria-label="Stehempfang in heller Halle"></li>
-              </ul>
-
-              <p class="profile-caption">Beispielprofil mit Beispielfotos, im Betrieb laden Sie Ihre eigenen hoch</p>
-            </article>
-          </div>
+          <p class="profile-caption">Beispielprofil mit Beispielfotos, im Betrieb laden Sie Ihre eigenen hoch</p>
         </div>
       </div>
     </section>

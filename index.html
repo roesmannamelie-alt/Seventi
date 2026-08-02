@@ -54,6 +54,9 @@
       background: var(--canvas);
     }
 
+    /* der Hero laeuft breiter als die Abschnitte darunter */
+    .hero .shell { width: min(1580px, 100%); }
+
     .shell {
       width: min(var(--max), 100%);
       margin: 0 auto;
@@ -1181,92 +1184,19 @@
     }
 
     /* ===================================================
-       Abschnitt 1 · Vertrauensleiste
-       Schmales Band direkt unter dem Hero. Die Logos laufen
-       als endlose Spur durch, zwei identische Bahnen.
+       Logospur im Hero
+       Zwei gleiche Bahnen laufen endlos durch. Die Bahnen
+       werden per Skript aufgefuellt, bis eine allein breiter
+       ist als der Rahmen, sonst reisst die Spur am Ende ab.
        =================================================== */
 
-    .trust {
-      padding: clamp(34px, 3.6vw, 52px) 20px clamp(32px, 3.4vw, 48px);
-      background: var(--white);
-    }
-
-    .trust-inner {
-      display: grid;
-      justify-items: center;
-      gap: clamp(20px, 2.2vw, 30px);
-      text-align: center;
-    }
-
-    .trust-line {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      margin: 0;
-      color: var(--muted);
-      font-size: 12.5px;
-      font-weight: 600;
-      letter-spacing: .01em;
-    }
-
-    /* Hinweis zum Arbeitsstand, sichtbar nur beim Hover */
-    .info {
-      position: relative;
-      width: 17px;
-      height: 17px;
-      flex: 0 0 17px;
-      border-radius: 50%;
-      display: grid;
-      place-content: center;
-      background: rgba(22, 40, 0, .09);
-      color: var(--brand-dark);
-      cursor: help;
-    }
-
-    .info svg {
-      width: 11px;
-      height: 11px;
-      fill: none;
-      stroke: currentColor;
-      stroke-width: 2.1;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-    }
-
-    .info b {
-      position: absolute;
-      bottom: calc(100% + 9px);
-      left: 50%;
-      z-index: 5;
-      width: max-content;
-      max-width: min(280px, 76vw);
-      padding: 11px 13px;
-      border-radius: 12px;
-      background: var(--white);
-      box-shadow: 0 18px 36px -18px rgba(22, 40, 0, .5);
-      color: var(--ink);
-      font-size: 11px;
-      font-weight: 500;
-      line-height: 1.55;
-      text-align: left;
-      opacity: 0;
-      pointer-events: none;
-      transform: translate(-50%, 4px);
-      transition: opacity .2s ease, transform .2s ease;
-    }
-
-    .info:hover b,
-    .info:focus-visible b { opacity: 1; transform: translate(-50%, 0); }
-
-    .info:focus-visible { outline: 2px solid var(--brand-strong); outline-offset: 2px; }
-
-    /* Endlose Spur: zwei gleiche Bahnen, die zweite rueckt nach */
     .logo-lauf {
       width: 100%;
+      margin-top: clamp(44px, 5vw, 76px);
       display: flex;
       overflow: hidden;
-      -webkit-mask-image: linear-gradient(90deg, transparent, #000 9%, #000 91%, transparent);
-      mask-image: linear-gradient(90deg, transparent, #000 9%, #000 91%, transparent);
+      -webkit-mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+      mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
     }
 
     .logo-spur {
@@ -1278,7 +1208,7 @@
       padding: 0 clamp(38px, 5vw, 78px) 0 0;
       margin: 0;
       list-style: none;
-      animation: logosLaufen 28s linear infinite;
+      animation: logosLaufen 34s linear infinite;
     }
 
     .logo-lauf:hover .logo-spur,
@@ -1301,6 +1231,73 @@
     }
 
     .logo-spur li:hover { color: #6f7a64; }
+
+    /* ---------- Hinweis-Marke ---------- */
+    .hinweis {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 6px 12px 6px 8px;
+      border-radius: 99px;
+      background: #f2f5ee;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 700;
+      cursor: help;
+    }
+
+    .info {
+      position: relative;
+      width: 17px;
+      height: 17px;
+      flex: 0 0 17px;
+      border-radius: 50%;
+      display: grid;
+      place-content: center;
+      background: rgba(22, 40, 0, .09);
+      color: var(--brand-dark);
+      cursor: help;
+    }
+
+    .hinweis .info { background: rgba(22, 40, 0, .12); }
+
+    .info svg {
+      width: 11px;
+      height: 11px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2.1;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .info b {
+      position: absolute;
+      bottom: calc(100% + 12px);
+      left: 50%;
+      z-index: 5;
+      width: max-content;
+      max-width: min(280px, 76vw);
+      padding: 11px 13px;
+      border-radius: 12px;
+      background: var(--white);
+      box-shadow: 0 18px 36px -18px rgba(22, 40, 0, .5);
+      color: var(--ink);
+      font-size: 11px;
+      font-weight: 500;
+      line-height: 1.55;
+      text-align: left;
+      opacity: 0;
+      pointer-events: none;
+      transform: translate(-50%, 4px);
+      transition: opacity .2s ease, transform .2s ease;
+    }
+
+    .hinweis:hover .info b,
+    .info:hover b,
+    .info:focus-visible b { opacity: 1; transform: translate(-50%, 0); }
+
+    .info:focus-visible { outline: 2px solid var(--brand-strong); outline-offset: 2px; }
 
     /* ===================================================
        Zahlenband
@@ -1336,6 +1333,26 @@
       justify-items: center;
       gap: clamp(30px, 3.4vw, 46px);
       text-align: center;
+    }
+
+    .figures-kopf {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .hinweis.auf-dunkel {
+      background: rgba(255, 255, 255, .16);
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+      color: rgba(255, 255, 255, .88);
+    }
+
+    .hinweis.auf-dunkel .info {
+      background: rgba(255, 255, 255, .22);
+      color: var(--white);
     }
 
     .figures-label {
@@ -1736,22 +1753,12 @@
 
       .step p { font-size: 13.5px; line-height: 1.65; }
 
-      .trust { padding: 26px 20px 24px; }
-
-      .trust-inner { gap: 18px; }
-
-      .trust-line { font-size: 11.5px; line-height: 1.5; }
-
-      .trust { padding: 26px 20px 26px; }
-
-      .trust-inner { gap: 18px; }
-
-      .trust-line { font-size: 11.5px; line-height: 1.5; }
+      .logo-lauf { margin-top: 34px; }
 
       .logo-spur {
         gap: 34px;
         padding-right: 34px;
-        animation-duration: 20s;
+        animation-duration: 24s;
       }
 
       .logo-spur li { font-size: 17px; }
@@ -1764,19 +1771,7 @@
 
       .figures-list dt { font-size: 12px; line-height: 1.45; }
 
-      /* Am Zeilenende rechts verankert, sonst ragt der Hinweis raus.
-         Steht das Icon mittig, bleibt der Hinweis mittig. */
-      .trust .info b {
-        right: -6px;
-        left: auto;
-        max-width: min(250px, 72vw);
-        transform: translate(0, 4px);
-      }
-
-      .trust .info:hover b,
-      .trust .info:focus-visible b { transform: translate(0, 0); }
-
-      .offer-hinweis .info b { max-width: min(260px, 84vw); }
+      .info b { max-width: min(260px, 84vw); }
 
       .fallback {
         margin-top: 30px;
@@ -2025,9 +2020,12 @@
        =================================================== */
 
     .offers {
-      padding: clamp(84px, 8.5vw, 130px) 20px clamp(80px, 8vw, 120px);
+      padding: clamp(84px, 8.5vw, 130px) clamp(14px, 1.6vw, 24px) clamp(80px, 8vw, 120px);
       background: var(--white);
     }
+
+    /* der Container liegt fast randlos, nur ein weisser Saum bleibt */
+    .offers .shell { width: 100%; }
 
     /* Kopf und Karten liegen zusammen im Container, dadurch hebt sich
        der Abschnitt deutlicher vom weissen darueber ab. */
@@ -2047,6 +2045,8 @@
     }
 
     .offer-deck {
+      width: min(1360px, 100%);
+      margin: 0 auto;
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: clamp(14px, 1.5vw, 22px);
@@ -2964,18 +2964,6 @@
         </div>
       </section>
       </div>
-    </div>
-  </section>
-
-  <section class="trust" aria-labelledby="vertrauen-titel">
-    <div class="shell trust-inner">
-      <p class="trust-line reveal" id="vertrauen-titel">
-        Bereits im Einsatz bei Teams in Zürich, Zug und Luzern
-        <span class="info" tabindex="0" role="note" aria-label="Hinweis zum Arbeitsstand">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5.5M12 7.6h.01"/></svg>
-          <b>Logos und Zahlen sind Beispiele, damit die Flächen in ihrer echten Wirkung zu sehen sind. Sie werden vor dem Livegang durch die Angaben von Seventi ersetzt.</b>
-        </span>
-      </p>
 
       <!-- Erfundene Wortmarken als Beispiel. Vor dem Livegang gegen echte
            Logos mit Freigabe der jeweiligen Firma tauschen. -->
@@ -3061,9 +3049,19 @@
     <div class="figures-shot" aria-hidden="true"></div>
 
     <div class="shell figures-inner">
-      <div class="figures-label reveal" id="zahlen-titel">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19V9M10 19V5M16 19v-7M22 19H2"/></svg>
-        Stand heute
+      <div class="figures-kopf reveal">
+        <div class="figures-label" id="zahlen-titel">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19V9M10 19V5M16 19v-7M22 19H2"/></svg>
+          Stand heute
+        </div>
+
+        <span class="hinweis auf-dunkel" tabindex="0" role="note" aria-label="Hinweis zu den Daten">
+          <span class="info">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5.5M12 7.6h.01"/></svg>
+            <b>Diese Werte und die Wortmarken im Hero sind Beispiele. Beides wird vor dem Livegang durch die Angaben von Seventi ersetzt.</b>
+          </span>
+          Hinweis
+        </span>
       </div>
 
       <dl class="figures-list reveal">
@@ -3280,9 +3278,12 @@
       </div>
 
       <p class="offer-hinweis reveal">
-        <span class="info" tabindex="0" role="note" aria-label="Hinweis zu den Daten">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5.5M12 7.6h.01"/></svg>
-          <b>Drei Beispielangebote mit Platzhalter-Daten. Die echte Ansicht kommt später von Seventi.</b>
+        <span class="hinweis" tabindex="0" role="note" aria-label="Hinweis zu den Daten">
+          <span class="info">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5.5M12 7.6h.01"/></svg>
+            <b>Drei Beispielangebote mit Platzhalter-Daten. Die echte Ansicht kommt später von Seventi.</b>
+          </span>
+          Hinweis
         </span>
       </p>
     </div>
@@ -3401,6 +3402,37 @@
   <script src="./lenis.min.js"></script>
 
   <script>
+    // Eine Bahn muss allein breiter sein als der Rahmen, sonst klafft am
+    // Ende des Durchlaufs eine Luecke. Also so lange auffuellen, bis sie es ist.
+    const logoLauf = document.querySelector(".logo-lauf");
+
+    if (logoLauf) {
+      const bahnen = [...logoLauf.querySelectorAll(".logo-spur")];
+      const vorlage = bahnen.map((bahn) => [...bahn.children].map((el) => el.cloneNode(true)));
+
+      const bahnenFuellen = () => {
+        bahnen.forEach((bahn, i) => {
+          bahn.replaceChildren(...vorlage[i].map((el) => el.cloneNode(true)));
+
+          // Sicherheitsgrenze, falls der Rahmen aus irgendeinem Grund 0 ist
+          let runden = 0;
+          while (bahn.getBoundingClientRect().width < logoLauf.clientWidth && runden < 12) {
+            vorlage[i].forEach((el) => bahn.appendChild(el.cloneNode(true)));
+            runden += 1;
+          }
+        });
+      };
+
+      bahnenFuellen();
+
+      let breite = logoLauf.clientWidth;
+      window.addEventListener("resize", () => {
+        if (Math.abs(logoLauf.clientWidth - breite) < 40) return;
+        breite = logoLauf.clientWidth;
+        bahnenFuellen();
+      });
+    }
+
     // Konturen normieren, damit sie beim Hover gleichmaessig einlaufen
     document.querySelectorAll(".malt svg > *").forEach((form) => {
       form.setAttribute("pathLength", "1");
