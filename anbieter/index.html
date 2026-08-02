@@ -1339,30 +1339,24 @@
       margin-top: 12px;
     }
 
-    /* Fotos lädt der Betrieb selbst hoch, hier stehen die Plätze */
-    .profile-shots li {
-      aspect-ratio: 4 / 3;
-      border-radius: 9px;
-      display: grid;
-      place-content: center;
-      background: #eef2e8;
-      color: #a8b19d;
-    }
-
     .profile-shots {
       padding: 0;
       list-style: none;
     }
 
-    .profile-shots svg {
-      width: 17px;
-      height: 17px;
-      fill: none;
-      stroke: currentColor;
-      stroke-width: 1.7;
-      stroke-linecap: round;
-      stroke-linejoin: round;
+    /* Beispielfotos, im Betrieb laedt der Anbieter seine eigenen hoch */
+    .profile-shots li {
+      aspect-ratio: 4 / 3;
+      border-radius: 9px;
+      background-color: #eef2e8;
+      background-position: center;
+      background-size: cover;
     }
+
+    .shot-1 { background-image: url("../seventi-profil-1.webp"); }
+    .shot-2 { background-image: url("../seventi-profil-2.webp"); }
+    .shot-3 { background-image: url("../seventi-profil-3.webp"); }
+    .shot-4 { background-image: url("../seventi-profil-4.webp"); }
 
     .profile-caption {
       margin: 12px 0 0;
@@ -1850,7 +1844,7 @@
 
       .profile-rows div { grid-template-columns: 88px minmax(0, 1fr); font-size: 12px; }
 
-      .profile-shots { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .profile-shots { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 
       .visual-caption { right: 16px; bottom: 12px; left: 16px; font-size: 10px; }
 
@@ -1971,6 +1965,34 @@
         animation: none !important;
         transition-duration: .01ms !important;
       }
+    }
+
+    /* ---------- Icons werden beim Hover nachgezeichnet ----------
+       pathLength setzt jede Kontur auf die Laenge 1, dadurch laeuft die
+       Linie unabhaengig von ihrer echten Laenge gleich schnell durch. */
+    .malt svg > * {
+      stroke-dasharray: 1;
+      stroke-dashoffset: 0;
+    }
+
+    .malt-halter:hover .malt svg > *,
+    .malt-halter:focus-within .malt svg > * {
+      animation: malen .75s cubic-bezier(.65, 0, .35, 1) both;
+      animation-delay: var(--malt-start, 0s);
+    }
+
+    .malt-halter:hover .malt svg > :nth-child(2),
+    .malt-halter:focus-within .malt svg > :nth-child(2) { animation-delay: calc(var(--malt-start, 0s) + .09s); }
+
+    .malt-halter:hover .malt svg > :nth-child(3),
+    .malt-halter:focus-within .malt svg > :nth-child(3) { animation-delay: calc(var(--malt-start, 0s) + .18s); }
+
+    .malt-halter:hover .malt svg > :nth-child(n + 4),
+    .malt-halter:focus-within .malt svg > :nth-child(n + 4) { animation-delay: calc(var(--malt-start, 0s) + .27s); }
+
+    @keyframes malen {
+      from { stroke-dashoffset: 1; }
+      to { stroke-dashoffset: 0; }
     }
 
     /* ---------- Lenis: sanftes Scrollen ---------- */
@@ -2152,29 +2174,29 @@
                   <div class="chapter-top">
                     <h3>Bessere Anfragen</h3>
                   </div>
-                  <div class="benefit">
-                    <span class="benefit-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M7 12h10M10 18h4"/></svg></span>
+                  <div class="benefit malt-halter">
+                    <span class="benefit-icon malt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M7 12h10M10 18h4"/></svg></span>
                     <div>
                       <h4>Nur, was Sie erfüllen können</h4>
                       <p>Gefiltert nach Kategorie, Region, Datum und Kapazität, bevor Sie etwas erreicht.</p>
                     </div>
                   </div>
-                  <div class="benefit">
-                    <span class="benefit-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M14.5 9.5H11a1.8 1.8 0 0 0 0 3.6h2a1.8 1.8 0 0 1 0 3.6H9.5M12 8v9"/></svg></span>
+                  <div class="benefit malt-halter">
+                    <span class="benefit-icon malt"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M14.5 9.5H11a1.8 1.8 0 0 0 0 3.6h2a1.8 1.8 0 0 1 0 3.6H9.5M12 8v9"/></svg></span>
                     <div>
                       <h4>Budget steht drin</h4>
                       <p>Sie kalkulieren gegen eine bekannte Zahl, statt zu raten und zu hoffen.</p>
                     </div>
                   </div>
-                  <div class="benefit">
-                    <span class="benefit-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l4 4L19 6"/></svg></span>
+                  <div class="benefit malt-halter">
+                    <span class="benefit-icon malt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l4 4L19 6"/></svg></span>
                     <div>
                       <h4>Der Anlass ist beschlossen</h4>
                       <p>Wer ein Briefing abschickt, führt das Event durch und vergleicht nicht nur Preise.</p>
                     </div>
                   </div>
-                  <div class="benefit">
-                    <span class="benefit-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 15a3 3 0 0 1-3 3H8l-4 3V6a3 3 0 0 1 3-3h10a3 3 0 0 1 3 3Z"/></svg></span>
+                  <div class="benefit malt-halter">
+                    <span class="benefit-icon malt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 15a3 3 0 0 1-3 3H8l-4 3V6a3 3 0 0 1 3-3h10a3 3 0 0 1 3 3Z"/></svg></span>
                     <div>
                       <h4>Weniger Hin und Her</h4>
                       <p>Was Sie sonst per Mail erfragen, steht schon in der Anfrage.</p>
@@ -2192,29 +2214,29 @@
                   <div class="chapter-top">
                     <h3>Kein Risiko</h3>
                   </div>
-                  <div class="benefit">
-                    <span class="benefit-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h7l9 9-7 7-9-9Z"/><circle cx="8.5" cy="8.5" r="1.4"/></svg></span>
+                  <div class="benefit malt-halter">
+                    <span class="benefit-icon malt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h7l9 9-7 7-9-9Z"/><circle cx="8.5" cy="8.5" r="1.4"/></svg></span>
                     <div>
                       <h4>Gelistet sein kostet nichts</h4>
                       <p>Auch Anfragen zu erhalten und Angebote zu senden kostet nichts.</p>
                     </div>
                   </div>
-                  <div class="benefit">
-                    <span class="benefit-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8.5" r="3.2"/><path d="M3.5 19a5.5 5.5 0 0 1 11 0M16 6.2a3.2 3.2 0 0 1 0 6M17.5 19a5.6 5.6 0 0 0-2-4.2"/></svg></span>
+                  <div class="benefit malt-halter">
+                    <span class="benefit-icon malt"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8.5" r="3.2"/><path d="M3.5 19a5.5 5.5 0 0 1 11 0M16 6.2a3.2 3.2 0 0 1 0 6M17.5 19a5.6 5.6 0 0 0-2-4.2"/></svg></span>
                     <div>
                       <h4>Der Kunde bleibt Ihrer</h4>
                       <p>Nach dem Match steht Seventi nicht zwischen Ihnen und ihm.</p>
                     </div>
                   </div>
-                  <div class="benefit">
-                    <span class="benefit-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6"/><circle cx="7.5" cy="7.5" r="2.2"/><circle cx="16.5" cy="16.5" r="2.2"/></svg></span>
+                  <div class="benefit malt-halter">
+                    <span class="benefit-icon malt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6"/><circle cx="7.5" cy="7.5" r="2.2"/><circle cx="16.5" cy="16.5" r="2.2"/></svg></span>
                     <div>
                       <h4>10 % nur bei Zahlung über Seventi</h4>
                       <p>Ob die Zahlung über uns läuft, entscheiden Sie. Sonst fällt keine Kommission an.</p>
                     </div>
                   </div>
-                  <div class="benefit">
-                    <span class="benefit-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4.5" y="10.5" width="15" height="9.5" rx="2"/><path d="M8.5 10.5V8a3.5 3.5 0 0 1 7 0"/></svg></span>
+                  <div class="benefit malt-halter">
+                    <span class="benefit-icon malt"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4.5" y="10.5" width="15" height="9.5" rx="2"/><path d="M8.5 10.5V8a3.5 3.5 0 0 1 7 0"/></svg></span>
                     <div>
                       <h4>Keine Exklusivität, kein Minimum</h4>
                       <p>Keine Bindung, und den Eintrag können Sie jederzeit entfernen lassen.</p>
@@ -2232,29 +2254,29 @@
                   <div class="chapter-top">
                     <h3>Kein Aufwand</h3>
                   </div>
-                  <div class="benefit">
-                    <span class="benefit-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v5.2l3.2 2"/></svg></span>
+                  <div class="benefit malt-halter">
+                    <span class="benefit-icon malt"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v5.2l3.2 2"/></svg></span>
                     <div>
                       <h4>Rund zehn Minuten einrichten</h4>
                       <p>Danach gibt es nichts zu pflegen.</p>
                     </div>
                   </div>
-                  <div class="benefit">
-                    <span class="benefit-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16v12H4z"/><path d="m4 7 8 6 8-6"/></svg></span>
+                  <div class="benefit malt-halter">
+                    <span class="benefit-icon malt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16v12H4z"/><path d="m4 7 8 6 8-6"/></svg></span>
                     <div>
                       <h4>Anfragen kommen per E-Mail</h4>
                       <p>Im Dashboard verwalten Sie Anfragen, Termine und offene Aufgaben, wenn Sie mögen.</p>
                     </div>
                   </div>
-                  <div class="benefit">
-                    <span class="benefit-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h9M4 17h9M17 4l3 3-3 3M17 14l3 3-3 3"/></svg></span>
+                  <div class="benefit malt-halter">
+                    <span class="benefit-icon malt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h9M4 17h9M17 4l3 3-3 3M17 14l3 3-3 3"/></svg></span>
                     <div>
                       <h4>Sie wählen aus</h4>
                       <p>Keine Antwortpflicht. Absagen kosten weder Bewertung noch Sichtbarkeit.</p>
                     </div>
                   </div>
-                  <div class="benefit">
-                    <span class="benefit-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="14" rx="2.5"/><circle cx="9" cy="10" r="1.7"/><path d="m4.5 17 4.5-3.5 3.5 2.7 3-2.2 4 3"/></svg></span>
+                  <div class="benefit malt-halter">
+                    <span class="benefit-icon malt"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="14" rx="2.5"/><circle cx="9" cy="10" r="1.7"/><path d="m4.5 17 4.5-3.5 3.5 2.7 3-2.2 4 3"/></svg></span>
                     <div>
                       <h4>Das Profil gehört Ihnen</h4>
                       <p>Fotos, Leistungen, Kapazität und Preisrahmen bestimmen Sie.</p>
@@ -2286,40 +2308,40 @@
         </div>
 
         <div class="kinds reveal">
-          <article class="kind">
-            <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h16M6 20V9l6-4 6 4v11M10 13h4M10 17h4"/></svg></span>
+          <article class="kind malt-halter">
+            <span class="malt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h16M6 20V9l6-4 6 4v11M10 13h4M10 17h4"/></svg></span>
             <div>
               <strong>Locations</strong>
               <p>Säle, Hallen, Seminarräume, Restaurants mit eigenem Bereich.</p>
             </div>
           </article>
 
-          <article class="kind">
-            <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v16M5 8h14M7.5 8 5 14h5ZM16.5 8 14 14h5Z"/></svg></span>
+          <article class="kind malt-halter">
+            <span class="malt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v16M5 8h14M7.5 8 5 14h5ZM16.5 8 14 14h5Z"/></svg></span>
             <div>
               <strong>Catering</strong>
               <p>Vom Apéro über Flying Dinner bis zum mehrgängigen Menü.</p>
             </div>
           </article>
 
-          <article class="kind">
-            <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18V6l10-2v12"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="16.5" cy="16" r="2.5"/></svg></span>
+          <article class="kind malt-halter">
+            <span class="malt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18V6l10-2v12"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="16.5" cy="16" r="2.5"/></svg></span>
             <div>
               <strong>DJs und Musik</strong>
               <p>DJs, Bands und alles, was den Abend trägt.</p>
             </div>
           </article>
 
-          <article class="kind">
-            <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v4M12 17v4M5 12H3M21 12h-2M6.5 6.5 5 5M17.5 6.5 19 5M6.5 17.5 5 19M17.5 17.5 19 19"/><circle cx="12" cy="12" r="3.6"/></svg></span>
+          <article class="kind malt-halter">
+            <span class="malt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v4M12 17v4M5 12H3M21 12h-2M6.5 6.5 5 5M17.5 6.5 19 5M6.5 17.5 5 19M17.5 17.5 19 19"/><circle cx="12" cy="12" r="3.6"/></svg></span>
             <div>
               <strong>Technik</strong>
               <p>Ton, Licht, Bühne, Projektion und Betreuung vor Ort.</p>
             </div>
           </article>
 
-          <article class="kind">
-            <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 8.5h3l1.6-2.4h7.8L17.5 8.5h3v10h-17z"/><circle cx="12" cy="13" r="3.4"/></svg></span>
+          <article class="kind malt-halter">
+            <span class="malt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 8.5h3l1.6-2.4h7.8L17.5 8.5h3v10h-17z"/><circle cx="12" cy="13" r="3.4"/></svg></span>
             <div>
               <strong>Fotografie</strong>
               <p>Fotografie und Video für Anlässe im Firmenkalender.</p>
@@ -2351,29 +2373,29 @@
 
         <div class="profile-wrap">
           <ul class="profile-points reveal">
-            <li>
-              <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M7 12h10M10 18h4"/></svg></span>
+            <li class="malt-halter">
+              <span class="malt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M7 12h10M10 18h4"/></svg></span>
               <div>
                 <strong>Kategorie und Leistungen</strong>
                 <p>Danach wird gefiltert. Was Sie nicht anbieten, kommt bei Ihnen nicht an.</p>
               </div>
             </li>
-            <li>
-              <span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8.5" r="3.2"/><path d="M3.5 19a5.5 5.5 0 0 1 11 0M16 6.2a3.2 3.2 0 0 1 0 6M17.5 19a5.6 5.6 0 0 0-2-4.2"/></svg></span>
+            <li class="malt-halter">
+              <span class="malt"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8.5" r="3.2"/><path d="M3.5 19a5.5 5.5 0 0 1 11 0M16 6.2a3.2 3.2 0 0 1 0 6M17.5 19a5.6 5.6 0 0 0-2-4.2"/></svg></span>
               <div>
                 <strong>Kapazität</strong>
                 <p>Anfragen für 300 Personen erreichen keinen Raum für 80.</p>
               </div>
             </li>
-            <li>
-              <span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M14.5 9.5H11a1.8 1.8 0 0 0 0 3.6h2a1.8 1.8 0 0 1 0 3.6H9.5M12 8v9"/></svg></span>
+            <li class="malt-halter">
+              <span class="malt"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M14.5 9.5H11a1.8 1.8 0 0 0 0 3.6h2a1.8 1.8 0 0 1 0 3.6H9.5M12 8v9"/></svg></span>
               <div>
                 <strong>Preisrahmen</strong>
                 <p>Ein Rahmen, kein Preisblatt. Das Angebot rechnen Sie weiterhin selbst.</p>
               </div>
             </li>
-            <li>
-              <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 8.5h3l1.6-2.4h7.8L17.5 8.5h3v10h-17z"/><circle cx="12" cy="13" r="3.4"/></svg></span>
+            <li class="malt-halter">
+              <span class="malt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 8.5h3l1.6-2.4h7.8L17.5 8.5h3v10h-17z"/><circle cx="12" cy="13" r="3.4"/></svg></span>
               <div>
                 <strong>Fotos</strong>
                 <p>Ihre eigenen Bilder. Keine Stockfotos, keine Bilder von uns.</p>
@@ -2396,13 +2418,13 @@
               </dl>
 
               <ul class="profile-shots">
-                <li><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5.5" width="17" height="13" rx="2"/><circle cx="9" cy="10" r="1.6"/><path d="m4 16 4.5-4 3.5 3 3-2.5 5 3.5"/></svg></li>
-                <li><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5.5" width="17" height="13" rx="2"/><circle cx="9" cy="10" r="1.6"/><path d="m4 16 4.5-4 3.5 3 3-2.5 5 3.5"/></svg></li>
-                <li><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5.5" width="17" height="13" rx="2"/><circle cx="9" cy="10" r="1.6"/><path d="m4 16 4.5-4 3.5 3 3-2.5 5 3.5"/></svg></li>
-                <li><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5.5" width="17" height="13" rx="2"/><circle cx="9" cy="10" r="1.6"/><path d="m4 16 4.5-4 3.5 3 3-2.5 5 3.5"/></svg></li>
+                <li class="shot-1" role="img" aria-label="Gedeckte Tafel am See"></li>
+                <li class="shot-2" role="img" aria-label="Anlass im begrünten Innenhof"></li>
+                <li class="shot-3" role="img" aria-label="Seminarraum mit Seeblick"></li>
+                <li class="shot-4" role="img" aria-label="Stehempfang in heller Halle"></li>
               </ul>
 
-              <p class="profile-caption">Beispielprofil, Fotos laden Sie selbst hoch</p>
+              <p class="profile-caption">Beispielprofil mit Beispielfotos, im Betrieb laden Sie Ihre eigenen hoch</p>
             </article>
           </div>
         </div>
@@ -2898,6 +2920,11 @@
         knopf.setAttribute("aria-expanded", String(offen));
         wort.textContent = offen ? "Weniger" : "Mehr lesen";
       });
+    });
+
+    // Konturen normieren, damit sie beim Hover gleichmaessig einlaufen
+    document.querySelectorAll(".malt svg > *").forEach((form) => {
+      form.setAttribute("pathLength", "1");
     });
 
     const revealTargets = document.querySelectorAll(".reveal");
