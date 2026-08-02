@@ -67,6 +67,7 @@ Elf Abschnitte klingen viel, sind aber überwiegend kurz. Die Seite soll sich sc
 | Abschnitt 4 | drei Beispielangebote samt Preisen und Fristen | Beispieldaten, ersetzen oder durch einen echten Produkt-Screenshot tauschen |
 | Abschnitt 8 | „Für Sie kostenlos", Kommission auf der Anbieterseite | Geschäftsmodell muss Cody bestätigen |
 | Anbieter, Profil | Beispielprofil „Seehalle" | Beispieldaten, ersetzen |
+| beide Seiten, Fusszeile | Impressum, Datenschutz, Kontakt | Ziele fehlen noch |
 
 Alles andere auf der Seite beschreibt entweder die Mechanik aus dem Briefing oder den heutigen Arbeitsalltag der Zielgruppe.
 
@@ -82,6 +83,12 @@ Alles andere auf der Seite beschreibt entweder die Mechanik aus dem Briefing ode
 - **Bewegung folgt dem Scrollen.** Abschnitt 2 hat eine durchgehende Linie über alle drei Schritte, die sich beim Scrollen füllt; die Bahn ist bewusst etwa vier Bildschirmviertel lang, damit die Linie dem Scrollen folgt statt in einem Zug durchzulaufen. Die Schrittnummern schalten mit und zeigen beim Hover ein passendes Icon. Abschnitt 3 wird über einen Tab umgeschaltet: „Heute" und „Mit Seventi" tauschen dieselbe Karte per Überblendung. Links und rechts davon laufen fünf Bilder als lockere Collage mit, jedes in eigenem Tempo zwischen Faktor 0,07 und 0,19. Bei `prefers-reduced-motion` steht alles sofort im Endzustand.
 
 - **Abschnittsköpfe stehen mittig.** Kicker, Headline und Subline sitzen zentriert übereinander, auf beiden Seiten in derselben Form.
+
+- **Die Wortmarke ist das Logo von Seventi**, als Inline-SVG eingebettet und über `currentColor` eingefärbt. Dadurch steht sie dunkel auf hellem und weiss auf dunklem Grund, ohne zweite Datei.
+
+- **Mobil zuerst gedacht, nicht nur verkleinert.** Was am Zeiger hängt, funktioniert am Daumen nicht, deshalb fällt es auf schmalen Schirmen weg oder wird ersetzt: die Sublines der Anlass-Pills, der Hinweis an den Ablaufstufen im Hero. Was gestapelt unübersichtlich würde, wird gewischt: die drei Kapitel von „Warum mitmachen" liegen nebeneinander und rasten ein, die Schalter darüber schieben mit. Lange Texte in den Preiskarten sind auf zwei Zeilen gekürzt und lassen sich aufklappen. Alle Bedienelemente sind mindestens 44 px hoch; wo ein Icon klein bleiben soll, vergrössert ein unsichtbares Feld die Trefferfläche.
+
+- **Bilder werden mobil neu geschnitten, nicht getauscht.** Das Anlassbild liegt zusätzlich als Hochformat vor, derselbe Apéro, nur enger am Geschehen. Im Querformat wurde auf dem Handy die Gruppe abgeschnitten.
 
 - **Das Scrollen selbst läuft über Lenis**, gedämpft statt zeitgesteuert (`lerp: 0.16`). Die Seite folgt dem Rad direkt und läuft trotzdem weich. Bei `prefers-reduced-motion` bleibt das native Scrollen. Die Bibliothek liegt als `lenis.min.js` im Repository, damit die Seiten ohne CDN auskommen.
 - **Anlass-Pills** liegen im Glaslook mit weisser Schrift auf dem Bild und zeigen beim Hover den typischen Bedarf. Sie erscheinen nacheinander, sobald die Fläche im Bild ist, 110 ms Abstand. Sie weichen dem Zeiger nicht mehr aus: die Bewegung lenkte vom Inhalt ab und liess sich nicht ruhig genug einstellen.

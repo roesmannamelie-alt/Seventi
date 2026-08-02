@@ -12,12 +12,14 @@ Entwürfe für die Seventi Landingpages.
 | `provider.html` | Weiterleitung auf `anbieter/` |
 | `entwuerfe.html` | Übersicht mit Links auf alle Entwürfe |
 | `lenis.min.js` | Lenis 1.1.20, mitgeliefert statt über ein CDN geladen |
+| `seventi-logo.svg` | Wortmarke von Seventi, in beiden Seiten inline eingebettet |
 
 Zahlen und Firmenangaben in den Entwürfen sind Beispiele und vor dem Livegang zu ersetzen: die Logos und Zahlen der Vertrauensleiste, die drei Angebote im Vergleich und das Beispielprofil auf der Anbieter-Seite. Die Bilder stammen von Seventi.
 
 ## Enthalten
 
-- responsive Desktop- (1440 px) und Mobile-Ansicht (390 px)
+- responsive von 360 px bis 1920 px, mobil zuerst gedacht statt nur verkleinert
+- Bedienelemente ab 44 px, gewischte Kapitel statt gestapelter Karten
 - animiertes Miia-Briefing mit Matching-Ergebnissen
 - gemeinsames Design-System für Planner- und Provider-Seite
 - Manrope und Fraunces über Google Fonts

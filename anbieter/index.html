@@ -57,22 +57,17 @@
       height: 46px;
     }
 
+    /* Wortmarke von Seventi, faerbt sich ueber currentColor */
     .mark {
       display: flex;
       align-items: center;
-      gap: 7px;
       color: var(--ink);
-      font-family: "Fraunces", serif;
-      font-size: 19px;
-      font-weight: 500;
-      letter-spacing: -.02em;
     }
 
-    .mark i {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: var(--brand-strong);
+    .mark-logo {
+      width: auto;
+      height: 26px;
+      fill: currentColor;
     }
 
     .lang {
@@ -744,6 +739,10 @@
       background: var(--brand);
       color: var(--brand-dark);
     }
+
+    /* Das Icon im selben Rasterfeld ist hoeher, ohne place-self wuerde die
+       Ziffer auf dessen Hoehe gestreckt und dadurch nach oben rutschen. */
+    .step-index b { line-height: 1; place-self: center; }
 
     .step-index b,
     .step-index svg {
@@ -1418,6 +1417,9 @@
 
     .price:nth-child(2) p { color: var(--dark-muted); }
 
+    /* Auf schmalen Schirmen sind die Preistexte erst gekuerzt */
+    .price-more { display: none; }
+
     /* ---------- Abschluss ---------- */
     .closing-bed { background: #fafcf7; }
 
@@ -1526,20 +1528,10 @@
     .footer-mark {
       display: flex;
       align-items: center;
-      gap: 7px;
       color: var(--white);
-      font-family: "Fraunces", serif;
-      font-size: 17px;
-      font-weight: 500;
-      letter-spacing: -.02em;
     }
 
-    .footer-mark i {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--brand);
-    }
+    .footer-mark .mark-logo { height: 24px; }
 
     .footer-links {
       display: flex;
@@ -1628,7 +1620,10 @@
       .story-nav button::before { display: none; }
 
       .story-nav button {
-        padding: 9px 15px;
+        flex: 1 1 0;
+        min-width: 0;
+        min-height: 42px;
+        padding: 9px 10px;
         border-radius: 999px;
         background: #f2f5ed;
         font-size: 12.5px;
@@ -1642,6 +1637,26 @@
       .chapter-body { order: 2; padding: 0; }
 
       .chapter-shot { order: 1; min-height: clamp(240px, 33vw, 330px); }
+
+      /* Ohne Sticky ergibt das Stapeln keinen Sinn mehr: die Kapitel liegen
+         nebeneinander und werden gewischt oder ueber die Schalter gewaehlt. */
+      .chapters {
+        display: flex;
+        gap: 14px;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        overscroll-behavior-x: contain;
+        scrollbar-width: none;
+        margin-inline: -20px;
+        padding-inline: 20px;
+      }
+
+      .chapters::-webkit-scrollbar { display: none; }
+
+      .chapter {
+        flex: 0 0 100%;
+        scroll-snap-align: center;
+      }
 
       .kinds { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 
@@ -1676,6 +1691,13 @@
 
       .step-index { position: absolute; top: 0; left: 0; }
 
+      /* untereinander sitzt die Pille neben der Zahl, nicht darunter */
+      .step-time {
+        height: 34px;
+        margin: 0 0 13px;
+        padding: 0 14px 0 11px;
+      }
+
       .step p { max-width: 560px; }
 
       .section-head {
@@ -1690,9 +1712,19 @@
     @media (max-width: 760px) {
       .hero { padding: 18px 20px 56px; }
 
-      .hero-grid { margin-top: 26px; gap: 36px; }
+      /* Luft zwischen Kopfzeile und Kicker, Textspalte steht mittig.
+         Die Anfragekarte bleibt linksbuendig, sonst zerfaellt die Liste. */
+      .hero-grid { margin-top: 40px; gap: 36px; }
 
-      .mark { font-size: 17px; }
+      .hero-grid > div:first-child { text-align: center; }
+
+      .hero-grid .eyebrow,
+      .hero-grid h1,
+      .hero-grid .lead { margin-right: auto; margin-left: auto; }
+
+      .finder { text-align: left; }
+
+      .mark-logo { height: 22px; }
 
       h1 {
         font-size: clamp(32px, 8.8vw, 38px);
@@ -1768,6 +1800,48 @@
 
       .kinds { grid-template-columns: 1fr; gap: 10px; }
 
+      .price p {
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+
+      .price.is-offen p {
+        -webkit-line-clamp: unset;
+        overflow: visible;
+      }
+
+      .price-more {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        min-height: 44px;
+        margin-top: 2px;
+        padding: 0;
+        border: 0;
+        background: transparent;
+        color: var(--brand-dark);
+        font-size: 12.5px;
+        font-weight: 700;
+        cursor: pointer;
+      }
+
+      .price:nth-child(2) .price-more { color: var(--brand); }
+
+      .price-more svg {
+        width: 15px;
+        height: 15px;
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 2.2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        transition: transform .25s ease;
+      }
+
+      .price.is-offen .price-more svg { transform: rotate(180deg); }
+
       .kind { padding: 18px; }
 
       .regions { gap: 8px; }
@@ -1839,16 +1913,53 @@
 
       .site-footer { padding: 26px 20px 32px; }
 
+      /* Marke und Subline stehen links, der Rest bleibt mittig */
       .footer-row {
         grid-template-columns: 1fr;
         justify-items: center;
         text-align: center;
-        gap: 18px;
+        gap: 20px;
+      }
+
+      .footer-row > div:first-child {
+        justify-self: start;
+        text-align: left;
       }
 
       .footer-cross-wrap { justify-self: center; }
 
       .footer-links { gap: 16px; font-size: 11.5px; }
+
+      .footer-cross { min-height: 44px; }
+
+      .finder-field input { min-height: 46px; }
+
+      .req-act button { min-height: 44px; }
+
+      /* ---------- Daumenfreundliche Ziele ---------- */
+      .lang a {
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+        padding: 0 14px;
+      }
+
+      .footer-links a {
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+      }
+
+      /* Trefferflaeche waechst, das Icon bleibt klein */
+      .info::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 44px;
+        height: 44px;
+        transform: translate(-50%, -50%);
+      }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -1877,7 +1988,21 @@
     <section class="hero">
       <div class="shell">
         <header class="topbar">
-          <div class="mark">seventi<i></i></div>
+          <div class="mark">
+          <svg class="mark-logo" viewBox="0 0 139 41" role="img" aria-label="Seventi" focusable="false">
+          <path d="M24.8662 11.1962C26.6027 10.8717 27.7533 9.20742 27.429 7.45939C27.1048 5.72183 25.4416 4.57043 23.6947 4.89491C21.9582 5.2194 20.8076 6.88369 21.1319 8.63172C21.4561 10.3693 23.1298 11.5207 24.8662 11.1962Z"/>
+          <path d="M23.6841 15.3413C23.9247 14.9435 24.0398 14.4516 23.9456 13.9596C23.841 13.3839 23.4854 12.9129 23.0251 12.6303L10.504 5.58579C9.43705 4.95776 8.32824 4.69608 7.09391 4.92636C4.52065 5.39738 2.82606 7.87812 3.30724 10.4426C3.69428 12.5465 5.40979 14.0538 7.42865 14.2841L17.8681 15.739L4.64618 29.2313C4.58341 29.2941 4.47881 29.4197 4.47881 29.4197C3.50599 30.4769 3.02481 31.9737 3.30724 33.5019C3.78842 36.0769 6.25708 37.7726 8.81988 37.2911C10.2007 37.0399 11.3199 36.2025 11.9998 35.093L12.3973 34.4231L23.6841 15.3413Z"/>
+          <path d="M29.9502 29.2836L23.6322 22.9614C23.5485 22.8776 23.4543 22.8044 23.3602 22.7311C22.4606 22.1135 21.2367 22.3438 20.6196 23.244C20.2953 23.7255 20.2221 24.2593 20.3267 24.8141L21.9794 33.6589C22.2305 34.7894 22.8895 35.8361 23.9146 36.5374C26.0694 38.0237 29.0193 37.469 30.4942 35.3127C31.8122 33.3972 31.5298 30.8641 29.9502 29.2836Z"/>
+          <path d="M132.755 15.0271C134.113 15.0271 135.213 13.9915 135.213 12.7139C135.213 11.4363 134.113 10.4006 132.755 10.4006C131.397 10.4006 130.297 11.4363 130.297 12.7139C130.297 13.9915 131.397 15.0271 132.755 15.0271Z"/>
+          <path d="M45.7453 19.4445C42.2829 18.2198 40.6302 17.686 40.9335 16.3566C41.3205 14.6714 45.0445 14.3783 47.3457 16.8486L50.6617 13.6666C50.6617 13.6666 47.9838 10.4008 43.2662 10.4008C38.2556 10.4008 35.8602 13.6247 35.8602 16.1368C35.8602 18.649 36.854 20.9308 41.1636 22.5951C45.2327 24.1652 46.4357 24.4478 46.2683 25.8714C46.0696 27.5147 43.172 27.6927 40.9963 26.6669C39.3854 25.9132 37.8582 24.6886 37.8582 24.6886L34.8037 28.0172C34.8037 28.0172 38.2138 31.8168 43.4963 31.8168C49.647 31.8168 51.2789 28.3102 51.2789 25.4631C51.2789 22.6056 49.4065 20.7424 45.7453 19.4445Z"/>
+          <path d="M58.6953 15.7808C54.3333 16.7752 51.5927 21.1191 52.5864 25.4944C53.4546 29.3254 56.8961 31.9003 60.6723 31.8061C60.6723 31.8061 62.1263 31.848 64.187 31.1885C66.0594 30.5919 67.7854 28.9695 67.7854 28.9695L67.095 28.4147L64.3962 26.2271C64.3962 26.2271 63.1305 27.9646 60.9966 27.9646C59.6472 27.996 58.3397 27.1482 57.597 25.7874L64.2184 24.971L68.5699 24.4372C68.6432 23.6103 68.5909 22.7519 68.4026 21.8936C67.4088 17.5288 63.0678 14.7968 58.6953 15.7808ZM57.0635 22.3856C57.3564 20.9202 58.3292 19.7478 59.689 19.4443C61.279 19.0884 62.9004 20.02 63.7372 21.6215L57.0635 22.3856Z"/>
+          <path d="M90.5469 15.7807C86.1849 16.7751 83.4442 21.119 84.438 25.4943C85.3062 29.3253 88.7477 31.9003 92.5239 31.8061C92.5239 31.8061 93.9779 31.8479 96.0386 31.1885C97.911 30.5919 99.637 28.9695 99.637 28.9695L98.9466 28.4147L96.2478 26.227C96.2478 26.227 94.9821 27.9646 92.8482 27.9646C91.4988 27.996 90.1912 27.1482 89.4485 25.7874L96.07 24.971L100.422 24.4371C100.495 23.6102 100.442 22.7519 100.254 21.8936C99.2604 17.5288 94.9193 14.7968 90.5469 15.7807ZM88.915 22.3856C89.2079 20.9201 90.1808 19.7478 91.5406 19.4443C93.1306 19.0884 94.752 20.02 95.5888 21.6214L88.915 22.3856Z"/>
+          <path d="M79.8987 15.8436L76.4258 26.6144L72.9425 15.8436H67.4717L74.5952 31.7747H78.2459L85.3694 15.8436H79.8987Z"/>
+          <path d="M110.443 15.7075C107.943 15.7075 106.771 16.5658 106.123 17.0892L104.972 15.8436H101.97V31.3247H106.886V22.1449C106.886 20.8365 107.953 19.7688 109.271 19.7688C110.443 19.7688 111.415 20.6167 111.614 21.7262C111.614 21.7367 111.614 21.7576 111.625 21.7681C111.625 21.7785 111.625 21.7785 111.625 21.789C111.656 21.9669 111.656 22.2181 111.656 22.2495V31.3247H116.572V21.4226C116.562 18.1883 114.072 15.7075 110.443 15.7075Z"/>
+          <path d="M124.366 27.3889C123.006 27.2319 123.006 25.8398 123.006 25.8398V20.1456H127.923V15.8331H123.006V10.3901H118.09V26.6562C118.09 29.5766 120.119 31.4293 123.446 31.6491C127.462 31.9108 129.147 29.1265 129.147 29.1265L126.071 26.5306C126.061 26.5202 125.517 27.525 124.366 27.3889Z"/>
+          <path d="M135.213 15.8436H130.297V31.3246H135.213V15.8436Z"/>
+        </svg>
+        </div>
           <nav class="lang" aria-label="Sprache">
             <a href="#" aria-current="true">DE</a>
             <a href="#">EN</a>
@@ -2302,18 +2427,30 @@
             <span class="price-value">CHF 0</span>
             <strong>Gelistet sein und Anfragen erhalten</strong>
             <p>Profil anlegen, Anfragen bekommen, Angebote senden. Dafür zahlen Sie nichts, unabhängig davon, wie viele Aufträge daraus werden.</p>
+            <button class="price-more" type="button" aria-expanded="false">
+              <span>Mehr lesen</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
           </article>
 
           <article class="price reveal">
             <span class="price-value">10 %</span>
             <strong>Nur bei Zahlung über Seventi</strong>
             <p>Wickeln Sie die Zahlung über die Plattform ab, behalten wir 10 % ein. Rechnen Sie direkt mit dem Kunden ab, fällt nichts an. Die Entscheidung liegt bei Ihnen, pro Auftrag.</p>
+            <button class="price-more" type="button" aria-expanded="false">
+              <span>Mehr lesen</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
           </article>
 
           <article class="price reveal">
             <span class="price-value">Jederzeit</span>
             <strong>Wieder raus</strong>
             <p>Keine Exklusivität, kein Mindestumsatz, keine Kündigungsfrist. Auch einen Eintrag, den wir aus öffentlichen Quellen erstellt haben, entfernen wir auf Zuruf.</p>
+            <button class="price-more" type="button" aria-expanded="false">
+              <span>Mehr lesen</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
           </article>
         </div>
       </div>
@@ -2381,7 +2518,21 @@
   <footer class="site-footer">
     <div class="shell footer-row">
       <div>
-        <div class="footer-mark">seventi<i></i></div>
+        <div class="footer-mark">
+          <svg class="mark-logo" viewBox="0 0 139 41" role="img" aria-label="Seventi" focusable="false">
+          <path d="M24.8662 11.1962C26.6027 10.8717 27.7533 9.20742 27.429 7.45939C27.1048 5.72183 25.4416 4.57043 23.6947 4.89491C21.9582 5.2194 20.8076 6.88369 21.1319 8.63172C21.4561 10.3693 23.1298 11.5207 24.8662 11.1962Z"/>
+          <path d="M23.6841 15.3413C23.9247 14.9435 24.0398 14.4516 23.9456 13.9596C23.841 13.3839 23.4854 12.9129 23.0251 12.6303L10.504 5.58579C9.43705 4.95776 8.32824 4.69608 7.09391 4.92636C4.52065 5.39738 2.82606 7.87812 3.30724 10.4426C3.69428 12.5465 5.40979 14.0538 7.42865 14.2841L17.8681 15.739L4.64618 29.2313C4.58341 29.2941 4.47881 29.4197 4.47881 29.4197C3.50599 30.4769 3.02481 31.9737 3.30724 33.5019C3.78842 36.0769 6.25708 37.7726 8.81988 37.2911C10.2007 37.0399 11.3199 36.2025 11.9998 35.093L12.3973 34.4231L23.6841 15.3413Z"/>
+          <path d="M29.9502 29.2836L23.6322 22.9614C23.5485 22.8776 23.4543 22.8044 23.3602 22.7311C22.4606 22.1135 21.2367 22.3438 20.6196 23.244C20.2953 23.7255 20.2221 24.2593 20.3267 24.8141L21.9794 33.6589C22.2305 34.7894 22.8895 35.8361 23.9146 36.5374C26.0694 38.0237 29.0193 37.469 30.4942 35.3127C31.8122 33.3972 31.5298 30.8641 29.9502 29.2836Z"/>
+          <path d="M132.755 15.0271C134.113 15.0271 135.213 13.9915 135.213 12.7139C135.213 11.4363 134.113 10.4006 132.755 10.4006C131.397 10.4006 130.297 11.4363 130.297 12.7139C130.297 13.9915 131.397 15.0271 132.755 15.0271Z"/>
+          <path d="M45.7453 19.4445C42.2829 18.2198 40.6302 17.686 40.9335 16.3566C41.3205 14.6714 45.0445 14.3783 47.3457 16.8486L50.6617 13.6666C50.6617 13.6666 47.9838 10.4008 43.2662 10.4008C38.2556 10.4008 35.8602 13.6247 35.8602 16.1368C35.8602 18.649 36.854 20.9308 41.1636 22.5951C45.2327 24.1652 46.4357 24.4478 46.2683 25.8714C46.0696 27.5147 43.172 27.6927 40.9963 26.6669C39.3854 25.9132 37.8582 24.6886 37.8582 24.6886L34.8037 28.0172C34.8037 28.0172 38.2138 31.8168 43.4963 31.8168C49.647 31.8168 51.2789 28.3102 51.2789 25.4631C51.2789 22.6056 49.4065 20.7424 45.7453 19.4445Z"/>
+          <path d="M58.6953 15.7808C54.3333 16.7752 51.5927 21.1191 52.5864 25.4944C53.4546 29.3254 56.8961 31.9003 60.6723 31.8061C60.6723 31.8061 62.1263 31.848 64.187 31.1885C66.0594 30.5919 67.7854 28.9695 67.7854 28.9695L67.095 28.4147L64.3962 26.2271C64.3962 26.2271 63.1305 27.9646 60.9966 27.9646C59.6472 27.996 58.3397 27.1482 57.597 25.7874L64.2184 24.971L68.5699 24.4372C68.6432 23.6103 68.5909 22.7519 68.4026 21.8936C67.4088 17.5288 63.0678 14.7968 58.6953 15.7808ZM57.0635 22.3856C57.3564 20.9202 58.3292 19.7478 59.689 19.4443C61.279 19.0884 62.9004 20.02 63.7372 21.6215L57.0635 22.3856Z"/>
+          <path d="M90.5469 15.7807C86.1849 16.7751 83.4442 21.119 84.438 25.4943C85.3062 29.3253 88.7477 31.9003 92.5239 31.8061C92.5239 31.8061 93.9779 31.8479 96.0386 31.1885C97.911 30.5919 99.637 28.9695 99.637 28.9695L98.9466 28.4147L96.2478 26.227C96.2478 26.227 94.9821 27.9646 92.8482 27.9646C91.4988 27.996 90.1912 27.1482 89.4485 25.7874L96.07 24.971L100.422 24.4371C100.495 23.6102 100.442 22.7519 100.254 21.8936C99.2604 17.5288 94.9193 14.7968 90.5469 15.7807ZM88.915 22.3856C89.2079 20.9201 90.1808 19.7478 91.5406 19.4443C93.1306 19.0884 94.752 20.02 95.5888 21.6214L88.915 22.3856Z"/>
+          <path d="M79.8987 15.8436L76.4258 26.6144L72.9425 15.8436H67.4717L74.5952 31.7747H78.2459L85.3694 15.8436H79.8987Z"/>
+          <path d="M110.443 15.7075C107.943 15.7075 106.771 16.5658 106.123 17.0892L104.972 15.8436H101.97V31.3247H106.886V22.1449C106.886 20.8365 107.953 19.7688 109.271 19.7688C110.443 19.7688 111.415 20.6167 111.614 21.7262C111.614 21.7367 111.614 21.7576 111.625 21.7681C111.625 21.7785 111.625 21.7785 111.625 21.789C111.656 21.9669 111.656 22.2181 111.656 22.2495V31.3247H116.572V21.4226C116.562 18.1883 114.072 15.7075 110.443 15.7075Z"/>
+          <path d="M124.366 27.3889C123.006 27.2319 123.006 25.8398 123.006 25.8398V20.1456H127.923V15.8331H123.006V10.3901H118.09V26.6562C118.09 29.5766 120.119 31.4293 123.446 31.6491C127.462 31.9108 129.147 29.1265 129.147 29.1265L126.071 26.5306C126.061 26.5202 125.517 27.525 124.366 27.3889Z"/>
+          <path d="M135.213 15.8436H130.297V31.3246H135.213V15.8436Z"/>
+        </svg>
+        </div>
         <p class="footer-sub">Marktplatz für Firmenevents in der Schweiz</p>
       </div>
 
@@ -2554,6 +2705,8 @@
       const punktMitte = (index) => knoepfe[index].offsetTop + knoepfe[index].offsetHeight / 2;
 
       const zeichnen = () => {
+        if (window.matchMedia("(max-width: 1180px)").matches) return;
+
         // Bahn beginnt exakt beim ersten Punkt, dann stimmt auch das Ende
         storyNav.style.setProperty("--story-top", punktMitte(0).toFixed(1) + "px");
 
@@ -2603,9 +2756,39 @@
         window.addEventListener("resize", beiBewegung);
       }
 
+      // Unter 1180 px liegen die Kapitel nebeneinander und werden gewischt
+      const schmal = window.matchMedia("(max-width: 1180px)");
+      const spur = document.querySelector(".chapters");
+
+      const merken = (index) => {
+        kapitel.forEach((el, i) => el.classList.toggle("is-active", i === index));
+        knoepfe.forEach((knopf, i) => knopf.setAttribute("aria-current", String(i === index)));
+      };
+
+      if (spur) {
+        let gewischt = false;
+
+        spur.addEventListener("scroll", () => {
+          if (!schmal.matches || gewischt) return;
+          gewischt = true;
+          window.requestAnimationFrame(() => {
+            const nah = Math.round(spur.scrollLeft / Math.max(1, spur.clientWidth));
+            merken(Math.min(kapitel.length - 1, Math.max(0, nah)));
+            gewischt = false;
+          });
+        }, { passive: true });
+      }
+
       knoepfe.forEach((knopf) => {
         knopf.addEventListener("click", () => {
-          const ziel = kapitel[Number(knopf.dataset.storyZiel)];
+          const index = Number(knopf.dataset.storyZiel);
+          const ziel = kapitel[index];
+
+          if (schmal.matches && spur) {
+            spur.scrollTo({ left: ziel.offsetLeft - spur.offsetLeft, behavior: "smooth" });
+            merken(index);
+            return;
+          }
 
           // ueber Lenis, sonst kaempfen zwei Scrollmechaniken gegeneinander
           if (lenis) {
@@ -2702,6 +2885,18 @@
 
         frage.open = true;
         bewegen(0, inhalt.scrollHeight);
+      });
+    });
+
+    // Preistexte lassen sich auf dem Handy aufklappen
+    document.querySelectorAll(".price-more").forEach((knopf) => {
+      const karte = knopf.closest(".price");
+      const wort = knopf.querySelector("span");
+
+      knopf.addEventListener("click", () => {
+        const offen = karte.classList.toggle("is-offen");
+        knopf.setAttribute("aria-expanded", String(offen));
+        wort.textContent = offen ? "Weniger" : "Mehr lesen";
       });
     });
 
