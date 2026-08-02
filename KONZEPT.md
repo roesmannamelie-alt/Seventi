@@ -44,11 +44,13 @@ Elf Abschnitte klingen viel, sind aber überwiegend kurz. Die Seite soll sich sc
 
 ## 2b. Stand und Arbeitsregel
 
-**Gebaut:** Hero, 1 (Vertrauensleiste, Plätze noch leer), 2 (So läuft es ab), 3 (Der Unterschied), 5 (Für welche Anlässe), 10 (Abschluss), 11 (Footer).
+**Gebaut:** Hero, 1 (Vertrauensleiste), 2 (So läuft es ab), 3 (Der Unterschied), 4 (Angebotsvergleich), 5 (Für welche Anlässe), 8 (Was es kostet), 10 (Abschluss), 11 (Footer).
 
-**Bewusst offen:** 4 (Angebotsvergleich), 6 (Anbieter und Regionen), 7 (Ablauf im Detail), 8 (Was es kostet), 9 (Häufige Fragen). Diese Abschnitte bestehen fast vollständig aus Angaben, die nur Seventi kennt: Anbieterzahlen, Reaktionszeiten, Preismodell, Kundenreferenzen, Feldstruktur der Angebotsansicht. Wir bauen sie, sobald die Werte da sind.
+**Bewusst offen:** 6 (Anbieter und Regionen), 7 (Ablauf im Detail), 9 (Häufige Fragen). Diese Abschnitte bestehen fast vollständig aus Angaben, die nur Seventi kennt: Anbieterzahlen, Reaktionszeiten, Preismodell, Kundenreferenzen, Feldstruktur der Angebotsansicht. Wir bauen sie, sobald die Werte da sind.
 
-**Regel für alles Weitere:** Auf die Seite kommt nur, was wir wirklich wissen. Geschätzte Zahlen, angenommene Produktfunktionen und erfundene Referenzen bleiben draussen. Wo eine Angabe fehlt, das Layout sie aber braucht, steht ein sichtbar gekennzeichneter Platzhalter statt einer plausiblen Erfindung.
+**Regel für alles Weitere:** Auf die Seite kommt nur, was wir wirklich wissen. Angenommene Produktfunktionen und erfundene Referenzen bleiben draussen.
+
+**Ausnahme, bewusst entschieden:** Wo eine Fläche ohne Zahlen leer und damit unbeurteilbar bleibt, stehen jetzt Beispieldaten, damit die Wirkung des Abschnitts zu sehen ist. Betroffen sind die Vertrauensleiste (Logos und drei Zahlen), der Angebotsvergleich (drei Beispielangebote) und die Profilvorschau auf der Anbieter-Seite. Jede dieser Flächen trägt eine Beschriftung oder einen Hinweis hinter dem Info-Icon, der das sagt. **Diese Werte dürfen so nicht live gehen.** Sie sind zum Tausch gebaut, nicht zum Stehenlassen.
 
 ### Angaben, die aktuell auf der Seite stehen und bestätigt werden müssen
 
@@ -61,6 +63,10 @@ Elf Abschnitte klingen viel, sind aber überwiegend kurz. Die Seite soll sich sc
 | Abschnitt 2, Kasten | Miia schlägt Anbieter zum Anschreiben vor | steht so im Briefing, Ablauf im Detail unklar |
 | Abschnitt 1 | „Bereits im Einsatz bei Teams in Zürich, Zug und Luzern" | von uns gesetzt, braucht mindestens eine buchende Firma |
 | Abschluss | „Aktuell für Firmenevents in Zürich, Zug und Luzern" | Regionen aus dem Provider-Briefing, für die Planner-Seite nicht bestätigt |
+| Abschnitt 1 | fünf Wortmarken, 142 Anbieter, 4 Angebote, 32 Stunden | Beispieldaten, vollständig zu ersetzen |
+| Abschnitt 4 | drei Beispielangebote samt Preisen und Fristen | Beispieldaten, ersetzen oder durch einen echten Produkt-Screenshot tauschen |
+| Abschnitt 8 | „Für Sie kostenlos", Kommission auf der Anbieterseite | Geschäftsmodell muss Cody bestätigen |
+| Anbieter, Profil | Beispielprofil „Seehalle" | Beispieldaten, ersetzen |
 
 Alles andere auf der Seite beschreibt entweder die Mechanik aus dem Briefing oder den heutigen Arbeitsalltag der Zielgruppe.
 
@@ -109,9 +115,9 @@ Darunter drei Zahlen in einer Zeile:
 
 **Gestaltung:** weisse Fläche direkt unter dem Hero, mittig, ohne Headline. Fünf Logoplätze als ruhige graugrüne Felder, darunter die drei Zahlen in Fraunces, Zahl über Wort. Auf dem Handy Logos dreispaltig.
 
-**Stand:** gebaut, aber bewusst leer. Cody schreibt im Briefing „keine Platzhalter-Logos" und meint damit erfundene Marken. Deshalb stehen dort erkennbar leere Felder mit dem Wort „Logo" und statt der Zahlen ein graues Feld. Was fehlt, sieht man auch als Fehlendes. Ein Info-Icon in der Zeile erklärt den Stand.
+**Stand:** gebaut und mit Beispieldaten gefüllt, damit die Fläche in ihrer echten Wirkung zu beurteilen ist. Fünf erfundene Wortmarken, drei Beispielzahlen. Ein Info-Icon in der Zeile sagt das.
 
-**So darf es nicht live gehen.** Vor dem Livegang gilt: entweder echte Logos mit Freigabe der Firmen und echte Zahlen, oder der Abschnitt fällt weg. Wenn nur die Logos fehlen, bleibt die Zahlenzeile allein und wird grösser.
+**So darf es nicht live gehen.** Cody schreibt im Briefing „keine Platzhalter-Logos". Vor dem Livegang gilt deshalb: echte Logos mit Freigabe der Firmen und echte Zahlen, oder der Abschnitt fällt weg. Wenn nur die Logos fehlen, bleibt die Zahlenzeile allein und wird grösser.
 
 ---
 
@@ -183,7 +189,9 @@ Dieser Kasten ist der Grund, warum der Abschnitt an zweiter Stelle steht. Genau 
 
 **Visual:** Vergleichsansicht mit drei Angeboten nebeneinander. Zeilen: Preis total, Preis pro Person, Räumlichkeit, Catering, Technik, ÖV-Anbindung, Storno, gültig bis. *(Bildplatzhalter, später echter Produkt-Screenshot oder nachgebaute Ansicht.)*
 
-**Gestaltung:** breit, fast randlos, leicht angeschnitten, damit man sieht, dass es mehr Spalten gibt. Mobil: horizontal scrollbar mit der ersten Spalte fixiert.
+**Gestaltung:** breit, fast randlos, leicht angeschnitten, damit man sieht, dass es mehr Spalten gibt. Horizontal scrollbar, die erste Spalte bleibt beim Scrollen stehen. Die mittlere Spalte ist hell hervorgehoben, wie die gerade betrachtete in der Anwendung.
+
+**Stand:** gebaut, mit drei Beispielangeboten. Namen, Preise und Fristen sind erfunden und unter der Tabelle als Platzhalter beschriftet. Später ersetzt sie ein echter Produkt-Screenshot oder die nachgebaute Ansicht mit echten Feldern.
 
 ---
 
@@ -262,6 +270,8 @@ Zürich 142 · Zug 38 · Luzern 44 · Aargau 51 · St. Gallen 29 · Basel 63 · 
 **Text**
 
 > Anfragen, Angebote und Buchung sind für planende Unternehmen kostenlos. Seventi verdient auf der Anbieterseite. Ein Briefing ist keine Buchung, Sie können jedes Angebot ablehnen.
+
+**Stand:** gebaut. Ein schmaler Kasten auf hellgrünem Grund, darin die drei kostenlosen Schritte als Pills und darunter die Herkunft der Einnahmen: 10 % Kommission auf der Anbieterseite, und auch nur bei Zahlung über die Plattform. Das ist die Zahl aus dem Provider-Briefing, dadurch stimmen beide Seiten überein.
 
 *(Geschäftsmodell muss Cody bestätigen, bevor dieser Abschnitt live geht.)*
 
@@ -369,10 +379,12 @@ Die drei ersten Hero-Entwürfe entstanden vor dem Provider-Briefing. Drei Punkte
 1. **Hero**, Kernargument „Die Arbeit kommt zu Ihnen. Schon gefiltert." Rechts eine Beispielanfrage, die zeigt, was vor dem ersten Blick schon feststeht: Datum, Personenzahl, Region, Budget, Kategorien. Darunter die Suche als einzige Hauptaktion.
 2. **So läuft es ab**, drei Schritte mit derselben Fortschrittslinie wie auf der Planner-Seite: einrichten, Anfragen per E-Mail, antworten oder ablehnen.
 3. **Warum mitmachen** als Scroll-Story: links bleibt eine Leiste stehen, die zeigt, in welchem der drei Bereiche man gerade ist, rechts wandern die Kapitel durch. Das aktive Kapitel steht voll da, die anderen sind abgedunkelt. Die Punkte der Leiste sind anklickbar und springen zum Kapitel. Bessere Anfragen, Kein Risiko, Kein Aufwand, je vier Punkte mit eigenem Icon. Der Einwand dahinter ist immer derselbe: noch ein Portal, noch ein Abo, noch ein Postfach.
-4. **Was es kostet**, CHF 0 fürs Gelistetsein, 10 % nur bei Zahlung über Seventi, jederzeit wieder raus. Vollständig hingeschrieben statt im Kleingedruckten.
-5. **Häufige Fragen**, bewusst kurz: Herkunft der öffentlich erstellten Profile, Ablauf bei einem Auftrag, abgedeckte Regionen und Inhalt eines Profils. Alles andere beantworten die Argumentblöcke schon, und das Briefing will, dass die Seite sich leicht anfühlt statt lang zu erklären. Der Abschnitt steht zweispaltig: Kopf links, aufklappbare Fragen rechts. Ein Hinweis im Kopf hält fest, dass weitere Fragen ergänzt werden, sobald klar ist, welche Anbieter tatsächlich stellen.
-6. **Abschluss**, dieselbe Suche noch einmal, dunkler Block.
-7. **Footer**, Rechtliches und der Quereinstieg zur Planner-Seite.
+4. **Für welche Betriebe**, fünf Kategorien als Karten mit eigenem Icon, darunter die drei Regionen als dunkle Pills. Beantwortet die erste Frage vor allen Kostenfragen: bin ich hier überhaupt richtig.
+5. **Ihr Profil**, was ein Unternehmen von einem sieht. Links vier Punkte zu Kategorie, Kapazität, Preisrahmen und Fotos, rechts ein Beispielprofil als Karte. Die Fotoplätze bleiben leer, weil die Bilder vom Betrieb kommen. Damit fällt die frühere FAQ-Frage „Was gehört in ein Profil?" weg, ein FAQ soll nichts wiederholen.
+6. **Was es kostet**, CHF 0 fürs Gelistetsein, 10 % nur bei Zahlung über Seventi, jederzeit wieder raus. Vollständig hingeschrieben statt im Kleingedruckten.
+7. **Häufige Fragen**, bewusst kurz: Herkunft der öffentlich erstellten Profile, Ablauf bei einem Auftrag und abgedeckte Regionen. Alles andere beantworten die Argumentblöcke schon, und das Briefing will, dass die Seite sich leicht anfühlt statt lang zu erklären. Der Abschnitt steht zweispaltig: Kopf links, aufklappbare Fragen rechts. Ein Hinweis im Kopf hält fest, dass weitere Fragen ergänzt werden, sobald klar ist, welche Anbieter tatsächlich stellen.
+8. **Abschluss**, dieselbe Suche noch einmal, dunkler Block.
+9. **Footer**, Rechtliches und der Quereinstieg zur Planner-Seite.
 
 ### Zum FAQ
 
@@ -385,7 +397,7 @@ Auf der Planner-Seite liegt der Fall anders. Dort fängt Abschnitt 9 Fragen auf,
 - Das Briefing kündigt **vier Argumentblöcke** an und führt drei aus (Bessere Anfragen, Kein Risiko, Kein Aufwand). Wir haben drei gebaut. Falls ein vierter gemeint war, fehlt er.
 - Die Suche ist eine Vorschau ohne Datenbank. Tippt man „Beispiel", erscheint der Trefferfall, alles andere zeigt den Normalfall. Ein Hinweis darauf steht sichtbar unter dem Feld.
 - „Jederzeit pausieren" stand in allen drei früheren Entwürfen und ist entfernt. Das Briefing nennt nur „no exclusivity, no minimum, no lock-in" und das Entfernen des Eintrags, eine Pausier-Funktion ist nicht bestätigt.
-- Die drei alten Hero-Entwürfe liegen weiterhin im Repository. Sie sind inhaltlich korrigiert, aber ohne den Such-Mechanismus. Sobald die Anbieter-Seite steht, können sie weg.
+- Auf der Anbieter-Seite stehen bewusst **keine Zahlen**: keine Anbieterzahl, keine Anfragezahl, keine Reaktionszeit. Das Briefing verbietet das ausdrücklich, deshalb hat diese Seite auch keine Vertrauensleiste. Beispieldaten stehen nur im Hero und in der Profilvorschau, beide sind als Beispiel beschriftet.
 
 ---
 

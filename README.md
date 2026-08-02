@@ -6,14 +6,14 @@ Entwürfe für die Seventi Landingpages.
 
 | Datei | Inhalt |
 |---|---|
-| `index.html` | Planner-Seite: Hero, Vertrauensleiste, Abschnitte 2, 3, 5, Abschluss und Footer |
+| `index.html` | Planner-Seite: Hero, Vertrauensleiste, Abschnitte 2, 3, 4, 5, 8, Abschluss und Footer |
 | `KONZEPT.md` | Konzept der kompletten Planner-Seite: Abschnitte, Inhalte, offene Punkte |
-| `anbieter/index.html` | Provider-Seite: Suche, Argumente, Kosten, Fragen, Abschluss |
+| `anbieter/index.html` | Provider-Seite: Suche, Ablauf, Argumente, Kategorien, Profil, Kosten, Fragen, Abschluss |
 | `provider.html` | Weiterleitung auf `anbieter/` |
 | `entwuerfe.html` | Übersicht mit Links auf alle Entwürfe |
 | `lenis.min.js` | Lenis 1.1.20, mitgeliefert statt über ein CDN geladen |
 
-Zahlen und Firmenangaben in den Entwürfen sind Platzhalter. Die Bilder stammen von Seventi.
+Zahlen und Firmenangaben in den Entwürfen sind Beispiele und vor dem Livegang zu ersetzen: die Logos und Zahlen der Vertrauensleiste, die drei Angebote im Vergleich und das Beispielprofil auf der Anbieter-Seite. Die Bilder stammen von Seventi.
 
 ## Enthalten
 

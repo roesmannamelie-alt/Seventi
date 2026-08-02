@@ -1274,20 +1274,21 @@
       gap: clamp(10px, 1.2vw, 16px);
     }
 
-    /* bewusst als leerer Platz erkennbar, nicht als erfundene Marke */
+    /* einfarbige Wortmarken in Graugrün, wie im Konzept */
     .trust-logos li {
       width: clamp(112px, 10.5vw, 148px);
       height: clamp(40px, 3.6vw, 50px);
-      border-radius: 10px;
       display: grid;
       place-content: center;
-      background: #f2f5ee;
-      color: #a2ab98;
-      font-size: 10.5px;
-      font-weight: 700;
-      letter-spacing: .09em;
-      text-transform: uppercase;
+      color: #929c88;
+      font-family: "Fraunces", serif;
+      font-size: clamp(16px, 1.4vw, 19px);
+      font-weight: 600;
+      letter-spacing: -.02em;
+      transition: color .25s ease;
     }
+
+    .trust-logos li:hover { color: #6f7a64; }
 
     .trust-figures {
       margin: 0;
@@ -1324,14 +1325,6 @@
       color: var(--brand-dark);
     }
 
-    /* solange die Zahl fehlt, steht hier ein sichtbar leeres Feld */
-    .trust-figures .offen {
-      display: block;
-      width: 62px;
-      height: 20px;
-      border-radius: 6px;
-      background: #eef2e8;
-    }
 
     /* ===================================================
        Abschnitt 2 · So läuft es ab
@@ -1931,6 +1924,194 @@
     }
 
     .compare-col li:first-of-type { border-top: 0; }
+
+    /* ===================================================
+       Abschnitt 4 · Der Angebotsvergleich
+       Was sie am Ende in der Hand hält und der
+       Geschäftsleitung vorlegt.
+       =================================================== */
+
+    .offers {
+      padding: clamp(84px, 8.5vw, 130px) 20px clamp(80px, 8vw, 120px);
+      background: var(--white);
+      overflow: hidden;
+    }
+
+    /* rechts angeschnitten, damit sichtbar ist: da geht es weiter.
+       Der Radius sitzt am Scroller, sonst haelt die erste Spalte nicht. */
+    .offer-table {
+      width: min(1180px, 100%);
+      margin: clamp(44px, 4.6vw, 68px) auto 0;
+      border-radius: var(--radius-xl);
+      overflow-x: auto;
+      overflow-y: hidden;
+      overscroll-behavior-x: contain;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+
+    .offer-table::-webkit-scrollbar { display: none; }
+
+    .offer-table:focus-visible { outline: 3px solid rgba(184, 232, 0, .5); outline-offset: 3px; }
+
+    .offer-grid {
+      min-width: 880px;
+      display: grid;
+      grid-template-columns: minmax(150px, .82fr) repeat(3, minmax(196px, 1fr));
+      background: #f6f8f3;
+    }
+
+    /* erste Spalte bleibt beim seitlichen Scrollen stehen */
+    .offer-grid > .offer-head:first-child,
+    .offer-label {
+      position: sticky;
+      left: 0;
+      z-index: 2;
+      background: #f6f8f3;
+    }
+
+    .offer-grid > * {
+      padding: 15px clamp(14px, 1.4vw, 20px);
+      font-size: 13.5px;
+      line-height: 1.45;
+    }
+
+    .offer-head {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      padding-top: 22px;
+      padding-bottom: 20px;
+    }
+
+    .offer-head strong {
+      font-size: 15.5px;
+      font-weight: 600;
+      letter-spacing: -.025em;
+    }
+
+    .offer-head span {
+      color: var(--muted);
+      font-size: 11.5px;
+      font-weight: 600;
+    }
+
+    /* mittleres Angebot leicht hervorgehoben, wie in der Produktansicht */
+    .offer-grid .is-lead { background: var(--white); }
+
+    .offer-label {
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .offer-cell { font-weight: 600; }
+
+    .offer-cell.stark {
+      font-family: "Fraunces", serif;
+      font-size: 17px;
+      font-weight: 500;
+      letter-spacing: -.02em;
+    }
+
+    .offer-row-line {
+      grid-column: 1 / -1;
+      height: 1px;
+      padding: 0;
+      background: rgba(22, 40, 0, .07);
+    }
+
+    .offer-note {
+      max-width: 680px;
+      margin: 16px auto 0;
+      color: #8a9382;
+      font-size: 11.5px;
+      text-align: center;
+    }
+
+    /* ===================================================
+       Abschnitt 8 · Was es kostet
+       Den vermuteten Haken auflösen, bevor er entsteht.
+       =================================================== */
+
+    .price-note {
+      padding: clamp(70px, 7vw, 104px) 20px clamp(76px, 7.6vw, 112px);
+      background: var(--white);
+    }
+
+    .price-box {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: clamp(32px, 3.4vw, 48px) clamp(24px, 3vw, 44px) clamp(34px, 3.6vw, 50px);
+      border-radius: var(--radius-xl);
+      background: var(--brand-soft);
+      display: grid;
+      justify-items: center;
+      gap: 14px;
+      text-align: center;
+    }
+
+    .price-box h2 {
+      margin: 0;
+      font-size: clamp(30px, 3vw, 42px);
+      font-weight: 600;
+      line-height: 1.08;
+      letter-spacing: -.05em;
+    }
+
+    .price-box h2 em {
+      color: var(--brand-dark);
+      font-family: "Fraunces", serif;
+      font-style: normal;
+      font-weight: 500;
+      letter-spacing: -.035em;
+    }
+
+    .price-box > p {
+      max-width: 520px;
+      margin: 0;
+      color: #4d5c3d;
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    .price-list {
+      margin: 8px 0 0;
+      padding: 0;
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 9px;
+    }
+
+    .price-list li {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 15px 9px 11px;
+      border-radius: 999px;
+      background: var(--white);
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .price-list svg {
+      width: 15px;
+      height: 15px;
+      flex: 0 0 15px;
+      fill: none;
+      stroke: var(--brand-dark);
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .price-source {
+      margin: 6px 0 0;
+      color: #6d7b5c;
+      font-size: 12.5px;
+      line-height: 1.6;
+    }
 
     /* ===================================================
        Abschnitt 5 · Für welche Anlässe
@@ -2535,30 +2716,32 @@
         Bereits im Einsatz bei Teams in Zürich, Zug und Luzern
         <span class="info" tabindex="0" role="note" aria-label="Hinweis zum Arbeitsstand">
           <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5.5M12 7.6h.01"/></svg>
-          <b>Logos und Zahlen kommen von Seventi. Bis dahin stehen hier leere Plätze, damit nichts Erfundenes auf der Seite steht.</b>
+          <b>Logos und Zahlen sind Beispiele, damit die Fläche in ihrer echten Wirkung zu sehen ist. Sie werden vor dem Livegang durch die Angaben von Seventi ersetzt.</b>
         </span>
       </p>
 
-      <ul class="trust-logos reveal" aria-label="Plätze für Kundenlogos, noch nicht belegt">
-        <li>Logo</li>
-        <li>Logo</li>
-        <li>Logo</li>
-        <li>Logo</li>
-        <li>Logo</li>
+      <!-- Erfundene Wortmarken als Beispiel. Vor dem Livegang gegen echte
+           Logos mit Freigabe der jeweiligen Firma tauschen. -->
+      <ul class="trust-logos reveal" aria-label="Beispiele für Kundenlogos">
+        <li>Nordwerk</li>
+        <li>Helveta</li>
+        <li>Lumea</li>
+        <li>Brixa</li>
+        <li>Kantum</li>
       </ul>
 
       <dl class="trust-figures reveal">
         <div>
           <dt>geprüfte Anbieter in der Region Zürich</dt>
-          <dd><span class="offen" role="img" aria-label="Zahl folgt"></span></dd>
+          <dd>142</dd>
         </div>
         <div>
           <dt>Angebote pro Anfrage im Durchschnitt</dt>
-          <dd><span class="offen" role="img" aria-label="Zahl folgt"></span></dd>
+          <dd>4</dd>
         </div>
         <div>
           <dt>Stunden bis zum ersten Angebot</dt>
-          <dd><span class="offen" role="img" aria-label="Zahl folgt"></span></dd>
+          <dd>32</dd>
         </div>
       </dl>
     </div>
@@ -2694,6 +2877,68 @@
     </div>
   </section>
 
+  <section class="offers" aria-labelledby="vergleich-titel">
+    <div class="shell">
+      <div class="section-head reveal">
+        <div>
+          <div class="section-label"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16M4 12h16M4 19h16"/><path d="M9 3v18M15 3v18"/></svg>Der Vergleich</div>
+          <h2 id="vergleich-titel">Angebote, die man <em>nebeneinanderlegen kann.</em></h2>
+        </div>
+        <p class="section-lead">Jeder Anbieter antwortet in derselben Struktur. Sie sehen Preis pro Person, was inklusive ist und bis wann die Option gilt, und exportieren den Vergleich als PDF für die Freigabe.</p>
+      </div>
+
+      <div class="offer-table reveal" tabindex="0" role="group" aria-label="Beispielvergleich, seitlich scrollbar">
+        <div class="offer-grid">
+          <div class="offer-head" aria-hidden="true"></div>
+          <div class="offer-head"><strong>Seehalle</strong><span>Zürich</span></div>
+          <div class="offer-head is-lead"><strong>Werkhalle</strong><span>Zürich West</span></div>
+          <div class="offer-head"><strong>Gartensaal</strong><span>Zürich</span></div>
+          <div class="offer-label">Preis total</div>
+          <div class="offer-cell stark">CHF 17'400</div>
+          <div class="offer-cell stark is-lead">CHF 15'900</div>
+          <div class="offer-cell stark">CHF 19'200</div>
+          <span class="offer-row-line" aria-hidden="true"></span>
+          <div class="offer-label">Preis pro Person</div>
+          <div class="offer-cell">CHF 145</div>
+          <div class="offer-cell is-lead">CHF 133</div>
+          <div class="offer-cell">CHF 160</div>
+          <span class="offer-row-line" aria-hidden="true"></span>
+          <div class="offer-label">Räumlichkeit</div>
+          <div class="offer-cell">Saal, 180 Plätze</div>
+          <div class="offer-cell is-lead">Halle, 220 Plätze</div>
+          <div class="offer-cell">Saal und Garten, 150 Plätze</div>
+          <span class="offer-row-line" aria-hidden="true"></span>
+          <div class="offer-label">Catering</div>
+          <div class="offer-cell">Drei Gänge, inklusive</div>
+          <div class="offer-cell is-lead">Flying Dinner, inklusive</div>
+          <div class="offer-cell">Vier Gänge, inklusive</div>
+          <span class="offer-row-line" aria-hidden="true"></span>
+          <div class="offer-label">Technik</div>
+          <div class="offer-cell">Ton und Licht</div>
+          <div class="offer-cell is-lead">Ton, Licht, Bühne</div>
+          <div class="offer-cell">Ton, Licht auf Anfrage</div>
+          <span class="offer-row-line" aria-hidden="true"></span>
+          <div class="offer-label">ÖV-Anbindung</div>
+          <div class="offer-cell">6 Minuten ab Bahnhof</div>
+          <div class="offer-cell is-lead">12 Minuten ab Bahnhof</div>
+          <div class="offer-cell">18 Minuten ab Bahnhof</div>
+          <span class="offer-row-line" aria-hidden="true"></span>
+          <div class="offer-label">Storno</div>
+          <div class="offer-cell">bis 30 Tage kostenlos</div>
+          <div class="offer-cell is-lead">bis 21 Tage kostenlos</div>
+          <div class="offer-cell">bis 45 Tage kostenlos</div>
+          <span class="offer-row-line" aria-hidden="true"></span>
+          <div class="offer-label">Gültig bis</div>
+          <div class="offer-cell">28. Juli</div>
+          <div class="offer-cell is-lead">24. Juli</div>
+          <div class="offer-cell">2. August</div>
+        </div>
+      </div>
+
+      <p class="offer-note reveal">Beispielangebote mit Platzhalter-Daten. Seitlich scrollbar, in der Anwendung stehen dort alle Angebote nebeneinander.</p>
+    </div>
+  </section>
+
   <section class="occasions" aria-labelledby="anlaesse-titel">
     <div class="shell">
       <div class="section-head reveal">
@@ -2714,6 +2959,26 @@
       </div>
 
       <p class="occasion-note reveal"><strong>Nicht dabei?</strong> Beschreiben Sie es Miia trotzdem. Das Briefing ist frei formulierbar, die Anlässe oben sind nur die häufigsten.</p>
+    </div>
+  </section>
+
+  <section class="price-note" aria-labelledby="kosten-titel">
+    <div class="shell">
+      <div class="price-box reveal">
+        <div class="section-label"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M14.5 9.5H11a1.8 1.8 0 0 0 0 3.6h2a1.8 1.8 0 0 1 0 3.6H9.5M12 8v9"/></svg>Was es kostet</div>
+
+        <h2 id="kosten-titel">Für Sie <em>kostenlos.</em></h2>
+
+        <p>Anfragen, Angebote und Buchung sind für planende Unternehmen kostenlos. Ein Briefing ist keine Buchung, Sie können jedes Angebot ablehnen.</p>
+
+        <ul class="price-list">
+          <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h4l10-10a2.5 2.5 0 0 0-3.5-3.5L4.5 16.5V20Z"/><path d="M13.5 7.5 16.5 10.5"/></svg>Briefing stellen</li>
+          <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16v12H4z"/><path d="m4 7 8 6 8-6"/></svg>Angebote erhalten</li>
+          <li><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5.5" width="17" height="15" rx="2"/><path d="M8 3.5v4M16 3.5v4M3.5 10.5h17M9.4 15.2l1.9 1.9 3.4-3.6"/></svg>Vergleichen und buchen</li>
+        </ul>
+
+        <p class="price-source">Seventi verdient auf der Anbieterseite: 10 % Kommission, und auch nur dann, wenn die Zahlung über die Plattform läuft.</p>
+      </div>
     </div>
   </section>
 

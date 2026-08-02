@@ -1133,6 +1133,246 @@
       line-height: 1.6;
     }
 
+    /* ---------- Für welche Betriebe: Kategorien und Regionen ---------- */
+    .kinds {
+      margin-top: clamp(44px, 4.6vw, 68px);
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: clamp(12px, 1.3vw, 18px);
+    }
+
+    .kind {
+      padding: clamp(20px, 2vw, 28px);
+      border-radius: var(--radius-lg);
+      background: #f4f7f0;
+      display: grid;
+      gap: 13px;
+      align-content: start;
+      transition: background-color .3s ease;
+    }
+
+    .kind:hover { background: var(--brand-soft); }
+
+    .kind span {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      display: grid;
+      place-content: center;
+      background: var(--brand);
+      color: var(--brand-dark);
+    }
+
+    .kind svg {
+      width: 17px;
+      height: 17px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.9;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .kind strong {
+      display: block;
+      font-size: 15.5px;
+      font-weight: 600;
+      letter-spacing: -.025em;
+    }
+
+    .kind p {
+      margin: 5px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    .regions {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: clamp(24px, 2.4vw, 34px) 0 0;
+    }
+
+    .regions dt {
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .regions dd {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      margin: 0;
+      padding: 8px 14px 8px 11px;
+      border-radius: 999px;
+      background: var(--ink);
+      color: var(--white);
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .regions dd svg {
+      width: 14px;
+      height: 14px;
+      fill: none;
+      stroke: var(--brand);
+      stroke-width: 1.9;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    /* ---------- Profilvorschau ---------- */
+    .profile-wrap {
+      margin-top: clamp(44px, 4.6vw, 68px);
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(360px, .78fr);
+      align-items: center;
+      gap: clamp(32px, 4vw, 64px);
+    }
+
+    .profile-points {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .profile-points li {
+      display: grid;
+      grid-template-columns: 28px minmax(0, 1fr);
+      align-items: start;
+      gap: 13px;
+      padding: 16px 0;
+    }
+
+    .profile-points li + li { border-top: 1px solid rgba(22, 40, 0, .09); }
+
+    .profile-points span {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: grid;
+      place-content: center;
+      background: var(--brand);
+      color: var(--brand-dark);
+    }
+
+    .profile-points svg {
+      width: 14px;
+      height: 14px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.9;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .profile-points strong {
+      display: block;
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: -.02em;
+    }
+
+    .profile-points p {
+      margin: 3px 0 0;
+      color: var(--muted);
+      font-size: 13.5px;
+      line-height: 1.6;
+    }
+
+    .profile-card {
+      padding: clamp(20px, 1.8vw, 26px);
+      border-radius: var(--radius-xl);
+      background: var(--white);
+    }
+
+    .profile-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .profile-top strong {
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: -.03em;
+    }
+
+    .profile-tag {
+      padding: 5px 10px;
+      border-radius: 99px;
+      background: var(--brand-soft);
+      color: var(--brand-dark);
+      font-size: 10px;
+      font-weight: 700;
+    }
+
+    .profile-rows {
+      margin: 0;
+      display: grid;
+      overflow: hidden;
+      border-radius: var(--radius-md);
+      background: #f7faf3;
+    }
+
+    .profile-rows div {
+      display: grid;
+      grid-template-columns: 104px minmax(0, 1fr);
+      gap: 10px;
+      padding: 10px 13px;
+      font-size: 12.5px;
+    }
+
+    .profile-rows div + div { border-top: 1px solid var(--line); }
+
+    .profile-rows dt { margin: 0; color: var(--muted); font-weight: 600; }
+    .profile-rows dd { margin: 0; font-weight: 600; }
+
+    .profile-shots {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    /* Fotos lädt der Betrieb selbst hoch, hier stehen die Plätze */
+    .profile-shots li {
+      aspect-ratio: 4 / 3;
+      border-radius: 9px;
+      display: grid;
+      place-content: center;
+      background: #eef2e8;
+      color: #a8b19d;
+    }
+
+    .profile-shots {
+      padding: 0;
+      list-style: none;
+    }
+
+    .profile-shots svg {
+      width: 17px;
+      height: 17px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.7;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .profile-caption {
+      margin: 12px 0 0;
+      color: var(--muted);
+      font-size: 10.5px;
+      font-weight: 600;
+      text-align: center;
+    }
+
     /* ---------- Kosten, offen hingeschrieben ---------- */
     .pricing {
       margin-top: clamp(44px, 4.6vw, 68px);
@@ -1403,6 +1643,12 @@
 
       .chapter-shot { order: 1; min-height: clamp(240px, 33vw, 330px); }
 
+      .kinds { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+      .profile-wrap { grid-template-columns: 1fr; gap: 30px; }
+
+      .profile-points { order: 2; }
+
       .ablauf-box { padding: 26px 20px 30px; border-radius: 22px; }
 
       .faq-shot { height: clamp(200px, 28vw, 290px); margin-top: 24px; }
@@ -1519,6 +1765,18 @@
       .req-act button { min-height: 40px; }
 
       .req-hint { margin-top: 10px; font-size: 9.5px; }
+
+      .kinds { grid-template-columns: 1fr; gap: 10px; }
+
+      .kind { padding: 18px; }
+
+      .regions { gap: 8px; }
+
+      .profile-card { padding: 16px; }
+
+      .profile-rows div { grid-template-columns: 88px minmax(0, 1fr); font-size: 12px; }
+
+      .profile-shots { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 
       .visual-caption { right: 16px; bottom: 12px; left: 16px; font-size: 10px; }
 
@@ -1889,6 +2147,143 @@
       </div>
     </section>
 
+    <section class="section" aria-labelledby="betriebe-titel">
+      <div class="shell">
+        <div class="section-head reveal">
+          <div>
+            <div class="section-label">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h16M6 20V9l6-4 6 4v11M10 13h4M10 17h4"/></svg>
+              Für welche Betriebe
+            </div>
+            <h2 id="betriebe-titel">Fünf Kategorien, <em>drei Regionen.</em></h2>
+          </div>
+          <p class="section-lead">Anfragen sind nach Kategorie und Region gefiltert. Beides bestimmen Sie im Profil, und beides lässt sich später ändern.</p>
+        </div>
+
+        <div class="kinds reveal">
+          <article class="kind">
+            <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h16M6 20V9l6-4 6 4v11M10 13h4M10 17h4"/></svg></span>
+            <div>
+              <strong>Locations</strong>
+              <p>Säle, Hallen, Seminarräume, Restaurants mit eigenem Bereich.</p>
+            </div>
+          </article>
+
+          <article class="kind">
+            <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v16M5 8h14M7.5 8 5 14h5ZM16.5 8 14 14h5Z"/></svg></span>
+            <div>
+              <strong>Catering</strong>
+              <p>Vom Apéro über Flying Dinner bis zum mehrgängigen Menü.</p>
+            </div>
+          </article>
+
+          <article class="kind">
+            <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18V6l10-2v12"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="16.5" cy="16" r="2.5"/></svg></span>
+            <div>
+              <strong>DJs und Musik</strong>
+              <p>DJs, Bands und alles, was den Abend trägt.</p>
+            </div>
+          </article>
+
+          <article class="kind">
+            <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v4M12 17v4M5 12H3M21 12h-2M6.5 6.5 5 5M17.5 6.5 19 5M6.5 17.5 5 19M17.5 17.5 19 19"/><circle cx="12" cy="12" r="3.6"/></svg></span>
+            <div>
+              <strong>Technik</strong>
+              <p>Ton, Licht, Bühne, Projektion und Betreuung vor Ort.</p>
+            </div>
+          </article>
+
+          <article class="kind">
+            <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 8.5h3l1.6-2.4h7.8L17.5 8.5h3v10h-17z"/><circle cx="12" cy="13" r="3.4"/></svg></span>
+            <div>
+              <strong>Fotografie</strong>
+              <p>Fotografie und Video für Anlässe im Firmenkalender.</p>
+            </div>
+          </article>
+        </div>
+
+        <dl class="regions reveal">
+          <dt>Aktuelle Regionen</dt>
+          <dd><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-6.1 7-11a7 7 0 1 0-14 0c0 4.9 7 11 7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg>Zürich</dd>
+          <dd><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-6.1 7-11a7 7 0 1 0-14 0c0 4.9 7 11 7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg>Zug</dd>
+          <dd><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-6.1 7-11a7 7 0 1 0-14 0c0 4.9 7 11 7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg>Luzern</dd>
+        </dl>
+      </div>
+    </section>
+
+    <section class="section section-tint" aria-labelledby="profil-titel">
+      <div class="shell">
+        <div class="section-head reveal">
+          <div>
+            <div class="section-label">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="4.5" width="17" height="15" rx="2.5"/><path d="M7.5 9h5M7.5 12.5h9M7.5 16h6"/></svg>
+              Ihr Profil
+            </div>
+            <h2 id="profil-titel">Was ein Unternehmen <em>von Ihnen sieht.</em></h2>
+          </div>
+          <p class="section-lead">Einmal ausgefüllt, danach gibt es nichts zu pflegen. Ändern können Sie es jederzeit.</p>
+        </div>
+
+        <div class="profile-wrap">
+          <ul class="profile-points reveal">
+            <li>
+              <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M7 12h10M10 18h4"/></svg></span>
+              <div>
+                <strong>Kategorie und Leistungen</strong>
+                <p>Danach wird gefiltert. Was Sie nicht anbieten, kommt bei Ihnen nicht an.</p>
+              </div>
+            </li>
+            <li>
+              <span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8.5" r="3.2"/><path d="M3.5 19a5.5 5.5 0 0 1 11 0M16 6.2a3.2 3.2 0 0 1 0 6M17.5 19a5.6 5.6 0 0 0-2-4.2"/></svg></span>
+              <div>
+                <strong>Kapazität</strong>
+                <p>Anfragen für 300 Personen erreichen keinen Raum für 80.</p>
+              </div>
+            </li>
+            <li>
+              <span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M14.5 9.5H11a1.8 1.8 0 0 0 0 3.6h2a1.8 1.8 0 0 1 0 3.6H9.5M12 8v9"/></svg></span>
+              <div>
+                <strong>Preisrahmen</strong>
+                <p>Ein Rahmen, kein Preisblatt. Das Angebot rechnen Sie weiterhin selbst.</p>
+              </div>
+            </li>
+            <li>
+              <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 8.5h3l1.6-2.4h7.8L17.5 8.5h3v10h-17z"/><circle cx="12" cy="13" r="3.4"/></svg></span>
+              <div>
+                <strong>Fotos</strong>
+                <p>Ihre eigenen Bilder. Keine Stockfotos, keine Bilder von uns.</p>
+              </div>
+            </li>
+          </ul>
+
+          <div class="reveal">
+            <article class="profile-card">
+              <div class="profile-top">
+                <strong>Seehalle</strong>
+                <span class="profile-tag">Location</span>
+              </div>
+
+              <dl class="profile-rows">
+                <div><dt>Region</dt><dd>Zürich</dd></div>
+                <div><dt>Kapazität</dt><dd>60 bis 220 Personen</dd></div>
+                <div><dt>Preisrahmen</dt><dd>CHF 120 bis 180 pro Person</dd></div>
+                <div><dt>Leistungen</dt><dd>Saal, Catering, Technik</dd></div>
+              </dl>
+
+              <ul class="profile-shots">
+                <li><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5.5" width="17" height="13" rx="2"/><circle cx="9" cy="10" r="1.6"/><path d="m4 16 4.5-4 3.5 3 3-2.5 5 3.5"/></svg></li>
+                <li><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5.5" width="17" height="13" rx="2"/><circle cx="9" cy="10" r="1.6"/><path d="m4 16 4.5-4 3.5 3 3-2.5 5 3.5"/></svg></li>
+                <li><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5.5" width="17" height="13" rx="2"/><circle cx="9" cy="10" r="1.6"/><path d="m4 16 4.5-4 3.5 3 3-2.5 5 3.5"/></svg></li>
+                <li><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5.5" width="17" height="13" rx="2"/><circle cx="9" cy="10" r="1.6"/><path d="m4 16 4.5-4 3.5 3 3-2.5 5 3.5"/></svg></li>
+              </ul>
+
+              <p class="profile-caption">Beispielprofil, Fotos laden Sie selbst hoch</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="section" aria-labelledby="kosten-titel">
       <div class="shell">
         <div class="section-head reveal">
@@ -1951,10 +2346,6 @@
             <div class="faq-antwort"><p>Aktuell Zürich, Zug und Luzern. Sie wählen selbst aus, in welchen davon Sie Anfragen bekommen wollen.</p></div>
           </details>
 
-          <details>
-            <summary>Was gehört in ein Profil?<span class="faq-toggle" aria-hidden="true"></span></summary>
-            <div class="faq-antwort"><p>Kategorie, Leistungen, Kapazität, Preisrahmen und Fotos. Alles davon bestimmen Sie, und alles lässt sich später ändern.</p></div>
-          </details>
         </div>
       </div>
     </section>
