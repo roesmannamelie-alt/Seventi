@@ -80,8 +80,8 @@ Alles andere auf der Seite beschreibt entweder die Mechanik aus dem Briefing ode
 - **Kicker sind dezente Pills mit Icon**, in derselben Form wie der Hero-Eyebrow. Keine Striche, keine Versalien.
 - **Kein Motiv kommt zweimal vor**, auch nicht über beide Seiten hinweg. Dreizehn Bilder auf dreizehn Plätzen:
   - Planner: Firmenevent im Hero, ankommende Gäste im Zahlenband, Abendtafel, Innenhof, Team und Assistentin als Parallaxe in Abschnitt 3, Apéro unter den Anlass-Pills, Porträt der Planerin im Abschluss
-  - Anbieter: Tafel am See im Hero, Seminarraum, Catering, Empfang und Fensterfront auf den vier Vorteilskarten, die Ruhe im Trubel im Fragen-Abschnitt, vier Beispielfotos im Profil
-  - Die Parallaxe ist von fünf auf vier Bilder gekürzt. Die Anbieter-Seite braucht die Motive dringender: sie soll nach Betrieben aussehen, nicht nach Planerinnen.
+  - Anbieter: Tafel am See im Hero, Innenhof, Koch, Techniker und DJ auf den vier Vorteilskarten, Fotografin im Fragen-Abschnitt, vier Beispielfotos im Profil
+  - **Alle fünf Kategorien sind jetzt im Bild vertreten**: Location, Catering, DJ, Technik, Fotografie. Vorher zeigte die Anbieter-Seite überwiegend Businesspersonen und war beim schnellen Scrollen von der Planner-Seite kaum zu unterscheiden.
   - Die vier Profilfotos sind andere Aufnahmen derselben Orte, die auf der Planner-Seite als Parallaxe laufen. Bei 60 px Kachelgrösse fällt das nicht auf, aber es sind keine echten Fotos der „Seehalle". Sobald Cody Bilder eines echten Betriebs liefert, gehören sie dorthin.
 - **Bewegung folgt dem Scrollen.** Abschnitt 2 hat eine durchgehende Linie über alle drei Schritte, die sich beim Scrollen füllt; die Bahn ist bewusst etwa vier Bildschirmviertel lang, damit die Linie dem Scrollen folgt statt in einem Zug durchzulaufen. Die Schrittnummern schalten mit und zeigen beim Hover ein passendes Icon. Abschnitt 3 wird über einen Tab umgeschaltet: „Heute" und „Mit Seventi" tauschen dieselbe Karte per Überblendung. Links und rechts davon laufen fünf Bilder als lockere Collage mit, jedes in eigenem Tempo zwischen Faktor 0,07 und 0,19. Bei `prefers-reduced-motion` steht alles sofort im Endzustand.
 
@@ -434,7 +434,6 @@ Punkt für Punkt durchgegangen, Stand nach dem Umbau auf du.
 
 ### Offene Punkte
 
-- **Es fehlen echte Provider-Bilder.** Wir haben kein einziges Foto von einem DJ, einer Technikerin oder einem Fotografen bei der Arbeit. Das Catering-Bild ist das einzige, das wirklich einen Anbieter im Einsatz zeigt, alles andere sind Räume und Anlässe. Vier bis fünf Bilder aus dem Handwerk würden den Unterschied zwischen den beiden Seiten sofort sichtbar machen: jemand am Mischpult, jemand mit Kamera, ein Küchenteam, eine Veranstalterin im leeren Saal.
 
 - Der Satz „four clusters of argument" nennt anschliessend drei Überschriften. Wir lesen das als Kernargument plus drei Blöcke, gebaut sind entsprechend vier Ebenen. Falls Cody einen vierten Block gemeint hat, fehlt er.
 - Die Suche ist eine Vorschau ohne Datenbank. Tippt man „Beispiel", erscheint der Trefferfall, alles andere zeigt den Normalfall. Ein Hinweis darauf steht sichtbar unter dem Feld.

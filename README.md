@@ -14,6 +14,8 @@ Entwürfe für die Seventi Landingpages.
 | `lenis.min.js` | Lenis 1.1.20, mitgeliefert statt über ein CDN geladen |
 | `seventi-logo.svg` | Wortmarke von Seventi, in beiden Seiten inline eingebettet |
 
+Die Bilder liegen im Repository-Root. Nicht eingesetzt und als Reserve vorhanden: `seventi-catering.webp`, `seventi-empfang.webp`, `seventi-fenster.webp`, `seventi-ruhe.webp`, `seventi-saal.webp`.
+
 Zahlen und Firmenangaben in den Entwürfen sind Beispiele und vor dem Livegang zu ersetzen: die Logos und Zahlen der Vertrauensleiste, die drei Angebote im Vergleich und das Beispielprofil auf der Anbieter-Seite. Die Bilder stammen von Seventi.
 
 ## Enthalten
