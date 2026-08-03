@@ -4,6 +4,18 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Seventi für Anbieter: Anfragen von Unternehmen kommen mit Datum, Personenzahl, Region und Budget. Prüf nach, ob dein Betrieb schon gelistet ist." />
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+  <meta name="theme-color" content="#f6f8f4" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="de_CH" />
+  <meta property="og:site_name" content="Seventi" />
+  <meta property="og:title" content="Seventi für Anbieter" />
+  <meta property="og:description" content="Seventi für Anbieter: Anfragen von Unternehmen kommen mit Datum, Personenzahl, Region und Budget. Prüf nach, ob dein Betrieb schon gelistet ist." />
+  <meta property="og:image" content="../seventi-tafel.webp" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="preload" as="image" href="../seventi-tafel.webp" fetchpriority="high" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -435,7 +447,7 @@
     .visual {
       position: relative;
       min-height: clamp(430px, 36vw, 580px);
-      padding: clamp(20px, 1.8vw, 30px) clamp(20px, 1.8vw, 30px) clamp(52px, 4vw, 68px);
+      padding: clamp(20px, 1.8vw, 30px) clamp(20px, 1.8vw, 30px) clamp(58px, 4.6vw, 78px);
       overflow: hidden;
       border-radius: var(--radius-xl);
       display: grid;
@@ -627,7 +639,7 @@
 
     .fenster-leiste span {
       margin: 0 auto;
-      color: #97a08f;
+      color: #616b59;
       font-size: 10.5px;
       font-weight: 600;
     }
@@ -836,7 +848,7 @@
 
     .weg-panel > p.weg-klein {
       margin: clamp(22px, 2.4vw, 30px) 0 0;
-      color: #8a9386;
+      color: #6d7768;
       font-size: 11.5px;
       line-height: 1.6;
     }
@@ -935,7 +947,7 @@
       display: grid;
       place-content: center;
       background: #e7ece0;
-      color: #8b9481;
+      color: #5f6857;
       font-size: 11px;
       font-weight: 700;
       transition: background-color .35s ease, color .35s ease;
@@ -1111,12 +1123,13 @@
     }
 
     .faq-shot {
-      height: clamp(190px, 17vw, 250px);
+      height: clamp(210px, 20vw, 300px);
       margin-top: 30px;
       border-radius: var(--radius-lg);
       background-color: #e7ece0;
       background-image: url("../seventi-fotografin.webp");
-      background-position: center;
+      /* nicht mittig: sonst schneidet der Ausschnitt den Kopf oben ab */
+      background-position: center 22%;
       background-size: cover;
     }
 
@@ -1954,7 +1967,9 @@
       /* das Foto behaelt Luft ueber und unter der Karte */
       .visual {
         min-height: clamp(470px, 124vw, 560px);
-        padding: 16px;
+        /* unten bleibt Platz fuer die Konditionszeile, sonst laeuft die
+           aufgeklappte Antwort hinein */
+        padding: 16px 16px 56px;
         border-radius: var(--radius-lg);
       }
 
@@ -2171,7 +2186,8 @@
 
       .finder-field input { padding: 0 4px; font-size: 12.5px; }
 
-      .visual { padding: 13px; }
+      /* die Konditionszeile braucht hier zwei Zeilen */
+      .visual { padding: 13px 13px 74px; }
 
       .fenster-inhalt { padding: 16px; }
 
@@ -3021,6 +3037,28 @@
     const fragen = [...document.querySelectorAll(".faq details")];
     const klappen = new Map();
 
+    // Schliesst sich eine Frage weiter oben, rutscht die angetippte unter dem
+    // Finger weg, auf dem Handy um mehr als hundert Pixel. Deshalb wird ihre
+    // Position im Fenster waehrend der Bewegung gehalten.
+    const stelleHalten = (element, dauer) => {
+      const start = element.getBoundingClientRect().top;
+      const ende = performance.now() + dauer + 60;
+
+      const schritt = () => {
+        const abweichung = element.getBoundingClientRect().top - start;
+
+        if (Math.abs(abweichung) > .5) {
+          const ziel = window.scrollY + abweichung;
+          if (lenis) lenis.scrollTo(ziel, { immediate: true, force: true });
+          else window.scrollTo(0, ziel);
+        }
+
+        if (performance.now() < ende) window.requestAnimationFrame(schritt);
+      };
+
+      window.requestAnimationFrame(schritt);
+    };
+
     fragen.forEach((frage) => {
       const kopf = frage.querySelector("summary");
       const inhalt = frage.querySelector(".faq-antwort");
@@ -3031,9 +3069,13 @@
       const bewegen = (von, bis, danach) => {
         if (laeuft) laeuft.cancel();
 
+        // laengere Wege brauchen laenger, sonst wirkt das Aufgehen auf dem
+        // Handy abgehackt: dort sind die Antworten deutlich hoeher
+        const dauer = Math.round(Math.min(540, 250 + Math.abs(bis - von) * .55));
+
         laeuft = inhalt.animate(
           [{ height: von + "px", opacity: von ? 1 : 0 }, { height: bis + "px", opacity: bis ? 1 : 0 }],
-          { duration: 340, easing: "cubic-bezier(.22, 1, .36, 1)" }
+          { duration: dauer, easing: "cubic-bezier(.33, 1, .68, 1)" }
         );
 
         laeuft.onfinish = () => {
@@ -3066,12 +3108,17 @@
         }
 
         // die offene Frage schliesst sich, waehrend die neue aufgeht
+        const schliesstOben = fragen.some((andere) =>
+          andere !== frage && andere.open && andere.getBoundingClientRect().top < frage.getBoundingClientRect().top);
+
         fragen.forEach((andere) => {
           if (andere !== frage) klappen.get(andere)?.();
         });
 
         frage.open = true;
-        bewegen(0, inhalt.scrollHeight);
+        const weg = inhalt.scrollHeight;
+        bewegen(0, weg);
+        if (schliesstOben) stelleHalten(frage, Math.min(540, 250 + weg * .55));
       });
     });
 
