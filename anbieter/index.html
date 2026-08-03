@@ -629,14 +629,18 @@
        Ein Umschalter zeigt beide Zustaende, ohne dass jemand tippen muss.
        Das Briefing nennt den Nicht-gefunden-Fall den wahrscheinlicheren,
        deshalb ist er kein Fehlerbild, sondern der zweite gleichwertige Weg. */
+    /* Kopf mittig, das Browserfenster liegt darunter */
     .wege-grid {
       display: grid;
-      grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr);
-      align-items: center;
-      gap: clamp(38px, 5vw, 88px);
+      justify-items: center;
+      gap: clamp(34px, 4vw, 54px);
+      text-align: center;
     }
 
+    .wege-copy { display: grid; justify-items: center; }
+
     .wege-copy h2 {
+      max-width: 720px;
       margin: 0 0 18px;
       font-size: clamp(32px, 3.4vw, 50px);
       font-weight: 600;
@@ -646,7 +650,7 @@
     }
 
     .wege-copy > p {
-      max-width: 420px;
+      max-width: 480px;
       margin: 0;
       color: var(--muted);
       font-size: 15px;
@@ -687,9 +691,11 @@
 
     /* Fensterrahmen, damit erkennbar ist: das passiert auf der Seite */
     .wege-fenster {
+      width: min(1020px, 100%);
       overflow: hidden;
       border-radius: var(--radius-xl);
       background: var(--white);
+      text-align: left;
     }
 
     .fenster-leiste {
@@ -698,14 +704,15 @@
       gap: 7px;
       height: 46px;
       padding: 0 18px;
-      background: #f6f8f3;
+      /* dunkler als die Abschnittsflaeche, sonst verschwindet die Leiste */
+      background: #e9eee3;
     }
 
     .fenster-leiste i {
       width: 8px;
       height: 8px;
       border-radius: 50%;
-      background: #d6ddd0;
+      background: #ccd5c5;
     }
 
     .fenster-leiste span {
@@ -2053,7 +2060,7 @@
 
       .stapel-karte h3 { margin-top: 22px; font-size: clamp(28px, 8vw, 34px); }
 
-      .wege-grid { grid-template-columns: 1fr; gap: 30px; }
+      .wege-grid { gap: 26px; }
 
       .wege-copy > p { max-width: 620px; }
 
@@ -2292,7 +2299,7 @@
       </div>
     </section>
 
-    <section class="section" aria-labelledby="wege-titel">
+    <section class="section section-tint" aria-labelledby="wege-titel">
       <div class="shell wege-grid">
         <div class="wege-copy reveal">
           <div class="section-label">
@@ -2907,6 +2914,65 @@
           document.getElementById(anderer.getAttribute("aria-controls"))
             .classList.toggle("ist-aktiv", aktiv);
         });
+      });
+    });
+
+    // Fragen klappen weich auf und zu, statt zu springen.
+    // Es bleibt immer nur eine offen, die vorherige geht dabei mit.
+    const fragen = [...document.querySelectorAll(".faq details")];
+    const klappen = new Map();
+
+    fragen.forEach((frage) => {
+      const kopf = frage.querySelector("summary");
+      const inhalt = frage.querySelector(".faq-antwort");
+      if (!kopf || !inhalt) return;
+
+      let laeuft = null;
+
+      const bewegen = (von, bis, danach) => {
+        if (laeuft) laeuft.cancel();
+
+        laeuft = inhalt.animate(
+          [{ height: von + "px", opacity: von ? 1 : 0 }, { height: bis + "px", opacity: bis ? 1 : 0 }],
+          { duration: 340, easing: "cubic-bezier(.22, 1, .36, 1)" }
+        );
+
+        laeuft.onfinish = () => {
+          laeuft = null;
+          inhalt.style.height = "";
+          if (danach) danach();
+        };
+      };
+
+      const zu = () => {
+        if (!frage.open) return;
+        bewegen(inhalt.getBoundingClientRect().height, 0, () => { frage.open = false; });
+      };
+
+      klappen.set(frage, zu);
+
+      kopf.addEventListener("click", (ereignis) => {
+        ereignis.preventDefault();
+
+        if (calmMotion.matches) {
+          const offen = frage.open;
+          fragen.forEach((andere) => { andere.open = false; });
+          frage.open = !offen;
+          return;
+        }
+
+        if (frage.open) {
+          zu();
+          return;
+        }
+
+        // die offene Frage schliesst sich, waehrend die neue aufgeht
+        fragen.forEach((andere) => {
+          if (andere !== frage) klappen.get(andere)?.();
+        });
+
+        frage.open = true;
+        bewegen(0, inhalt.scrollHeight);
       });
     });
 
