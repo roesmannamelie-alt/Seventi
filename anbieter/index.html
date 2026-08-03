@@ -658,16 +658,32 @@
     }
 
     .wege-switch {
+      position: relative;
       display: inline-grid;
       grid-template-columns: 1fr 1fr;
-      gap: 3px;
       margin-top: clamp(26px, 2.8vw, 38px);
       padding: 4px;
       border-radius: 999px;
       background: #eef2e8;
     }
 
+    /* das weisse Feld gleitet mit, statt zu springen */
+    .wege-switch::before {
+      content: "";
+      position: absolute;
+      top: 4px;
+      bottom: 4px;
+      left: 4px;
+      right: 50%;
+      border-radius: 999px;
+      background: var(--white);
+      transform: translate3d(var(--schieber, 0), 0, 0);
+      transition: transform .42s cubic-bezier(.22, 1, .36, 1);
+    }
+
     .wege-switch button {
+      position: relative;
+      z-index: 1;
       min-height: 44px;
       padding: 0 20px;
       border: 0;
@@ -678,11 +694,10 @@
       font-weight: 600;
       white-space: nowrap;
       cursor: pointer;
-      transition: background-color .3s ease, color .3s ease;
+      transition: color .3s ease;
     }
 
     .wege-switch button[aria-selected="true"] {
-      background: var(--white);
       color: var(--ink);
       font-weight: 700;
     }
@@ -691,7 +706,7 @@
 
     /* Fensterrahmen, damit erkennbar ist: das passiert auf der Seite */
     .wege-fenster {
-      width: min(1020px, 100%);
+      width: min(860px, 100%);
       overflow: hidden;
       border-radius: var(--radius-xl);
       background: var(--white);
@@ -702,8 +717,8 @@
       display: flex;
       align-items: center;
       gap: 7px;
-      height: 46px;
-      padding: 0 18px;
+      height: 42px;
+      padding: 0 16px;
       /* dunkler als die Abschnittsflaeche, sonst verschwindet die Leiste */
       background: #e9eee3;
     }
@@ -724,15 +739,15 @@
 
     .fenster-inhalt {
       display: grid;
-      padding: clamp(24px, 2.6vw, 40px);
+      padding: clamp(22px, 2.2vw, 32px);
     }
 
     .fenster-suche {
       display: flex;
       align-items: center;
       gap: 10px;
-      margin-bottom: clamp(24px, 2.6vw, 38px);
-      padding: 14px 16px;
+      margin-bottom: clamp(20px, 2.2vw, 30px);
+      padding: 12px 15px;
       border-radius: var(--radius-md);
       background: #f4f7f0;
       color: var(--muted);
@@ -769,7 +784,7 @@
     /* beide Zustaende liegen uebereinander und blenden um */
     .weg-buehne {
       display: grid;
-      min-height: 330px;
+      min-height: 292px;
       align-content: start;
     }
 
@@ -786,6 +801,25 @@
       visibility: visible;
       transform: none;
     }
+
+    /* die Zeilen erscheinen nacheinander, dadurch ist der Ablauf lesbar */
+    .weg-panel > * {
+      opacity: 0;
+      transform: translate3d(0, 9px, 0);
+    }
+
+    .weg-panel.ist-aktiv > * {
+      opacity: 1;
+      transform: none;
+      transition:
+        opacity .45s ease var(--auftakt, 0s),
+        transform .5s cubic-bezier(.22, 1, .36, 1) var(--auftakt, 0s);
+    }
+
+    .weg-panel > :nth-child(2) { --auftakt: .09s; }
+    .weg-panel > :nth-child(3) { --auftakt: .18s; }
+    .weg-panel > :nth-child(4) { --auftakt: .27s; }
+    .weg-panel > :nth-child(5) { --auftakt: .36s; }
 
     .weg-status {
       display: inline-flex;
@@ -811,8 +845,8 @@
     .weg-panel.ist-treffer .weg-status i { background: var(--brand-strong); }
 
     .weg-panel h3 {
-      margin: 20px 0 14px;
-      font-size: clamp(26px, 2.6vw, 38px);
+      margin: 18px 0 12px;
+      font-size: clamp(24px, 2.2vw, 32px);
       font-weight: 600;
       line-height: 1.08;
       letter-spacing: -.045em;
@@ -827,10 +861,10 @@
     }
 
     .weg-panel > p {
-      max-width: 540px;
+      max-width: 500px;
       margin: 0;
       color: var(--muted);
-      font-size: 14.5px;
+      font-size: 14px;
       line-height: 1.7;
     }
 
@@ -877,7 +911,7 @@
       align-items: center;
       flex-wrap: wrap;
       gap: 12px 18px;
-      margin-top: clamp(22px, 2.4vw, 32px);
+      margin-top: clamp(20px, 2.2vw, 28px);
     }
 
     .weg-aktion button {
@@ -913,17 +947,6 @@
     }
 
     .section-tint { background: #f6f8f4; }
-
-    /* "So läuft es ab" liegt in einem hellgrünen Container */
-    .ablauf-box {
-      padding: clamp(38px, 4vw, 62px) clamp(24px, 3vw, 52px) clamp(44px, 4.4vw, 66px);
-      border-radius: clamp(24px, 2.4vw, 36px);
-      background: #eef4e2;
-    }
-
-    /* auf dem gruenen Grund heben sich weisse Pills besser ab */
-    .ablauf-box .section-label,
-    .ablauf-box .step-time { background: var(--white); }
 
     .section-head {
       display: grid;
@@ -2377,7 +2400,6 @@
 
     <section class="section" aria-labelledby="ablauf-titel">
       <div class="shell">
-      <div class="ablauf-box">
         <div class="section-head reveal">
           <div>
             <div class="section-label">
@@ -2413,7 +2435,6 @@
             <p>Keine Antwortpflicht. Absagen kosten weder Bewertung noch Sichtbarkeit. Im Dashboard verwaltest du Anfragen und Termine, wenn du magst.</p>
           </article>
         </div>
-      </div>
       </div>
     </section>
 
@@ -2907,12 +2928,17 @@
       knopf.addEventListener("click", () => {
         if (knopf.getAttribute("aria-selected") === "true") return;
 
+        const schalter = knopf.parentElement;
+        schalter.style.setProperty("--schieber", wegeSchalter.indexOf(knopf) === 0 ? "0" : "100%");
+
         wegeSchalter.forEach((anderer) => {
           const aktiv = anderer === knopf;
           anderer.setAttribute("aria-selected", String(aktiv));
           // visibility statt hidden, sonst gibt es keine Ueberblendung
-          document.getElementById(anderer.getAttribute("aria-controls"))
-            .classList.toggle("ist-aktiv", aktiv);
+          const feld = document.getElementById(anderer.getAttribute("aria-controls"));
+          feld.classList.remove("ist-aktiv");
+          // ein Bildaufbau Pause, sonst laufen die Zeilen nicht neu an
+          if (aktiv) window.requestAnimationFrame(() => feld.classList.add("ist-aktiv"));
         });
       });
     });
