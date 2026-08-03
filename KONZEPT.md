@@ -68,7 +68,8 @@ Elf Abschnitte klingen viel, sind aber überwiegend kurz. Die Seite soll sich sc
 | Abschnitt 4 | drei Beispielangebote samt Preisen und Fristen | Beispieldaten, ersetzen oder durch einen echten Produkt-Screenshot tauschen |
 | Abschnitt 8 | „Für Sie kostenlos", Kommission auf der Anbieterseite | Geschäftsmodell muss Cody bestätigen |
 | Anbieter, Profil | Beispielprofil „Seehalle" | Beispieldaten, ersetzen |
-| beide Seiten, Fusszeile | Impressum, Datenschutz, Kontakt | Ziele fehlen noch |
+| beide Seiten, Fusszeile | Impressum und Datenschutz | als Entwurfsseiten gebaut, alle Angaben sind Platzhalter |
+| Impressum und Datenschutz | Firma, Adresse, UID, Fristen, Dienstleister | müssen von Cody geliefert und juristisch geprüft werden |
 
 Alles andere auf der Seite beschreibt entweder die Mechanik aus dem Briefing oder den heutigen Arbeitsalltag der Zielgruppe.
 
@@ -326,7 +327,7 @@ Frage 5, 7 und 8 kommen aus der konkreten Rolle: Sie darf oft nicht öffentlich 
 
 ### 11 · Footer
 
-Minimal: Impressum, Datenschutz, Kontakt, Sprachwahl. Dazu der einzige Nebenausgang der Seite:
+Minimal: Impressum, Datenschutz, Sprachwahl. Kontakt steht bewusst nicht dort: Das Briefing verlangt keine Kontaktseite, und die Erreichbarkeit steht bereits im Impressum. Dazu der einzige Nebenausgang der Seite:
 
 > Sie sind Location oder Caterer? → Für Anbieter
 
@@ -450,3 +451,47 @@ Punkt für Punkt durchgegangen, Stand nach dem Umbau auf du.
 
 - Der Footer der Planner-Seite führt zur Provider-Seite, der Footer der Provider-Seite zurück. Das bleibt der einzige Nebenausgang.
 - Beide Seiten haben oben rechts eine Sprachwahl DE/EN. Im Raum Zürich, Zug und Luzern arbeiten viele englischsprachige Angestellte in Unternehmen. Der Umschalter ist bisher nur die Oberfläche, die Übersetzungen kommen von Cody.
+
+---
+
+## 10. Marke
+
+**Logo.** Seit dem Logopaket von Cody trägt die Seite die Wortmarke „seventi" in einer geometrischen Grotesk, dazu
+der vierzackige Funke über dem i. Aus dem gelieferten Blatt sind drei Varianten enthalten; gebaut ist die
+schlichte, weil sie in der Kopfzeile bei 22 bis 26 Pixel Höhe noch lesbar bleibt. Die Variante mit der langen
+Querlinie durch das Wort ist eine Anwendung für grosse Flächen, nicht für eine Kopfzeile.
+
+Im Markup steht das Logo als SVG mit zwei Pfaden: das Wort trägt `currentColor` und nimmt damit die Textfarbe der
+Umgebung an, der Funke trägt die Akzentfarbe, hell auf dunkel und dunkel auf hell. Das Favicon ist der Funke allein
+auf dunkler Kachel, geprüft bei 64, 32 und 16 Pixel.
+
+**Offen: die Farbwelt.** Das Logopaket bringt eine eigene Palette mit, ein kräftiges Mintgrün und ein weiches
+Mintgrün mit Verlauf, dazu ein warmes Weiss und zwei Grautöne. Die Seiten stehen bis heute auf Limette und
+Dunkelgrün. Der Funke trägt deshalb aktuell die Limette der Seite, nicht das Mint des Logos. Entweder bleibt es
+dabei, oder die ganze Seite zieht auf die Mint-Palette um. Das ist eine Entscheidung, keine Kleinigkeit: sie
+betrifft jeden Kicker, jede Pille, jeden Knopf und die dunklen Flächen.
+
+**Die Farben aus dem Blatt**, falls umgestellt wird:
+
+| Feld | Wert |
+|---|---|
+| Mint kräftig | `#40d1b5` |
+| Mint weich | `#89e9d1` |
+| Weiss warm | `#fefcf8` |
+| Grau dunkel | `#333333` |
+| Schwarz | `#161515` |
+
+## 11. Rechtliche Seiten
+
+Impressum und Datenschutz liegen als eigene Unterseiten unter `impressum/` und `datenschutz/`, in derselben
+Typografie und Farbwelt wie die Hauptseiten, aber ohne Bilder und ohne Bewegung. Beide stehen auf `noindex`,
+solange sie Entwurf sind.
+
+Alle einzutragenden Angaben sind grün hinterlegt, damit auf einen Blick sichtbar ist, was noch fehlt: Firma,
+Adresse, UID, Mehrwertsteuernummer, vertretungsberechtigte Person, E-Mail, Telefon, Hosting- und
+E-Mail-Dienstleister, Löschfristen. Ein Kasten oben auf beiden Seiten sagt ausdrücklich, dass es sich um eine
+Entwurfsfassung handelt und dass der Text rechtlich nicht geprüft ist.
+
+Inhaltlich decken die Entwürfe ab, was für diese Plattform besonders ist: dass ein Teil der Anbieterprofile aus
+öffentlich zugänglichen Quellen stammt, dass diese Profile unbestätigt sind und ohne Anmeldung entfernt werden
+können. Das ist die Datenschutzposition, die auch die Anbieter-Seite selbst vertritt.

@@ -9,6 +9,9 @@ Entwürfe für die Seventi Landingpages.
 | `index.html` | Planner-Seite: Hero, Vertrauensleiste, Abschnitte 2, 3, 4, 5, 8, Abschluss und Footer |
 | `KONZEPT.md` | Konzept der kompletten Planner-Seite: Abschnitte, Inhalte, offene Punkte |
 | `anbieter/index.html` | Provider-Seite: Suche, Ablauf, Argumente, Kategorien, Profil, Kosten, Fragen, Abschluss |
+| `impressum/index.html` | Impressum, Entwurfsfassung mit markierten Platzhaltern |
+| `datenschutz/index.html` | Datenschutzerklärung, Entwurfsfassung mit markierten Platzhaltern |
+| `favicon.svg` | Funke aus dem Logo auf dunkler Kachel |
 | `provider.html` | Weiterleitung auf `anbieter/` |
 | `entwuerfe.html` | Übersicht mit Links auf alle Entwürfe |
 | `lenis.min.js` | Lenis 1.1.20, mitgeliefert statt über ein CDN geladen |
