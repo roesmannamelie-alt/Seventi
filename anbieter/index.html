@@ -301,7 +301,6 @@
       padding: 22px;
       border-radius: var(--radius-xl);
       background: #f4f7f0;
-      animation: resultIn .5s cubic-bezier(.16, 1, .3, 1) both;
     }
 
     .result[hidden] { display: none; }
@@ -414,8 +413,21 @@
       cursor: pointer;
     }
 
-    @keyframes resultIn {
-      from { opacity: 0; transform: translate3d(0, 14px, 0); }
+    /* Die Antwort waechst auf, statt sie einfach hinzustellen: die Hoehe
+       fahrt das Skript, die Zeilen darin kommen gestaffelt hinterher. */
+    .result > * {
+      animation: ergebnisTeil .6s cubic-bezier(.22, 1, .36, 1) both;
+      animation-delay: var(--auftakt, 0s);
+    }
+
+    .result > :nth-child(1) { --auftakt: .06s; }
+    .result > :nth-child(2) { --auftakt: .13s; }
+    .result > :nth-child(3) { --auftakt: .2s; }
+    .result > :nth-child(4) { --auftakt: .27s; }
+    .result > :nth-child(5) { --auftakt: .34s; }
+
+    @keyframes ergebnisTeil {
+      from { opacity: 0; transform: translate3d(0, 10px, 0); }
       to { opacity: 1; transform: none; }
     }
 
@@ -2824,6 +2836,36 @@
       `;
     }
 
+    // Die Antwort waechst von der bisherigen auf die neue Hoehe. Ohne das
+    // springt das Foto im Hero um die volle Kartenhoehe, sobald sie erscheint.
+    const ergebnisZeigen = (feld, inhalt, gefunden) => {
+      const vorher = feld.hidden ? 0 : feld.getBoundingClientRect().height;
+      const randVorher = feld.hidden ? "0px" : window.getComputedStyle(feld).marginTop;
+
+      feld.classList.toggle("is-found", gefunden);
+      feld.innerHTML = inhalt;
+      feld.hidden = false;
+      feld.style.overflow = "hidden";
+
+      const randNachher = window.getComputedStyle(feld).marginTop;
+      const nachher = feld.scrollHeight;
+
+      if (!feld.animate) {
+        feld.style.overflow = "";
+        return;
+      }
+
+      const lauf = feld.animate([
+        { height: vorher + "px", marginTop: randVorher, opacity: vorher ? 1 : 0 },
+        { height: nachher + "px", marginTop: randNachher, opacity: 1 },
+      ], { duration: 640, easing: "cubic-bezier(.33, 1, .68, 1)", fill: "both" });
+
+      lauf.onfinish = () => {
+        lauf.cancel();
+        feld.style.overflow = "";
+      };
+    };
+
     document.querySelectorAll(".finder").forEach((form) => {
       const field = form.querySelector("input[name='betrieb']");
       const result = document.getElementById(form.id.replace("finder", "result"));
@@ -2840,9 +2882,7 @@
         const name = escapeHtml(typed);
         const found = typed.toLowerCase().includes("beispiel");
 
-        result.classList.toggle("is-found", found);
-        result.innerHTML = found ? alreadyListed(name) : notListed(name);
-        result.hidden = false;
+        ergebnisZeigen(result, found ? alreadyListed(name) : notListed(name), found);
       });
     });
 
