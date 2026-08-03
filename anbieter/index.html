@@ -418,7 +418,7 @@
     /* ---------- Hero-Visual: die Anfrage liegt mittig im Foto ---------- */
     .visual {
       position: relative;
-      min-height: clamp(560px, 46vw, 760px);
+      min-height: clamp(430px, 36vw, 580px);
       padding: clamp(20px, 1.8vw, 30px);
       overflow: hidden;
       border-radius: var(--radius-xl);
@@ -432,9 +432,9 @@
       background-size: cover;
     }
 
-    /* Glasrand: eine milchige Fassung, in der die weisse Karte sitzt */
-    .req-frame {
-      width: min(100%, 430px);
+    /* Glasrand: eine milchige Fassung, in der das Suchfeld sitzt */
+    .such-rahmen {
+      width: min(100%, 470px);
       padding: 9px;
       border-radius: 26px;
       background: rgba(255, 255, 255, .2);
@@ -442,173 +442,16 @@
       backdrop-filter: blur(14px) saturate(1.25);
     }
 
-    .req {
-      padding: clamp(18px, 1.5vw, 22px);
+    /* im Rahmen sitzt das Feld buendig, die Ecken passen sich der Fassung an */
+    .visual .finder,
+    .visual .result {
+      max-width: none;
       border-radius: 18px;
-      background: var(--white);
     }
 
-    .req-top {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      margin-bottom: 15px;
-    }
+    .visual .finder { margin: 0; }
 
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 5px 10px;
-      border-radius: 99px;
-      background: var(--brand);
-      color: var(--brand-dark);
-      font-size: 9.5px;
-      font-weight: 700;
-    }
-
-    .badge i {
-      width: 5px;
-      height: 5px;
-      border-radius: 50%;
-      background: var(--brand-dark);
-    }
-
-    .req-note {
-      color: var(--muted);
-      font-size: 10px;
-      font-weight: 600;
-    }
-
-    .req h2 {
-      margin: 0 0 2px;
-      font-size: clamp(20px, 1.6vw, 24px);
-      font-weight: 600;
-      letter-spacing: -.035em;
-    }
-
-    .req-sub {
-      margin: 0;
-      color: var(--muted);
-      font-size: 11.5px;
-      font-weight: 600;
-    }
-
-    .req-titel { margin-bottom: 9px; }
-
-    /* die gefilterten Angaben, eine nach der anderen */
-    .req-facts {
-      margin: 0;
-      padding: 0;
-      list-style: none;
-    }
-
-    .req-facts li {
-      display: grid;
-      grid-template-columns: 28px minmax(0, 1fr);
-      align-items: center;
-      gap: 11px;
-      padding: 11px 0;
-      border-bottom: 1px solid var(--line);
-      font-size: 13px;
-      font-weight: 600;
-      letter-spacing: -.01em;
-    }
-
-    .req-facts li:last-child { border-bottom: 0; }
-
-    .req-facts span {
-      width: 28px;
-      height: 28px;
-      border-radius: 50%;
-      display: grid;
-      place-content: center;
-      background: var(--brand-soft);
-      color: var(--brand-dark);
-    }
-
-    .req-facts svg {
-      width: 15px;
-      height: 15px;
-      fill: none;
-      stroke: currentColor;
-      stroke-width: 1.9;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-    }
-
-    .req-act {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 9px;
-      margin-top: 16px;
-    }
-
-    .req-act button {
-      min-height: 42px;
-      padding: 0 17px;
-      border: 0;
-      border-radius: 999px;
-      font-size: 12px;
-      font-weight: 600;
-      cursor: pointer;
-    }
-
-    .req-yes { background: var(--ink); color: var(--white); }
-
-    .req-no { background: #f1f4ef; color: var(--muted); }
-
-    .req-hint {
-      margin: 12px 0 0;
-      color: var(--muted);
-      font-size: 10px;
-      text-align: center;
-    }
-
-    .visual-caption {
-      position: absolute;
-      right: 22px;
-      bottom: 20px;
-      left: 22px;
-      color: rgba(255, 255, 255, .82);
-      font-size: 10.5px;
-      font-weight: 600;
-      text-align: center;
-    }
-
-    /* ---------- Die Anfrage baut sich Stueck fuer Stueck auf ---------- */
-    .req-frame { --cycle: 15s; }
-
-    .req-top,
-    .req-titel,
-    .req-facts li,
-    .req-act,
-    .req-hint {
-      animation: teilEin var(--cycle) cubic-bezier(.22, 1, .36, 1) infinite both;
-    }
-
-    .req-titel { animation-delay: .4s; }
-    .req-facts li:nth-child(1) { animation-delay: .85s; }
-    .req-facts li:nth-child(2) { animation-delay: 1.15s; }
-    .req-facts li:nth-child(3) { animation-delay: 1.45s; }
-    .req-facts li:nth-child(4) { animation-delay: 1.75s; }
-    .req-facts li:nth-child(5) { animation-delay: 2.05s; }
-    .req-act { animation-delay: 2.6s; }
-    .req-hint { animation-delay: 2.9s; }
-
-    @keyframes teilEin {
-      0% { opacity: 0; transform: translate3d(0, 10px, 0); }
-      5%, 88% { opacity: 1; transform: none; }
-      95%, 100% { opacity: 0; transform: translate3d(0, 5px, 0); }
-    }
-
-    .req-yes { animation: offerPulse var(--cycle) ease-in-out infinite; }
-
-    @keyframes offerPulse {
-      0%, 58%, 72%, 100% { transform: scale(1); background: var(--ink); color: var(--white); }
-      63%, 68% { transform: scale(.96); background: var(--brand); color: var(--brand-dark); }
-    }
+    .visual .result { margin: 9px 0 0; }
 
     /* der Bildausschnitt wandert langsam, damit die Flaeche nicht steht */
     .visual { animation: visualDrift 38s ease-in-out infinite alternate; }
@@ -616,13 +459,6 @@
     @keyframes visualDrift {
       from { background-position: 47% 64%; }
       to { background-position: 53% 64%; }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .req-top, .req-titel, .req-facts li, .req-act, .req-hint {
-        opacity: 1;
-        transform: none;
-      }
     }
 
     /* ---------- Beide Ergebnisse der Suche ----------
@@ -1868,7 +1704,7 @@
         gap: 44px;
       }
 
-      .visual { min-height: clamp(460px, 62vw, 620px); }
+      .visual { min-height: clamp(380px, 46vw, 470px); }
 
       .pricing { grid-template-columns: 1fr; }
 
@@ -1924,7 +1760,7 @@
       .hero { padding: 18px 20px 56px; }
 
       /* Luft zwischen Kopfzeile und Kicker, Textspalte steht mittig.
-         Die Anfragekarte bleibt linksbuendig, sonst zerfaellt die Liste. */
+         Das Suchfeld bleibt linksbuendig, sonst rutscht das Label mittig. */
       .hero-grid { margin-top: 40px; gap: 36px; }
 
       .hero-grid > div:first-child { text-align: center; }
@@ -1974,7 +1810,7 @@
 
       /* das Foto behaelt Luft ueber und unter der Karte */
       .visual {
-        min-height: clamp(540px, 148vw, 640px);
+        min-height: clamp(470px, 124vw, 560px);
         padding: 16px;
         border-radius: var(--radius-lg);
         background-size: auto 132%;
@@ -1982,32 +1818,11 @@
         animation: none;
       }
 
-      .req-frame { width: 100%; padding: 7px; }
+      .such-rahmen { width: 100%; padding: 7px; }
 
-      .req { padding: 15px; border-radius: 15px; }
+      .visual .finder { padding: 15px; border-radius: 15px; }
 
-      .req-top { margin-bottom: 12px; }
-
-      .req h2 { font-size: 19px; }
-
-      .req-sub { font-size: 11px; }
-
-      .req-facts li {
-        grid-template-columns: 24px minmax(0, 1fr);
-        gap: 10px;
-        padding: 9px 0;
-        font-size: 12px;
-      }
-
-      .req-facts span { width: 24px; height: 24px; }
-
-      .req-facts svg { width: 13px; height: 13px; }
-
-      .req-act { margin-top: 13px; }
-
-      .req-act button { min-height: 40px; }
-
-      .req-hint { margin-top: 10px; font-size: 9.5px; }
+      .visual .result { border-radius: 15px; }
 
       .price p {
         display: -webkit-box;
@@ -2066,8 +1881,6 @@
       .profile-dock { grid-template-columns: 1fr; gap: 8px; }
 
       .profile-dock li { padding: 16px; }
-
-      .visual-caption { right: 16px; bottom: 12px; left: 16px; font-size: 10px; }
 
       .section { padding: 60px 20px 64px; }
 
@@ -2164,8 +1977,6 @@
       .footer-cross { min-height: 44px; }
 
       .finder-field input { min-height: 46px; }
-
-      .req-act button { min-height: 44px; }
 
       /* ---------- Daumenfreundliche Ziele ---------- */
       .lang a {
@@ -2279,58 +2090,30 @@
 
             <p class="lead">Bevor du eine Anfrage siehst, kennt Seventi Datum, Gästezahl, Region, Budget und gesuchte Leistungen. Du entscheidest nur noch, ob sie zu deinem Betrieb passt.</p>
 
-            <form class="finder" id="finder-hero" autocomplete="off">
-              <div class="finder-top">
-                <label class="finder-label" for="finder-hero-input">Ist dein Unternehmen bereits auf Seventi?</label>
-                <span class="info" tabindex="0" role="note" aria-label="Hinweis zur Vorschau">
-                  <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5.5M12 7.6h.01"/></svg>
-                  <b>Vorschau: Die Suche ist noch nicht an die Datenbank angebunden. Tippe „Beispiel“, um den Trefferfall zu sehen, alles andere zeigt den Normalfall.</b>
-                </span>
-              </div>
-
-              <div class="finder-field">
-                <input id="finder-hero-input" type="text" name="betrieb" placeholder="Unternehmensname eingeben" autocomplete="organization" />
-                <button class="finder-submit" type="submit">Nachsehen</button>
-              </div>
-
-              <p class="finder-hint"><b>Kostenlos</b> · <b>kein Abo</b> · <b>Eintrag jederzeit entfernbar</b></p>
-            </form>
-
-            <div class="result" id="result-hero" role="status" aria-live="polite" hidden></div>
           </div>
 
-          <section class="visual" aria-label="Beispiel einer Anfrage">
-            <div class="req-frame">
-              <article class="req">
-                <div class="req-top">
-                  <span class="badge"><i></i>Neue Anfrage</span>
-                  <span class="req-note">Beispiel, kommt per E-Mail</span>
+          <div class="visual">
+            <div class="such-rahmen">
+              <form class="finder" id="finder-hero" autocomplete="off">
+                <div class="finder-top">
+                  <label class="finder-label" for="finder-hero-input">Ist dein Unternehmen bereits auf Seventi?</label>
+                  <span class="info" tabindex="0" role="note" aria-label="Hinweis zur Vorschau">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5.5M12 7.6h.01"/></svg>
+                    <b>Vorschau: Die Suche ist noch nicht an die Datenbank angebunden. Tippe „Beispiel“, um den Trefferfall zu sehen, alles andere zeigt den Normalfall.</b>
+                  </span>
                 </div>
 
-                <div class="req-titel">
-                  <h2>Sommerfest für 120 Gäste</h2>
-                  <p class="req-sub">Industrieunternehmen aus Zürich</p>
+                <div class="finder-field">
+                  <input id="finder-hero-input" type="text" name="betrieb" placeholder="Unternehmensname eingeben" autocomplete="organization" />
+                  <button class="finder-submit" type="submit">Nachsehen</button>
                 </div>
 
-                <ul class="req-facts">
-                  <li><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16v14H4zM4 10h16M8.5 3v4M15.5 3v4"/></svg></span>18. September 2026</li>
-                  <li><span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8.5" r="3.2"/><path d="M3.5 19a5.5 5.5 0 0 1 11 0M16 6.2a3.2 3.2 0 0 1 0 6M17.5 19a5.6 5.6 0 0 0-2-4.2"/></svg></span>120 Gäste</li>
-                  <li><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-6.1 7-11a7 7 0 1 0-14 0c0 4.9 7 11 7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg></span>Zürich</li>
-                  <li><span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M14.5 9.5H11a1.8 1.8 0 0 0 0 3.6h2a1.8 1.8 0 0 1 0 3.6H9.5M12 8v9"/></svg></span>CHF 18'000 – 22'000</li>
-                  <li><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M7 12h10M10 18h4"/></svg></span>Location, Catering und Technik</li>
-                </ul>
+                <p class="finder-hint"><b>Kostenlos</b> · <b>kein Abo</b> · <b>Eintrag jederzeit entfernbar</b></p>
+              </form>
 
-                <div class="req-act">
-                  <button class="req-yes" type="button">Anfrage beantworten</button>
-                  <button class="req-no" type="button">Ablehnen</button>
-                </div>
-
-                <p class="req-hint">Alles geklärt, bevor du entscheidest. Kein Nachfragen nach Datum, Budget oder Gästezahl.</p>
-              </article>
+              <div class="result" id="result-hero" role="status" aria-live="polite" hidden></div>
             </div>
-
-            <p class="visual-caption">Beispielanfrage mit Platzhalter-Daten</p>
-          </section>
+          </div>
         </div>
       </div>
     </section>
