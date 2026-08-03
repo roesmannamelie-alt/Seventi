@@ -403,7 +403,9 @@ Die drei ersten Hero-Entwürfe entstanden vor dem Provider-Briefing. Drei Punkte
 6. **Was es kostet**, CHF 0 fürs Gelistetsein, 10 % nur bei Zahlung über Seventi, jederzeit wieder raus. Vollständig hingeschrieben statt im Kleingedruckten.
 7. **Häufige Fragen**, sechs Stück: Herkunft der öffentlich erstellten Profile, Ablauf bei einem Auftrag, abgedeckte Regionen, wer die Anfragen stellt, wie viele es sind und was Seventi gegenüber Google bringt. Auf die Frage nach der Zahl der Anfragen gibt es bewusst keinen Durchschnittswert, sondern die Begründung, warum einer wenig aussagen würde. Alles andere beantworten die Argumentblöcke schon, und das Briefing will, dass die Seite sich leicht anfühlt statt lang zu erklären. Der Abschnitt steht zweispaltig: Kopf links, aufklappbare Fragen rechts. Ein Hinweis im Kopf hält fest, dass weitere Fragen ergänzt werden, sobald klar ist, welche Anbieter tatsächlich stellen.
 8. **Abschluss**, dieselbe Suche noch einmal, dunkler Block.
-9. **Footer**, Rechtliches und der Quereinstieg zur Planner-Seite.
+9. **Footer**, Rechtliches und der Quereinstieg zur Planner-Seite. Auf dem Handy steht die ganze Fusszeile mittig, Marke und Subline eingeschlossen.
+
+**Auftritt.** Der Hero baut sich beim Laden auf: Kopfzeile, Kicker, dann steigt die Headline Wort für Wort aus ihrer Zeile herauf, danach faltet sich das Bild von oben auf und zuletzt kommt die Karte darin mit der Konditionszeile. Gestartet wird erst, wenn die Schriften stehen, sonst springt der Umbruch mitten in der Bewegung. Alle weiteren Abschnitte tragen einen Staffelblock: Abschnittskopf, Schritte, Karten, Profilreihe, Fragen, Abschluss und Fusszeile kommen jeweils Teil für Teil herein, 85 ms auseinander. Bei „bewegungsarm" erscheint alles ohne Bewegung.
 
 ### Zum FAQ
 

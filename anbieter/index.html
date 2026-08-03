@@ -641,14 +641,19 @@
     .fenster-suche em svg { width: 13px; height: 13px; stroke-width: 2.6; }
 
     /* beide Zustaende liegen uebereinander und blenden um */
+    /* die Buehne folgt der Hoehe des sichtbaren Feldes, sonst bleibt unter
+       dem kuerzeren Zustand eine leere Flaeche stehen */
     .weg-buehne {
       display: grid;
-      min-height: 292px;
       align-content: start;
+      overflow: hidden;
+      height: var(--buehne, auto);
+      transition: height .42s cubic-bezier(.22, 1, .36, 1);
     }
 
     .weg-panel {
       grid-area: 1 / 1;
+      align-self: start;
       opacity: 0;
       visibility: hidden;
       transform: translate3d(0, 12px, 0);
@@ -1712,6 +1717,81 @@
         transform .72s cubic-bezier(.16, 1, .3, 1);
     }
 
+    /* ---------- Gestaffeltes Erscheinen ----------
+       Ein Block mit .staffel laesst seine Teile nacheinander hereinkommen.
+       Als Teil zaehlt jedes direkte Kind; ist das Kind ein Wrapper ohne
+       eigene Klasse, zaehlen stattdessen dessen Kinder. Den Verzug setzt
+       das Skript, damit die Reihenfolge nicht in der CSS haengt. */
+    .js .staffel-teil {
+      opacity: 0;
+      transform: translate3d(0, 20px, 0);
+    }
+
+    .js .staffel.is-in .staffel-teil {
+      opacity: 1;
+      transform: none;
+      transition:
+        opacity .78s cubic-bezier(.16, 1, .3, 1) var(--verzug, 0s),
+        transform .78s cubic-bezier(.16, 1, .3, 1) var(--verzug, 0s);
+    }
+
+    /* ---------- Auftritt im Hero ----------
+       Kopfzeile, Kicker, Headline Wort fuer Wort, Subline, danach faltet
+       sich das Bild auf und zuletzt kommt die Karte darin. */
+    .js .hero .mark,
+    .js .hero .lang,
+    .js .hero .eyebrow,
+    .js .hero .lead,
+    .js .hero .visual,
+    .js .hero .such-rahmen,
+    .js .hero .bild-hinweis {
+      opacity: 0;
+      transition:
+        opacity .9s cubic-bezier(.16, 1, .3, 1) var(--verzug, 0s),
+        transform 1.05s cubic-bezier(.16, 1, .3, 1) var(--verzug, 0s),
+        clip-path 1.2s cubic-bezier(.16, 1, .3, 1) var(--verzug, 0s);
+    }
+
+    .js .hero .mark { --verzug: 0s; transform: translate3d(0, -10px, 0); }
+    .js .hero .lang { --verzug: .07s; transform: translate3d(0, -10px, 0); }
+    .js .hero .eyebrow { --verzug: .16s; transform: translate3d(0, 16px, 0); }
+    .js .hero .lead { --verzug: .52s; transform: translate3d(0, 18px, 0); }
+    .js .hero .visual { --verzug: .22s; clip-path: inset(16% 0 0 0); }
+    .js .hero .such-rahmen { --verzug: .66s; transform: translate3d(0, 26px, 0); }
+    .js .hero .bild-hinweis { --verzug: .82s; transform: translate3d(0, 12px, 0); }
+
+    .js .hero.ist-da .mark,
+    .js .hero.ist-da .lang,
+    .js .hero.ist-da .eyebrow,
+    .js .hero.ist-da .lead,
+    .js .hero.ist-da .such-rahmen,
+    .js .hero.ist-da .bild-hinweis {
+      opacity: 1;
+      transform: none;
+    }
+
+    .js .hero.ist-da .visual {
+      opacity: 1;
+      clip-path: inset(0 0 0 0);
+    }
+
+    /* die Headline steigt Wort fuer Wort aus ihrer Zeile herauf */
+    .hero h1 .wort {
+      display: inline-block;
+      overflow: hidden;
+      padding: .08em 0 .2em;
+      margin: -.08em 0 -.2em;
+    }
+
+    .hero h1 .wort i {
+      display: inline-block;
+      font-style: inherit;
+      transform: translate3d(0, 112%, 0);
+      transition: transform 1s cubic-bezier(.16, 1, .3, 1) var(--verzug, 0s);
+    }
+
+    .js .hero.ist-da h1 .wort i { transform: none; }
+
     /* die Preiskarten schweben nacheinander von unten herein */
     .js .pricing .price:not(.is-in) { transform: translate3d(0, 52px, 0); }
 
@@ -1939,8 +2019,6 @@
 
       .fenster-inhalt { padding: 20px; }
 
-      .weg-buehne { min-height: 380px; }
-
       .weg-aktion { gap: 12px; }
 
       .weg-aktion button { width: 100%; }
@@ -1979,7 +2057,7 @@
 
       .site-footer { padding: 26px 20px 32px; }
 
-      /* Marke und Subline stehen links, der Rest bleibt mittig */
+      /* auf dem Handy steht die ganze Fusszeile mittig, Marke eingeschlossen */
       .footer-row {
         grid-template-columns: 1fr;
         justify-items: center;
@@ -1987,10 +2065,7 @@
         gap: 20px;
       }
 
-      .footer-row > div:first-child {
-        justify-self: start;
-        text-align: left;
-      }
+      .footer-mark { justify-content: center; }
 
       .footer-cross-wrap { justify-self: center; }
 
@@ -2014,6 +2089,24 @@
         align-items: center;
       }
 
+      /* die Textlinks im Suchergebnis bekommen eine greifbare Hoehe */
+      .weg-aktion a {
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+      }
+
+      /* das Hinweis-Icon bleibt klein, seine Trefferflaeche wird gross */
+      .info::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 44px;
+        height: 44px;
+        transform: translate(-50%, -50%);
+      }
+
       /* Trefferflaeche waechst, das Icon bleibt klein */
       .info::after {
         content: "";
@@ -2027,7 +2120,21 @@
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .js .reveal { opacity: 1; transform: none; }
+      .js .reveal,
+      .js .staffel-teil,
+      .js .hero .mark,
+      .js .hero .lang,
+      .js .hero .eyebrow,
+      .js .hero .lead,
+      .js .hero .visual,
+      .js .hero .such-rahmen,
+      .js .hero .bild-hinweis {
+        opacity: 1;
+        transform: none;
+        clip-path: none;
+      }
+
+      .hero h1 .wort i { transform: none; }
 
       *, *::before, *::after {
         animation: none !important;
@@ -2143,7 +2250,7 @@
 
     <section class="section section-tint" aria-labelledby="wege-titel">
       <div class="shell wege-grid">
-        <div class="wege-copy reveal">
+        <div class="wege-copy staffel">
           <div class="section-label">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h16M13 6l6 6-6 6"/><path d="M4 6h5M4 18h5"/></svg>
             Nach der Suche
@@ -2219,7 +2326,7 @@
 
     <section class="section" aria-labelledby="ablauf-titel">
       <div class="shell">
-        <div class="section-head reveal">
+        <div class="section-head staffel">
           <div>
             <div class="section-label">
               <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="19" r="2.4"/><circle cx="18" cy="5" r="2.4"/><path d="M8.6 19H14a4 4 0 0 0 0-8h-4a4 4 0 0 1 0-8h5.4"/></svg>
@@ -2230,7 +2337,7 @@
           <p class="section-lead">Kein Postfach mehr, das du pflegen musst. Nach dem Profil passiert der Rest von selbst.</p>
         </div>
 
-        <div class="step-grid">
+        <div class="step-grid staffel">
           <span class="step-track" aria-hidden="true"><i></i></span>
 
           <article class="step">
@@ -2259,7 +2366,7 @@
 
     <section class="section vor-band section-tint" aria-labelledby="gruende-titel">
       <div class="shell">
-        <div class="section-head reveal">
+        <div class="section-head staffel">
           <div>
             <div class="section-label">
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M7 12h10M10 18h4"/></svg>
@@ -2270,7 +2377,7 @@
           <p class="section-lead">Der Unterschied zu Verzeichnis, Kontaktformular und Google: Was bei dir ankommt, passt bereits zu Termin, Kapazität und Preisrahmen.</p>
         </div>
 
-        <div class="stapel">
+        <div class="stapel staffel">
           <article class="stapel-karte">
             <div class="stapel-text">
               <span class="stapel-nr">01 · Passende Anfragen</span>
@@ -2328,7 +2435,7 @@
               <h3>CHF 0. <em>Ohne Kleingedrucktes.</em></h3>
               <ul>
               <li>Kein Abo, keine Mindestlaufzeit</li>
-              <li>10 % nur bei freiwilliger Zahlungsabwicklung über Seventi</li>
+              <li>10 % nur bei freiwilliger Zahlungsabwicklung über Seventi</li>
               <li>Der Kundenkontakt bleibt bei dir</li>
               <li>Profil jederzeit entfernbar</li>
               </ul>
@@ -2364,7 +2471,7 @@
 
     <section class="section section-tint profil" aria-labelledby="profil-titel">
       <div class="shell">
-        <div class="section-head reveal">
+        <div class="section-head staffel">
           <div>
             <div class="section-label">
               <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="4.5" width="17" height="15" rx="2.5"/><path d="M7.5 9h5M7.5 12.5h9M7.5 16h6"/></svg>
@@ -2405,7 +2512,7 @@
             </ul>
           </article>
 
-          <ul class="profile-dock">
+          <ul class="profile-dock staffel">
           <li class="malt-halter">
             <span class="dock-icon malt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M7 12h10M10 18h4"/></svg></span>
             <strong>Kategorie und Leistungen</strong>
@@ -2437,13 +2544,13 @@
 
     <section class="section" aria-labelledby="kosten-titel">
       <div class="shell">
-        <div class="section-head reveal">
+        <div class="section-head staffel">
           <div>
             <div class="section-label">
               <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M14.5 9.5H11a1.8 1.8 0 0 0 0 3.6h2a1.8 1.8 0 0 1 0 3.6H9.5M12 8v9"/></svg>
               Was es kostet
             </div>
-            <h2 id="kosten-titel">CHF 0 fürs Profil. <em>10 % nur, wenn du über Seventi abrechnest.</em></h2>
+            <h2 id="kosten-titel">CHF 0 fürs Profil. <em>10 % nur, wenn du über Seventi abrechnest.</em></h2>
           </div>
           <p class="section-lead">Kein Abo, keine Grundgebühr. Die Zahlungsabwicklung über Seventi ist optional, und nur sie kostet etwas.</p>
         </div>
@@ -2460,9 +2567,9 @@
           </article>
 
           <article class="price reveal">
-            <span class="price-value">10 % optional</span>
+            <span class="price-value">10 % optional</span>
             <strong>Nur bei Abrechnung über Seventi</strong>
-            <p>Wickelst du die Zahlung über die Plattform ab, behalten wir 10 % ein. Rechnest du direkt mit dem Kunden ab, fällt nichts an. Die Entscheidung liegt bei dir, pro Auftrag.</p>
+            <p>Wickelst du die Zahlung über die Plattform ab, behalten wir 10 % ein. Rechnest du direkt mit dem Kunden ab, fällt nichts an. Die Entscheidung liegt bei dir, pro Auftrag.</p>
             <button class="price-more" type="button" aria-expanded="false">
               <span>Mehr lesen</span>
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
@@ -2486,7 +2593,7 @@
 
     <section class="section section-tint" aria-labelledby="fragen-titel">
       <div class="shell faq-grid">
-        <div class="faq-intro reveal">
+        <div class="faq-intro staffel">
           <div class="section-label">
             <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M9.9 9.6a2.2 2.2 0 1 1 2.7 2.5c-.5.2-.8.6-.8 1.1v.4M12 16.5h.01"/></svg>
             Kurz beantwortet
@@ -2495,7 +2602,7 @@
           <div class="faq-shot" role="img" aria-label="Fotografin bei der Arbeit an einem Firmenanlass"></div>
         </div>
 
-        <div class="faq reveal">
+        <div class="faq staffel">
           <details>
             <summary>Warum gibt es mein Unternehmen bereits auf Seventi?<span class="faq-toggle" aria-hidden="true"></span></summary>
             <div class="faq-antwort"><p>Wir haben viele Betriebe in Zürich, Zug und Luzern aus öffentlich zugänglichen Informationen erfasst, damit anfragende Unternehmen überhaupt jemanden finden. Bestätigt hat das Profil niemand, es gehört bis dahin niemandem.</p></div>
@@ -2527,7 +2634,7 @@
           </details>
 
           <details>
-            <summary>Wann fallen die 10 % an?<span class="faq-toggle" aria-hidden="true"></span></summary>
+            <summary>Wann fallen die 10 % an?<span class="faq-toggle" aria-hidden="true"></span></summary>
             <div class="faq-antwort"><p>Nur wenn die Zahlung über Seventi läuft, und das entscheidest du pro Auftrag. Rechnest du direkt mit dem Kunden ab, fällt keine Kommission an. Gelistet sein und Anfragen erhalten kostet in jedem Fall nichts.</p></div>
           </details>
 
@@ -2541,7 +2648,7 @@
 
     <div class="closing-bed">
       <section class="closing" aria-labelledby="abschluss-titel">
-        <div class="shell">
+        <div class="shell staffel">
           <h2 id="abschluss-titel">Sieh zuerst nach, <em>ob es dich schon gibt.</em></h2>
           <p class="closing-sub">Beides führt weiter: Profil übernehmen oder in rund zehn Minuten neu anlegen.</p>
 
@@ -2568,7 +2675,7 @@
   </main>
 
   <footer class="site-footer">
-    <div class="shell footer-row">
+    <div class="shell footer-row staffel">
       <div>
         <div class="footer-mark">
           <svg class="mark-logo" viewBox="0 0 139 41" role="img" aria-label="Seventi" focusable="false">
@@ -2776,6 +2883,21 @@
     }
 
     // Umschalter zwischen den beiden Suchergebnissen
+    const wegeBuehne = document.querySelector(".weg-buehne");
+
+    // die Buehne bekommt die Hoehe des sichtbaren Feldes, damit unter dem
+    // kuerzeren Zustand keine leere Flaeche stehen bleibt
+    const buehneMessen = () => {
+      const aktiv = wegeBuehne && wegeBuehne.querySelector(".weg-panel.ist-aktiv");
+      if (aktiv) wegeBuehne.style.setProperty("--buehne", Math.ceil(aktiv.getBoundingClientRect().height) + "px");
+    };
+
+    if (wegeBuehne) {
+      buehneMessen();
+      window.addEventListener("load", buehneMessen);
+      window.addEventListener("resize", buehneMessen);
+    }
+
     const wegeSchalter = [...document.querySelectorAll(".wege-switch button")];
 
     wegeSchalter.forEach((knopf) => {
@@ -2792,7 +2914,10 @@
           const feld = document.getElementById(anderer.getAttribute("aria-controls"));
           feld.classList.remove("ist-aktiv");
           // ein Bildaufbau Pause, sonst laufen die Zeilen nicht neu an
-          if (aktiv) window.requestAnimationFrame(() => feld.classList.add("ist-aktiv"));
+          if (aktiv) window.requestAnimationFrame(() => {
+            feld.classList.add("ist-aktiv");
+            buehneMessen();
+          });
         });
       });
     });
@@ -2904,7 +3029,25 @@
       });
     }
 
-    const revealTargets = document.querySelectorAll(".reveal");
+    // ---------- Gestaffeltes Erscheinen ----------
+    // Teil eines Staffelblocks ist jedes direkte Kind. Ist das Kind ein
+    // Wrapper ohne eigene Klasse, zaehlen stattdessen dessen Kinder, sonst
+    // bliebe etwa im Abschnittskopf Label und Headline ein einziger Schritt.
+    document.querySelectorAll(".staffel").forEach((block) => {
+      const teile = [];
+
+      [...block.children].forEach((kind) => {
+        if (kind.tagName === "DIV" && !kind.className) teile.push(...kind.children);
+        else teile.push(kind);
+      });
+
+      teile.forEach((teil, i) => {
+        teil.classList.add("staffel-teil");
+        teil.style.setProperty("--verzug", (i * .085).toFixed(3) + "s");
+      });
+    });
+
+    const revealTargets = document.querySelectorAll(".reveal, .staffel");
 
     if ("IntersectionObserver" in window) {
       const observer = new IntersectionObserver((entries) => {
@@ -2918,6 +3061,60 @@
       revealTargets.forEach((element) => observer.observe(element));
     } else {
       revealTargets.forEach((element) => element.classList.add("is-in"));
+    }
+
+    // ---------- Auftritt im Hero ----------
+    // Die Headline wird in Woerter zerlegt, jedes sitzt in einer Maske und
+    // steigt aus ihr herauf. Der Auftritt startet erst, wenn die Schriften
+    // stehen, sonst springt der Umbruch mitten in der Bewegung.
+    const heldRaum = document.querySelector(".hero");
+    const heldTitel = heldRaum && heldRaum.querySelector("h1");
+
+    if (heldTitel) {
+      let zaehler = 0;
+
+      const woerterFassen = (knoten) => {
+        [...knoten.childNodes].forEach((kind) => {
+          if (kind.nodeType === 3) {
+            const stuecke = kind.textContent.split(/(\s+)/);
+            const halter = document.createDocumentFragment();
+
+            stuecke.forEach((stueck) => {
+              if (!stueck.trim()) {
+                if (stueck) halter.appendChild(document.createTextNode(stueck));
+                return;
+              }
+
+              const wort = document.createElement("span");
+              wort.className = "wort";
+
+              const innen = document.createElement("i");
+              innen.textContent = stueck;
+              innen.style.setProperty("--verzug", (.26 + zaehler * .045).toFixed(3) + "s");
+              zaehler += 1;
+
+              wort.appendChild(innen);
+              halter.appendChild(wort);
+            });
+
+            knoten.replaceChild(halter, kind);
+          } else if (kind.nodeType === 1) {
+            woerterFassen(kind);
+          }
+        });
+      };
+
+      woerterFassen(heldTitel);
+    }
+
+    if (heldRaum) {
+      const heldStarten = () => window.requestAnimationFrame(() => heldRaum.classList.add("ist-da"));
+
+      if (document.fonts && document.fonts.ready) document.fonts.ready.then(heldStarten);
+      else heldStarten();
+
+      // Rueckfall, falls die Schriften haengen bleiben
+      window.setTimeout(heldStarten, 1200);
     }
   </script>
 </body>
