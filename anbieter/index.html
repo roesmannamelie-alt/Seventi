@@ -425,16 +425,35 @@
       display: grid;
       justify-items: center;
       align-content: center;
-      background-color: #e7ece0;
-      background-image:
-        linear-gradient(180deg, rgba(16, 29, 0, .3), rgba(16, 29, 0, .12) 45%, rgba(16, 29, 0, .46)),
-        url("../seventi-tafel.webp");
-      /* das Foto steht hoeher als die Flaeche, dieser Ueberschuss ist der
-         Spielraum, in dem es beim Scrollen wandert */
-      background-position: center center, center calc(62% + var(--held, 0%));
-      background-size: 100% 100%, auto 128%;
-      background-repeat: no-repeat;
+      background: #e7ece0;
+      isolation: isolate;
     }
+
+    /* Das Foto liegt oben und unten ueber die Flaeche hinaus, dieser
+       Ueberschuss ist der Spielraum, in dem es beim Scrollen wandert.
+       Als eigene Ebene, damit "cover" die Flaeche in jedem Seitenverhaeltnis
+       deckt: mit background-size auf Hoehe blieben im Tabletformat Raender. */
+    .visual-bild {
+      position: absolute;
+      z-index: 0;
+      inset: -14% 0;
+      background-image: url("../seventi-tafel.webp");
+      background-position: center 58%;
+      background-size: cover;
+      transform: translate3d(0, var(--held, 0px), 0);
+    }
+
+    /* die Abdunklung bleibt stehen, sonst wandert die Vignette mit */
+    .visual::after {
+      content: "";
+      position: absolute;
+      z-index: 0;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(16, 29, 0, .32), rgba(16, 29, 0, .12) 45%, rgba(16, 29, 0, .5));
+      pointer-events: none;
+    }
+
+    .such-rahmen { position: relative; z-index: 1; }
 
     /* Glasrand: eine milchige Fassung, in der das Suchfeld sitzt */
     .such-rahmen {
@@ -470,6 +489,7 @@
     /* die Konditionen stehen unten im Foto, ausserhalb des Kartenflusses */
     .bild-hinweis {
       position: absolute;
+      z-index: 1;
       right: 20px;
       bottom: clamp(16px, 1.5vw, 24px);
       left: 20px;
@@ -1916,9 +1936,9 @@
         min-height: clamp(470px, 124vw, 560px);
         padding: 16px;
         border-radius: var(--radius-lg);
-        background-size: 100% 100%, auto 132%;
-        background-position: center center, 50% calc(72% + var(--held, 0%));
       }
+
+      .visual-bild { background-position: center 66%; }
 
       .such-rahmen { width: 100%; padding: 7px; }
 
@@ -2119,6 +2139,22 @@
       }
     }
 
+    /* ---------- Sehr schmale Geraete ----------
+       Bei 320 px passte der Platzhalter nicht mehr ins Suchfeld. */
+    @media (max-width: 360px) {
+      .finder { padding: 13px; }
+
+      .finder-field { padding: 6px; }
+
+      .finder-field input { padding: 0 4px; font-size: 12.5px; }
+
+      .visual { padding: 13px; }
+
+      .fenster-inhalt { padding: 16px; }
+
+      .stapel-text { padding: 22px; }
+    }
+
     @media (prefers-reduced-motion: reduce) {
       .js .reveal,
       .js .staffel-teil,
@@ -2222,6 +2258,8 @@
           </div>
 
           <div class="visual">
+            <div class="visual-bild" aria-hidden="true"></div>
+
             <div class="such-rahmen">
               <form class="finder" id="finder-hero" autocomplete="off">
                 <div class="finder-top">
@@ -2817,18 +2855,19 @@
     // Parallax im Hero: das Foto steht hoeher als seine Flaeche, dieser
     // Ueberschuss wandert beim Scrollen mit. Nur der Bildausschnitt bewegt
     // sich, die Karte darin bleibt ruhig stehen.
-    const heldBild = document.querySelector(".visual");
+    const heldBild = document.querySelector(".visual-bild");
+    const heldFlaeche = heldBild && heldBild.parentElement;
 
     if (heldBild && !calmMotion.matches) {
       let heldOffen = false;
 
       const heldMalen = () => {
-        const box = heldBild.getBoundingClientRect();
+        const box = heldFlaeche.getBoundingClientRect();
         // 0, wenn die Flaeche unten hereinkommt, 1, wenn sie oben hinausgeht
         const lauf = (window.innerHeight - box.top) / (window.innerHeight + box.height);
         const schub = (Math.min(1, Math.max(0, lauf)) - .5) * 2;
 
-        heldBild.style.setProperty("--held", (schub * 12).toFixed(2) + "%");
+        heldBild.style.setProperty("--held", (schub * box.height * .07).toFixed(1) + "px");
         heldOffen = false;
       };
 
