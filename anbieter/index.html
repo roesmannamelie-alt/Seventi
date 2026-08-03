@@ -423,7 +423,8 @@
       overflow: hidden;
       border-radius: var(--radius-xl);
       display: grid;
-      place-items: center;
+      justify-items: center;
+      align-content: center;
       background-color: #e7ece0;
       background-image:
         linear-gradient(180deg, rgba(16, 29, 0, .3), rgba(16, 29, 0, .12) 45%, rgba(16, 29, 0, .42)),
@@ -442,16 +443,39 @@
       backdrop-filter: blur(14px) saturate(1.25);
     }
 
-    /* im Rahmen sitzt das Feld buendig, die Ecken passen sich der Fassung an */
+    /* im Rahmen sitzt das Feld buendig, die Ecken passen sich der Fassung an.
+       Auf dem Foto laufen Karte und Ergebnis weiss, damit sie sich klar vom
+       Bild loesen; die Eingabefelder tragen dafuer den gruenen Ton. */
     .visual .finder,
     .visual .result {
       max-width: none;
       border-radius: 18px;
+      background: var(--white);
     }
 
     .visual .finder { margin: 0; }
 
     .visual .result { margin: 9px 0 0; }
+
+    .visual .finder-field,
+    .visual .result-tag,
+    .visual .mini-form input,
+    .visual .mini-form select { background: #eef5e0; }
+
+    .visual .result-tag { color: var(--brand-dark); }
+
+    /* die Konditionen stehen frei auf dem Foto, direkt unter der Fassung */
+    .bild-hinweis {
+      max-width: 470px;
+      margin: 15px 0 0;
+      color: var(--white);
+      font-size: 12px;
+      font-weight: 600;
+      text-align: center;
+      text-shadow: 0 1px 3px rgba(16, 29, 0, .55), 0 2px 20px rgba(16, 29, 0, .75);
+    }
+
+    .bild-hinweis b { color: var(--white); font-weight: 700; }
 
     /* der Bildausschnitt wandert langsam, damit die Flaeche nicht steht */
     .visual { animation: visualDrift 38s ease-in-out infinite alternate; }
@@ -2108,11 +2132,12 @@
                   <button class="finder-submit" type="submit">Nachsehen</button>
                 </div>
 
-                <p class="finder-hint"><b>Kostenlos</b> · <b>kein Abo</b> · <b>Eintrag jederzeit entfernbar</b></p>
               </form>
 
               <div class="result" id="result-hero" role="status" aria-live="polite" hidden></div>
             </div>
+
+            <p class="finder-hint bild-hinweis"><b>Kostenlos</b> · <b>kein Abo</b> · <b>Eintrag jederzeit entfernbar</b></p>
           </div>
         </div>
       </div>
