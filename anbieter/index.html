@@ -149,6 +149,10 @@
       letter-spacing: -.04em;
     }
 
+    /* Kicker und Headline haben auf dem Handy eine kurze Fassung, sonst
+       nimmt der Hero dort vier Zeilen fuer eine Aussage. */
+    .nur-schmal { display: none; }
+
     .lead {
       max-width: 600px;
       margin: 22px 0 0;
@@ -1892,6 +1896,10 @@
       .hero-grid h1,
       .hero-grid .lead { margin-right: auto; margin-left: auto; }
 
+      .nur-breit { display: none; }
+
+      .nur-schmal { display: inline; }
+
       .finder { text-align: left; }
 
       .mark-logo { height: 22px; }
@@ -2142,6 +2150,9 @@
     /* ---------- Sehr schmale Geraete ----------
        Bei 320 px passte der Platzhalter nicht mehr ins Suchfeld. */
     @media (max-width: 360px) {
+      /* der kurze Kicker passt sonst knapp nicht in eine Zeile */
+      .eyebrow { font-size: 10.5px; padding: 7px 11px 7px 7px; }
+
       .finder { padding: 13px; }
 
       .finder-field { padding: 6px; }
@@ -2248,10 +2259,14 @@
               <svg viewBox="0 0 24 24" aria-hidden="true">
                 <path d="M4 20h16M6 20V9l6-4 6 4v11M10 13h4M10 17h4"/>
               </svg>
-              Für Locations, Caterer, DJs, Technik und Fotografie in Zürich, Zug und Luzern
+              <span class="nur-breit">Für Locations, Caterer, DJs, Technik und Fotografie in Zürich, Zug und Luzern</span>
+              <span class="nur-schmal">Locations, Catering, DJs, Technik, Fotografie</span>
             </div>
 
-            <h1>Die passenden Eventanfragen kommen zu dir. <em>Schon gefiltert.</em></h1>
+            <h1>
+              <span class="nur-breit">Die passenden Eventanfragen kommen zu dir. <em>Schon gefiltert.</em></span>
+              <span class="nur-schmal">Passende Eventanfragen. <em>Schon gefiltert.</em></span>
+            </h1>
 
             <p class="lead">Bevor du eine Anfrage siehst, kennt Seventi Datum, Gästezahl, Region, Budget und gesuchte Leistungen. Du entscheidest nur noch, ob sie zu deinem Betrieb passt.</p>
 
@@ -3138,6 +3153,9 @@
 
             knoten.replaceChild(halter, kind);
           } else if (kind.nodeType === 1) {
+            // die ausgeblendete Fassung bleibt unberuehrt, sonst zaehlt sie
+            // beim Verzug mit und die sichtbaren Woerter kommen zu spaet
+            if (window.getComputedStyle(kind).display === "none") return;
             woerterFassen(kind);
           }
         });
