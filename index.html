@@ -2684,7 +2684,7 @@
 
       .site-footer { padding: 28px 20px 34px; }
 
-      /* Marke und Subline stehen links, der Rest bleibt mittig */
+      /* auf dem Handy steht die ganze Fusszeile mittig, Marke eingeschlossen */
       .footer-row {
         grid-template-columns: 1fr;
         justify-items: center;
@@ -2692,10 +2692,7 @@
         gap: 20px;
       }
 
-      .footer-row > div:first-child {
-        justify-self: start;
-        text-align: left;
-      }
+      .footer-mark { justify-content: center; }
 
       .footer-cross-wrap { justify-self: center; }
 
