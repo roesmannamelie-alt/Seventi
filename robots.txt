@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+
+# Entwuerfe und Weiterleitungen gehoeren nicht in den Index
+Disallow: /entwuerfe.html
+Disallow: /provider.html
+Disallow: /impressum/
+Disallow: /datenschutz/
+Disallow: /mockups/
+
+Sitemap: https://roesmannamelie-alt.github.io/Seventi/sitemap.xml
