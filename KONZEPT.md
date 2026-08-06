@@ -423,7 +423,7 @@ Punkt für Punkt durchgegangen, Stand nach dem Umbau auf du.
 | Ziel: Anteil der Betriebe, die ihr Profil übernehmen oder anlegen | Beide Wege enden im selben Formular, die Suche ist die einzige Hauptaktion |
 | Drei Besuchertypen auflösen | Die Suche fängt alle drei ab: gelistet, unsicher, nicht gelistet |
 | Suchfeld ersetzt den Anmelde-Button | umgesetzt, im Hero und im Abschluss |
-| Nicht-gefunden ist Normalfall, kein Fehler | „Das ist der Normalfall, wir bauen das Verzeichnis gerade auf" |
+| Nicht-gefunden ist Normalfall, kein Fehler | steht wieder wörtlich im Feld: „Das ist der Normalfall, wir bauen das Verzeichnis gerade auf." Beim Umbau auf den Umschalter war der Satz verloren gegangen |
 | Der getippte Name wandert ins Anmeldeformular | umgesetzt, das Feld ist vorbelegt |
 | Bei Treffer: offen sagen, dass das Profil aus öffentlichen Quellen stammt | umgesetzt, im Ergebnis und im FAQ |
 | Bei Treffer: sichtbarer Weg zum Entfernen | umgesetzt, als gleichwertiger zweiter Knopf |
