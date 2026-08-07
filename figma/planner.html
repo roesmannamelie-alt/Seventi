@@ -1,0 +1,3629 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Seventi macht die Planung von Firmenevents einfacher: einmal beschreiben, passende Anbieter finden und Angebote vergleichen." />
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="../favicon.svg" />
+  <meta name="theme-color" content="#ffffff" />
+  <link rel="canonical" href="https://roesmannamelie-alt.github.io/Seventi/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="de_CH" />
+  <meta property="og:site_name" content="Seventi" />
+  <meta property="og:url" content="https://roesmannamelie-alt.github.io/Seventi/" />
+  <meta property="og:title" content="Seventi für Eventplanerinnen" />
+  <meta property="og:description" content="Einmal beschreiben, passende Anbieter finden, Angebote vergleichen. Ohne elf gleiche E-Mails." />
+  <meta property="og:image" content="https://roesmannamelie-alt.github.io/Seventi/og-planner.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Seventi: Von der Anfrage zum passenden Angebot, ohne elf gleiche E-Mails." />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="preload" as="image" href="../seventi-event.webp" fetchpriority="high" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <title>Systra Studios × Seventi</title>
+
+  <style>
+    :root {
+      --ink: #162800;
+      --muted: #66705f;
+      --line: #e8eee1;
+      --canvas: #ffffff;
+      --white: #ffffff;
+      --brand: #d6ff21;
+      --brand-strong: #b8e800;
+      --brand-soft: #f7ffeb;
+      --brand-dark: #315500;
+      --radius-xl: 28px;
+      --radius-lg: 18px;
+      --radius-md: 12px;
+      --max: 1440px;
+      --cycle: 12s;
+    }
+
+    @property --auftritt {
+      syntax: "<length>";
+      inherits: false;
+      initial-value: 34px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--canvas);
+      font-family: "Manrope", sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+    svg { display: block; }
+
+    .hero {
+      min-height: 100vh;
+      overflow: hidden;
+      padding: 24px 20px 44px;
+      background: var(--canvas);
+    }
+
+    /* der Hero laeuft breiter als die Abschnitte darunter */
+    .hero .shell { width: min(1580px, 100%); }
+
+    .shell {
+      width: min(var(--max), 100%);
+      margin: 0 auto;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      height: 46px;
+    }
+
+    /* Wortmarke von Seventi, faerbt sich ueber currentColor */
+    .mark {
+      display: flex;
+      align-items: center;
+      color: var(--ink);
+    }
+
+    .mark-logo {
+      width: auto;
+      height: 26px;
+      fill: currentColor;
+    }
+
+    /* Das Zeichen laeuft mit der Textfarbe mit, wie in der hellen Fassung
+       des Logopakets. Auf dunklem Grund kippt es auf Limette, wie dort. */
+    .logo-zeichen { fill: currentColor; }
+
+    .footer-mark .logo-zeichen,
+    .closing .logo-zeichen { fill: var(--brand); }
+
+    .lang {
+      display: inline-flex;
+      align-items: center;
+      gap: 2px;
+      padding: 3px;
+      border-radius: 99px;
+      background: #f2f5ee;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .lang a {
+      padding: 5px 10px;
+      border-radius: 99px;
+      color: var(--muted);
+    }
+
+    .lang a[aria-current="true"] {
+      background: var(--white);
+      color: var(--ink);
+    }
+
+    .hero-grid {
+      min-height: calc(100vh - 114px);
+      margin-top: 0;
+      display: grid;
+      grid-template-columns: minmax(580px, 1.06fr) minmax(580px, .94fr);
+      align-items: center;
+      gap: clamp(38px, 4vw, 64px);
+    }
+
+    .intro {
+      max-width: 680px;
+      margin: 0;
+      text-align: left;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      margin-bottom: 20px;
+      padding: 7px 10px 7px 8px;
+      border-radius: 99px;
+      background: var(--brand-soft);
+      color: var(--brand-dark);
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .eyebrow svg {
+      width: 16px;
+      height: 16px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(50px, 4.5vw, 68px);
+      font-weight: 600;
+      line-height: .99;
+      letter-spacing: -.06em;
+    }
+
+    h1 em {
+      color: var(--brand-dark);
+      font-family: "Fraunces", serif;
+      font-style: normal;
+      font-weight: 500;
+      letter-spacing: -.045em;
+    }
+
+    .headline-line {
+      display: inline;
+    }
+
+    .lead {
+      max-width: 560px;
+      margin: 24px 0 0;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.7;
+    }
+
+    .actions {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 18px;
+      margin-top: 29px;
+      flex-wrap: wrap;
+    }
+
+    .cta {
+      position: relative;
+      min-height: 50px;
+      padding: 0 25px;
+      border: 1px solid var(--ink);
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      background: var(--ink);
+      color: var(--white);
+      font-size: 13px;
+      font-weight: 600;
+      line-height: 1;
+      transition:
+        background-color .3s ease,
+        border-color .3s ease;
+    }
+
+    .cta-word:first-child {
+      margin-right: 4px;
+    }
+
+    .cta-inject {
+      width: 0;
+      margin: 0;
+      overflow: hidden;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--brand);
+      opacity: 0;
+      scale: 0;
+      rotate: -45deg;
+      transition:
+        width .5s cubic-bezier(.34, 1.56, .64, 1),
+        margin .5s cubic-bezier(.34, 1.56, .64, 1),
+        opacity .24s ease,
+        scale .5s cubic-bezier(.34, 1.56, .64, 1),
+        rotate .5s cubic-bezier(.34, 1.56, .64, 1);
+    }
+
+    .cta-inject svg {
+      width: 16px;
+      height: 16px;
+      flex: 0 0 16px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .cta:is(:hover, :focus-visible, :active, .is-open) {
+      background: #23400a;
+      border-color: #23400a;
+    }
+
+    .cta:is(:hover, :focus-visible, :active, .is-open) .cta-inject {
+      width: 20px;
+      margin: 0 3px;
+      opacity: 1;
+      scale: 1;
+      rotate: 0deg;
+    }
+
+    .cta:focus-visible {
+      outline: 3px solid rgba(184, 232, 0, .42);
+      outline-offset: 3px;
+    }
+
+    .time {
+      text-align: left;
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.45;
+    }
+
+    .time strong {
+      display: block;
+      margin-bottom: 2px;
+      color: var(--ink);
+      font-size: 12px;
+    }
+
+    .product {
+      min-height: 640px;
+      width: 100%;
+      margin: 0;
+      padding: 30px;
+      overflow: hidden;
+      border-radius: var(--radius-xl);
+      display: grid;
+      place-items: center;
+      background-image: url("../seventi-event.webp");
+      background-position: center;
+      background-size: cover;
+    }
+
+    .product-body {
+      width: min(86%, 470px);
+      padding: 0;
+      display: grid;
+      gap: 10px;
+      background: transparent;
+    }
+
+    .briefing-panel {
+      padding: 7px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, .48);
+      background: rgba(255, 255, 255, .24);
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+    }
+
+    .panel-label {
+      display: none;
+      align-items: center;
+      gap: 9px;
+      margin-bottom: 13px;
+      color: var(--muted);
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .07em;
+    }
+
+    .icon-box {
+      width: 27px;
+      height: 27px;
+      flex: 0 0 auto;
+      border-radius: 7px;
+      display: grid;
+      place-content: center;
+      background: var(--brand-soft);
+      color: var(--brand-dark);
+    }
+
+    .icon-box svg,
+    .result-icon svg,
+    .stage-icon svg,
+    .search-icon svg {
+      width: 15px;
+      height: 15px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .composer {
+      min-height: 58px;
+      padding: 0 6px 0 17px;
+      border-radius: 999px;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: center;
+      gap: 12px;
+      background: rgba(255, 255, 255, .95);
+      animation: composerFocus var(--cycle) ease-in-out infinite;
+    }
+
+    .search-icon {
+      display: none;
+    }
+
+    .typing-window {
+      min-width: 0;
+      overflow: hidden;
+      color: var(--ink);
+      font-size: 12.5px;
+      font-weight: 500;
+      white-space: nowrap;
+    }
+
+    .type-text {
+      display: block;
+      width: 0;
+      overflow: hidden;
+      white-space: nowrap;
+      border-right: 1px solid var(--brand-dark);
+      animation:
+        typeBrief var(--cycle) steps(30, end) infinite,
+        caret .7s steps(1) infinite;
+    }
+
+    .send-button {
+      width: 42px;
+      height: 42px;
+      border: 0;
+      border-radius: 50%;
+      display: grid;
+      place-content: center;
+      background: var(--ink);
+      color: white;
+      animation: sendCycle var(--cycle) ease-in-out infinite;
+    }
+
+    .send-button svg {
+      width: 16px;
+      height: 16px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .matching-panel {
+      --matching-pad: 7px;
+      --matching-height: 300px;
+      height: var(--matching-height);
+      padding: var(--matching-pad);
+      overflow: hidden;
+      border-radius: 18px;
+      border: 1px solid rgba(255, 255, 255, .48);
+      background: rgba(255, 255, 255, .24);
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+      transform-origin: top center;
+      animation: matchingReveal var(--cycle) cubic-bezier(.22,1,.36,1) infinite;
+    }
+
+    .matching-clip {
+      height: 100%;
+      overflow: hidden;
+      border-radius: 13px;
+    }
+
+    .matching-content {
+      position: relative;
+      isolation: isolate;
+      min-height: calc(var(--matching-height) - (2 * var(--matching-pad)) - 2px);
+      padding: 14px;
+      border-radius: 13px;
+      background: rgba(255, 255, 255, .95);
+    }
+
+    .stage-row {
+      position: relative;
+      z-index: 3;
+      margin: 0 3px 16px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+    }
+
+    .stage-track,
+    .stage-progress {
+      position: absolute;
+      top: 14px;
+      left: calc(16.666% + 8px);
+      right: calc(16.666% + 8px);
+      height: 2px;
+    }
+
+    .stage-track { background: #e5ebde; }
+
+    .stage-progress {
+      right: auto;
+      width: 0;
+      background: var(--brand-strong);
+      animation: progressCycle var(--cycle) ease-in-out infinite;
+    }
+
+    .stage {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      outline: none;
+    }
+
+    .stage-icon {
+      width: 29px;
+      height: 29px;
+      border-radius: 50%;
+      display: grid;
+      place-content: center;
+      background: #f2f5ef;
+      color: #788071;
+    }
+
+    .stage strong {
+      margin-top: 6px;
+      font-size: 9px;
+    }
+
+    .stage small {
+      position: absolute;
+      top: calc(100% + 5px);
+      left: 50%;
+      z-index: 8;
+      width: max-content;
+      max-width: 126px;
+      padding: 5px 7px;
+      border-radius: 6px;
+      color: var(--brand-dark);
+      background: var(--brand-soft);
+      font-size: 8px;
+      font-weight: 600;
+      line-height: 1.35;
+      text-align: center;
+      white-space: normal;
+      opacity: 0;
+      pointer-events: none;
+      transform: translate(-50%, -3px);
+      transition: opacity .18s ease, transform .18s ease;
+    }
+
+    .stage:hover small,
+    .stage:focus-visible small {
+      opacity: 1;
+      transform: translate(-50%, 0);
+    }
+
+    .stage-one .stage-icon {
+      animation: stageOne var(--cycle) ease-in-out infinite;
+    }
+
+    .stage-two .stage-icon {
+      animation: stageTwo var(--cycle) ease-in-out infinite;
+    }
+
+    .stage-three .stage-icon {
+      animation: stageThree var(--cycle) ease-in-out infinite;
+    }
+
+    .results-panel {
+      position: relative;
+      z-index: 1;
+      padding: 11px;
+      border-radius: 14px;
+      background: #fbfff5;
+    }
+
+    .results-head {
+      min-height: 22px;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 16px;
+    }
+
+    .results-title {
+      display: flex;
+      align-items: center;
+      gap: 0;
+    }
+
+    .results-title .icon-box {
+      display: none;
+    }
+
+    .results-title strong {
+      font-size: 12px;
+    }
+
+    .results-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 4px;
+    }
+
+    .result-card {
+      position: relative;
+      z-index: 1;
+      min-width: 0;
+      padding: 8px;
+      border-radius: 9px;
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) auto;
+      align-items: center;
+      column-gap: 10px;
+      background: var(--white);
+      opacity: 0;
+      transform: translateY(14px);
+      will-change: opacity, transform;
+    }
+
+    .result-one { animation: resultOne var(--cycle) cubic-bezier(.22,1,.36,1) infinite; }
+    .result-two { animation: resultTwo var(--cycle) cubic-bezier(.22,1,.36,1) infinite; }
+    .result-three { animation: resultThree var(--cycle) cubic-bezier(.22,1,.36,1) infinite; }
+
+    .result-top {
+      display: contents;
+    }
+
+    .result-icon {
+      width: 28px;
+      height: 28px;
+      grid-column: 1;
+      grid-row: 1;
+      border-radius: 7px;
+      display: grid;
+      place-content: center;
+      background: var(--brand-soft);
+      color: var(--brand-dark);
+    }
+
+    .match {
+      grid-column: 3;
+      grid-row: 1;
+      padding: 4px 6px;
+      border-radius: 6px;
+      color: var(--brand-dark);
+      background: var(--brand-soft);
+      font-size: 7.5px;
+      font-weight: 700;
+    }
+
+    .result-card h3 {
+      grid-column: 2;
+      grid-row: 1;
+      margin: 0;
+      font-size: 11px;
+      line-height: 1.3;
+    }
+
+    .result-meta {
+      display: none;
+      align-items: center;
+      gap: 5px;
+      color: var(--muted);
+      font-size: 8px;
+    }
+
+    .result-meta svg {
+      width: 12px;
+      height: 12px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .result-tags {
+      display: none;
+      flex-wrap: wrap;
+      gap: 5px;
+      margin-top: 11px;
+    }
+
+    .result-tags span {
+      padding: 5px 6px;
+      border-radius: 5px;
+      color: #5f6a63;
+      background: #f1f4f0;
+      font-size: 7px;
+      font-weight: 600;
+    }
+
+    .animation-note {
+      display: none;
+    }
+
+    .benefits {
+      width: 100%;
+      margin: 34px 0 0;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .benefit {
+      min-height: 38px;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--muted);
+      background: transparent;
+      font-size: 11.5px;
+      line-height: 1.45;
+    }
+
+    .benefit .icon-box {
+      width: 32px;
+      height: 32px;
+      border-radius: 9px;
+    }
+
+    .benefit .icon-box svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .benefit strong {
+      display: block;
+      margin-bottom: 1px;
+      color: var(--ink);
+      font-size: 12px;
+    }
+
+    .eyebrow {
+      animation: heroCopyIn .72s .04s cubic-bezier(.16, 1, .3, 1) both;
+    }
+
+    h1 {
+      animation: heroCopyIn .88s .12s cubic-bezier(.16, 1, .3, 1) both;
+    }
+
+    .lead {
+      animation: heroCopyIn .78s .22s cubic-bezier(.16, 1, .3, 1) both;
+    }
+
+    .actions {
+      animation: heroCopyIn .78s .31s cubic-bezier(.16, 1, .3, 1) both;
+    }
+
+    .benefit {
+      animation: heroCopyIn .7s cubic-bezier(.16, 1, .3, 1) both;
+    }
+
+    .benefit:nth-child(1) { animation-delay: .41s; }
+    .benefit:nth-child(2) { animation-delay: .49s; }
+    .benefit:nth-child(3) { animation-delay: .57s; }
+
+    .product {
+      animation: heroVisualIn .98s .16s cubic-bezier(.16, 1, .3, 1) both;
+    }
+
+    @keyframes heroCopyIn {
+      from {
+        opacity: 0;
+        transform: translate3d(-28px, 12px, 0);
+        filter: blur(5px);
+      }
+      to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+        filter: blur(0);
+      }
+    }
+
+    @keyframes heroVisualIn {
+      from {
+        opacity: 0;
+        transform: translate3d(38px, 0, 0) scale(.975);
+        filter: blur(8px);
+      }
+      to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0) scale(1);
+        filter: blur(0);
+      }
+    }
+
+    @keyframes heroMobileIn {
+      from {
+        opacity: 0;
+        transform: translate3d(0, 24px, 0) scale(.985);
+        filter: blur(5px);
+      }
+      to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0) scale(1);
+        filter: blur(0);
+      }
+    }
+
+    @keyframes typeBrief {
+      0%, 4% { width: 0; }
+      22%, 93% { width: 30ch; }
+      97%, 100% { width: 0; }
+    }
+
+    @keyframes caret {
+      0%, 50% { border-color: var(--brand-dark); }
+      51%, 100% { border-color: transparent; }
+    }
+
+    @keyframes composerFocus {
+      0%, 3%, 97%, 100% { background: rgba(255, 255, 255, .95); }
+      5%, 22% { background: rgba(247, 255, 235, .97); }
+      26%, 93% { background: rgba(255, 255, 255, .95); }
+    }
+
+    @keyframes sendCycle {
+      0%, 20%, 26%, 100% { transform: scale(1); background: var(--ink); color: white; }
+      22%, 24% { transform: scale(.9); background: var(--brand); color: var(--ink); }
+    }
+
+    @keyframes progressCycle {
+      0%, 25% { width: 0; }
+      35% { width: 33.333%; }
+      52%, 93% { width: calc(66.666% - 20px); }
+      97%, 100% { width: 0; }
+    }
+
+    @keyframes matchingReveal {
+      0%, 23% {
+        height: 0;
+        padding-block: 0;
+        border-color: transparent;
+        background: rgba(255, 255, 255, 0);
+        opacity: 0;
+        transform: translateY(-8px) scale(.98);
+      }
+      31% {
+        height: 92px;
+        padding-block: var(--matching-pad);
+        border-color: rgba(255, 255, 255, .48);
+        background: rgba(255, 255, 255, .24);
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+      42% { height: 174px; }
+      49% { height: 238px; }
+      56%, 93% {
+        height: var(--matching-height);
+        padding-block: var(--matching-pad);
+        border-color: rgba(255, 255, 255, .48);
+        background: rgba(255, 255, 255, .24);
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+      97%, 100% {
+        height: 0;
+        padding-block: 0;
+        border-color: transparent;
+        background: rgba(255, 255, 255, 0);
+        opacity: 0;
+        transform: translateY(-6px) scale(.985);
+      }
+    }
+
+    @keyframes stageOne {
+      0%, 24%, 97%, 100% { color: #788071; background: #f2f5ef; }
+      26%, 93% { color: var(--brand-dark); background: var(--brand); }
+    }
+
+    @keyframes stageTwo {
+      0%, 31%, 97%, 100% { color: #788071; background: #f2f5ef; }
+      33%, 93% { color: var(--brand-dark); background: var(--brand); }
+    }
+
+    @keyframes stageThree {
+      0%, 51%, 97%, 100% { color: #788071; background: #f2f5ef; }
+      53%, 93% { color: var(--brand-dark); background: var(--brand); }
+    }
+
+    @keyframes resultOne {
+      0%, 35% { opacity: 0; transform: translateY(8px); }
+      40%, 93% { opacity: 1; transform: translateY(0); }
+      97%, 100% { opacity: 0; transform: translateY(6px); }
+    }
+
+    @keyframes resultTwo {
+      0%, 42% { opacity: 0; transform: translateY(8px); }
+      47%, 93% { opacity: 1; transform: translateY(0); }
+      97%, 100% { opacity: 0; transform: translateY(6px); }
+    }
+
+    @keyframes resultThree {
+      0%, 49% { opacity: 0; transform: translateY(8px); }
+      54%, 93% { opacity: 1; transform: translateY(0); }
+      97%, 100% { opacity: 0; transform: translateY(6px); }
+    }
+
+    @media (max-width: 1180px) {
+      .hero-grid {
+        min-height: auto;
+        margin-top: 28px;
+        grid-template-columns: 1fr;
+        gap: 42px;
+      }
+
+      .intro {
+        max-width: 760px;
+      }
+
+      .product {
+        max-width: 760px;
+      }
+
+      .benefits {
+        max-width: 720px;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .hero {
+        padding: 18px 20px 40px;
+      }
+
+      .topbar { height: 40px; }
+
+      .stange { padding: 9px 16px; }
+
+      .stange-satz { display: none; }
+
+      .stange-knopf { padding: 0 16px; font-size: 12.5px; }
+
+      .mark-logo { height: 22px; }
+
+      .intro {
+        width: 100%;
+        max-width: 360px;
+        margin: 0 auto;
+        text-align: center;
+      }
+
+      /* Luft zwischen Kopfzeile und Kicker, sonst klebt der Hero oben */
+      .hero-grid {
+        margin-top: 40px;
+        gap: 46px;
+      }
+
+      .eyebrow {
+        gap: 7px;
+        margin-bottom: 22px;
+        padding: 6px 8px 6px 7px;
+        font-size: 10px;
+      }
+
+      .eyebrow svg {
+        width: 14px;
+        height: 14px;
+      }
+
+      h1 {
+        width: 100%;
+        max-width: 350px;
+        margin-right: auto;
+        margin-left: auto;
+        font-size: clamp(33px, 9.25vw, 36px);
+        line-height: 1.055;
+        letter-spacing: -.045em;
+        text-wrap: balance;
+      }
+
+      .headline-line {
+        display: block;
+      }
+
+      .lead {
+        max-width: 330px;
+        margin-right: auto;
+        margin-left: auto;
+        margin-top: 24px;
+        font-size: 14px;
+        line-height: 1.62;
+      }
+
+      .actions {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0;
+        margin-top: 26px;
+      }
+
+      .cta {
+        width: auto;
+        min-height: 50px;
+        padding: 0 25px;
+        font-size: 13px;
+      }
+
+      .time {
+        margin-top: 10px;
+        text-align: center;
+        font-size: 10px;
+      }
+
+      .time strong {
+        display: inline;
+        margin: 0 5px 0 0;
+        font-size: 10.5px;
+      }
+
+      .product {
+        min-height: 520px;
+        padding: 12px;
+        border-radius: 18px;
+        background-position: 52% center;
+      }
+
+      .product-body {
+        width: 100%;
+        max-width: 360px;
+        padding: 0;
+        margin-top: 0;
+        gap: 8px;
+      }
+
+      .briefing-panel {
+        padding: 5px;
+        border-radius: 999px;
+      }
+
+      .matching-panel {
+        --matching-pad: 6px;
+        --matching-height: 270px;
+        border-radius: 15px;
+      }
+
+      .matching-clip {
+        border-radius: 10px;
+      }
+
+      .matching-content {
+        padding: 9px;
+        border-radius: 10px;
+      }
+
+      .results-panel {
+        padding: 8px;
+        border-radius: 11px;
+      }
+
+      .results-head {
+        min-height: 18px;
+        margin-bottom: 6px;
+      }
+
+      .results-title strong {
+        font-size: 10.5px;
+      }
+
+      .composer {
+        min-height: 50px;
+        padding: 0 5px 0 13px;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 8px;
+      }
+
+      .typing-window {
+        font-size: 10.5px;
+      }
+
+      .type-text {
+        animation-name: typeBriefMobile, caret;
+      }
+
+      .send-button {
+        width: 38px;
+        height: 38px;
+      }
+
+      .stage-row {
+        margin: 0 1px 12px;
+        gap: 2px;
+      }
+
+      .stage-track,
+      .stage-progress {
+        top: 13px;
+      }
+
+      .stage-icon {
+        width: 27px;
+        height: 27px;
+      }
+
+      .stage strong {
+        margin-top: 5px;
+        font-size: 7.5px;
+        line-height: 1.2;
+      }
+
+      .stage small { display: none; }
+
+      .result-card {
+        padding: 7px;
+        column-gap: 8px;
+      }
+
+      .result-icon {
+        width: 26px;
+        height: 26px;
+        grid-row: 1;
+      }
+
+      .match {
+        padding: 3px 5px;
+        font-size: 6.8px;
+        grid-row: 1;
+      }
+
+      .result-card h3 {
+        margin: 0;
+        font-size: 10px;
+      }
+
+      .result-meta {
+        grid-column: 2;
+      }
+
+      .result-tags {
+        display: none;
+      }
+
+      .benefits {
+        display: none;
+      }
+
+      .benefit {
+        width: 100%;
+        min-height: 24px;
+        padding: 0;
+        display: grid;
+        grid-template-columns: 22px minmax(0, 1fr);
+        align-items: center;
+        justify-content: stretch;
+        gap: 9px;
+        border-radius: 0;
+        background: transparent;
+        text-align: left;
+        font-size: 12px;
+        line-height: 1.45;
+      }
+
+      .benefit .icon-box {
+        width: 22px;
+        height: 22px;
+        border-radius: 0;
+        background: transparent;
+        color: var(--brand-dark);
+      }
+
+      .benefit .icon-box svg {
+        width: 18px;
+        height: 18px;
+        stroke-width: 2;
+      }
+
+      .benefit strong {
+        display: inline;
+        margin: 0 3px 0 0;
+        font-size: 12.5px;
+      }
+
+      .eyebrow,
+      h1,
+      .lead,
+      .actions,
+      .benefit,
+      .product {
+        animation-name: heroMobileIn;
+      }
+
+      .product {
+        animation-delay: .52s;
+      }
+    }
+
+    @keyframes typeBriefMobile {
+      0%, 4% { width: 0; }
+      22%, 93% { width: 30ch; }
+      97%, 100% { width: 0; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .stange { transition: none; }
+
+      .type-text {
+        width: auto;
+        border-right: 0;
+      }
+
+      .result-card {
+        opacity: 1;
+        transform: none;
+      }
+
+      .stage-progress {
+        width: calc(66.666% - 20px);
+      }
+
+      .stage-icon {
+        color: var(--brand-dark) !important;
+        background: var(--brand) !important;
+      }
+
+      .cta-inject {
+        width: 18px;
+        margin: 0 3px;
+        opacity: 1;
+        scale: 1;
+        rotate: 0deg;
+      }
+
+      .eyebrow,
+      h1,
+      .lead,
+      .actions,
+      .benefit,
+      .product,
+      .js .occasion {
+        opacity: 1;
+        transform: none;
+        filter: none;
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation: none !important;
+        transition-duration: .01ms !important;
+      }
+    }
+
+    /* ===================================================
+       Logospur im Hero
+       Zwei gleiche Bahnen laufen endlos durch. Die Bahnen
+       werden per Skript aufgefuellt, bis eine allein breiter
+       ist als der Rahmen, sonst reisst die Spur am Ende ab.
+       =================================================== */
+
+    .logo-lauf {
+      width: 100%;
+      margin-top: clamp(44px, 5vw, 76px);
+      display: flex;
+      overflow: hidden;
+      -webkit-mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+      mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+    }
+
+    .logo-spur {
+      flex: 0 0 auto;
+      display: flex;
+      align-items: center;
+      gap: clamp(38px, 5vw, 78px);
+      /* ohne die Null links setzt der Browser 40 px, dann klafft die Naht */
+      padding: 0 clamp(38px, 5vw, 78px) 0 0;
+      margin: 0;
+      list-style: none;
+      animation: logosLaufen 34s linear infinite;
+    }
+
+    .logo-lauf:hover .logo-spur,
+    .logo-lauf:focus-within .logo-spur { animation-play-state: paused; }
+
+    @keyframes logosLaufen {
+      from { transform: translate3d(0, 0, 0); }
+      to { transform: translate3d(-100%, 0, 0); }
+    }
+
+    /* einfarbige Wortmarken in Graugrün, wie im Konzept */
+    .logo-spur li {
+      color: #929c88;
+      font-family: "Fraunces", serif;
+      font-size: clamp(17px, 1.5vw, 21px);
+      font-weight: 600;
+      letter-spacing: -.02em;
+      white-space: nowrap;
+      transition: color .25s ease;
+    }
+
+    .logo-spur li:hover { color: #6f7a64; }
+
+    /* ---------- Hinweis-Marke ---------- */
+    .hinweis {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 6px 12px 6px 8px;
+      border-radius: 99px;
+      background: #f2f5ee;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 700;
+      cursor: help;
+    }
+
+    .info {
+      position: relative;
+      width: 17px;
+      height: 17px;
+      flex: 0 0 17px;
+      border-radius: 50%;
+      display: grid;
+      place-content: center;
+      background: rgba(22, 40, 0, .09);
+      color: var(--brand-dark);
+      cursor: help;
+    }
+
+    .hinweis .info { background: rgba(22, 40, 0, .12); }
+
+    .info svg {
+      width: 11px;
+      height: 11px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2.1;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .info b {
+      position: absolute;
+      bottom: calc(100% + 12px);
+      left: 50%;
+      z-index: 5;
+      width: max-content;
+      max-width: min(280px, 76vw);
+      padding: 11px 13px;
+      border-radius: 12px;
+      background: var(--white);
+      box-shadow: 0 18px 36px -18px rgba(22, 40, 0, .5);
+      color: var(--ink);
+      font-size: 11px;
+      font-weight: 500;
+      line-height: 1.55;
+      text-align: left;
+      opacity: 0;
+      pointer-events: none;
+      transform: translate(-50%, 4px);
+      transition: opacity .2s ease, transform .2s ease;
+    }
+
+    .hinweis:hover .info b,
+    .info:hover b,
+    .info:focus-visible b { opacity: 1; transform: translate(-50%, 0); }
+
+    .info:focus-visible { outline: 2px solid var(--brand-strong); outline-offset: 2px; }
+
+    /* ===================================================
+       Zahlenband
+       Bild im Parallax, Werte zaehlen beim Erscheinen hoch.
+       =================================================== */
+
+    .figures {
+      position: relative;
+      padding: clamp(78px, 8vw, 128px) 20px clamp(80px, 8.4vw, 132px);
+      overflow: hidden;
+      color: var(--white);
+      background: #1d2b12;
+    }
+
+    /* haengt oben und unten ueber, damit die Bewegung keine Kante zeigt */
+    .figures-shot {
+      position: absolute;
+      inset: -16% 0;
+      background-color: #1d2b12;
+      background-image:
+        linear-gradient(180deg, rgba(16, 29, 0, .68), rgba(16, 29, 0, .58) 45%, rgba(16, 29, 0, .78)),
+        url("../seventi-ankunft.webp");
+      background-position: center 26%;
+      background-size: cover;
+      transform: translate3d(0, var(--schub, 0px), 0);
+      will-change: transform;
+    }
+
+    .figures-inner {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      justify-items: center;
+      gap: clamp(30px, 3.4vw, 46px);
+      text-align: center;
+    }
+
+    .figures-kopf {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .hinweis.auf-dunkel {
+      background: rgba(255, 255, 255, .16);
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+      color: rgba(255, 255, 255, .88);
+    }
+
+    .hinweis.auf-dunkel .info {
+      background: rgba(255, 255, 255, .22);
+      color: var(--white);
+    }
+
+    .figures-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 7px 13px 7px 10px;
+      border-radius: 99px;
+      background: rgba(255, 255, 255, .16);
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+      color: var(--white);
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .figures-label svg {
+      width: 16px;
+      height: 16px;
+      fill: none;
+      stroke: var(--brand);
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .figures-list {
+      margin: 0;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: clamp(26px, 3.4vw, 60px);
+      width: min(980px, 100%);
+    }
+
+    .figures-list > div {
+      display: flex;
+      flex-direction: column-reverse;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .figures-list dd {
+      margin: 0;
+      font-family: "Fraunces", serif;
+      font-size: clamp(46px, 5.4vw, 76px);
+      font-weight: 500;
+      line-height: .95;
+      letter-spacing: -.045em;
+      color: var(--brand);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .figures-list dt {
+      max-width: 220px;
+      color: rgba(255, 255, 255, .82);
+      font-size: 13.5px;
+      line-height: 1.55;
+    }
+
+    /* ===================================================
+       Abschnitt 2 · So läuft es ab
+       =================================================== */
+
+    .steps {
+      padding: clamp(84px, 8.5vw, 130px) 20px clamp(80px, 8vw, 120px);
+      background: #fafcf7;
+    }
+
+    /* Kicker, Headline und Subline stehen mittig uebereinander */
+    .section-head {
+      display: grid;
+      justify-items: center;
+      gap: 16px;
+      text-align: center;
+    }
+
+    .section-head > div { max-width: 860px; }
+
+    .section-lead {
+      max-width: 520px;
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      margin-bottom: 20px;
+      padding: 7px 12px 7px 9px;
+      border-radius: 99px;
+      background: var(--brand-soft);
+      color: var(--brand-dark);
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .section-label svg {
+      width: 16px;
+      height: 16px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .section-head h2 {
+      max-width: 780px;
+      margin: 0;
+      font-size: clamp(32px, 3.3vw, 48px);
+      font-weight: 600;
+      line-height: 1.08;
+      letter-spacing: -.05em;
+      text-wrap: balance;
+    }
+
+    .section-head h2 em {
+      color: var(--brand-dark);
+      font-family: "Fraunces", serif;
+      font-style: normal;
+      font-weight: 500;
+      letter-spacing: -.035em;
+    }
+
+    .step-grid {
+      position: relative;
+      margin-top: clamp(48px, 5vw, 76px);
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: clamp(24px, 2.6vw, 40px);
+    }
+
+    .step { position: relative; padding-top: 0; }
+
+    /* eine durchgehende Linie über alle drei Schritte */
+    .step-track {
+      position: absolute;
+      top: 16px;
+      right: 17px;
+      left: 17px;
+      height: 2px;
+      overflow: hidden;
+      border-radius: 2px;
+      background: var(--line);
+    }
+
+    .step-track i {
+      display: block;
+      width: var(--fill, 0%);
+      height: 100%;
+      border-radius: 2px;
+      background: var(--brand-strong);
+    }
+
+    .step-index {
+      position: relative;
+      z-index: 1;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      display: grid;
+      place-content: center;
+      background: #e7ece0;
+      color: #8b9481;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .02em;
+      transition: background-color .35s ease, color .35s ease;
+    }
+
+    .step.is-reached .step-index {
+      background: var(--brand);
+      color: var(--brand-dark);
+    }
+
+    /* Das Icon im selben Rasterfeld ist hoeher, ohne place-self wuerde die
+       Ziffer auf dessen Hoehe gestreckt und dadurch nach oben rutschen. */
+    .step-index b { line-height: 1; place-self: center; }
+
+    .step-index b,
+    .step-index svg {
+      grid-area: 1 / 1;
+      transition: opacity .24s ease, transform .3s cubic-bezier(.34, 1.56, .64, 1);
+    }
+
+    .step-index svg {
+      width: 17px;
+      height: 17px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.9;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      opacity: 0;
+      transform: scale(.55) rotate(-14deg);
+    }
+
+    .step:hover .step-index b { opacity: 0; transform: scale(.6); }
+
+    .step:hover .step-index svg { opacity: 1; transform: none; }
+
+    .step:hover .step-index {
+      background: var(--brand);
+      color: var(--brand-dark);
+    }
+
+    .step-time {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      margin: 22px 0 14px;
+      padding: 6px 11px 6px 9px;
+      border-radius: 99px;
+      background: var(--brand-soft);
+      color: var(--brand-dark);
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .step-time svg {
+      width: 14px;
+      height: 14px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.9;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .step h3 {
+      margin: 0 0 10px;
+      font-size: clamp(19px, 1.5vw, 22px);
+      font-weight: 600;
+      line-height: 1.25;
+      letter-spacing: -.03em;
+    }
+
+    .step p {
+      max-width: 380px;
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    /* Der häufigste Absprunggrund, direkt beantwortet */
+    /* Randnotiz, kein eigener Abschnitt: weisser Container, ruhige Typo */
+    .fallback {
+      max-width: 620px;
+      margin: clamp(38px, 3.8vw, 54px) auto 0;
+      padding: 18px 22px;
+      border-radius: var(--radius-lg);
+      background: var(--white);
+      display: grid;
+      grid-template-columns: 26px minmax(0, 1fr);
+      align-items: start;
+      gap: 13px;
+    }
+
+    .fallback-icon {
+      width: 26px;
+      height: 26px;
+      margin-top: 1px;
+      border-radius: 50%;
+      display: grid;
+      place-content: center;
+      background: var(--brand-soft);
+      color: var(--brand-dark);
+    }
+
+    .fallback-icon svg {
+      width: 14px;
+      height: 14px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .fallback strong {
+      display: block;
+      margin-bottom: 3px;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: -.01em;
+    }
+
+    .fallback p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 12.5px;
+      line-height: 1.65;
+    }
+
+    /* ---------- Mitlaufende Leiste ----------
+       Zwischen Hero und Abschluss liegt die halbe Seite ohne Einstieg.
+       Die Leiste kommt, sobald der Hero oben raus ist, und geht wieder,
+       sobald der Abschluss im Bild steht: dort steht der Knopf schon. */
+    .stange {
+      position: fixed;
+      z-index: 40;
+      top: 0;
+      right: 0;
+      left: 0;
+      padding: 10px 20px;
+      background: rgba(255, 255, 255, .88);
+      -webkit-backdrop-filter: blur(16px) saturate(1.3);
+      backdrop-filter: blur(16px) saturate(1.3);
+      box-shadow: 0 10px 30px -22px rgba(22, 40, 0, .5);
+      transform: translate3d(0, -100%, 0);
+      visibility: hidden;
+      transition: transform .42s cubic-bezier(.22, 1, .36, 1), visibility .42s;
+    }
+
+    .stange.ist-da { transform: none; visibility: visible; }
+
+    .stange-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .stange-marke { display: flex; align-items: center; color: var(--ink); }
+
+    .stange-marke .mark-logo { height: 22px; }
+
+    .stange-rechts { display: flex; align-items: center; gap: 14px; }
+
+    .stange-satz { color: var(--muted); font-size: 13px; font-weight: 600; }
+
+    .stange-knopf {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      min-height: 44px;
+      padding: 0 20px;
+      border: 0;
+      border-radius: 999px;
+      background: var(--ink);
+      color: var(--white);
+      font-size: 13px;
+      font-weight: 600;
+      transition: background-color .25s ease;
+    }
+
+    .stange-knopf:hover { background: #23400a; }
+
+    .stange-knopf:focus-visible { outline: 3px solid rgba(184, 232, 0, .5); outline-offset: 3px; }
+
+    .stange-knopf svg {
+      width: 15px;
+      height: 15px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      transition: transform .25s ease;
+    }
+
+    .stange-knopf:hover svg { transform: translateX(3px); }
+
+    /* Einblenden beim Scrollen, nur mit aktivem JavaScript */
+    .js .reveal {
+      opacity: 0;
+      transform: translate3d(0, 22px, 0);
+    }
+
+    .js .reveal.is-in {
+      opacity: 1;
+      transform: none;
+      transition:
+        opacity .72s cubic-bezier(.16, 1, .3, 1),
+        transform .72s cubic-bezier(.16, 1, .3, 1);
+    }
+
+    /* das Portraet kommt weiter von unten und etwas langsamer */
+    .js .reveal.closing-portrait { transform: translate3d(0, 54px, 0); }
+
+    .js .reveal.closing-portrait.is-in {
+      transform: none;
+      transition:
+        opacity .95s cubic-bezier(.16, 1, .3, 1),
+        transform 1.05s cubic-bezier(.16, 1, .3, 1);
+    }
+
+    @media (max-width: 1180px) {
+      /* zu wenig Platz neben dem Container, die Bilder wuerden den Text schneiden */
+      .drift { display: none; }
+    }
+
+    @media (max-width: 980px) {
+      .compare-stack { width: 100%; }
+
+      .section-head { gap: 14px; }
+
+      .section-lead { max-width: 560px; }
+
+      .step-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+      /* untereinander braucht die Linie eine senkrechte Fassung */
+      .step-track {
+        top: 16px;
+        bottom: 18px;
+        right: auto;
+        left: 16px;
+        width: 2px;
+        height: auto;
+      }
+
+      .step-track i {
+        width: 100%;
+        height: var(--fill, 0%);
+      }
+
+      .step { padding-left: 50px; }
+
+      .step-index { position: absolute; top: 0; left: 0; }
+
+      /* untereinander sitzt die Pille neben der Zahl, nicht darunter */
+      .step-time {
+        height: 34px;
+        margin: 0 0 13px;
+        padding: 0 14px 0 11px;
+      }
+
+      .step p { max-width: 560px; }
+    }
+
+    @media (max-width: 760px) {
+      .steps {
+        padding: 64px 20px 68px;
+      }
+
+      .section-label {
+        gap: 7px;
+        margin-bottom: 16px;
+        padding: 6px 10px 6px 8px;
+        font-size: 10px;
+      }
+
+      .section-label svg { width: 14px; height: 14px; }
+
+      .section-head h2 {
+        font-size: clamp(27px, 7.6vw, 32px);
+        line-height: 1.12;
+        letter-spacing: -.04em;
+      }
+
+      .step-grid {
+        margin-top: 40px;
+        gap: 26px;
+      }
+
+      .step-time { font-size: 10.5px; }
+
+      .step h3 { font-size: 18px; }
+
+      .step p { font-size: 13.5px; line-height: 1.65; }
+
+      .logo-lauf { margin-top: 34px; }
+
+      .logo-spur {
+        gap: 34px;
+        padding-right: 34px;
+        animation-duration: 24s;
+      }
+
+      .logo-spur li { font-size: 17px; }
+
+      .figures { padding: 62px 20px 66px; }
+
+      .figures-inner { gap: 26px; }
+
+      .figures-list { gap: 18px 12px; }
+
+      .figures-list dt { font-size: 12px; line-height: 1.45; }
+
+      .info b { max-width: min(260px, 84vw); }
+
+      .fallback {
+        margin-top: 30px;
+        padding: 16px 17px;
+        gap: 11px;
+      }
+
+      .fallback strong { font-size: 12.5px; }
+
+      .fallback p { font-size: 12px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .js .reveal {
+        opacity: 1;
+        transform: none;
+      }
+
+      .drift { --auftritt: 0px; opacity: 1; transform: none; }
+    }
+
+    /* ===================================================
+       Abschnitt 3 · Der Unterschied zum heutigen Vorgehen
+       =================================================== */
+
+    .compare {
+      position: relative;
+      padding: clamp(84px, 8.5vw, 130px) 20px clamp(80px, 8vw, 120px);
+      overflow: hidden;
+      background: var(--canvas);
+    }
+
+    .compare .shell { position: relative; z-index: 1; }
+
+    /* Bildpaar seitlich, laeuft beim Scrollen unterschiedlich schnell mit */
+    .drift {
+      position: absolute;
+      z-index: 0;
+      border-radius: 14px;
+      background-color: #e7ece0;
+      background-position: center;
+      background-size: cover;
+      transform: translate3d(0, calc(var(--drift, 0px) + var(--auftritt, 30px)), 0);
+      opacity: 0;
+      will-change: transform;
+      pointer-events: none;
+      transition:
+        opacity .85s cubic-bezier(.16, 1, .3, 1),
+        --auftritt .95s cubic-bezier(.16, 1, .3, 1);
+    }
+
+    .drift.is-in { --auftritt: 0px; opacity: 1; }
+
+    .js .drift { transition-delay: var(--verzug, 0s); }
+
+    /* gross */
+    .drift-l1 {
+      top: 9%;
+      left: clamp(30px, 5.5vw, 100px);
+      width: clamp(132px, 12.2vw, 186px);
+      height: clamp(178px, 16.4vw, 250px);
+      background-image: url("../seventi-dinner.webp");
+    }
+
+    /* klein */
+    .drift-l2 {
+      top: 52%;
+      left: clamp(52px, 9vw, 165px);
+      width: clamp(74px, 6.1vw, 92px);
+      height: clamp(93px, 7.6vw, 115px);
+      background-image: url("../seventi-anlass.webp");
+    }
+
+    /* mittel */
+    .drift-l3 {
+      top: 76%;
+      left: clamp(24px, 4vw, 74px);
+      width: clamp(101px, 8.8vw, 130px);
+      height: clamp(124px, 10.7vw, 157px);
+      background-image: url("../seventi-team.webp");
+    }
+
+    /* gross */
+    .drift-r2 {
+      top: 47%;
+      right: clamp(28px, 5vw, 92px);
+      width: clamp(144px, 13vw, 198px);
+      height: clamp(186px, 17.2vw, 262px);
+      background-image: url("../seventi-location.webp");
+    }
+
+    /* klein */
+    .drift-r1 {
+      top: 14%;
+      right: clamp(46px, 8vw, 150px);
+      width: clamp(78px, 6.5vw, 99px);
+      height: clamp(97px, 8vw, 122px);
+      background-image: url("../seventi-assistenz.webp");
+    }
+
+    .compare .section-lead { max-width: 460px; }
+
+    .switch-row {
+      display: flex;
+      justify-content: center;
+      margin-top: clamp(30px, 3vw, 42px);
+    }
+
+    .compare-switch {
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      padding: 4px;
+      border-radius: 99px;
+      background: #eff3e9;
+    }
+
+    .compare-switch button {
+      padding: 9px 18px;
+      border: 0;
+      border-radius: 99px;
+      background: transparent;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background-color .3s ease, color .3s ease;
+    }
+
+    .compare-switch button[aria-selected="true"] {
+      background: var(--white);
+      color: var(--ink);
+    }
+
+    .compare-switch button:last-child[aria-selected="true"] {
+      background: var(--brand);
+      color: var(--brand-dark);
+    }
+
+    .compare-switch button:focus-visible {
+      outline: 3px solid rgba(184, 232, 0, .5);
+      outline-offset: 2px;
+    }
+
+    /* schmale, hohe Karte statt breiter Spalte */
+    .compare-stack {
+      width: min(520px, 100%);
+      margin: clamp(22px, 2.4vw, 30px) auto 0;
+      display: grid;
+    }
+
+    .compare-col {
+      grid-area: 1 / 1;
+      padding: clamp(28px, 2.8vw, 38px) clamp(24px, 2.4vw, 32px);
+      border-radius: var(--radius-xl);
+      background: #f0f4ea;
+      opacity: 0;
+      visibility: hidden;
+      transform: translate3d(0, 14px, 0);
+      pointer-events: none;
+      transition: opacity .42s ease, transform .42s cubic-bezier(.16, 1, .3, 1), visibility .42s;
+    }
+
+    .compare-col.is-active {
+      opacity: 1;
+      visibility: visible;
+      transform: none;
+      pointer-events: auto;
+    }
+
+    .compare-col.is-seventi { background: var(--brand-soft); }
+
+    .compare-head {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 18px;
+      padding: 7px 13px;
+      border-radius: 99px;
+      background: rgba(255, 255, 255, .75);
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .is-seventi .compare-head {
+      background: var(--white);
+      color: var(--brand-dark);
+    }
+
+    .compare-col ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .compare-col li {
+      display: grid;
+      grid-template-columns: 30px minmax(0, 1fr);
+      align-items: center;
+      gap: 14px;
+      padding: 17px 0;
+      border-top: 1px solid var(--line);
+      font-size: 14.5px;
+      line-height: 1.5;
+      color: var(--muted);
+    }
+
+    .is-seventi li {
+      border-top-color: rgba(184, 232, 0, .35);
+      color: var(--ink);
+      font-weight: 500;
+    }
+
+    .compare-col li span {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      display: grid;
+      place-content: center;
+      background: #e6ebe0;
+      color: #97a08d;
+    }
+
+    .is-seventi li span {
+      background: var(--brand);
+      color: var(--brand-dark);
+    }
+
+    .compare-col li svg {
+      width: 15px;
+      height: 15px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.9;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .compare-col li:first-of-type { border-top: 0; }
+
+    /* ===================================================
+       Abschnitt 4 · Der Angebotsvergleich
+       Drei Angebote als Karten in einem Container. Das erste
+       steht zuerst da, die anderen schieben sich dazu.
+       =================================================== */
+
+    .offers {
+      padding: clamp(84px, 8.5vw, 130px) clamp(14px, 1.6vw, 24px) clamp(80px, 8vw, 120px);
+      background: var(--white);
+    }
+
+    /* der Container liegt fast randlos, nur ein weisser Saum bleibt */
+    .offers .shell { width: 100%; }
+
+    /* Kopf und Karten liegen zusammen im Container, dadurch hebt sich
+       der Abschnitt deutlicher vom weissen darueber ab. */
+    .offer-box {
+      padding: clamp(34px, 3.6vw, 60px) clamp(24px, 2.8vw, 44px) clamp(30px, 3.2vw, 48px);
+      border-radius: clamp(24px, 2.4vw, 36px);
+      background: #eef4e2;
+      overflow: hidden;
+    }
+
+    .offer-box .section-head { margin-bottom: clamp(32px, 3.4vw, 52px); }
+
+    .offer-hinweis {
+      display: flex;
+      justify-content: center;
+      margin: 18px 0 0;
+    }
+
+    .offer-deck {
+      width: min(1360px, 100%);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: clamp(14px, 1.5vw, 22px);
+    }
+
+    .offer-card {
+      padding: clamp(20px, 1.9vw, 26px);
+      border-radius: var(--radius-lg);
+      background: var(--white);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .offer-card-top {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .offer-card-top strong {
+      font-size: clamp(16px, 1.4vw, 19px);
+      font-weight: 600;
+      letter-spacing: -.03em;
+    }
+
+    .offer-card-top span {
+      color: var(--muted);
+      font-size: 11.5px;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .offer-sum {
+      display: block;
+      margin: 10px 0 4px;
+      font-family: "Fraunces", serif;
+      font-size: clamp(26px, 2.4vw, 34px);
+      font-weight: 500;
+      line-height: 1;
+      letter-spacing: -.035em;
+      color: var(--brand-dark);
+    }
+
+    .offer-per {
+      margin: 0 0 16px;
+      color: var(--muted);
+      font-size: 12.5px;
+      font-weight: 600;
+    }
+
+    .offer-facts {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .offer-facts li {
+      display: grid;
+      grid-template-columns: 26px minmax(0, 1fr);
+      align-items: center;
+      gap: 11px;
+      min-height: 46px;
+      padding: 6px 0;
+      font-size: 13px;
+      font-weight: 600;
+      line-height: 1.4;
+    }
+
+    .offer-facts li + li { border-top: 1px solid rgba(22, 40, 0, .08); }
+
+    /* Werte duerfen umbrechen, sonst sprengen lange Zeilen die Karte */
+    .offer-facts span { min-width: 0; overflow-wrap: anywhere; }
+
+    .offer-facts i {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      display: grid;
+      place-content: center;
+      background: var(--brand-soft);
+      color: var(--brand-dark);
+    }
+
+    .offer-facts svg {
+      width: 14px;
+      height: 14px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.9;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .offer-facts b {
+      display: block;
+      color: var(--muted);
+      font-size: 10.5px;
+      font-weight: 700;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+
+    /* Auftritt: das erste Angebot steht mittig, dann schieben sich die
+       beiden anderen dazu und das erste rutscht dabei nach links. */
+    .js .offers .offer-deck { transform: translate3d(34%, 0, 0); }
+
+    .js .offers .offer-deck.is-in {
+      transform: none;
+      transition: transform 1.1s cubic-bezier(.16, 1, .3, 1) .1s;
+    }
+
+    .js .offers .offer-card:nth-child(n + 2) {
+      opacity: 0;
+      transform: translate3d(54px, 0, 0);
+    }
+
+    .js .offers .offer-deck.is-in .offer-card:nth-child(n + 2) {
+      opacity: 1;
+      transform: none;
+      transition:
+        opacity .85s cubic-bezier(.16, 1, .3, 1),
+        transform .85s cubic-bezier(.16, 1, .3, 1);
+    }
+
+    .js .offers .offer-deck.is-in .offer-card:nth-child(2) { transition-delay: .38s; }
+
+    .js .offers .offer-deck.is-in .offer-card:nth-child(3) { transition-delay: .58s; }
+
+    /* ===================================================
+       Abschnitt 8 · Was es kostet
+       Den vermuteten Haken auflösen, bevor er entsteht.
+       =================================================== */
+
+    .price-note {
+      padding: clamp(70px, 7vw, 104px) 20px clamp(76px, 7.6vw, 112px);
+      background: var(--white);
+    }
+
+    .price-box {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: clamp(32px, 3.4vw, 48px) clamp(24px, 3vw, 44px) clamp(34px, 3.6vw, 50px);
+      border-radius: var(--radius-xl);
+      background: var(--brand-soft);
+      display: grid;
+      justify-items: center;
+      gap: 14px;
+      text-align: center;
+    }
+
+    .price-box h2 {
+      margin: 0;
+      font-size: clamp(30px, 3vw, 42px);
+      font-weight: 600;
+      line-height: 1.08;
+      letter-spacing: -.05em;
+    }
+
+    .price-box h2 em {
+      color: var(--brand-dark);
+      font-family: "Fraunces", serif;
+      font-style: normal;
+      font-weight: 500;
+      letter-spacing: -.035em;
+    }
+
+    .price-box > p {
+      max-width: 520px;
+      margin: 0;
+      color: #4d5c3d;
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    .price-list {
+      margin: 8px 0 0;
+      padding: 0;
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 9px;
+    }
+
+    .price-list li {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 15px 9px 11px;
+      border-radius: 999px;
+      background: var(--white);
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .price-list svg {
+      width: 15px;
+      height: 15px;
+      flex: 0 0 15px;
+      fill: none;
+      stroke: var(--brand-dark);
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .price-source {
+      margin: 6px 0 0;
+      color: #6d7b5c;
+      font-size: 12.5px;
+      line-height: 1.6;
+    }
+
+    /* ===================================================
+       Abschnitt 5 · Für welche Anlässe
+       =================================================== */
+
+    .occasions {
+      padding: clamp(84px, 8.5vw, 130px) 20px clamp(80px, 8vw, 120px);
+      background: var(--white);
+    }
+
+    .occasion-canvas {
+      position: relative;
+      min-height: 460px;
+      margin-top: clamp(44px, 4.6vw, 68px);
+      padding: 24px;
+      overflow: hidden;
+      border-radius: var(--radius-xl);
+      background-color: #e7ece0;
+      background-image:
+        linear-gradient(180deg, rgba(16, 29, 0, .48) 0%, rgba(16, 29, 0, .34) 45%, rgba(16, 29, 0, .52) 100%),
+        url("../seventi-apero.webp");
+      background-position: center;
+      background-size: cover;
+    }
+
+    .occasion {
+      position: absolute;
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, .18);
+      -webkit-backdrop-filter: blur(12px);
+      backdrop-filter: blur(12px);
+      color: var(--white);
+      font-size: 13.5px;
+      font-weight: 600;
+      letter-spacing: -.01em;
+      white-space: nowrap;
+      transition: background-color .25s ease, color .25s ease;
+    }
+
+    /* Auftritt: eine nach der anderen, leicht von unten */
+    .js .occasion {
+      opacity: 0;
+      transform: translate3d(0, 14px, 0);
+    }
+
+    .js .occasion.is-in {
+      opacity: 1;
+      transform: none;
+      transition:
+        opacity .6s cubic-bezier(.16, 1, .3, 1) var(--verzug, 0s),
+        transform .6s cubic-bezier(.16, 1, .3, 1) var(--verzug, 0s),
+        background-color .25s ease,
+        color .25s ease;
+    }
+
+    .occasion:hover {
+      background: rgba(255, 255, 255, .96);
+      color: var(--ink);
+    }
+
+    .occasion i {
+      width: 7px;
+      height: 7px;
+      flex: 0 0 7px;
+      border-radius: 50%;
+      background: var(--brand);
+    }
+
+    .occasion:hover i { background: var(--brand-strong); }
+
+    .occasion b {
+      position: absolute;
+      top: calc(100% + 8px);
+      left: 50%;
+      z-index: 3;
+      width: max-content;
+      max-width: 210px;
+      padding: 8px 11px;
+      border-radius: 10px;
+      background: var(--ink);
+      color: var(--white);
+      font-size: 10.5px;
+      font-weight: 600;
+      line-height: 1.45;
+      white-space: normal;
+      text-align: center;
+      opacity: 0;
+      pointer-events: none;
+      transform: translate(-50%, -4px);
+      transition: opacity .2s ease, transform .2s ease;
+    }
+
+    .occasion b em {
+      display: block;
+      margin-bottom: 2px;
+      color: var(--brand);
+      font-style: normal;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+    }
+
+    .occasion:hover b { opacity: 1; transform: translate(-50%, 0); }
+
+    .occasion-1 { top: 16%; left: 6%; }
+    .occasion-2 { top: 9%; left: 64%; }
+    .occasion-3 { top: 37%; left: 24%; }
+    .occasion-4 { top: 61%; left: 7%; }
+    .occasion-5 { top: 50%; left: 44%; }
+    .occasion-6 { top: 76%; left: 70%; }
+
+    .occasion-note {
+      max-width: 560px;
+      margin: clamp(24px, 2.4vw, 32px) auto 0;
+      text-align: center;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .occasion-note strong {
+      color: var(--ink);
+      font-weight: 600;
+    }
+
+    /* ===================================================
+       Abschnitt 10 · Abschluss und Abschnitt 11 · Footer
+       =================================================== */
+
+    .closing-bed { background: #fafcf7; }
+
+    .closing {
+      padding: clamp(80px, 8vw, 124px) 20px clamp(80px, 8vw, 124px);
+      border-radius: 44px 44px 0 0;
+      color: var(--white);
+      background: #162800;
+      text-align: center;
+    }
+
+    .closing-grid {
+      display: grid;
+      grid-template-columns: minmax(0, .58fr) minmax(0, 1.42fr);
+      align-items: center;
+      gap: clamp(32px, 5vw, 76px);
+      text-align: left;
+    }
+
+    .closing-portrait {
+      aspect-ratio: 4 / 5;
+      align-self: center;
+      border-radius: var(--radius-lg);
+      background-color: #2a3a1c;
+      background-image: url("../seventi-planerin.webp");
+      background-position: center;
+      background-size: cover;
+    }
+
+    .closing h2 {
+      max-width: 620px;
+      margin: 0;
+      font-size: clamp(32px, 3.5vw, 52px);
+      font-weight: 600;
+      line-height: 1.06;
+      letter-spacing: -.05em;
+      text-wrap: balance;
+    }
+
+    .closing h2 em {
+      color: var(--brand);
+      font-family: "Fraunces", serif;
+      font-style: normal;
+      font-weight: 500;
+      letter-spacing: -.035em;
+    }
+
+    .closing-sub {
+      max-width: 520px;
+      margin: 18px 0 0;
+      color: #a9b79a;
+      font-size: 15px;
+      line-height: 1.65;
+    }
+
+    .closing .actions {
+      align-items: center;
+      justify-content: flex-start;
+      gap: 18px;
+      margin-top: 28px;
+    }
+
+    .closing .time { text-align: left; }
+
+    .closing .time strong {
+      display: inline;
+      margin: 0 5px 0 0;
+    }
+
+    .closing .cta {
+      background: var(--brand);
+      border-color: var(--brand);
+      color: var(--ink);
+      font-weight: 700;
+    }
+
+    .closing .cta-inject { color: var(--brand-dark); }
+
+    .closing .cta:is(:hover, :focus-visible, :active, .is-open) {
+      background: var(--brand-strong);
+      border-color: var(--brand-strong);
+    }
+
+    .closing .time { color: #a9b79a; }
+
+    .closing .time strong { color: var(--white); }
+
+    .site-footer {
+      padding: 34px 20px 40px;
+      background: #162800;
+      border-top: 1px solid rgba(255, 255, 255, .09);
+      color: #a9b79a;
+      font-size: 12px;
+    }
+
+    .footer-row {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 20px 30px;
+    }
+
+    .footer-sub {
+      margin: 5px 0 0;
+      color: #7f8d70;
+      font-size: 11.5px;
+    }
+
+    .footer-cross-wrap { justify-self: end; }
+
+    .footer-mark {
+      display: flex;
+      align-items: center;
+      color: var(--white);
+    }
+
+    .footer-mark .mark-logo { height: 24px; }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a:hover { color: var(--white); }
+
+    .footer-provider {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: rgba(214, 255, 32, .11);
+      color: var(--brand);
+      font-weight: 600;
+      transition: background-color .22s ease;
+    }
+
+    .footer-provider:hover { background: rgba(214, 255, 32, .2); }
+
+    .footer-provider svg {
+      width: 14px;
+      height: 14px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    @media (max-width: 980px) {
+      .compare-grid { grid-template-columns: 1fr; }
+
+      .occasion-canvas { min-height: 420px; }
+
+      .occasion { font-size: 15px; padding: 12px 17px; }
+
+      .occasion-1 { top: 14%; left: 4%; }
+      .occasion-2 { top: 8%; left: 58%; }
+      .occasion-3 { top: 36%; left: 20%; }
+      .occasion-4 { top: 60%; left: 4%; }
+      .occasion-5 { top: 49%; left: 38%; }
+      .occasion-6 { top: 78%; left: 56%; }
+    }
+
+    /* Unter 720px reicht die Flaeche fuer verteilte Pills nicht mehr */
+    @media (max-width: 720px) {
+      /* Hochformat-Ausschnitt desselben Motivs, das Querformat wurde unten
+         abgeschnitten und die Gruppe war nicht mehr zu sehen. */
+      .occasion-canvas {
+        min-height: 0;
+        padding: 250px 14px 20px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-content: flex-end;
+        gap: 9px;
+        background-image:
+          linear-gradient(180deg, rgba(16, 29, 0, .18) 0%, rgba(16, 29, 0, .5) 42%, rgba(16, 29, 0, .8) 62%, rgba(16, 29, 0, .86) 100%),
+          url("../seventi-apero-hoch.webp");
+        background-position: center top;
+        background-size: cover;
+        background-repeat: no-repeat;
+      }
+
+      .occasion {
+        position: static;
+        min-height: 44px;
+        white-space: normal;
+      }
+
+      /* Die Subline liesse sich per Finger nicht aufdecken, deshalb weg */
+      .occasion b { display: none; }
+
+      .occasion-1, .occasion-2, .occasion-3,
+      .occasion-4, .occasion-5, .occasion-6 { top: auto; left: auto; }
+    }
+
+    @media (max-width: 760px) {
+      .compare,
+      .occasions {
+        padding: 64px 20px 68px;
+      }
+
+      .compare-grid { margin-top: 34px; }
+
+      .occasion-canvas {
+        margin-top: 34px;
+        border-radius: var(--radius-lg);
+      }
+
+      /* Untereinander wirkt das seitliche Schieben verloren, hier kommen
+         die Angebote nacheinander von unten. */
+      .offer-box {
+        padding: 26px 18px 24px;
+        border-radius: 22px;
+      }
+
+      .offer-box .section-head { margin-bottom: 26px; }
+
+      .offer-deck { grid-template-columns: 1fr; gap: 12px; }
+
+      .js .offers .offer-deck { transform: none; }
+
+      .js .offers .offer-deck.is-in { transition: none; }
+
+      .js .offers .offer-card:nth-child(n + 2) { transform: translate3d(0, 34px, 0); }
+
+      .offer-card { padding: 20px; }
+
+      .offer-facts li { min-height: 48px; font-size: 13.5px; }
+
+      .compare-col { padding: 20px; }
+
+      .compare-col li { padding: 13px 0; font-size: 13.5px; }
+
+      .occasion {
+        padding: 11px 16px;
+        font-size: 14px;
+      }
+
+      .occasion-note { font-size: 13.5px; }
+
+      .closing { padding: 64px 20px 68px; }
+
+      .closing h2 {
+        font-size: clamp(27px, 7.6vw, 32px);
+        line-height: 1.12;
+        letter-spacing: -.04em;
+      }
+
+      /* Das Portraet sitzt unter dem Text, oben stiess es an die
+         abgerundeten Ecken des Abschnitts. */
+      .closing-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        text-align: center;
+      }
+
+      .closing-portrait {
+        order: 2;
+        width: min(100%, 260px);
+        margin: 0 auto;
+        aspect-ratio: 4 / 5;
+        border-radius: var(--radius-lg);
+      }
+
+      .closing-body { order: 1; }
+
+      .closing h2 { margin: 0 auto; }
+
+      .closing .actions {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        margin-top: 26px;
+      }
+
+      .closing .time { text-align: center; }
+
+      .site-footer { padding: 28px 20px 34px; }
+
+      /* auf dem Handy steht die ganze Fusszeile mittig, Marke eingeschlossen */
+      .footer-row {
+        grid-template-columns: 1fr;
+        justify-items: center;
+        text-align: center;
+        gap: 20px;
+      }
+
+      .footer-mark { justify-content: center; }
+
+      .footer-cross-wrap { justify-self: center; }
+
+      .footer-links { gap: 16px; font-size: 11.5px; }
+
+      .footer-provider { min-height: 44px; }
+
+      .compare-switch button { min-height: 44px; }
+
+      .send-button { width: 44px; height: 44px; }
+
+      /* Der Hinweis haengt am Hover und ist per Finger nicht erreichbar */
+      .stage small { display: none; }
+
+      /* ---------- Daumenfreundliche Ziele ---------- */
+      .lang a {
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+        padding: 0 14px;
+      }
+
+      .footer-links a {
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+      }
+
+      /* Trefferflaeche waechst, das Icon bleibt klein */
+      .info::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 44px;
+        height: 44px;
+        transform: translate(-50%, -50%);
+      }
+    }
+
+    /* ---------- Icons werden beim Hover nachgezeichnet ----------
+       pathLength setzt jede Kontur auf die Laenge 1, dadurch laeuft die
+       Linie unabhaengig von ihrer echten Laenge gleich schnell durch. */
+    .malt svg > * {
+      stroke-dasharray: 1;
+      stroke-dashoffset: 0;
+    }
+
+    .malt-halter:hover .malt svg > *,
+    .malt-halter:focus-within .malt svg > * {
+      animation: malen .75s cubic-bezier(.65, 0, .35, 1) both;
+      animation-delay: var(--malt-start, 0s);
+    }
+
+    .malt-halter:hover .malt svg > :nth-child(2),
+    .malt-halter:focus-within .malt svg > :nth-child(2) { animation-delay: calc(var(--malt-start, 0s) + .09s); }
+
+    .malt-halter:hover .malt svg > :nth-child(3),
+    .malt-halter:focus-within .malt svg > :nth-child(3) { animation-delay: calc(var(--malt-start, 0s) + .18s); }
+
+    .malt-halter:hover .malt svg > :nth-child(n + 4),
+    .malt-halter:focus-within .malt svg > :nth-child(n + 4) { animation-delay: calc(var(--malt-start, 0s) + .27s); }
+
+    @keyframes malen {
+      from { stroke-dashoffset: 1; }
+      to { stroke-dashoffset: 0; }
+    }
+
+    /* ---------- Lenis: sanftes Scrollen ---------- */
+    html.lenis, html.lenis body { height: auto; }
+    .lenis.lenis-smooth { scroll-behavior: auto !important; }
+    .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+    .lenis.lenis-stopped { overflow: hidden; }
+    .lenis.lenis-smooth iframe { pointer-events: none; }
+  </style>
+  
+
+  <div class="stange">
+    <div class="shell stange-inner">
+      <div class="stange-marke">
+        <svg class="mark-logo" viewBox="157 80.99 265.53 65.02" role="img" aria-label="Seventi" focusable="false">
+            <path class="logo-zeichen" d="M200.54 93.6986C204.033 93.05 206.348 89.7237 205.696 86.2299C205.043 82.7571 201.697 80.4559 198.183 81.1044C194.69 81.753 192.375 85.0793 193.027 88.573C193.679 92.0458 197.046 94.3471 200.54 93.6986Z"/>
+            <path class="logo-zeichen" d="M198.162 101.983C198.646 101.188 198.877 100.205 198.688 99.2217C198.477 98.071 197.762 97.1296 196.836 96.5648L171.646 82.4853C169.5 81.23 167.269 80.707 164.786 81.1673C159.609 82.1087 156.2 87.0668 157.168 92.1924C157.947 96.3974 161.398 99.4099 165.46 99.8702L186.461 102.778L159.862 129.745C159.736 129.87 159.525 130.121 159.525 130.121C157.568 132.234 156.6 135.226 157.168 138.28C158.136 143.427 163.103 146.816 168.258 145.853C171.036 145.351 173.288 143.678 174.656 141.46L175.455 140.121L198.162 101.983Z"/>
+            <path class="logo-zeichen" d="M210.767 129.849L198.057 117.213C197.888 117.046 197.699 116.899 197.51 116.753C195.7 115.519 193.238 115.979 191.996 117.778C191.344 118.74 191.196 119.807 191.407 120.916L194.732 138.594C195.237 140.853 196.563 142.945 198.625 144.347C202.96 147.318 208.894 146.209 211.862 141.899C214.513 138.071 213.945 133.008 210.767 129.849Z"/>
+            <path d="M417.587 101.356C420.318 101.356 422.532 99.2857 422.532 96.7323C422.532 94.1788 420.318 92.1088 417.587 92.1088C414.856 92.1088 412.642 94.1788 412.642 96.7323C412.642 99.2857 414.856 101.356 417.587 101.356Z" fill="currentColor"/>
+            <path d="M242.543 110.184C235.578 107.736 232.253 106.669 232.863 104.013C233.642 100.644 241.133 100.059 245.763 104.996L252.434 98.636C252.434 98.636 247.047 92.1088 237.556 92.1088C227.476 92.1088 222.657 98.5523 222.657 103.573C222.657 108.594 224.656 113.155 233.326 116.481C241.512 119.619 243.932 120.184 243.595 123.029C243.196 126.314 237.366 126.669 232.989 124.619C229.749 123.113 226.676 120.665 226.676 120.665L220.531 127.318C220.531 127.318 227.392 134.912 238.019 134.912C250.393 134.912 253.675 127.904 253.675 122.213C253.675 116.502 249.909 112.778 242.543 110.184Z" fill="currentColor"/>
+            <path d="M268.596 102.862C259.82 104.849 254.307 113.531 256.306 122.276C258.053 129.933 264.976 135.08 272.573 134.891C272.573 134.891 275.498 134.975 279.644 133.657C283.411 132.464 286.883 129.222 286.883 129.222L285.494 128.113L280.065 123.741C280.065 123.741 277.518 127.213 273.225 127.213C270.511 127.276 267.88 125.582 266.386 122.862L279.707 121.23L288.461 120.163C288.609 118.51 288.503 116.795 288.125 115.08C286.125 106.356 277.392 100.895 268.596 102.862ZM265.313 116.063C265.902 113.134 267.859 110.791 270.595 110.184C273.794 109.473 277.055 111.335 278.739 114.536L265.313 116.063Z" fill="currentColor"/>
+            <path d="M332.675 102.862C323.9 104.849 318.386 113.531 320.385 122.276C322.132 129.933 329.055 135.08 336.652 134.891C336.652 134.891 339.577 134.975 343.723 133.657C347.49 132.464 350.962 129.222 350.962 129.222L349.573 128.113L344.144 123.741C344.144 123.741 341.598 127.213 337.305 127.213C334.59 127.276 331.959 125.582 330.465 122.862L343.786 121.23L352.54 120.163C352.688 118.51 352.582 116.795 352.204 115.08C350.204 106.356 341.471 100.895 332.675 102.862ZM329.392 116.063C329.981 113.134 331.938 110.791 334.674 110.184C337.873 109.473 341.135 111.335 342.818 114.536L329.392 116.063Z" fill="currentColor"/>
+            <path d="M311.252 102.987L304.266 124.515L297.258 102.987H286.252L300.583 134.828H307.927L322.258 102.987H311.252Z" fill="currentColor"/>
+            <path d="M372.7 102.716C367.67 102.716 365.313 104.431 364.009 105.477L361.694 102.987H355.654V133.929H365.545V115.582C365.545 112.967 367.691 110.833 370.343 110.833C372.7 110.833 374.657 112.527 375.057 114.745C375.057 114.766 375.057 114.808 375.078 114.828C375.078 114.849 375.078 114.849 375.078 114.87C375.141 115.226 375.141 115.728 375.141 115.791V133.929H385.032V114.138C385.011 107.674 380.002 102.716 372.7 102.716Z" fill="currentColor"/>
+            <path d="M400.709 126.063C397.974 125.749 397.974 122.967 397.974 122.967V111.586H407.864V102.967H397.974V92.0879H388.083V124.598C388.083 130.435 392.166 134.138 398.858 134.577C406.938 135.1 410.326 129.536 410.326 129.536L404.14 124.347C404.119 124.326 403.024 126.335 400.709 126.063Z" fill="currentColor"/>
+            <path d="M422.532 102.987H412.642V133.929H422.532V102.987Z" fill="currentColor"/>
+        </svg>
+      </div>
+
+      <div class="stange-rechts">
+        <span class="stange-satz">Start in ca. 3 Minuten</span>
+        <a class="stange-knopf" href="https://www.seventi.com/">
+          Event planen
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    /* ---------- Fassung fuer den Figma-Import ----------
+       Kein Skript, kein Auftritt, alles im Endzustand. */
+
+    *, *::before, *::after {
+      animation: none !important;
+      transition: none !important;
+    }
+
+    /* Auftritt und Einblenden: alles sichtbar */
+    .reveal,
+    .staffel-teil,
+    .hero .mark,
+    .hero .lang,
+    .hero .eyebrow,
+    .hero .lead,
+    .hero .visual,
+    .hero .such-rahmen,
+    .hero .bild-hinweis,
+    .price,
+    .stapel-karte {
+      opacity: 1 !important;
+      transform: none !important;
+      clip-path: none !important;
+      visibility: visible !important;
+    }
+
+    /* Die mitlaufende Leiste steht oben in der Seite statt darueber,
+       sonst deckt sie im Import den Hero zu. */
+    .stange {
+      position: static !important;
+      transform: none !important;
+      visibility: visible !important;
+      background: var(--white) !important;
+      -webkit-backdrop-filter: none !important;
+      backdrop-filter: none !important;
+      box-shadow: none !important;
+      border-bottom: 1px solid var(--line) !important;
+    }
+
+    /* Fortschrittslinie voll gefuellt */
+    .step-grid { --fill: 100% !important; }
+
+    .step .step-index { background: var(--brand) !important; color: var(--ink) !important; }
+
+    /* Gestapelte Karten flach untereinander, sonst liegen sie im Import
+       uebereinander und nur die oberste ist zu sehen. */
+    .stapel-karte { position: static !important; }
+
+    /* Beide Suchergebnisse untereinander statt uebereinander, damit beide
+       Zustaende als eigene Flaeche im Import ankommen. */
+    .weg-buehne {
+      height: auto !important;
+      display: grid !important;
+      grid-template-columns: 1fr !important;
+      gap: 40px;
+      overflow: visible !important;
+    }
+
+    .weg-panel {
+      grid-area: auto !important;
+      opacity: 1 !important;
+      visibility: visible !important;
+      transform: none !important;
+    }
+
+    .weg-panel > * { opacity: 1 !important; transform: none !important; }
+
+    /* Der Umschalter zeigt im Standbild den ersten Zustand */
+    .wege-switch::before { transform: none !important; }
+
+    /* Laufbaender stehen still und zeigen einen vollen Satz */
+    .kategorien-lauf,
+    .logo-lauf {
+      -webkit-mask-image: none !important;
+      mask-image: none !important;
+      overflow: visible !important;
+      flex-wrap: wrap !important;
+      justify-content: center !important;
+    }
+
+    .kategorien-spur:nth-child(2),
+    .logo-spur:nth-child(2) { display: none !important; }
+
+    .kategorien-spur,
+    .logo-spur { flex-wrap: wrap !important; justify-content: center !important; }
+
+    /* Bildebene im Hero ohne Versatz */
+    .visual-bild { transform: none !important; }
+
+    /* Aufgeklappte Antworten sichtbar machen */
+    .faq details > .faq-antwort { height: auto !important; }
+
+    /* Hinweisfahnen sind Hover-Zustaende und stoeren im Import */
+    .info b { display: none !important; }
+  </style>
+</head>
+
+<body>
+  <main>
+  <section class="hero">
+    <div class="shell">
+      <header class="topbar">
+        <div class="mark">
+          <svg class="mark-logo" viewBox="157 80.99 265.53 65.02" role="img" aria-label="Seventi" focusable="false">
+          <path class="logo-zeichen" d="M200.54 93.6986C204.033 93.05 206.348 89.7237 205.696 86.2299C205.043 82.7571 201.697 80.4559 198.183 81.1044C194.69 81.753 192.375 85.0793 193.027 88.573C193.679 92.0458 197.046 94.3471 200.54 93.6986Z"/>
+          <path class="logo-zeichen" d="M198.162 101.983C198.646 101.188 198.877 100.205 198.688 99.2217C198.477 98.071 197.762 97.1296 196.836 96.5648L171.646 82.4853C169.5 81.23 167.269 80.707 164.786 81.1673C159.609 82.1087 156.2 87.0668 157.168 92.1924C157.947 96.3974 161.398 99.4099 165.46 99.8702L186.461 102.778L159.862 129.745C159.736 129.87 159.525 130.121 159.525 130.121C157.568 132.234 156.6 135.226 157.168 138.28C158.136 143.427 163.103 146.816 168.258 145.853C171.036 145.351 173.288 143.678 174.656 141.46L175.455 140.121L198.162 101.983Z"/>
+          <path class="logo-zeichen" d="M210.767 129.849L198.057 117.213C197.888 117.046 197.699 116.899 197.51 116.753C195.7 115.519 193.238 115.979 191.996 117.778C191.344 118.74 191.196 119.807 191.407 120.916L194.732 138.594C195.237 140.853 196.563 142.945 198.625 144.347C202.96 147.318 208.894 146.209 211.862 141.899C214.513 138.071 213.945 133.008 210.767 129.849Z"/>
+          <path d="M417.587 101.356C420.318 101.356 422.532 99.2857 422.532 96.7323C422.532 94.1788 420.318 92.1088 417.587 92.1088C414.856 92.1088 412.642 94.1788 412.642 96.7323C412.642 99.2857 414.856 101.356 417.587 101.356Z" fill="currentColor"/>
+          <path d="M242.543 110.184C235.578 107.736 232.253 106.669 232.863 104.013C233.642 100.644 241.133 100.059 245.763 104.996L252.434 98.636C252.434 98.636 247.047 92.1088 237.556 92.1088C227.476 92.1088 222.657 98.5523 222.657 103.573C222.657 108.594 224.656 113.155 233.326 116.481C241.512 119.619 243.932 120.184 243.595 123.029C243.196 126.314 237.366 126.669 232.989 124.619C229.749 123.113 226.676 120.665 226.676 120.665L220.531 127.318C220.531 127.318 227.392 134.912 238.019 134.912C250.393 134.912 253.675 127.904 253.675 122.213C253.675 116.502 249.909 112.778 242.543 110.184Z" fill="currentColor"/>
+          <path d="M268.596 102.862C259.82 104.849 254.307 113.531 256.306 122.276C258.053 129.933 264.976 135.08 272.573 134.891C272.573 134.891 275.498 134.975 279.644 133.657C283.411 132.464 286.883 129.222 286.883 129.222L285.494 128.113L280.065 123.741C280.065 123.741 277.518 127.213 273.225 127.213C270.511 127.276 267.88 125.582 266.386 122.862L279.707 121.23L288.461 120.163C288.609 118.51 288.503 116.795 288.125 115.08C286.125 106.356 277.392 100.895 268.596 102.862ZM265.313 116.063C265.902 113.134 267.859 110.791 270.595 110.184C273.794 109.473 277.055 111.335 278.739 114.536L265.313 116.063Z" fill="currentColor"/>
+          <path d="M332.675 102.862C323.9 104.849 318.386 113.531 320.385 122.276C322.132 129.933 329.055 135.08 336.652 134.891C336.652 134.891 339.577 134.975 343.723 133.657C347.49 132.464 350.962 129.222 350.962 129.222L349.573 128.113L344.144 123.741C344.144 123.741 341.598 127.213 337.305 127.213C334.59 127.276 331.959 125.582 330.465 122.862L343.786 121.23L352.54 120.163C352.688 118.51 352.582 116.795 352.204 115.08C350.204 106.356 341.471 100.895 332.675 102.862ZM329.392 116.063C329.981 113.134 331.938 110.791 334.674 110.184C337.873 109.473 341.135 111.335 342.818 114.536L329.392 116.063Z" fill="currentColor"/>
+          <path d="M311.252 102.987L304.266 124.515L297.258 102.987H286.252L300.583 134.828H307.927L322.258 102.987H311.252Z" fill="currentColor"/>
+          <path d="M372.7 102.716C367.67 102.716 365.313 104.431 364.009 105.477L361.694 102.987H355.654V133.929H365.545V115.582C365.545 112.967 367.691 110.833 370.343 110.833C372.7 110.833 374.657 112.527 375.057 114.745C375.057 114.766 375.057 114.808 375.078 114.828C375.078 114.849 375.078 114.849 375.078 114.87C375.141 115.226 375.141 115.728 375.141 115.791V133.929H385.032V114.138C385.011 107.674 380.002 102.716 372.7 102.716Z" fill="currentColor"/>
+          <path d="M400.709 126.063C397.974 125.749 397.974 122.967 397.974 122.967V111.586H407.864V102.967H397.974V92.0879H388.083V124.598C388.083 130.435 392.166 134.138 398.858 134.577C406.938 135.1 410.326 129.536 410.326 129.536L404.14 124.347C404.119 124.326 403.024 126.335 400.709 126.063Z" fill="currentColor"/>
+          <path d="M422.532 102.987H412.642V133.929H422.532V102.987Z" fill="currentColor"/>
+        </svg>
+        </div>
+        <nav class="lang" aria-label="Sprache">
+          <a href="#" aria-current="true">DE</a>
+          <a href="#">EN</a>
+        </nav>
+      </header>
+
+      <div class="hero-grid">
+      <section class="intro">
+        <div class="eyebrow">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <rect x="3.5" y="5.5" width="17" height="15" rx="2"/>
+            <path d="M8 3.5v4M16 3.5v4M3.5 9.5h17M8 14l2.2 2.2L16 11"/>
+          </svg>
+          Für Eventplanerinnen in Unternehmen
+        </div>
+        <h1>
+          <span class="headline-line">Von der Anfrage zum</span>
+          <span class="headline-line">passenden Angebot,</span>
+          <em class="headline-line">ohne elf gleiche E-Mails.</em>
+        </h1>
+        <p class="lead">Sagen Sie Miia einmal, was Sie brauchen. Seventi bringt Ihr Briefing zu passenden Locations und Caterern und bündelt die Antworten an einem Ort.</p>
+        <div class="actions">
+          <a class="cta" href="https://www.seventi.com/">
+            <span class="cta-word">Event</span>
+            <span class="cta-inject" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <rect x="3.5" y="5.5" width="17" height="15" rx="2.5"/>
+                <path d="M8 3.5v4M16 3.5v4M3.5 10.5h17M9.4 15.2l1.9 1.9 3.4-3.6"/>
+              </svg>
+            </span>
+            <span class="cta-word">planen</span>
+          </a>
+          <div class="time"><strong>Start in ca. 3 Minuten</strong>Unverbindlich und kostenlos</div>
+        </div>
+
+        <div class="benefits">
+          <div class="benefit">
+            <span class="icon-box">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l4 4L19 6"/></svg>
+            </span>
+            <span><strong>Ein Briefing</strong> statt vieler Anfragen</span>
+          </div>
+          <div class="benefit">
+            <span class="icon-box">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m16 16 4 4"/></svg>
+            </span>
+            <span><strong>Anbieter</strong> automatisch finden</span>
+          </div>
+          <div class="benefit">
+            <span class="icon-box">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h10v16H7zM10 8h4M10 12h4M10 16h4"/></svg>
+            </span>
+            <span><strong>Angebote</strong> direkt vergleichen</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="product" aria-label="Animierte Seventi Produktvorschau">
+        <div class="product-body">
+          <div class="briefing-panel">
+            <div class="panel-label">
+              <span class="icon-box">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v14H4zM8 9h8M8 13h5"/></svg>
+              </span>
+              Event-Briefing
+            </div>
+
+            <div class="composer">
+              <span class="search-icon">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m16 16 4 4"/></svg>
+              </span>
+              <div class="typing-window">
+                <span class="type-text">Sommerfest · 120 Pers. · Zürich</span>
+              </div>
+              <button class="send-button" type="button" aria-label="Briefing absenden">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m4 4 16 8-16 8 3-8-3-8Zm3 8h13"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="matching-panel">
+            <div class="matching-clip">
+              <div class="matching-content">
+                <div class="stage-row" aria-label="Ablauf">
+                  <span class="stage-track"></span>
+                  <span class="stage-progress"></span>
+
+                  <div class="stage stage-one" tabindex="0">
+                    <span class="stage-icon">
+                      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l4 4L19 6"/></svg>
+                    </span>
+                    <strong>Briefing erfasst</strong>
+                    <small>Alle Angaben gebündelt</small>
+                  </div>
+
+                  <div class="stage stage-two" tabindex="0">
+                    <span class="stage-icon">
+                      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m16 16 4 4M11 8v6M8 11h6"/></svg>
+                    </span>
+                    <strong>Matching läuft</strong>
+                    <small>Anbieter werden abgeglichen</small>
+                  </div>
+
+                  <div class="stage stage-three" tabindex="0">
+                    <span class="stage-icon">
+                      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16v12H4zM8 7V4h8v3M8 12h8"/></svg>
+                    </span>
+                    <strong>Angebote erhalten</strong>
+                    <small>Direkt vergleichbar</small>
+                  </div>
+                </div>
+
+                <div class="results-panel">
+                  <div class="results-head">
+                    <div class="results-title">
+                      <span class="icon-box">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16v12H4zM8 7V4h8v3M8 12h8"/></svg>
+                      </span>
+                      <strong>Passende Anbieter</strong>
+                    </div>
+                  </div>
+
+                  <div class="results-grid">
+                  <article class="result-card result-one">
+                    <div class="result-top">
+                      <span class="result-icon">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h16M6 20V8l6-4 6 4v12M9 12h6M9 16h6"/></svg>
+                      </span>
+                      <span class="match">96 % Match</span>
+                    </div>
+                    <h3>Location am See</h3>
+                    <div class="result-meta">
+                      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s6-5.1 6-11a6 6 0 1 0-12 0c0 5.9 6 11 6 11Z"/><circle cx="12" cy="10" r="2"/></svg>
+                      Zürich · 80–160 Personen
+                    </div>
+                    <div class="result-tags"><span>Aussenbereich</span><span>Technik</span></div>
+                  </article>
+
+                  <article class="result-card result-two">
+                    <div class="result-top">
+                      <span class="result-icon">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h16M7 4v8a3 3 0 0 0 6 0V4M10 4v16M17 4v16"/></svg>
+                      </span>
+                      <span class="match">92 % Match</span>
+                    </div>
+                    <h3>Urban Garden</h3>
+                    <div class="result-meta">
+                      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s6-5.1 6-11a6 6 0 1 0-12 0c0 5.9 6 11 6 11Z"/><circle cx="12" cy="10" r="2"/></svg>
+                      Zürich · Location + Catering
+                    </div>
+                    <div class="result-tags"><span>Sommerfest</span><span>Catering</span></div>
+                  </article>
+
+                  <article class="result-card result-three">
+                    <div class="result-top">
+                      <span class="result-icon">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19V9l7-5 7 5v10M8 19v-6h8v6M4 19h16"/></svg>
+                      </span>
+                      <span class="match">89 % Match</span>
+                    </div>
+                    <h3>Atelier West</h3>
+                    <div class="result-meta">
+                      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s6-5.1 6-11a6 6 0 1 0-12 0c0 5.9 6 11 6 11Z"/><circle cx="12" cy="10" r="2"/></svg>
+                      Zürich · Eventspace
+                    </div>
+                    <div class="result-tags"><span>120 Personen</span><span>Flexibel</span></div>
+                  </article>
+                  </div>
+
+                  <p class="animation-note">Die Vorschau startet automatisch erneut.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      </div>
+
+      <!-- Erfundene Wortmarken als Beispiel. Vor dem Livegang gegen echte
+           Logos mit Freigabe der jeweiligen Firma tauschen. -->
+      <div class="logo-lauf reveal" role="img" aria-label="Beispiele für Kundenlogos">
+        <ul class="logo-spur">
+          <li>Nordwerk</li>
+          <li>Helveta</li>
+          <li>Lumea</li>
+          <li>Brixa</li>
+          <li>Kantum</li>
+        </ul>
+        <ul class="logo-spur" aria-hidden="true">
+          <li>Nordwerk</li>
+          <li>Helveta</li>
+          <li>Lumea</li>
+          <li>Brixa</li>
+          <li>Kantum</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="steps" aria-labelledby="ablauf-titel">
+    <div class="shell">
+      <div class="section-head reveal">
+        <div>
+          <div class="section-label"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="19" r="2.4"/><circle cx="18" cy="5" r="2.4"/><path d="M8.6 19H14a4 4 0 0 0 0-8h-4a4 4 0 0 1 0-8h5.4"/></svg>So läuft es ab</div>
+          <h2 id="ablauf-titel">Drei Schritte. <em>Der erste dauert drei Minuten.</em></h2>
+        </div>
+        <p class="section-lead">Sie geben Ihr Briefing einmal ein. Danach kommen die Angebote zu Ihnen, ohne dass Sie jemandem hinterhertelefonieren müssen.</p>
+      </div>
+
+      <div class="step-grid">
+        <span class="step-track" aria-hidden="true"><i></i></span>
+        <article class="step">
+          <span class="step-index"><b>01</b><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h4l10-10a2.5 2.5 0 0 0-3.5-3.5L4.5 16.5V20Z"/><path d="M13.5 7.5 16.5 10.5"/></svg></span>
+          <span class="step-time">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v5.2l3.2 2"/></svg>
+            3 Minuten
+          </span>
+          <h3>Event beschreiben</h3>
+          <p>Datum, Personenzahl, Region, Budget und was Sie brauchen. Miia fragt nach, wenn etwas fehlt. Ein Briefing, egal wie viele Anbieter Sie danach vergleichen.</p>
+        </article>
+
+        <article class="step">
+          <span class="step-index"><b>02</b><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16v12H4z"/><path d="m4 7 8 6 8-6"/></svg></span>
+          <span class="step-time">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v5.2l3.2 2"/></svg>
+            Innerhalb einer Woche
+          </span>
+          <h3>Angebote erhalten</h3>
+          <p>Passende Locations und Caterer bewerben sich mit einem konkreten Angebot. Nachfassen müssen Sie bei niemandem.</p>
+        </article>
+
+        <article class="step">
+          <span class="step-index"><b>03</b><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v16M5 8h14M7.5 8 5 14h5ZM16.5 8 14 14h5Z"/></svg></span>
+          <span class="step-time">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v5.2l3.2 2"/></svg>
+            Wann es Ihnen passt
+          </span>
+          <h3>Vergleichen und buchen</h3>
+          <p>Alle Angebote in derselben Struktur: Preis total, Preis pro Person, was inklusive ist, bis wann die Option gilt. Sie buchen direkt oder lehnen ab.</p>
+        </article>
+      </div>
+
+      <aside class="fallback reveal">
+        <span class="fallback-icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="12" r="8.5"/>
+            <path d="M9.9 9.6a2.2 2.2 0 1 1 2.7 2.5c-.5.2-.8.6-.8 1.1v.4M12 16.5h.01"/>
+          </svg>
+        </span>
+        <div>
+          <strong>Und wenn sich niemand meldet?</strong>
+          <p>Dann schlägt Miia Ihnen passende Anbieter vor, die Sie direkt aus Ihrem Briefing heraus anschreiben können. Sie fangen nicht wieder bei null an.</p>
+        </div>
+      </aside>
+
+    </div>
+  </section>
+
+  <section class="figures" aria-labelledby="zahlen-titel">
+    <div class="figures-shot" aria-hidden="true"></div>
+
+    <div class="shell figures-inner">
+      <div class="figures-kopf reveal">
+        <div class="figures-label" id="zahlen-titel">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19V9M10 19V5M16 19v-7M22 19H2"/></svg>
+          Stand heute
+        </div>
+
+        <span class="hinweis auf-dunkel" tabindex="0" role="note" aria-label="Hinweis zu den Daten">
+          <span class="info">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5.5M12 7.6h.01"/></svg>
+            <b>Diese Werte und die Wortmarken im Hero sind Beispiele. Beides wird vor dem Livegang durch die Angaben von Seventi ersetzt.</b>
+          </span>
+          Hinweis
+        </span>
+      </div>
+
+      <dl class="figures-list reveal">
+        <div>
+          <dt>geprüfte Anbieter in der Region Zürich</dt>
+          <dd><span class="zaehler" data-ziel="142">142</span></dd>
+        </div>
+        <div>
+          <dt>Angebote pro Anfrage im Durchschnitt</dt>
+          <dd><span class="zaehler" data-ziel="4">4</span></dd>
+        </div>
+        <div>
+          <dt>Stunden bis zum ersten Angebot</dt>
+          <dd><span class="zaehler" data-ziel="32">32</span></dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="compare" id="unterschied" aria-labelledby="unterschied-titel">
+    <div class="drift drift-l1" data-drift="0.07" role="img" aria-label="Abendtafel im Kerzenlicht"></div>
+    <div class="drift drift-l2" data-drift="0.15" role="img" aria-label="Firmenanlass in einem begrünten Innenhof"></div>
+    <div class="drift drift-l3" data-drift="0.11" role="img" aria-label="Team eines Unternehmens vor dem Bürogebäude"></div>
+    <div class="drift drift-r1" data-drift="0.19" role="img" aria-label="Assistentin mit Handy und Notebook"></div>
+    <div class="drift drift-r2" data-drift="0.09" role="img" aria-label="Seminarraum mit Blick auf den See"></div>
+
+    <div class="shell">
+      <div class="section-head reveal">
+        <div>
+          <div class="section-label"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3 4 7l4 4M4 7h16M16 21l4-4-4-4M20 17H4"/></svg>Der Unterschied</div>
+          <h2 id="unterschied-titel">Elf E-Mails, drei Rückrufe, <em>und am Ende ein Excel.</em></h2>
+        </div>
+        <p class="section-lead">Nicht weil Sie unorganisiert wären, sondern weil heute jede Anfrage einzeln läuft. Genau diesen Teil übernimmt Seventi.</p>
+      </div>
+
+      <div class="switch-row reveal">
+        <div class="compare-switch" role="tablist" aria-label="Vorgehen vergleichen">
+          <button type="button" role="tab" id="tab-heute" aria-selected="true" aria-controls="panel-heute">Heute</button>
+          <button type="button" role="tab" id="tab-seventi" aria-selected="false" aria-controls="panel-seventi">Mit Seventi</button>
+        </div>
+      </div>
+
+      <div class="compare-stack">
+        <div class="compare-col is-active" id="panel-heute" role="tabpanel" aria-labelledby="tab-heute">
+          <div class="compare-head">Wie es heute läuft</div>
+          <ul>
+            <li>
+              <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 12h10"/></svg></span>
+              Locations recherchieren und einzeln anschreiben
+            </li>
+            <li>
+              <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 12h10"/></svg></span>
+              Jede Antwort kommt in einem anderen Format, manche gar nicht
+            </li>
+            <li>
+              <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 12h10"/></svg></span>
+              Nachfassen bei allen, die sich nicht melden
+            </li>
+            <li>
+              <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 12h10"/></svg></span>
+              Die Angebote selbst vergleichbar machen, meist in Excel
+            </li>
+          </ul>
+        </div>
+
+        <div class="compare-col is-seventi" id="panel-seventi" role="tabpanel" aria-labelledby="tab-seventi">
+          <div class="compare-head">Mit Seventi</div>
+          <ul>
+            <li>
+              <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3.5h8l4 4v13H6z"/><path d="M14 3.5v4h4M9 13h6M9 16.5h4"/></svg></span>
+              Ein Briefing, einmal ausgefüllt
+            </li>
+            <li>
+              <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16v12H4z"/><path d="m4 7 8 6 8-6"/></svg></span>
+              Passende Anbieter melden sich von sich aus
+            </li>
+            <li>
+              <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h5v14H4zM10 5h5v14h-5zM16 5h4v14h-4z"/></svg></span>
+              Alle Angebote kommen in derselben Struktur
+            </li>
+            <li>
+              <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v16M5 8h14M7.5 8 5 14h5ZM16.5 8 14 14h5Z"/></svg></span>
+              Der Vergleich steht, ohne dass Sie eine Tabelle bauen
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="offers" aria-labelledby="vergleich-titel">
+    <div class="shell">
+      <div class="offer-box">
+        <div class="section-head reveal">
+          <div>
+            <div class="section-label"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16M4 12h16M4 19h16"/><path d="M9 3v18M15 3v18"/></svg>Der Vergleich</div>
+            <h2 id="vergleich-titel">Angebote, die man <em>nebeneinanderlegen kann.</em></h2>
+          </div>
+          <p class="section-lead">Jeder Anbieter antwortet in derselben Struktur. Sie sehen Preis pro Person, was inklusive ist und bis wann die Option gilt, und exportieren den Vergleich als PDF für die Freigabe.</p>
+        </div>
+
+        <div class="offer-deck reveal">
+        <article class="offer-card">
+          <div class="offer-card-top">
+            <strong>Seehalle</strong>
+            <span>Zürich</span>
+          </div>
+
+          <span class="offer-sum">CHF 17'400</span>
+          <p class="offer-per">CHF 145 pro Person</p>
+
+          <ul class="offer-facts">
+            <li class="malt-halter">
+              <i class="malt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h16M6 20V9l6-4 6 4v11M10 13h4M10 17h4"/></svg></i>
+              <span><b>Räumlichkeit</b>Saal, 180 Plätze</span>
+            </li>
+            <li class="malt-halter">
+              <i class="malt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v16M5 8h14M7.5 8 5 14h5ZM16.5 8 14 14h5Z"/></svg></i>
+              <span><b>Catering</b>Drei Gänge, inklusive</span>
+            </li>
+            <li class="malt-halter">
+              <i class="malt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h3M13 8h7M4 16h9M19 16h1"/><circle cx="10" cy="8" r="2.4"/><circle cx="16" cy="16" r="2.4"/></svg></i>
+              <span><b>Technik</b>Ton und Licht</span>
+            </li>
+            <li class="malt-halter">
+              <i class="malt"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="4" width="12" height="12" rx="3"/><path d="M6 11.5h12M9.5 16l-2 3.5M14.5 16l2 3.5M10 19h4"/><circle cx="9.3" cy="8" r=".9"/><circle cx="14.7" cy="8" r=".9"/></svg></i>
+              <span><b>ÖV-Anbindung</b>6 Minuten ab Bahnhof</span>
+            </li>
+            <li class="malt-halter">
+              <i class="malt"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5.5" width="17" height="15" rx="2"/><path d="M8 3.5v4M16 3.5v4M3.5 10.5h17M10 14l4 4M14 14l-4 4"/></svg></i>
+              <span><b>Storno</b>bis 30 Tage kostenlos</span>
+            </li>
+            <li class="malt-halter">
+              <i class="malt"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v5.2l3.2 2"/></svg></i>
+              <span><b>Gültig bis</b>28. Juli</span>
+            </li>
+          </ul>
+        </article>
+
+        <article class="offer-card">
+          <div class="offer-card-top">
+            <strong>Werkhalle</strong>
+            <span>Zürich West</span>
+          </div>
+
+          <span class="offer-sum">CHF 15'900</span>
+          <p class="offer-per">CHF 133 pro Person</p>
+
+          <ul class="offer-facts">
+            <li class="malt-halter">
+              <i class="malt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h16M6 20V9l6-4 6 4v11M10 13h4M10 17h4"/></svg></i>
+              <span><b>Räumlichkeit</b>Halle, 220 Plätze</span>
+            </li>
+            <li class="malt-halter">
+              <i class="malt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v16M5 8h14M7.5 8 5 14h5ZM16.5 8 14 14h5Z"/></svg></i>
+              <span><b>Catering</b>Flying Dinner, inklusive</span>
+            </li>
+            <li class="malt-halter">
+              <i class="malt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h3M13 8h7M4 16h9M19 16h1"/><circle cx="10" cy="8" r="2.4"/><circle cx="16" cy="16" r="2.4"/></svg></i>
+              <span><b>Technik</b>Ton, Licht, Bühne</span>
+            </li>
+            <li class="malt-halter">
+              <i class="malt"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="4" width="12" height="12" rx="3"/><path d="M6 11.5h12M9.5 16l-2 3.5M14.5 16l2 3.5M10 19h4"/><circle cx="9.3" cy="8" r=".9"/><circle cx="14.7" cy="8" r=".9"/></svg></i>
+              <span><b>ÖV-Anbindung</b>12 Minuten ab Bahnhof</span>
+            </li>
+            <li class="malt-halter">
+              <i class="malt"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5.5" width="17" height="15" rx="2"/><path d="M8 3.5v4M16 3.5v4M3.5 10.5h17M10 14l4 4M14 14l-4 4"/></svg></i>
+              <span><b>Storno</b>bis 21 Tage kostenlos</span>
+            </li>
+            <li class="malt-halter">
+              <i class="malt"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v5.2l3.2 2"/></svg></i>
+              <span><b>Gültig bis</b>24. Juli</span>
+            </li>
+          </ul>
+        </article>
+
+        <article class="offer-card">
+          <div class="offer-card-top">
+            <strong>Gartensaal</strong>
+            <span>Zürich</span>
+          </div>
+
+          <span class="offer-sum">CHF 19'200</span>
+          <p class="offer-per">CHF 160 pro Person</p>
+
+          <ul class="offer-facts">
+            <li class="malt-halter">
+              <i class="malt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h16M6 20V9l6-4 6 4v11M10 13h4M10 17h4"/></svg></i>
+              <span><b>Räumlichkeit</b>Saal und Garten, 150 Plätze</span>
+            </li>
+            <li class="malt-halter">
+              <i class="malt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v16M5 8h14M7.5 8 5 14h5ZM16.5 8 14 14h5Z"/></svg></i>
+              <span><b>Catering</b>Vier Gänge, inklusive</span>
+            </li>
+            <li class="malt-halter">
+              <i class="malt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h3M13 8h7M4 16h9M19 16h1"/><circle cx="10" cy="8" r="2.4"/><circle cx="16" cy="16" r="2.4"/></svg></i>
+              <span><b>Technik</b>Ton, Licht auf Anfrage</span>
+            </li>
+            <li class="malt-halter">
+              <i class="malt"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="4" width="12" height="12" rx="3"/><path d="M6 11.5h12M9.5 16l-2 3.5M14.5 16l2 3.5M10 19h4"/><circle cx="9.3" cy="8" r=".9"/><circle cx="14.7" cy="8" r=".9"/></svg></i>
+              <span><b>ÖV-Anbindung</b>18 Minuten ab Bahnhof</span>
+            </li>
+            <li class="malt-halter">
+              <i class="malt"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5.5" width="17" height="15" rx="2"/><path d="M8 3.5v4M16 3.5v4M3.5 10.5h17M10 14l4 4M14 14l-4 4"/></svg></i>
+              <span><b>Storno</b>bis 45 Tage kostenlos</span>
+            </li>
+            <li class="malt-halter">
+              <i class="malt"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v5.2l3.2 2"/></svg></i>
+              <span><b>Gültig bis</b>2. August</span>
+            </li>
+          </ul>
+        </article>
+        </div>
+      </div>
+
+      <p class="offer-hinweis reveal">
+        <span class="hinweis" tabindex="0" role="note" aria-label="Hinweis zu den Daten">
+          <span class="info">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5.5M12 7.6h.01"/></svg>
+            <b>Drei Beispielangebote mit Platzhalter-Daten. Die echte Ansicht kommt später von Seventi.</b>
+          </span>
+          Hinweis
+        </span>
+      </p>
+    </div>
+  </section>
+
+  <section class="occasions" aria-labelledby="anlaesse-titel">
+    <div class="shell">
+      <div class="section-head reveal">
+        <div>
+          <div class="section-label"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5.5" width="17" height="15" rx="2"/><path d="M8 3.5v4M16 3.5v4M3.5 9.5h17"/></svg>Für welche Anlässe</div>
+          <h2 id="anlaesse-titel">Für die Anlässe, die <em>im Firmenkalender stehen.</em></h2>
+        </div>
+        <p class="section-lead">Seventi ist für Firmenevents gebaut. Nicht für private Feiern, nicht zum Stöbern.</p>
+      </div>
+
+      <div class="occasion-canvas reveal" role="img" aria-label="Firmenanlass in einer Zürcher Eventlocation">
+        <div class="occasion occasion-1"><i></i>Sommerfest<b><em>Typischer Bedarf</em>Location, Catering, Technik</b></div>
+        <div class="occasion occasion-2"><i></i>Firmenjubiläum<b><em>Typischer Bedarf</em>Location, Catering, Musik</b></div>
+        <div class="occasion occasion-3"><i></i>Weihnachtsessen<b><em>Typischer Bedarf</em>Location, Catering</b></div>
+        <div class="occasion occasion-4"><i></i>Team-Offsite<b><em>Typischer Bedarf</em>Seminarraum, Verpflegung, Übernachtung</b></div>
+        <div class="occasion occasion-5"><i></i>Generalversammlung und Konferenz<b><em>Typischer Bedarf</em>Saal, Technik, Verpflegung</b></div>
+        <div class="occasion occasion-6"><i></i>Kundenanlass<b><em>Typischer Bedarf</em>Location, Catering, Fotografie</b></div>
+      </div>
+
+      <p class="occasion-note reveal"><strong>Nicht dabei?</strong> Beschreiben Sie es Miia trotzdem. Das Briefing ist frei formulierbar, die Anlässe oben sind nur die häufigsten.</p>
+    </div>
+  </section>
+
+  <section class="price-note" aria-labelledby="kosten-titel">
+    <div class="shell">
+      <div class="price-box reveal">
+        <div class="section-label"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M14.5 9.5H11a1.8 1.8 0 0 0 0 3.6h2a1.8 1.8 0 0 1 0 3.6H9.5M12 8v9"/></svg>Was es kostet</div>
+
+        <h2 id="kosten-titel">Für Sie <em>kostenlos.</em></h2>
+
+        <p>Anfragen, Angebote und Buchung sind für planende Unternehmen kostenlos. Ein Briefing ist keine Buchung, Sie können jedes Angebot ablehnen.</p>
+
+        <ul class="price-list">
+          <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h4l10-10a2.5 2.5 0 0 0-3.5-3.5L4.5 16.5V20Z"/><path d="M13.5 7.5 16.5 10.5"/></svg>Briefing stellen</li>
+          <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16v12H4z"/><path d="m4 7 8 6 8-6"/></svg>Angebote erhalten</li>
+          <li><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5.5" width="17" height="15" rx="2"/><path d="M8 3.5v4M16 3.5v4M3.5 10.5h17M9.4 15.2l1.9 1.9 3.4-3.6"/></svg>Vergleichen und buchen</li>
+        </ul>
+
+        <p class="price-source">Seventi verdient auf der Anbieterseite: 10 % Kommission, und auch nur dann, wenn die Zahlung über die Plattform läuft.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="closing-bed">
+  <section class="closing" aria-labelledby="abschluss-titel">
+    <div class="shell closing-grid">
+      <div class="closing-portrait reveal" role="img" aria-label="Eventplanerin unterwegs mit dem Handy"></div>
+
+      <div class="closing-body">
+      <h2 id="abschluss-titel" class="reveal">Ein Briefing. <em>Dann melden sich die Anbieter.</em></h2>
+
+      <p class="closing-sub reveal">Sommerfest, Offsite, Kundenanlass oder Generalversammlung. Aktuell für Firmenevents in Zürich, Zug und Luzern.</p>
+
+      <div class="actions reveal">
+        <a class="cta" href="https://www.seventi.com/">
+          <span class="cta-word">Event</span>
+          <span class="cta-inject" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <rect x="3.5" y="5.5" width="17" height="15" rx="2.5"/>
+              <path d="M8 3.5v4M16 3.5v4M3.5 10.5h17M9.4 15.2l1.9 1.9 3.4-3.6"/>
+            </svg>
+          </span>
+          <span class="cta-word">planen</span>
+        </a>
+        <div class="time"><strong>Start in ca. 3 Minuten</strong>Unverbindlich und kostenlos</div>
+      </div>
+      </div>
+    </div>
+  </section>
+  </div>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-row">
+      <div>
+        <div class="footer-mark">
+          <svg class="mark-logo" viewBox="157 80.99 265.53 65.02" role="img" aria-label="Seventi" focusable="false">
+          <path class="logo-zeichen" d="M200.54 93.6986C204.033 93.05 206.348 89.7237 205.696 86.2299C205.043 82.7571 201.697 80.4559 198.183 81.1044C194.69 81.753 192.375 85.0793 193.027 88.573C193.679 92.0458 197.046 94.3471 200.54 93.6986Z"/>
+          <path class="logo-zeichen" d="M198.162 101.983C198.646 101.188 198.877 100.205 198.688 99.2217C198.477 98.071 197.762 97.1296 196.836 96.5648L171.646 82.4853C169.5 81.23 167.269 80.707 164.786 81.1673C159.609 82.1087 156.2 87.0668 157.168 92.1924C157.947 96.3974 161.398 99.4099 165.46 99.8702L186.461 102.778L159.862 129.745C159.736 129.87 159.525 130.121 159.525 130.121C157.568 132.234 156.6 135.226 157.168 138.28C158.136 143.427 163.103 146.816 168.258 145.853C171.036 145.351 173.288 143.678 174.656 141.46L175.455 140.121L198.162 101.983Z"/>
+          <path class="logo-zeichen" d="M210.767 129.849L198.057 117.213C197.888 117.046 197.699 116.899 197.51 116.753C195.7 115.519 193.238 115.979 191.996 117.778C191.344 118.74 191.196 119.807 191.407 120.916L194.732 138.594C195.237 140.853 196.563 142.945 198.625 144.347C202.96 147.318 208.894 146.209 211.862 141.899C214.513 138.071 213.945 133.008 210.767 129.849Z"/>
+          <path d="M417.587 101.356C420.318 101.356 422.532 99.2857 422.532 96.7323C422.532 94.1788 420.318 92.1088 417.587 92.1088C414.856 92.1088 412.642 94.1788 412.642 96.7323C412.642 99.2857 414.856 101.356 417.587 101.356Z" fill="currentColor"/>
+          <path d="M242.543 110.184C235.578 107.736 232.253 106.669 232.863 104.013C233.642 100.644 241.133 100.059 245.763 104.996L252.434 98.636C252.434 98.636 247.047 92.1088 237.556 92.1088C227.476 92.1088 222.657 98.5523 222.657 103.573C222.657 108.594 224.656 113.155 233.326 116.481C241.512 119.619 243.932 120.184 243.595 123.029C243.196 126.314 237.366 126.669 232.989 124.619C229.749 123.113 226.676 120.665 226.676 120.665L220.531 127.318C220.531 127.318 227.392 134.912 238.019 134.912C250.393 134.912 253.675 127.904 253.675 122.213C253.675 116.502 249.909 112.778 242.543 110.184Z" fill="currentColor"/>
+          <path d="M268.596 102.862C259.82 104.849 254.307 113.531 256.306 122.276C258.053 129.933 264.976 135.08 272.573 134.891C272.573 134.891 275.498 134.975 279.644 133.657C283.411 132.464 286.883 129.222 286.883 129.222L285.494 128.113L280.065 123.741C280.065 123.741 277.518 127.213 273.225 127.213C270.511 127.276 267.88 125.582 266.386 122.862L279.707 121.23L288.461 120.163C288.609 118.51 288.503 116.795 288.125 115.08C286.125 106.356 277.392 100.895 268.596 102.862ZM265.313 116.063C265.902 113.134 267.859 110.791 270.595 110.184C273.794 109.473 277.055 111.335 278.739 114.536L265.313 116.063Z" fill="currentColor"/>
+          <path d="M332.675 102.862C323.9 104.849 318.386 113.531 320.385 122.276C322.132 129.933 329.055 135.08 336.652 134.891C336.652 134.891 339.577 134.975 343.723 133.657C347.49 132.464 350.962 129.222 350.962 129.222L349.573 128.113L344.144 123.741C344.144 123.741 341.598 127.213 337.305 127.213C334.59 127.276 331.959 125.582 330.465 122.862L343.786 121.23L352.54 120.163C352.688 118.51 352.582 116.795 352.204 115.08C350.204 106.356 341.471 100.895 332.675 102.862ZM329.392 116.063C329.981 113.134 331.938 110.791 334.674 110.184C337.873 109.473 341.135 111.335 342.818 114.536L329.392 116.063Z" fill="currentColor"/>
+          <path d="M311.252 102.987L304.266 124.515L297.258 102.987H286.252L300.583 134.828H307.927L322.258 102.987H311.252Z" fill="currentColor"/>
+          <path d="M372.7 102.716C367.67 102.716 365.313 104.431 364.009 105.477L361.694 102.987H355.654V133.929H365.545V115.582C365.545 112.967 367.691 110.833 370.343 110.833C372.7 110.833 374.657 112.527 375.057 114.745C375.057 114.766 375.057 114.808 375.078 114.828C375.078 114.849 375.078 114.849 375.078 114.87C375.141 115.226 375.141 115.728 375.141 115.791V133.929H385.032V114.138C385.011 107.674 380.002 102.716 372.7 102.716Z" fill="currentColor"/>
+          <path d="M400.709 126.063C397.974 125.749 397.974 122.967 397.974 122.967V111.586H407.864V102.967H397.974V92.0879H388.083V124.598C388.083 130.435 392.166 134.138 398.858 134.577C406.938 135.1 410.326 129.536 410.326 129.536L404.14 124.347C404.119 124.326 403.024 126.335 400.709 126.063Z" fill="currentColor"/>
+          <path d="M422.532 102.987H412.642V133.929H422.532V102.987Z" fill="currentColor"/>
+        </svg>
+        </div>
+        <p class="footer-sub">Marktplatz für Firmenevents in der Schweiz</p>
+      </div>
+
+      <nav class="footer-links" aria-label="Rechtliches">
+        <a href="impressum/">Impressum</a>
+        <a href="datenschutz/">Datenschutz</a>
+      </nav>
+
+      <!-- Einziger Nebenausgang der Seite -->
+      <div class="footer-cross-wrap">
+      <a class="footer-provider" href="./anbieter/">
+        Sie sind Location oder Caterer?
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      </div>
+    </div>
+  </footer>
+
+  
+
+  
+</body>
+</html>

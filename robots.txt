@@ -7,5 +7,6 @@ Disallow: /provider.html
 Disallow: /impressum/
 Disallow: /datenschutz/
 Disallow: /mockups/
+Disallow: /figma/
 
 Sitemap: https://roesmannamelie-alt.github.io/Seventi/sitemap.xml
