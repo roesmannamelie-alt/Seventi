@@ -65,6 +65,31 @@ live as variables so a developer can read the intended token rather than a hex v
 Components carry descriptions with the real numbers, for example the button as height 46,
 padding 22, pill radius.
 
+## States are variants, not second frames
+
+The FAQ is the one place on the provider page where the same element has two
+appearances. It is modelled as a component set `FAQ-Zeile` with the property
+`Zustand = Zu / Offen`: closed is a white circle with a plus on `#f4f7f0`, open
+is a lime circle with the same sign rotated 45 degrees on `#eef3e6`, with the
+answer set to 560 below it. The page places instances, the first one open so the
+answer is visible without opening anything. The same rule applies to anything
+else with a state: it becomes a variant, never a second frame parked next to the
+first.
+
+The wordmark is a component set too, `Wortmarke` with `Ton = Dunkel / Weiss`, so
+the footer version is not a second copy of the same paths.
+
+## Two things that bite when redrawing HTML in Figma
+
+Circles collapse. A round frame inside auto-layout that is left on hug shrinks to
+the width of its content, so a 34 px step number becomes 13 px wide and stops
+being round. Round elements need an explicit fixed size on both axes.
+
+Spacing cannot be read off the stylesheet. A grid column is wider than the box
+inside it, and the two words in the primary button sit 6 px apart without any
+`gap` rule saying so. `figma/messwerkzeug` therefore derives every spacing from
+the measured positions of the rendered page rather than from the CSS.
+
 ## What is not in the design
 
 No provider counts, no planner numbers, no response times, no testimonials, no client
