@@ -495,3 +495,29 @@ Entwurfsfassung handelt und dass der Text rechtlich nicht geprüft ist.
 Inhaltlich decken die Entwürfe ab, was für diese Plattform besonders ist: dass ein Teil der Anbieterprofile aus
 öffentlich zugänglichen Quellen stammt, dass diese Profile unbestätigt sind und ohne Anmeldung entfernt werden
 können. Das ist die Datenschutzposition, die auch die Anbieter-Seite selbst vertritt.
+
+---
+
+## 12. Rückmeldung von Cody, Stand nach dem Umbau
+
+**Beschriftung der Suche.** „Ist dein Unternehmen bereits auf Seventi?" war eine Ja-Nein-Frage und sagte nicht, was danach passiert.
+Jetzt steht dort **„Suche dein Unternehmen"**, darunter im Hero **„Bereits gelistet? Übernimm dein Profil. Noch nicht dabei?
+Erstell es kostenlos."** Damit stehen beide Ausgänge schon vor dem Tippen da, was genau der Briefing-Vorgabe entspricht, dass
+„nicht gefunden" kein Fehler ist. Im Abschlussblock trägt das Feld dieselbe Beschriftung, die Subline fehlt dort, weil die
+Zeile über dem Feld dasselbe schon sagt.
+
+**Handlungsaufforderung über die ganze Seite.** Zwischen Hero und Abschluss lagen rund siebentausend Pixel ohne Einstieg.
+Zwei Ergänzungen: eine mitlaufende Leiste oben, die erscheint, sobald der Hero oben raus ist, und wieder verschwindet, sobald
+der Abschluss im Bild steht, und ein Anstoss direkt nach dem Preisabschnitt, weil dort die Entscheidung fällt. Beide führen
+zur Suche im Abschluss und setzen den Fokus ins Feld, sie öffnen kein zweites Suchfeld. Die Planner-Seite hat dieselbe Leiste,
+dort führt sie auf `seventi.com`.
+
+**Regionen.** Neu sind es vier Kantone: Zürich, Zug, Luzern und **Schwyz**. Ergänzt im Hero-Kicker, in der FAQ-Antwort zur
+Herkunft der Profile und in der Kantonsauswahl des Anmeldeformulars. Dazu ein eigenes schmales Band unter dem Kategorienband:
+„Aktuell nehmen wir Anbieter in Zürich, Zug, Luzern und Schwyz auf." mit dem Weg daneben, den eigenen Kanton vorzuschlagen.
+
+**Offen:** Der Kantonswunsch geht aktuell an `hallo@seventi.ch`, dieselbe Platzhalter-Adresse wie im Impressum. Sobald die
+echte Adresse steht, ist es eine Zeile. Alternativ ein Formular, dann braucht es ein Ziel im Hintergrund.
+
+**Noch nicht gebaut:** der Screenshot einer echten Anfrage. Der Platz dafür ist Schritt zwei in „So läuft es ab", also genau
+dort, wo steht, dass die Anfragen per E-Mail kommen. Sobald das Bild da ist, wird es eingesetzt.

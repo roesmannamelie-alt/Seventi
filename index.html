@@ -899,6 +899,12 @@
 
       .topbar { height: 40px; }
 
+      .stange { padding: 9px 16px; }
+
+      .stange-satz { display: none; }
+
+      .stange-knopf { padding: 0 16px; font-size: 12.5px; }
+
       .mark-logo { height: 22px; }
 
       .intro {
@@ -1160,6 +1166,8 @@
     }
 
     @media (prefers-reduced-motion: reduce) {
+      .stange { transition: none; }
+
       .type-text {
         width: auto;
         border-right: 0;
@@ -1675,6 +1683,75 @@
       font-size: 12.5px;
       line-height: 1.65;
     }
+
+    /* ---------- Mitlaufende Leiste ----------
+       Zwischen Hero und Abschluss liegt die halbe Seite ohne Einstieg.
+       Die Leiste kommt, sobald der Hero oben raus ist, und geht wieder,
+       sobald der Abschluss im Bild steht: dort steht der Knopf schon. */
+    .stange {
+      position: fixed;
+      z-index: 40;
+      top: 0;
+      right: 0;
+      left: 0;
+      padding: 10px 20px;
+      background: rgba(255, 255, 255, .88);
+      -webkit-backdrop-filter: blur(16px) saturate(1.3);
+      backdrop-filter: blur(16px) saturate(1.3);
+      box-shadow: 0 10px 30px -22px rgba(22, 40, 0, .5);
+      transform: translate3d(0, -100%, 0);
+      visibility: hidden;
+      transition: transform .42s cubic-bezier(.22, 1, .36, 1), visibility .42s;
+    }
+
+    .stange.ist-da { transform: none; visibility: visible; }
+
+    .stange-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .stange-marke { display: flex; align-items: center; color: var(--ink); }
+
+    .stange-marke .mark-logo { height: 22px; }
+
+    .stange-rechts { display: flex; align-items: center; gap: 14px; }
+
+    .stange-satz { color: var(--muted); font-size: 13px; font-weight: 600; }
+
+    .stange-knopf {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      min-height: 44px;
+      padding: 0 20px;
+      border: 0;
+      border-radius: 999px;
+      background: var(--ink);
+      color: var(--white);
+      font-size: 13px;
+      font-weight: 600;
+      transition: background-color .25s ease;
+    }
+
+    .stange-knopf:hover { background: #23400a; }
+
+    .stange-knopf:focus-visible { outline: 3px solid rgba(184, 232, 0, .5); outline-offset: 3px; }
+
+    .stange-knopf svg {
+      width: 15px;
+      height: 15px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      transition: transform .25s ease;
+    }
+
+    .stange-knopf:hover svg { transform: translateX(3px); }
 
     /* Einblenden beim Scrollen, nur mit aktivem JavaScript */
     .js .reveal {
@@ -2786,6 +2863,34 @@
     .lenis.lenis-smooth iframe { pointer-events: none; }
   </style>
   <script>document.documentElement.classList.add("js");</script>
+
+  <div class="stange">
+    <div class="shell stange-inner">
+      <div class="stange-marke">
+        <svg class="mark-logo" viewBox="157 80.99 265.53 65.02" role="img" aria-label="Seventi" focusable="false">
+            <path class="logo-zeichen" d="M200.54 93.6986C204.033 93.05 206.348 89.7237 205.696 86.2299C205.043 82.7571 201.697 80.4559 198.183 81.1044C194.69 81.753 192.375 85.0793 193.027 88.573C193.679 92.0458 197.046 94.3471 200.54 93.6986Z"/>
+            <path class="logo-zeichen" d="M198.162 101.983C198.646 101.188 198.877 100.205 198.688 99.2217C198.477 98.071 197.762 97.1296 196.836 96.5648L171.646 82.4853C169.5 81.23 167.269 80.707 164.786 81.1673C159.609 82.1087 156.2 87.0668 157.168 92.1924C157.947 96.3974 161.398 99.4099 165.46 99.8702L186.461 102.778L159.862 129.745C159.736 129.87 159.525 130.121 159.525 130.121C157.568 132.234 156.6 135.226 157.168 138.28C158.136 143.427 163.103 146.816 168.258 145.853C171.036 145.351 173.288 143.678 174.656 141.46L175.455 140.121L198.162 101.983Z"/>
+            <path class="logo-zeichen" d="M210.767 129.849L198.057 117.213C197.888 117.046 197.699 116.899 197.51 116.753C195.7 115.519 193.238 115.979 191.996 117.778C191.344 118.74 191.196 119.807 191.407 120.916L194.732 138.594C195.237 140.853 196.563 142.945 198.625 144.347C202.96 147.318 208.894 146.209 211.862 141.899C214.513 138.071 213.945 133.008 210.767 129.849Z"/>
+            <path d="M417.587 101.356C420.318 101.356 422.532 99.2857 422.532 96.7323C422.532 94.1788 420.318 92.1088 417.587 92.1088C414.856 92.1088 412.642 94.1788 412.642 96.7323C412.642 99.2857 414.856 101.356 417.587 101.356Z" fill="currentColor"/>
+            <path d="M242.543 110.184C235.578 107.736 232.253 106.669 232.863 104.013C233.642 100.644 241.133 100.059 245.763 104.996L252.434 98.636C252.434 98.636 247.047 92.1088 237.556 92.1088C227.476 92.1088 222.657 98.5523 222.657 103.573C222.657 108.594 224.656 113.155 233.326 116.481C241.512 119.619 243.932 120.184 243.595 123.029C243.196 126.314 237.366 126.669 232.989 124.619C229.749 123.113 226.676 120.665 226.676 120.665L220.531 127.318C220.531 127.318 227.392 134.912 238.019 134.912C250.393 134.912 253.675 127.904 253.675 122.213C253.675 116.502 249.909 112.778 242.543 110.184Z" fill="currentColor"/>
+            <path d="M268.596 102.862C259.82 104.849 254.307 113.531 256.306 122.276C258.053 129.933 264.976 135.08 272.573 134.891C272.573 134.891 275.498 134.975 279.644 133.657C283.411 132.464 286.883 129.222 286.883 129.222L285.494 128.113L280.065 123.741C280.065 123.741 277.518 127.213 273.225 127.213C270.511 127.276 267.88 125.582 266.386 122.862L279.707 121.23L288.461 120.163C288.609 118.51 288.503 116.795 288.125 115.08C286.125 106.356 277.392 100.895 268.596 102.862ZM265.313 116.063C265.902 113.134 267.859 110.791 270.595 110.184C273.794 109.473 277.055 111.335 278.739 114.536L265.313 116.063Z" fill="currentColor"/>
+            <path d="M332.675 102.862C323.9 104.849 318.386 113.531 320.385 122.276C322.132 129.933 329.055 135.08 336.652 134.891C336.652 134.891 339.577 134.975 343.723 133.657C347.49 132.464 350.962 129.222 350.962 129.222L349.573 128.113L344.144 123.741C344.144 123.741 341.598 127.213 337.305 127.213C334.59 127.276 331.959 125.582 330.465 122.862L343.786 121.23L352.54 120.163C352.688 118.51 352.582 116.795 352.204 115.08C350.204 106.356 341.471 100.895 332.675 102.862ZM329.392 116.063C329.981 113.134 331.938 110.791 334.674 110.184C337.873 109.473 341.135 111.335 342.818 114.536L329.392 116.063Z" fill="currentColor"/>
+            <path d="M311.252 102.987L304.266 124.515L297.258 102.987H286.252L300.583 134.828H307.927L322.258 102.987H311.252Z" fill="currentColor"/>
+            <path d="M372.7 102.716C367.67 102.716 365.313 104.431 364.009 105.477L361.694 102.987H355.654V133.929H365.545V115.582C365.545 112.967 367.691 110.833 370.343 110.833C372.7 110.833 374.657 112.527 375.057 114.745C375.057 114.766 375.057 114.808 375.078 114.828C375.078 114.849 375.078 114.849 375.078 114.87C375.141 115.226 375.141 115.728 375.141 115.791V133.929H385.032V114.138C385.011 107.674 380.002 102.716 372.7 102.716Z" fill="currentColor"/>
+            <path d="M400.709 126.063C397.974 125.749 397.974 122.967 397.974 122.967V111.586H407.864V102.967H397.974V92.0879H388.083V124.598C388.083 130.435 392.166 134.138 398.858 134.577C406.938 135.1 410.326 129.536 410.326 129.536L404.14 124.347C404.119 124.326 403.024 126.335 400.709 126.063Z" fill="currentColor"/>
+            <path d="M422.532 102.987H412.642V133.929H422.532V102.987Z" fill="currentColor"/>
+        </svg>
+      </div>
+
+      <div class="stange-rechts">
+        <span class="stange-satz">Start in ca. 3 Minuten</span>
+        <a class="stange-knopf" href="https://www.seventi.com/">
+          Event planen
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
 </head>
 
 <body>
@@ -3457,6 +3562,28 @@
     document.querySelectorAll(".malt svg > *").forEach((form) => {
       form.setAttribute("pathLength", "1");
     });
+
+    // Mitlaufende Leiste: erscheint nach dem Hero, geht vor dem Abschluss
+    const stange = document.querySelector(".stange");
+    const heldBereich = document.querySelector(".hero");
+    const abschlussBereich = document.querySelector(".closing");
+
+    if (stange && heldBereich && abschlussBereich && "IntersectionObserver" in window) {
+      let heldWeg = false;
+      let abschlussDa = false;
+
+      const stangeSetzen = () => stange.classList.toggle("ist-da", heldWeg && !abschlussDa);
+
+      new IntersectionObserver(([eintrag]) => {
+        heldWeg = !eintrag.isIntersecting;
+        stangeSetzen();
+      }, { rootMargin: "-70px 0px 0px 0px" }).observe(heldBereich);
+
+      new IntersectionObserver(([eintrag]) => {
+        abschlussDa = eintrag.isIntersecting;
+        stangeSetzen();
+      }, { rootMargin: "0px 0px -20% 0px" }).observe(abschlussBereich);
+    }
 
     const revealTargets = document.querySelectorAll(".reveal, .drift");
 
