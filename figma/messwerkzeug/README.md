@@ -44,6 +44,17 @@ deshalb ausdrücklich behandeln:
 - **WebP wird angenommen, aber nicht gezeichnet.** Der Upload meldet Erfolg und
   liefert einen Hash, die Fläche bleibt trotzdem leer. Bilder vor dem Hochladen
   nach JPEG wandeln.
+- **Strichstärken werden beim Import nicht mitverkleinert.** Ein Symbol mit
+  `viewBox="0 0 24 24"`, das auf 16 px steht, bekommt seine Geometrie sauber
+  skaliert, behält aber `stroke-width` 1.8 statt 1.2. Die Symbole sehen dadurch
+  durchgehend zu fett aus. Nach dem Import jede Strichstärke mit
+  Rahmenbreite/viewBox multiplizieren.
+- **Endlosbänder kommen als ein zentrierter Satz an.** Die Importfassung klappt
+  die Marquees bewusst zusammen, damit kein Text doppelt im Import landet. Wer
+  das eins zu eins übernimmt, bekommt fünf Pillen in der Mitte statt eines
+  Bandes. Auf der Seite laufen 15 Pillen über 2056 px und werden bei 1440
+  beschnitten — in Figma also den Satz dreimal setzen und den Abschnitt
+  beschneiden lassen.
 
 ## Vergleichen
 
