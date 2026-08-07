@@ -14,6 +14,7 @@ Entwürfe für die Seventi Landingpages.
 | `favicon.svg` | Funke aus dem Logo auf dunkler Kachel |
 | `mockups/` | Screenshots beider Seiten für Mockups: Desktop 1440, Tablet 834, Handy 390, je als Bildschirmausschnitt in doppelter Auflösung und als ganze Seite |
 | `figma/` | Flache Fassungen beider Seiten für den Figma-Import, erzeugt mit `figma/bauen.py` |
+| `FIGMA.md` | Begründung der Design-Entscheidungen, Teil der Übergabe |
 | `provider.html` | Weiterleitung auf `anbieter/` |
 | `entwuerfe.html` | Übersicht mit Links auf alle Entwürfe |
 | `lenis.min.js` | Lenis 1.1.20, mitgeliefert statt über ein CDN geladen |
