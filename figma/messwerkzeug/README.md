@@ -55,6 +55,12 @@ deshalb ausdrücklich behandeln:
   Bandes. Auf der Seite laufen 15 Pillen über 2056 px und werden bei 1440
   beschnitten — in Figma also den Satz dreimal setzen und den Abschnitt
   beschneiden lassen.
+- **Reveals verfälschen jede Position, nicht die Höhe.** Wer die Live-Seite
+  misst und nur `.is-in` setzt, erwischt Elemente mitten in der Bewegung: Sie
+  stehen dann um den Reveal-Versatz zu tief, meist 20 px. Höhen stimmen dabei
+  trotzdem, `transform` ändert kein Layout — man sucht also einen Fehler, den
+  es nicht gibt. Vor dem Messen `transform`, `opacity`, `transition` und
+  `animation` per Style-Tag ausschalten, dann decken sich die Zahlen.
 
 ## Vergleichen
 

@@ -39,3 +39,16 @@ Von Hand hier hineinschreiben lohnt nicht, der nächste Lauf überschreibt es.
 - Der Import bringt keine Zustände mit: Hover, Fokus und die Suche mit ihren
   zwei Ergebnissen sind im Standbild nicht abgebildet. Was davon im Design
   gebraucht wird, entsteht in Figma als eigene Variante.
+
+## Nach dem Import aufräumen
+
+Die Importfassung zeigt alle Zustände gleichzeitig, damit nichts fehlt. Der
+Figma-Seitenrahmen darf das nicht, er steht auf den echten Live-Höhen. Zwei
+Stellen sind deshalb nach jedem Import nachzuziehen:
+
+| Abschnitt | Import | Live | In Figma |
+|---|---|---|---|
+| Nach der Suche | beide Suchwege untereinander | ein Weg | Weg 2 aufs Board `States` |
+| Kurz beantwortet | acht offene Fragen | acht zu | Zeilen auf `Zustand=Zu`, offene Fassung aufs Board |
+
+Warum das so gelöst ist, steht in `FIGMA.md` unter „States are variants".

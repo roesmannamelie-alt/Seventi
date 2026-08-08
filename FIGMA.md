@@ -71,10 +71,22 @@ The FAQ is the one place on the provider page where the same element has two
 appearances. It is modelled as a component set `FAQ-Zeile` with the property
 `Zustand = Zu / Offen`: closed is a white circle with a plus on `#f4f7f0`, open
 is a lime circle with the same sign rotated 45 degrees on `#eef3e6`, with the
-answer set to 560 below it. The page places instances, the first one open so the
-answer is visible without opening anything. The same rule applies to anything
-else with a state: it becomes a variant, never a second frame parked next to the
-first.
+answer set to 560 below it. The same rule applies to anything else with a state:
+it becomes a variant, never a second page frame parked next to the first.
+
+The page frame shows the state the live page actually loads with, because the
+frame doubles as the measurement a developer reads heights off. All eight rows
+are therefore closed, and the search result shows one path, not both. An earlier
+draft left the first row open so an answer was visible without clicking; that
+made the section 970 px against 876 px on the live page, and a section that
+lies about its height is worse than one that needs a click to read.
+
+What a variant cannot carry is the per-instance text. The closed row holds one
+text layer, the question, so switching eight instances to `Zu` would drop eight
+answers out of the file. They sit on a board named `States`, to the right of and
+outside the page frame, next to the second search path for the same reason. That
+board is an annex holding content, not an alternative page — the rule above still
+stands, and nothing in it is a duplicate of a frame that exists elsewhere.
 
 The wordmark is a component set too, `Wortmarke` with `Ton = Dunkel / Weiss`, so
 the footer version is not a second copy of the same paths.
