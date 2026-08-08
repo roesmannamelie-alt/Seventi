@@ -99,7 +99,7 @@ stands, and nothing in it is a duplicate of a frame that exists elsewhere.
 The wordmark is a component set too, `Wortmarke` with `Ton = Dunkel / Weiss`, so
 the footer version is not a second copy of the same paths.
 
-## Five things that bite when redrawing HTML in Figma
+## Six things that bite when redrawing HTML in Figma
 
 Circles collapse. A round frame inside auto-layout that is left on hug shrinks to
 the width of its content, so a 34 px step number becomes 13 px wide and stops
@@ -133,6 +133,17 @@ have no node in it. The white field that marks the selected side of the
 the two labels around it measured correctly. Anything drawn as `content: ""` has
 to be read out of the stylesheet by hand: here `top/bottom/left: 4px, right: 50%`
 against a 350 px bar, which is a 171 × 44 field on a radius of 22.
+
+A one-sided CSS border comes out four-sided. The rows of an offer card are held
+apart by `border-top: 1px solid rgba(22, 40, 0, .08)` on `li + li`, so one edge
+on five of the six rows and none on the first. Drawn as a frame carrying a plain
+stroke, that turns into a box: fifteen rows per planner frame each wore a full
+outline, and the stacked outlines read as a grey rail running down both sides of
+every card. Figma keeps `strokeTopWeight`, `strokeRightWeight`,
+`strokeBottomWeight` and `strokeLeftWeight` for exactly this case, and the three
+unwanted sides have to be set to 0 by hand. A separator is also `INSIDE`, since
+a CSS border sits within the box it belongs to, which is the one place the rule
+from the icon paragraph above does not apply.
 
 ## What is not in the design
 
