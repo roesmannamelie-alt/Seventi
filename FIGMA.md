@@ -91,7 +91,7 @@ stands, and nothing in it is a duplicate of a frame that exists elsewhere.
 The wordmark is a component set too, `Wortmarke` with `Ton = Dunkel / Weiss`, so
 the footer version is not a second copy of the same paths.
 
-## Two things that bite when redrawing HTML in Figma
+## Three things that bite when redrawing HTML in Figma
 
 Circles collapse. A round frame inside auto-layout that is left on hug shrinks to
 the width of its content, so a 34 px step number becomes 13 px wide and stops
@@ -101,6 +101,14 @@ Spacing cannot be read off the stylesheet. A grid column is wider than the box
 inside it, and the two words in the primary button sit 6 px apart without any
 `gap` rule saying so. `figma/messwerkzeug` therefore derives every spacing from
 the measured positions of the rendered page rather than from the CSS.
+
+Icon strokes need centre alignment. An SVG stroke always straddles its path, so
+the dash in `M7 12h10` puts half its 1.8 px on either side of the line. Figma
+imports such a vector on `INSIDE` alignment, which has nowhere to sit on a path
+that encloses no area: the four dashes in the comparison list came out as small
+boxes, and the arrows in the `Der Unterschied` kicker collapsed into two specks.
+Every stroked icon vector in the file is set to `CENTER` for that reason, 201 of
+them, and anything drawn later has to be set the same way.
 
 ## What is not in the design
 
