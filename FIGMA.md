@@ -81,6 +81,14 @@ draft left the first row open so an answer was visible without clicking; that
 made the section 970 px against 876 px on the live page, and a section that
 lies about its height is worse than one that needs a click to read.
 
+The 390 frame had been left behind on both counts. Its FAQ rows still carried
+their answers and its search result still stacked both paths inside one browser
+window, which put that section at 2015 px against 1114 px and the switch section
+at 1469 px against 953 px. Everything below the second section therefore sat
+roughly 500 px too low, 1400 px by the footer. Both frames now match. Nothing
+was lost in the process: the answers and the second path already sit on `States`,
+and a 390 copy of them would be exactly the duplicate the rule above forbids.
+
 What a variant cannot carry is the per-instance text. The closed row holds one
 text layer, the question, so switching eight instances to `Zu` would drop eight
 answers out of the file. They sit on a board named `States`, to the right of and
@@ -91,7 +99,7 @@ stands, and nothing in it is a duplicate of a frame that exists elsewhere.
 The wordmark is a component set too, `Wortmarke` with `Ton = Dunkel / Weiss`, so
 the footer version is not a second copy of the same paths.
 
-## Three things that bite when redrawing HTML in Figma
+## Five things that bite when redrawing HTML in Figma
 
 Circles collapse. A round frame inside auto-layout that is left on hug shrinks to
 the width of its content, so a 34 px step number becomes 13 px wide and stops
@@ -109,6 +117,22 @@ that encloses no area: the four dashes in the comparison list came out as small
 boxes, and the arrows in the `Der Unterschied` kicker collapsed into two specks.
 Every stroked icon vector in the file is set to `CENTER` for that reason, 201 of
 them, and anything drawn later has to be set the same way.
+
+A closed element can end up wearing the open state. `.faq-toggle` is a white
+26 px circle with a plus in `#315500`; the stylesheet turns it lime and rotates
+it 45 degrees only once the row opens. The 390 rows were drawn from that second
+appearance, so eight closed rows carried a lime circle with a cross on it. The
+rule this leaves behind: when a stylesheet produces a state with `transform`
+rather than with a different element, the closed drawing has to be built from the
+closed values, not from a rotated copy of the open one.
+
+Pseudo-elements are invisible to the measuring tool. `figma/messwerkzeug` reads
+positions off the rendered page through the DOM, and `::before` and `::after`
+have no node in it. The white field that marks the selected side of the
+`wege-switch` is such a pseudo-element, so it was missing from both frames while
+the two labels around it measured correctly. Anything drawn as `content: ""` has
+to be read out of the stylesheet by hand: here `top/bottom/left: 4px, right: 50%`
+against a 350 px bar, which is a 171 × 44 field on a radius of 22.
 
 ## What is not in the design
 
