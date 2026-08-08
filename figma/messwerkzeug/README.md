@@ -66,6 +66,24 @@ deshalb ausdrücklich behandeln:
   betrifft das vier Stellen: „Eintrag entfernen", „Nicht mein Unternehmen",
   „Mehr zum Profil" und das `entfernt` mitten im Fliesstext. Ohne den Strich
   liest sich der Link wie eine fette Auszeichnung, der Handlungsweg verschwindet.
+- **`text-wrap: balance` gibt es in Figma nicht.** Der Browser verteilt die
+  Zeilen gleichmässig, Figma bricht gierig um — bei gleicher Rahmenbreite steht
+  auf Zeile 1 also mehr als auf der Seite. Betroffen sind 25 Überschriften, 14
+  auf der Anbieter- und 11 auf der Planner-Seite. Die Umbruchstellen gehören als
+  harte Zeilenumbrüche in den Text; die gemessene Rahmenbreite bleibt dabei
+  stehen, damit niemand später eine erfundene Breite übernimmt. Leerzeichen
+  einzeln durch `\n` ersetzen (`deleteCharacters` + `insertCharacters`), nicht
+  `characters` neu setzen — das plattet die zweifarbige Auszeichnung.
+- **Zeilen nicht über die Oberkante gruppieren.** Wer die echten Umbrüche
+  ausmisst, indem er Wörter nach `rect.top` bündelt, zerschneidet jede Zeile an
+  der Grenze zwischen Grotesk und Serife: die beiden Schnitte sitzen auf
+  derselben Zeile, haben aber verschiedene Oberkanten. Über die Zeilenmitte
+  bündeln und gegen `Höhe / Zeilenhöhe` gegenprüfen, sonst entstehen erfundene
+  Umbrüche.
+- **`node.x` ist elternrelativ.** Auf der Planner-Seite liegen die Überschriften
+  in Containern, die selbst bei 330 stehen; ihr lokales `x` ist dort korrekt 0.
+  Wer das gegen die auf der Seite gemessenen 330 prüft, „korrigiert" sie auf 660.
+  Immer über `absoluteBoundingBox` minus Rahmenursprung vergleichen.
 - **Zentrierter Text braucht den Rahmen der Seite, nicht den des Textes.** Beim
   Import wird aus einem `<p>` über die volle Kartenbreite ein Feld, das den Text
   umschliesst. Zentriert sieht das gleich aus, sitzt aber auf dem Mittelpunkt
