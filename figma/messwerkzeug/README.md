@@ -61,6 +61,17 @@ deshalb ausdrücklich behandeln:
   trotzdem, `transform` ändert kein Layout — man sucht also einen Fehler, den
   es nicht gibt. Vor dem Messen `transform`, `opacity`, `transition` und
   `animation` per Style-Tag ausschalten, dann decken sich die Zahlen.
+- **Unterstreichungen gehen beim Import verloren.** Textlinks kommen in Farbe
+  und Gewicht richtig an, aber ohne `text-decoration`. Auf der Anbieter-Seite
+  betrifft das vier Stellen: „Eintrag entfernen", „Nicht mein Unternehmen",
+  „Mehr zum Profil" und das `entfernt` mitten im Fliesstext. Ohne den Strich
+  liest sich der Link wie eine fette Auszeichnung, der Handlungsweg verschwindet.
+- **Zentrierter Text braucht den Rahmen der Seite, nicht den des Textes.** Beim
+  Import wird aus einem `<p>` über die volle Kartenbreite ein Feld, das den Text
+  umschliesst. Zentriert sieht das gleich aus, sitzt aber auf dem Mittelpunkt
+  des Textes statt auf dem der Karte — auf der Profilkarte 715 statt 720. Bei
+  mittiger Ausrichtung die gemessene Rahmenbreite setzen und `textAutoResize`
+  auf `HEIGHT` lassen.
 
 ## Vergleichen
 
